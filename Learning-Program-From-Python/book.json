@@ -1,0 +1,12 @@
+{
+	"root": "./",
+	"title": "从Python学编程",
+	"author": "Vamei",
+	"language": "zh-hans",
+	"cover": "./Images/cover00121.jpeg",
+	"links" : {
+	    "sidebar" : {
+	        "Home" : "https://github.com/jacksoncode/gitbook.git"
+	    	}
+		}
+}
