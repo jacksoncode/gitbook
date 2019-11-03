@@ -1,0 +1,979 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>附录A Python的安装与运行 · 从Python学编程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Vamei">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Chapter_1006.html" />
+    
+    
+    <link rel="prev" href="Chapter_1004.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/jacksoncode/gitbook.git" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    内容简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Copy_Right.html">
+            
+                <a href="../Copy_Right.html">
+            
+                    
+                    版权信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../preface.html">
+            
+                <a href="../preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Chapter_1000.html">
+            
+                <a href="Chapter_1000.html">
+            
+                    
+                    第1章 用编程改变世界
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Chapter_1001.html">
+            
+                <a href="Chapter_1001.html">
+            
+                    
+                    1.1 从计算机到编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Chapter_1002.html">
+            
+                <a href="Chapter_1002.html">
+            
+                    
+                    1.2 所谓编程，是做什么的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Chapter_1003.html">
+            
+                <a href="Chapter_1003.html">
+            
+                    
+                    1.3 为什么学Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Chapter_1004.html">
+            
+                <a href="Chapter_1004.html">
+            
+                    
+                    1.4 最简单的Hello World
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.5" data-path="Chapter_1005.html">
+            
+                <a href="Chapter_1005.html">
+            
+                    
+                    附录A Python的安装与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Chapter_1006.html">
+            
+                <a href="Chapter_1006.html">
+            
+                    
+                    附录B virtualenv
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Chapter_02/Chapter_2000.html">
+            
+                <a href="../Chapter_02/Chapter_2000.html">
+            
+                    
+                    第2章 先做键盘侠
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Chapter_02/Chapter_2001.html">
+            
+                <a href="../Chapter_02/Chapter_2001.html">
+            
+                    
+                    2.1 计算机会算术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Chapter_02/Chapter_2002.html">
+            
+                <a href="../Chapter_02/Chapter_2002.html">
+            
+                    
+                    2.2 计算机记性好
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Chapter_02/Chapter_2003.html">
+            
+                <a href="../Chapter_02/Chapter_2003.html">
+            
+                    
+                    2.3 计算机懂选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Chapter_02/Chapter_2004.html">
+            
+                <a href="../Chapter_02/Chapter_2004.html">
+            
+                    
+                    2.4 计算机能循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Chapter_02/Chapter_2005.html">
+            
+                <a href="../Chapter_02/Chapter_2005.html">
+            
+                    
+                    附录A 小练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Chapter_02/Chapter_2006.html">
+            
+                <a href="../Chapter_02/Chapter_2006.html">
+            
+                    
+                    附录B 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Chapter_03/Chapter_3000.html">
+            
+                <a href="../Chapter_03/Chapter_3000.html">
+            
+                    
+                    第3章 过程大于结果
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Chapter_03/Chapter_3001.html">
+            
+                <a href="../Chapter_03/Chapter_3001.html">
+            
+                    
+                    3.1 懒人炒菜机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Chapter_03/Chapter_3002.html">
+            
+                <a href="../Chapter_03/Chapter_3002.html">
+            
+                    
+                    3.2 参数传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Chapter_03/Chapter_3003.html">
+            
+                <a href="../Chapter_03/Chapter_3003.html">
+            
+                    
+                    3.3 递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Chapter_03/Chapter_3004.html">
+            
+                <a href="../Chapter_03/Chapter_3004.html">
+            
+                    
+                    3.4 引入那把宝剑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Chapter_03/Chapter_3005.html">
+            
+                <a href="../Chapter_03/Chapter_3005.html">
+            
+                    
+                    3.5 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../Chapter_03/Chapter_3006.html">
+            
+                <a href="../Chapter_03/Chapter_3006.html">
+            
+                    
+                    附录A 搜索路径的设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../Chapter_03/Chapter_3007.html">
+            
+                <a href="../Chapter_03/Chapter_3007.html">
+            
+                    
+                    附录B 安装第三方模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../Chapter_03/Chapter_3008.html">
+            
+                <a href="../Chapter_03/Chapter_3008.html">
+            
+                    
+                    附录C 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Chapter_04/Chapter_4000.html">
+            
+                <a href="../Chapter_04/Chapter_4000.html">
+            
+                    
+                    第4章 朝思暮想是对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Chapter_04/Chapter_4001.html">
+            
+                <a href="../Chapter_04/Chapter_4001.html">
+            
+                    
+                    4.1 轻松看对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Chapter_04/Chapter_4002.html">
+            
+                <a href="../Chapter_04/Chapter_4002.html">
+            
+                    
+                    4.2 继承者们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Chapter_04/Chapter_4003.html">
+            
+                <a href="../Chapter_04/Chapter_4003.html">
+            
+                    
+                    4.3 那些年错过的对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Chapter_04/Chapter_4004.html">
+            
+                <a href="../Chapter_04/Chapter_4004.html">
+            
+                    
+                    4.4 意想不到的对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Chapter_04/Chapter_4005.html">
+            
+                <a href="../Chapter_04/Chapter_4005.html">
+            
+                    
+                    附录A 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Chapter_05/Chapter_5000.html">
+            
+                <a href="../Chapter_05/Chapter_5000.html">
+            
+                    
+                    第5章 对象带你飞
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Chapter_05/Chapter_5001.html">
+            
+                <a href="../Chapter_05/Chapter_5001.html">
+            
+                    
+                    5.1 存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Chapter_05/Chapter_5002.html">
+            
+                <a href="../Chapter_05/Chapter_5002.html">
+            
+                    
+                    5.2 一寸光阴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../Chapter_05/Chapter_5003.html">
+            
+                <a href="../Chapter_05/Chapter_5003.html">
+            
+                    
+                    5.3 看起来像那样的东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../Chapter_05/Chapter_5004.html">
+            
+                <a href="../Chapter_05/Chapter_5004.html">
+            
+                    
+                    5.4 Python有网瘾
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Chapter_05/Chapter_5005.html">
+            
+                <a href="../Chapter_05/Chapter_5005.html">
+            
+                    
+                    5.5 写一个爬虫
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Chapter_06/Chapter_6000.html">
+            
+                <a href="../Chapter_06/Chapter_6000.html">
+            
+                    
+                    第6章 与对象的深入交往
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Chapter_06/Chapter_6001.html">
+            
+                <a href="../Chapter_06/Chapter_6001.html">
+            
+                    
+                    6.1 一切皆对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Chapter_06/Chapter_6002.html">
+            
+                <a href="../Chapter_06/Chapter_6002.html">
+            
+                    
+                    6.2 属性管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Chapter_06/Chapter_6003.html">
+            
+                <a href="../Chapter_06/Chapter_6003.html">
+            
+                    
+                    6.3 我是风儿，我是沙
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Chapter_06/Chapter_6004.html">
+            
+                <a href="../Chapter_06/Chapter_6004.html">
+            
+                    
+                    6.4 内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Chapter_07/Chapter_7000.html">
+            
+                <a href="../Chapter_07/Chapter_7000.html">
+            
+                    
+                    第7章 函数式编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Chapter_07/Chapter_7001.html">
+            
+                <a href="../Chapter_07/Chapter_7001.html">
+            
+                    
+                    7.1 又见函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Chapter_07/Chapter_7002.html">
+            
+                <a href="../Chapter_07/Chapter_7002.html">
+            
+                    
+                    7.2 被解放的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../Chapter_07/Chapter_7003.html">
+            
+                <a href="../Chapter_07/Chapter_7003.html">
+            
+                    
+                    7.3 小女子的梳妆匣
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Chapter_07/Chapter_7004.html">
+            
+                <a href="../Chapter_07/Chapter_7004.html">
+            
+                    
+                    7.4 高阶函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Chapter_07/Chapter_7005.html">
+            
+                <a href="../Chapter_07/Chapter_7005.html">
+            
+                    
+                    7.5 自上而下
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../Chapter_08/Chapter_8000.html">
+            
+                <a href="../Chapter_08/Chapter_8000.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >附录A Python的安装与运行</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x9644;&#x5F55;a-python&#x7684;&#x5B89;&#x88C5;&#x4E0E;&#x8FD0;&#x884C;">&#x9644;&#x5F55;A Python&#x7684;&#x5B89;&#x88C5;&#x4E0E;&#x8FD0;&#x884C;</h1>
+<h3 id="&#x5B98;&#x65B9;&#x7248;&#x672C;&#x5B89;&#x88C5; .kindle-cn-heading2">1&#xFF0E;&#x5B98;&#x65B9;&#x7248;&#x672C;&#x5B89;&#x88C5; </h3>
+<h4 id="1&#xFF09;mac">1&#xFF09;Mac</h4>
+<p>Mac&#x7CFB;&#x7EDF;&#x4E0A;&#x5DF2;&#x7ECF;&#x9884;&#x88C5;&#x4E86;Python&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7248;&#x672C;&#x7684;Python&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;Homebrew&#x5B89;&#x88C5;<a href="part0005.xhtml#ch9">^(9)^</a>{#ch9-back}&#x3002;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF08;Terminal&#xFF09;&#xFF0C;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x63D0;&#x793A;&#x7B26;&#x540E;&#x8F93;&#x5165;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x5C06;&#x8FDB;&#x5165;Python&#x7684;&#x53EF;&#x4EE5;&#x4E92;&#x52A8;&#x7684;&#x547D;&#x4EE4;&#x884C;&#xFF1A;</p>
+<hr>
+<pre><code>$python
+</code></pre><hr>
+<p>&#x4E0A;&#x9762;&#x8F93;&#x5165;&#x7684;python&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x7248;&#x672C;&#x7684;Python&#x547D;&#x4EE4;&#xFF0C;&#x5982;3.5&#x7248;&#x672C;&#x3002;&#x5982;&#x679C;&#x76F8;&#x5E94;&#x7248;&#x672C;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FD0;&#x884C;&#xFF1A;</p>
+<hr>
+<pre><code>$python3.5
+</code></pre><hr>
+<p>&#x7EC8;&#x7AEF;&#x4F1A;&#x51FA;&#x73B0;Python&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x5982;Python&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;Python&#x7684;&#x547D;&#x4EE4;&#x884C;&#x63D0;&#x793A;&#x7B26;<code>&gt;&gt;&gt;</code>&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x9000;&#x51FA;Python&#xFF0C;&#x5219;&#x8F93;&#x5165;&#xFF1A;</p>
+<hr>
+<pre><code>&gt;&gt;&gt;exit()
+</code></pre><hr>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8FD0;&#x884C;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x67D0;&#x4E2A;Python&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x5728;python&#x6216;python3&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#xFF1A;</p>
+<hr>
+<pre><code>$python hello.py
+</code></pre><hr>
+<p>&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BF4;&#x660E;&#x6587;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;</p>
+<hr>
+<pre><code>$python /home/vamei/hello.py
+</code></pre><hr>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x628A;Python&#x7A0B;&#x5E8F;hello.py&#x6539;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7684;&#x811A;&#x672C;&#x3002;&#x53EA;&#x9700;&#x5728;hello.py&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x52A0;&#x4E0A;&#x6240;&#x8981;&#x4F7F;&#x7528;&#x7684;Python&#x89E3;&#x91CA;&#x5668;&#xFF1A;</p>
+<hr>
+<pre><code>#!/usr/bin/env python
+</code></pre><hr>
+<p>&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#xFF0C;&#x628A;hello.py&#x7684;&#x6743;&#x9650;&#x6539;&#x4E3A;&#x53EF;&#x6267;&#x884C;&#xFF1A;</p>
+<hr>
+<pre><code>$chmod 755 hello.py
+</code></pre><hr>
+<p>&#x7136;&#x540E;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#xFF0C;&#x8F93;&#x5165;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x89C4;&#x5B9A;&#x7684;&#x89E3;&#x91CA;&#x5668;&#x8FD0;&#x884C;&#x4E86;&#xFF1A;</p>
+<hr>
+<pre><code>$./hello.py
+</code></pre><hr>
+<p>&#x5982;&#x679C;hello.py&#x5728;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#x4E0B;&#xFF0C;&#x90A3;&#x4E48;&#x7CFB;&#x7EDF;&#x5C31;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x641C;&#x7D22;&#x5230;&#x8FD9;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x4F55;&#x8DEF;&#x5F84;&#x4E0B;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E86;&#xFF1A;</p>
+<hr>
+<pre><code>$hello.py
+</code></pre><hr>
+<h4 id="2&#xFF09;linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;">2&#xFF09;Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</h4>
+<p>Linux&#x7CFB;&#x7EDF;&#x4E0E;Mac&#x7CFB;&#x7EDF;&#x6BD4;&#x8F83;&#x7C7B;&#x4F3C;&#xFF0C;&#x5927;&#x591A;&#x4E5F;&#x9884;&#x88C5;&#x4E86;Python&#x3002;&#x5F88;&#x591A;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x7C7B;&#x4F3C;&#x4E8E;Homebrew&#x7684;&#x8F6F;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x4F8B;&#x5982;&#x5728;Ubuntu&#x4E0B;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x5B89;&#x88C5;&#xFF1A;</p>
+<hr>
+<pre><code>$sudo apt-get install python
+</code></pre><hr>
+<p>&#x5728;Linux&#x4E0B;&#xFF0C;Python&#x7684;&#x4F7F;&#x7528;&#x548C;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;&#x4E5F;&#x548C;Mac&#x7CFB;&#x7EDF;&#x4E0B;&#x7C7B;&#x4F3C;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x3002;</p>
+<h4 id="3&#xFF09;windows&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;">3&#xFF09;Windows&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</h4>
+<p>&#x5BF9;&#x4E8E;Windows&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6765;&#x8BF4;&#xFF0C;&#x9700;&#x8981;&#x5230;Python&#x7684;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;<a href="part0005.xhtml#ch10">^(10)^</a>{#ch10-back}&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x5305;&#x3002;&#x5982;&#x679C;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;Python&#x7684;&#x5B98;&#x7F51;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x67E5;&#x627E;&#x201C;python Windows&#x4E0B;&#x8F7D;&#x201D;&#x8FD9;&#x6837;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x6765;&#x5BFB;&#x627E;&#x5176;&#x4ED6;&#x7684;&#x4E0B;&#x8F7D;&#x6E90;&#x3002;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E0E;&#x5B89;&#x88C5;&#x5176;&#x4ED6;Windows&#x8F6F;&#x4EF6;&#x7C7B;&#x4F3C;&#x3002;&#x5728;&#x5B89;&#x88C5;&#x754C;&#x9762;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;Customize&#x6765;&#x4E2A;&#x6027;&#x5316;&#x5B89;&#x88C5;&#xFF0C;&#x9664;&#x4E86;&#x9009;&#x62E9;Python&#x7684;&#x5404;&#x4E2A;&#x7EC4;&#x4EF6;&#x5916;&#xFF0C;&#x8FD8;&#x8981;&#x52FE;&#x9009;&#xFF1A;</p>
+<hr>
+<pre><code>Add python.exe to Path
+</code></pre><hr>
+<p>&#x5B89;&#x88C5;&#x597D;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6253;&#x5F00;Windows&#x7684;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x50CF;&#x5728;Mac&#x4E2D;&#x4E00;&#x6837;&#x4F7F;&#x7528;Python&#x4E86;&#x3002;</p>
+<h3 id="&#x5176;&#x4ED6;python&#x7248;&#x672C; .kindle-cn-heading2">2&#xFF0E;&#x5176;&#x4ED6;Python&#x7248;&#x672C; </h3>
+<p>&#x5B98;&#x65B9;&#x7248;&#x672C;&#x7684;Python&#x4E3B;&#x8981;&#x63D0;&#x4F9B;&#x4E86;&#x7F16;&#x8BD1;/&#x89E3;&#x91CA;&#x5668;&#x529F;&#x80FD;&#x3002;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x975E;&#x5B98;&#x65B9;&#x7248;&#x672C;&#x5219;&#x6709;&#x66F4;&#x52A0;&#x4E30;&#x5BCC;&#x7684;&#x529F;&#x80FD;&#x548C;&#x754C;&#x9762;&#xFF0C;&#x6BD4;&#x5982;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#x7684;&#x56FE;&#x5F62;&#x5316;&#x754C;&#x9762;&#x3001;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;Python&#x7684;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x66F4;&#x5BB9;&#x6613;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x5757;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#xFF0C;&#x65B9;&#x4FBF;&#x4F60;&#x627E;&#x5230;&#x5404;&#x79CD;&#x62D3;&#x5C55;&#x6A21;&#x5757;&#x7B49;&#x3002;&#x5728;&#x975E;&#x5B98;&#x65B9;&#x7684;Python&#x4E2D;&#xFF0C;&#x6700;&#x5E38;&#x7528;&#x7684;&#x6709;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#xFF1A;</p>
+<ol>
+<li>Anaconda<a href="part0005.xhtml#ch11">^(11)^</a>{#ch11-back}</li>
+<li>Enthought Python Distribution&#xFF08;EPD&#xFF09;<a href="part0005.xhtml#ch12">^(12)^</a>{#ch12-back}</li>
+</ol>
+<p>&#x76F8;&#x5BF9;&#x4E8E;&#x5B98;&#x65B9;&#x7248;&#x672C;&#x7684;Python&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x90FD;&#x66F4;&#x5BB9;&#x6613;&#x5B89;&#x88C5;&#x548C;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x6A21;&#x5757;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x7684;&#x5E2E;&#x52A9;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x8FD8;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x6A21;&#x5757;&#x5B89;&#x88C5;&#x65B9;&#x9762;&#x7684;&#x607C;&#x4EBA;&#x95EE;&#x9898;&#x3002;&#x6240;&#x4EE5;&#x975E;&#x5E38;&#x63A8;&#x8350;&#x521D;&#x5B66;&#x8005;&#x4F7F;&#x7528;&#x3002;Anaconda&#x662F;&#x514D;&#x8D39;&#x7684;&#xFF0C;EPD&#x5219;&#x5BF9;&#x4E8E;&#x5B66;&#x751F;&#x548C;&#x79D1;&#x7814;&#x4EBA;&#x5458;&#x514D;&#x8D39;&#x3002;&#x7531;&#x4E8E;&#x63D0;&#x4F9B;&#x4E86;&#x56FE;&#x5F62;&#x5316;&#x754C;&#x9762;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x4EEC;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x4E5F;&#x76F8;&#x5F53;&#x76F4;&#x89C2;&#x3002;&#x6211;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x521D;&#x5B66;&#x8005;&#x4ECE;&#x8FD9;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x4E2D;&#x6311;&#x9009;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x3002;&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Chapter_1004.html" class="navigation navigation-prev " aria-label="Previous page: 1.4 最简单的Hello World">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Chapter_1006.html" class="navigation navigation-next " aria-label="Next page: 附录B virtualenv">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"附录A Python的安装与运行","level":"1.4.5","depth":2,"next":{"title":"附录B virtualenv","level":"1.4.6","depth":2,"path":"Chapter_01/Chapter_1006.md","ref":"Chapter_01/Chapter_1006.md","articles":[]},"previous":{"title":"1.4 最简单的Hello World","level":"1.4.4","depth":2,"path":"Chapter_01/Chapter_1004.md","ref":"Chapter_01/Chapter_1004.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Vamei","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"cover":"./Images/cover00121.jpeg","title":"从Python学编程","language":"zh-hans","links":{"sidebar":{"Home":"https://github.com/jacksoncode/gitbook.git"}},"gitbook":"*"},"file":{"path":"Chapter_01/Chapter_1005.md","mtime":"2019-10-04T03:48:40.396Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-03T08:46:36.569Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

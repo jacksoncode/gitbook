@@ -1,0 +1,1014 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3.5 异常处理 · 从Python学编程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Vamei">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Chapter_3006.html" />
+    
+    
+    <link rel="prev" href="Chapter_3004.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/jacksoncode/gitbook.git" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    内容简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Copy_Right.html">
+            
+                <a href="../Copy_Right.html">
+            
+                    
+                    版权信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../preface.html">
+            
+                <a href="../preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Chapter_01/Chapter_1000.html">
+            
+                <a href="../Chapter_01/Chapter_1000.html">
+            
+                    
+                    第1章 用编程改变世界
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Chapter_01/Chapter_1001.html">
+            
+                <a href="../Chapter_01/Chapter_1001.html">
+            
+                    
+                    1.1 从计算机到编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Chapter_01/Chapter_1002.html">
+            
+                <a href="../Chapter_01/Chapter_1002.html">
+            
+                    
+                    1.2 所谓编程，是做什么的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Chapter_01/Chapter_1003.html">
+            
+                <a href="../Chapter_01/Chapter_1003.html">
+            
+                    
+                    1.3 为什么学Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Chapter_01/Chapter_1004.html">
+            
+                <a href="../Chapter_01/Chapter_1004.html">
+            
+                    
+                    1.4 最简单的Hello World
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Chapter_01/Chapter_1005.html">
+            
+                <a href="../Chapter_01/Chapter_1005.html">
+            
+                    
+                    附录A Python的安装与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../Chapter_01/Chapter_1006.html">
+            
+                <a href="../Chapter_01/Chapter_1006.html">
+            
+                    
+                    附录B virtualenv
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Chapter_02/Chapter_2000.html">
+            
+                <a href="../Chapter_02/Chapter_2000.html">
+            
+                    
+                    第2章 先做键盘侠
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Chapter_02/Chapter_2001.html">
+            
+                <a href="../Chapter_02/Chapter_2001.html">
+            
+                    
+                    2.1 计算机会算术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Chapter_02/Chapter_2002.html">
+            
+                <a href="../Chapter_02/Chapter_2002.html">
+            
+                    
+                    2.2 计算机记性好
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Chapter_02/Chapter_2003.html">
+            
+                <a href="../Chapter_02/Chapter_2003.html">
+            
+                    
+                    2.3 计算机懂选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Chapter_02/Chapter_2004.html">
+            
+                <a href="../Chapter_02/Chapter_2004.html">
+            
+                    
+                    2.4 计算机能循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Chapter_02/Chapter_2005.html">
+            
+                <a href="../Chapter_02/Chapter_2005.html">
+            
+                    
+                    附录A 小练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Chapter_02/Chapter_2006.html">
+            
+                <a href="../Chapter_02/Chapter_2006.html">
+            
+                    
+                    附录B 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Chapter_3000.html">
+            
+                <a href="Chapter_3000.html">
+            
+                    
+                    第3章 过程大于结果
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Chapter_3001.html">
+            
+                <a href="Chapter_3001.html">
+            
+                    
+                    3.1 懒人炒菜机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="Chapter_3002.html">
+            
+                <a href="Chapter_3002.html">
+            
+                    
+                    3.2 参数传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="Chapter_3003.html">
+            
+                <a href="Chapter_3003.html">
+            
+                    
+                    3.3 递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="Chapter_3004.html">
+            
+                <a href="Chapter_3004.html">
+            
+                    
+                    3.4 引入那把宝剑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.5" data-path="Chapter_3005.html">
+            
+                <a href="Chapter_3005.html">
+            
+                    
+                    3.5 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="Chapter_3006.html">
+            
+                <a href="Chapter_3006.html">
+            
+                    
+                    附录A 搜索路径的设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="Chapter_3007.html">
+            
+                <a href="Chapter_3007.html">
+            
+                    
+                    附录B 安装第三方模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="Chapter_3008.html">
+            
+                <a href="Chapter_3008.html">
+            
+                    
+                    附录C 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Chapter_04/Chapter_4000.html">
+            
+                <a href="../Chapter_04/Chapter_4000.html">
+            
+                    
+                    第4章 朝思暮想是对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Chapter_04/Chapter_4001.html">
+            
+                <a href="../Chapter_04/Chapter_4001.html">
+            
+                    
+                    4.1 轻松看对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Chapter_04/Chapter_4002.html">
+            
+                <a href="../Chapter_04/Chapter_4002.html">
+            
+                    
+                    4.2 继承者们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Chapter_04/Chapter_4003.html">
+            
+                <a href="../Chapter_04/Chapter_4003.html">
+            
+                    
+                    4.3 那些年错过的对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Chapter_04/Chapter_4004.html">
+            
+                <a href="../Chapter_04/Chapter_4004.html">
+            
+                    
+                    4.4 意想不到的对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Chapter_04/Chapter_4005.html">
+            
+                <a href="../Chapter_04/Chapter_4005.html">
+            
+                    
+                    附录A 代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Chapter_05/Chapter_5000.html">
+            
+                <a href="../Chapter_05/Chapter_5000.html">
+            
+                    
+                    第5章 对象带你飞
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Chapter_05/Chapter_5001.html">
+            
+                <a href="../Chapter_05/Chapter_5001.html">
+            
+                    
+                    5.1 存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Chapter_05/Chapter_5002.html">
+            
+                <a href="../Chapter_05/Chapter_5002.html">
+            
+                    
+                    5.2 一寸光阴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../Chapter_05/Chapter_5003.html">
+            
+                <a href="../Chapter_05/Chapter_5003.html">
+            
+                    
+                    5.3 看起来像那样的东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../Chapter_05/Chapter_5004.html">
+            
+                <a href="../Chapter_05/Chapter_5004.html">
+            
+                    
+                    5.4 Python有网瘾
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Chapter_05/Chapter_5005.html">
+            
+                <a href="../Chapter_05/Chapter_5005.html">
+            
+                    
+                    5.5 写一个爬虫
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Chapter_06/Chapter_6000.html">
+            
+                <a href="../Chapter_06/Chapter_6000.html">
+            
+                    
+                    第6章 与对象的深入交往
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Chapter_06/Chapter_6001.html">
+            
+                <a href="../Chapter_06/Chapter_6001.html">
+            
+                    
+                    6.1 一切皆对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Chapter_06/Chapter_6002.html">
+            
+                <a href="../Chapter_06/Chapter_6002.html">
+            
+                    
+                    6.2 属性管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Chapter_06/Chapter_6003.html">
+            
+                <a href="../Chapter_06/Chapter_6003.html">
+            
+                    
+                    6.3 我是风儿，我是沙
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Chapter_06/Chapter_6004.html">
+            
+                <a href="../Chapter_06/Chapter_6004.html">
+            
+                    
+                    6.4 内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Chapter_07/Chapter_7000.html">
+            
+                <a href="../Chapter_07/Chapter_7000.html">
+            
+                    
+                    第7章 函数式编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Chapter_07/Chapter_7001.html">
+            
+                <a href="../Chapter_07/Chapter_7001.html">
+            
+                    
+                    7.1 又见函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Chapter_07/Chapter_7002.html">
+            
+                <a href="../Chapter_07/Chapter_7002.html">
+            
+                    
+                    7.2 被解放的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../Chapter_07/Chapter_7003.html">
+            
+                <a href="../Chapter_07/Chapter_7003.html">
+            
+                    
+                    7.3 小女子的梳妆匣
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Chapter_07/Chapter_7004.html">
+            
+                <a href="../Chapter_07/Chapter_7004.html">
+            
+                    
+                    7.4 高阶函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Chapter_07/Chapter_7005.html">
+            
+                <a href="../Chapter_07/Chapter_7005.html">
+            
+                    
+                    7.5 自上而下
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../Chapter_08/Chapter_8000.html">
+            
+                <a href="../Chapter_08/Chapter_8000.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >3.5 异常处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="35-&#x5F02;&#x5E38;&#x5904;&#x7406;">3.5 &#x5F02;&#x5E38;&#x5904;&#x7406;</h1>
+<h3 id="1&#xFF0E;&#x607C;&#x4EBA;&#x7684;bug">1&#xFF0E;&#x607C;&#x4EBA;&#x7684;bug</h3>
+<p>bug&#x4E00;&#x5B9A;&#x662F;&#x7A0B;&#x5E8F;&#x5458;&#x6700;&#x75DB;&#x6068;&#x7684;&#x751F;&#x7269;&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x5458;&#x773C;&#x4E2D;&#x7684;bug&#xFF0C;&#x662F;&#x6307;&#x7A0B;&#x5E8F;&#x7F3A;&#x9677;&#x3002;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;&#x7F3A;&#x9677;&#x4F1A;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x6216;&#x8005;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x540E;&#x679C;&#x3002;&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x7A0B;&#x5E8F;bug&#x53EF;&#x4EE5;&#x4E8B;&#x540E;&#x4FEE;&#x590D;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E5F;&#x5B58;&#x5728;&#x65E0;&#x6CD5;&#x4FEE;&#x590D;&#x7684;&#x6559;&#x8BAD;&#x3002;&#x6B27;&#x6D32;ARIANE 5&#x706B;&#x7BAD;&#x7B2C;&#x4E00;&#x6B21;&#x53D1;&#x5C04;&#x65F6;&#xFF0C;&#x5728;&#x4E00;&#x5206;&#x949F;&#x4E4B;&#x5185;&#x7206;&#x70B8;&#x3002;&#x4E8B;&#x540E;&#x8C03;&#x67E5;&#x539F;&#x56E0;&#xFF0C;&#x53D1;&#x73B0;&#x5BFC;&#x822A;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x8981;&#x8F6C;&#x6362;&#x6210;&#x6574;&#x6570;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x6570;&#x503C;&#x8FC7;&#x5927;&#x6EA2;&#x51FA;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x82F1;&#x56FD;&#x76F4;&#x5347;&#x673A;&#x4E8E;1994&#x5E74;&#x5760;&#x6BC1;&#xFF0C;29&#x4EBA;&#x6B7B;&#x4EA1;&#x3002;&#x8C03;&#x67E5;&#x663E;&#x793A;&#xFF0C;&#x76F4;&#x5347;&#x673A;&#x7684;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x201C;&#x5145;&#x6EE1;&#x7F3A;&#x9677;&#x201D;&#x3002;&#x800C;&#x7535;&#x5F71;&#x300A;2001&#x592A;&#x7A7A;&#x6F2B;&#x6E38;&#x300B;&#x4E2D;&#xFF0C;&#x8D85;&#x7EA7;&#x8BA1;&#x7B97;&#x673A;HAL&#x6740;&#x6B7B;&#x4E86;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5B87;&#x822A;&#x5458;&#xFF0C;&#x539F;&#x56E0;&#x662F;HAL&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x76EE;&#x6807;&#x51FA;&#x73B0;&#x4E86;&#x51B2;&#x7A81;&#x3002;</p>
+<p>&#x5728;&#x82F1;&#x6587;&#x4E2D;&#xFF0C;bug&#x662F;&#x866B;&#x5B50;&#x7684;&#x610F;&#x601D;&#x3002;&#x5DE5;&#x7A0B;&#x5E08;&#x5F88;&#x65E9;&#x5C31;&#x5F00;&#x59CB;&#x7528;bug&#x8FD9;&#x4E2A;&#x8BCD;&#x6765;&#x6307;&#x4EE3;&#x673A;&#x68B0;&#x7F3A;&#x9677;&#x3002;&#x800C;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x4E2D;&#x4F7F;&#x7528;bug&#x8FD9;&#x4E2A;&#x8BCD;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5C0F;&#x6545;&#x4E8B;&#x3002;&#x66FE;&#x7ECF;&#x6709;&#x4E00;&#x53EA;&#x86FE;&#x5B50;&#x98DE;&#x8FDB;&#x4E00;&#x53F0;&#x65E9;&#x671F;&#x8BA1;&#x7B97;&#x673A;&#xFF0C;&#x9020;&#x6210;&#x8FD9;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x51FA;&#x9519;&#x3002;&#x4ECE;&#x90A3;&#x4EE5;&#x540E;&#xFF0C;bug&#x5C31;&#x88AB;&#x7528;&#x4E8E;&#x6307;&#x4EE3;&#x7A0B;&#x5E8F;&#x7F3A;&#x9677;&#x3002;&#x8FD9;&#x53EA;&#x86FE;&#x5B50;&#x540E;&#x6765;&#x88AB;&#x8D34;&#x5728;&#x65E5;&#x5FD7;&#x672C;&#x4E0A;&#xFF0C;&#x81F3;&#x4ECA;&#x8FD8;&#x5728;&#x7F8E;&#x56FD;&#x56FD;&#x5BB6;&#x5386;&#x53F2;&#x535A;&#x7269;&#x9986;&#x5C55;&#x51FA;&#x3002;</p>
+<p>&#x5F88;&#x591A;&#x7A0B;&#x5E8F;&#x7F3A;&#x9677;&#x90FD;&#x53EF;&#x4EE5;&#x5F88;&#x65E9;&#x53D1;&#x73B0;&#x5E76;&#x6539;&#x6B63;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E0B;&#x9762;&#x7A0B;&#x5E8F;&#x9519;&#x7528;&#x4E86;&#x8BED;&#x6CD5;&#xFF0C;&#x5728;for&#x7684;&#x4E00;&#x884C;&#x6CA1;&#x6709;&#x52A0;&#x5F15;&#x53F7;&#x3002;</p>
+<hr>
+<pre><code>for i in range(10)
+    print(i)
+</code></pre><hr>
+<p>Python&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;&#x8FD9;&#x6BB5;&#x7A0B;&#x5E8F;&#x3002;&#x5B83;&#x4F1A;&#x63D0;&#x9192;&#x4F60;&#x6709;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#xFF1A;</p>
+<hr>
+<pre><code>SyntaxError: invalid syntax
+</code></pre><hr>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x5E76;&#x6CA1;&#x6709;&#x8BED;&#x6CD5;&#x4E0A;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x4F46;&#x5728;Python&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x5F15;&#x7528;&#x7684;&#x4E0B;&#x6807;&#x8D85;&#x51FA;&#x4E86;&#x5217;&#x8868;&#x5143;&#x7D20;&#x7684;&#x8303;&#x56F4;&#xFF1A;</p>
+<hr>
+<pre><code>a = [1, 2, 3]
+print(a[3])    
+</code></pre><hr>
+<p>&#x7A0B;&#x5E8F;&#x4F1A;&#x4E2D;&#x6B62;&#x62A5;&#x9519;&#xFF1A;</p>
+<hr>
+<pre><code>IndexError: list index out of range
+</code></pre><hr>
+<p>&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x53EA;&#x6709;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x624D;&#x4F1A;&#x53D1;&#x73B0;&#x7684;&#x9519;&#x8BEF;&#x88AB;&#x79F0;&#x4E3A;<strong>&#x8FD0;&#x884C;&#x65F6;&#x9519;&#x8BEF;</strong>&#xFF08;Runtime Error&#xFF09;&#x3002;&#x7531;&#x4E8E;Python&#x662F;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#xFF0C;&#x8BB8;&#x591A;&#x64CD;&#x4F5C;&#x5FC5;&#x987B;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x6BD4;&#x5982;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x7B49;&#x3002;&#x56E0;&#x6B64;&#xFF0C;Python&#x8981;&#x6BD4;&#x9759;&#x6001;&#x8BED;&#x8A00;&#x66F4;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x8FD0;&#x884C;&#x65F6;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x9519;&#x8BEF;&#xFF0C;&#x79F0;&#x4E3A;<strong>&#x8BED;&#x4E49;&#x9519;&#x8BEF;</strong>&#xFF08;Semantic Error&#xFF09;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x8BA4;&#x4E3A;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;&#x4F46;&#x5F53;&#x68C0;&#x67E5;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x5374;&#x53D1;&#x73B0;&#x7A0B;&#x5E8F;&#x5E76;&#x975E;&#x4F60;&#x60F3;&#x505A;&#x7684;&#x3002;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x79CD;&#x9519;&#x8BEF;&#x6700;&#x4E3A;&#x9690;&#x853D;&#xFF0C;&#x4E5F;&#x6700;&#x96BE;&#x7EA0;&#x6B63;&#x3002;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x6253;&#x5370;&#x5217;&#x8868;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF1A;</p>
+<hr>
+<pre><code>bundle = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+print(bundle[1])
+</code></pre><hr>
+<p>&#x7A0B;&#x5E8F;&#x5E76;&#x6CA1;&#x6709;&#x9519;&#x8BEF;&#xFF0C;&#x6B63;&#x5E38;&#x6253;&#x5370;&#x3002;&#x4F46;&#x4F60;&#x53D1;&#x73B0;&#xFF0C;&#x6253;&#x5370;&#x51FA;&#x7684;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x5143;&#x7D20;&quot;b&quot;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;Python&#x5217;&#x8868;&#x7684;&#x4E0B;&#x6807;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5F15;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4E0B;&#x6807;&#x5E94;&#x8BE5;&#x662F;0&#x800C;&#x4E0D;&#x662F;1&#x3002;</p>
+<h3 id="2&#xFF0E;debug">2&#xFF0E;Debug</h3>
+<p>&#x4FEE;&#x6539;&#x7A0B;&#x5E8F;&#x7F3A;&#x9677;&#x7684;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;debug&#x3002;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x5177;&#x6709;&#x786E;&#x5B9A;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x9519;&#x8BEF;&#x7684;&#x4EA7;&#x751F;&#x603B;&#x4F1A;&#x6709;&#x5176;&#x6839;&#x6E90;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6709;&#x65F6;&#x82B1;&#x5927;&#x91CF;&#x65F6;&#x95F4;&#x90FD;&#x4E0D;&#x80FD;debug&#x4E00;&#x6BB5;&#x7A0B;&#x5E8F;&#xFF0C;&#x786E;&#x5B9E;&#x4F1A;&#x4EA7;&#x751F;&#x5F3A;&#x70C8;&#x7684;&#x632B;&#x8D25;&#x611F;&#xFF0C;&#x751A;&#x81F3;&#x8BA4;&#x4E3A;&#x81EA;&#x5DF1;&#x4E0D;&#x9002;&#x5408;&#x505A;&#x7A0B;&#x5E8F;&#x5F00;&#x53D1;&#x3002;&#x8FD8;&#x6709;&#x7684;&#x4EBA;&#x6012;&#x6454;&#x952E;&#x76D8;&#xFF0C;&#x8BA4;&#x4E3A;&#x7535;&#x8111;&#x5728;&#x73A9;&#x81EA;&#x5DF1;&#x3002;&#x5C31;&#x6211;&#x4E2A;&#x4EBA;&#x7684;&#x89C2;&#x5BDF;&#x6765;&#x8BF4;&#xFF0C;&#x518D;&#x4F18;&#x79C0;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x5728;&#x5199;&#x7A0B;&#x5E8F;&#x65F6;&#x4E5F;&#x603B;&#x4F1A;&#x4EA7;&#x751F;bug&#x3002;&#x53EA;&#x4E0D;&#x8FC7;&#xFF0C;&#x4F18;&#x79C0;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x5728;debug&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x66F4;&#x5FC3;&#x5E73;&#x6C14;&#x548C;&#xFF0C;&#x4E0D;&#x4F1A;&#x56E0;&#x4E3A;bug&#x800C;&#x8D28;&#x7591;&#x81EA;&#x5DF1;&#x3002;&#x4ED6;&#x4EEC;&#x751A;&#x81F3;&#x4F1A;&#x628A;debug&#x7684;&#x8FC7;&#x7A0B;&#x5F53;&#x4F5C;&#x4E00;&#x79CD;&#x8BAD;&#x7EC3;&#xFF0C;&#x901A;&#x8FC7;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#x9519;&#x8BEF;&#x6839;&#x6E90;&#x6765;&#x8BA9;&#x81EA;&#x5DF1;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x77E5;&#x8BC6;&#x66F4;&#x4E0A;&#x4E00;&#x5C42;&#x697C;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#xFF0C;debug&#x6709;&#x70B9;&#x50CF;&#x505A;&#x4FA6;&#x63A2;&#x3002;&#x641C;&#x96C6;&#x86DB;&#x4E1D;&#x9A6C;&#x8FF9;&#x7684;&#x8BC1;&#x636E;&#xFF0C;&#x6392;&#x9664;&#x6E05;&#x767D;&#x7684;&#x5ACC;&#x7591;&#x4EBA;&#xFF0C;&#x6700;&#x540E;&#x7559;&#x4E0B;&#x771F;&#x51F6;&#x3002;&#x6536;&#x96C6;&#x8BC1;&#x636E;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x4E5F;&#x6709;&#x8BB8;&#x591A;&#x73B0;&#x6210;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x5BF9;&#x4E8E;&#x521D;&#x5B66;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x82B1;&#x592A;&#x591A;&#x7684;&#x65F6;&#x95F4;&#x5728;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x4E0A;&#x3002;&#x5728;&#x7A0B;&#x5E8F;&#x5185;&#x90E8;&#x63D2;&#x5165;&#x7B80;&#x5355;&#x7684;print()&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x53D8;&#x91CF;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x53CA;&#x8FD0;&#x884C;&#x8FDB;&#x5EA6;&#x3002;&#x6709;&#x65F6;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E2A;&#x6307;&#x4EE4;&#x66FF;&#x6362;&#x6210;&#x5176;&#x4ED6;&#x5F62;&#x5F0F;&#xFF0C;&#x770B;&#x770B;&#x7A0B;&#x5E8F;&#x7ED3;&#x679C;&#x6709;&#x4F55;&#x53D8;&#x5316;&#xFF0C;&#x4ECE;&#x800C;&#x9A8C;&#x8BC1;&#x81EA;&#x5DF1;&#x7684;&#x5047;&#x8BBE;&#x3002;&#x5F53;&#x5176;&#x4ED6;&#x53EF;&#x80FD;&#x6027;&#x90FD;&#x6392;&#x9664;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x662F;&#x5BFC;&#x81F4;&#x9519;&#x8BEF;&#x7684;&#x771F;&#x6B63;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x770B;&#xFF0C;debug&#x4E5F;&#x662F;&#x5199;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x4E2A;&#x81EA;&#x7136;&#x90E8;&#x5206;&#x3002;&#x6709;&#x4E00;&#x79CD;&#x5F00;&#x53D1;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x6D4B;&#x8BD5;&#x9A71;&#x52A8;&#x5F00;&#x53D1;&#xFF08;Test-Driven Development&#xFF0C;TDD&#xFF09;&#x3002;&#x5BF9;&#x4E8E;Python&#x8FD9;&#x6837;&#x4E00;&#x79CD;&#x4FBF;&#x6377;&#x7684;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#x6765;&#x8BF4;&#xFF0C;&#x5F88;&#x9002;&#x5408;&#x5148;&#x5199;&#x4E00;&#x4E2A;&#x5C0F;&#x578B;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B9E;&#x73B0;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5728;&#x5C0F;&#x7A0B;&#x5E8F;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x6E10;&#x8FDB;&#x5730;&#x4FEE;&#x6539;&#xFF0C;&#x8BA9;&#x7A0B;&#x5E8F;&#x4E0D;&#x65AD;&#x8FDB;&#x5316;&#xFF0C;&#x6700;&#x540E;&#x6EE1;&#x8DB3;&#x590D;&#x6742;&#x7684;&#x9700;&#x6C42;&#x3002;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F60;&#x4E0D;&#x65AD;&#x589E;&#x52A0;&#x529F;&#x80FD;&#xFF0C;&#x4E5F;&#x4E0D;&#x65AD;&#x6539;&#x6B63;&#x67D0;&#x4E9B;&#x9519;&#x8BEF;&#x3002;&#x91CD;&#x8981;&#x7684;&#x662F;&#xFF0C;&#x4F60;&#x4E00;&#x76F4;&#x5728;&#x52A8;&#x624B;&#x7F16;&#x7A0B;&#x3002;Python&#x4F5C;&#x8005;&#x672C;&#x4EBA;&#x5C31;&#x5F88;&#x559C;&#x6B22;&#x8FD9;&#x79CD;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x3002;&#x56E0;&#x6B64;&#xFF0C;debug&#x5176;&#x5B9E;&#x662F;&#x4F60;&#x5199;&#x51FA;&#x5B8C;&#x7F8E;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x4E2A;&#x5FC5;&#x8981;&#x6B65;&#x9AA4;&#x3002;</p>
+<h3 id="3&#xFF0E;&#x5F02;&#x5E38;&#x5904;&#x7406;">3&#xFF0E;&#x5F02;&#x5E38;&#x5904;&#x7406;</h3>
+<p>&#x5BF9;&#x4E8E;&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x5904;&#x7406;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x6709;&#x4E24;&#x4E2A;&#x53EF;&#x80FD;&#x7684;&#x76EE;&#x7684;&#xFF1A;&#x4E00;&#x4E2A;&#x662F;&#x8BA9;&#x7A0B;&#x5E8F;&#x4E2D;&#x6B62;&#x524D;&#x8FDB;&#x884C;&#x66F4;&#x591A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x5173;&#x4E8E;&#x9519;&#x8BEF;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x5219;&#x662F;&#x8BA9;&#x7A0B;&#x5E8F;&#x5728;&#x72AF;&#x9519;&#x540E;&#x4F9D;&#x7136;&#x80FD;&#x8FD0;&#x884C;&#x4E0B;&#x53BB;&#x3002;</p>
+<p>&#x5F02;&#x5E38;&#x5904;&#x7406;&#x8FD8;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x5BB9;&#x9519;&#x6027;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4E00;&#x6BB5;&#x7A0B;&#x5E8F;&#x5C31;&#x7528;&#x5230;&#x4E86;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF1A;</p>
+<hr>
+<pre><code>while True:
+    inputStr = input(&quot;Please input a number:&quot;)   # &#x7B49;&#x5F85;&#x8F93;&#x5165;
+    try:
+        num = float(inputStr)
+        print(&quot;Input number:&quot;, num)
+        print(&quot;result:&quot;, 10/num)
+    exceptValueError:
+        print(&quot;Illegal input&#xFF0E;Try Again.&quot;)
+    exceptZeroDivisionError:
+        print(&quot;Illegal devision by zero&#xFF0E;Try Again.&quot;)
+</code></pre><hr>
+<p>&#x9700;&#x8981;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x7A0B;&#x5E8F;&#x5305;&#x88F9;&#x5728;try&#x7ED3;&#x6784;&#x4E2D;&#x3002;&#x800C;except&#x8BF4;&#x660E;&#x4E86;&#x5F53;&#x7279;&#x5B9A;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x5E94;&#x5BF9;&#x3002;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;input()&#x662F;&#x4E00;&#x4E2A;&#x5185;&#x7F6E;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x63A5;&#x6536;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x8F93;&#x5165;&#x3002;&#x800C;float()&#x51FD;&#x6570;&#x5219;&#x7528;&#x4E8E;&#x628A;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&quot;p&quot;&#xFF0C;&#x5219;&#x5C06;&#x65E0;&#x6CD5;&#x8F6C;&#x6362;&#x6210;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x5E76;&#x89E6;&#x53D1;ValueError&#xFF0C;&#x800C;&#x76F8;&#x5E94;&#x7684;except&#x5C31;&#x4F1A;&#x8FD0;&#x884C;&#x96B6;&#x5C5E;&#x4E8E;&#x5B83;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x7684;&#x662F;0&#xFF0C;&#x90A3;&#x4E48;&#x9664;&#x6CD5;&#x7684;&#x5206;&#x6BCD;&#x4E3A;0&#xFF0C;&#x5C06;&#x89E6;&#x53D1;ZeroDivisionError&#x3002;&#x8FD9;&#x4E24;&#x79CD;&#x9519;&#x8BEF;&#x90FD;&#x7531;&#x9884;&#x8BBE;&#x7684;&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4E0D;&#x4F1A;&#x4E2D;&#x6B62;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#xFF0C;&#x6BD4;&#x5982;&#x8F93;&#x5165;5.0&#xFF0C;&#x90A3;&#x4E48;try&#x90E8;&#x5206;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;except&#x90E8;&#x5206;&#x88AB;&#x8DF3;&#x8FC7;&#x3002;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5B8C;&#x6574;&#x7684;&#x8BED;&#x6CD5;&#x5F62;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<hr>
+<pre><code>try:
+     ..&#xFF0E;
+except exception1:
+     ..&#xFF0E;
+except exception2:
+    ...
+else:
+..&#xFF0E;
+finally:
+...
+</code></pre><hr>
+<p>&#x5982;&#x679C;try&#x4E2D;&#x6709;&#x5F02;&#x5E38;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x5C06;&#x6267;&#x884C;&#x5F02;&#x5E38;&#x7684;&#x5F52;&#x5C5E;&#xFF0C;&#x6267;&#x884C;except&#x3002;&#x5F02;&#x5E38;&#x5C42;&#x5C42;&#x6BD4;&#x8F83;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x662F;exception1&#x3001;exception2&#x2026;&#x2026;&#x76F4;&#x5230;&#x627E;&#x5230;&#x5176;&#x5F52;&#x5C5E;&#xFF0C;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;except&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x3002;&#x5982;&#x679C;try&#x4E2D;&#x6CA1;&#x6709;&#x5F02;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;except&#x90E8;&#x5206;&#x5C06;&#x8DF3;&#x8FC7;&#xFF0C;&#x6267;&#x884C;else&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x3002;</p>
+<p>finally&#x662F;&#x65E0;&#x8BBA;&#x662F;&#x5426;&#x6709;&#x5F02;&#x5E38;&#xFF0C;&#x6700;&#x540E;&#x90FD;&#x8981;&#x505A;&#x7684;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;</p>
+<p>&#x5982;&#x679C;except&#x540E;&#x9762;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x8868;&#x793A;&#x6240;&#x6709;&#x7684;exception&#x90FD;&#x4EA4;&#x7ED9;&#x8FD9;&#x6BB5;&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<hr>
+<pre><code>while True:
+    inputStr = input(&quot;Please input a number:&quot;)
+    try:
+        num = float(inputStr)
+        print(&quot;Input number:&quot;, num)
+        print(&quot;result:&quot;, 10/num)
+    except:
+        print(&quot;Something Wrong&#xFF0E;Try Again.&quot;)
+</code></pre><hr>
+<p>&#x5982;&#x679C;&#x65E0;&#x6CD5;&#x5C06;&#x5F02;&#x5E38;&#x4EA4;&#x7ED9;&#x5408;&#x9002;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x5F02;&#x5E38;&#x5C06;&#x7EE7;&#x7EED;&#x5411;&#x4E0A;&#x5C42;&#x629B;&#x51FA;&#xFF0C;&#x76F4;&#x5230;&#x88AB;&#x6355;&#x6349;&#x6216;&#x8005;&#x9020;&#x6210;&#x4E3B;&#x7A0B;&#x5E8F;&#x62A5;&#x9519;&#xFF0C;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<hr>
+<pre><code>def test_func():
+    try:
+        m = 1/0
+    exceptValueError:
+        print(&quot;Catch ValueError in the sub-function&quot;)
+
+try:
+    test_func()
+exceptZeroDivisionError:
+    print(&quot;Catch error in the main program&quot;)
+</code></pre><hr>
+<p>&#x5B50;&#x7A0B;&#x5E8F;&#x7684;try...except...&#x7ED3;&#x6784;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x76F8;&#x5E94;&#x7684;&#x9664;&#x4EE5;0&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x6240;&#x4EE5;&#x9519;&#x8BEF;&#x88AB;&#x629B;&#x7ED9;&#x4E0A;&#x5C42;&#x7684;&#x4E3B;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x4F7F;&#x7528;raise&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x4E3B;&#x52A8;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;&#x6BD4;&#x5982;&#xFF1A;</p>
+<hr>
+<pre><code>raiseZeroDivisionError()
+</code></pre><hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Chapter_3004.html" class="navigation navigation-prev " aria-label="Previous page: 3.4 引入那把宝剑">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Chapter_3006.html" class="navigation navigation-next " aria-label="Next page: 附录A 搜索路径的设置">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3.5 异常处理","level":"1.6.5","depth":2,"next":{"title":"附录A 搜索路径的设置","level":"1.6.6","depth":2,"path":"Chapter_03/Chapter_3006.md","ref":"Chapter_03/Chapter_3006.md","articles":[]},"previous":{"title":"3.4 引入那把宝剑","level":"1.6.4","depth":2,"path":"Chapter_03/Chapter_3004.md","ref":"Chapter_03/Chapter_3004.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Vamei","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"cover":"./Images/cover00121.jpeg","title":"从Python学编程","language":"zh-hans","links":{"sidebar":{"Home":"https://github.com/jacksoncode/gitbook.git"}},"gitbook":"*"},"file":{"path":"Chapter_03/Chapter_3005.md","mtime":"2019-10-04T08:43:35.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-03T08:46:36.569Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
