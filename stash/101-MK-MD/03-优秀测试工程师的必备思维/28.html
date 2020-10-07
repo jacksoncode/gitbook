@@ -1,0 +1,111 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        28 由“忘记密码”拓展开来 - 揭开安全的神秘面纱
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-18 11:24:07
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5da6e1c10001df3406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">不想当将军的士兵，不是好士兵。<p class="author">——拿破仑</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>上一次呢，我们跟大家从整体上聊了聊 Web 安全，认识了这门测试技术对于我们的重大意义，也大体上知道了对于 Web 应用来说，都会有哪些漏洞。但是就像老北京天桥上卖艺的常用的口头禅：光说不练假把式。我们一起来拿一些真实的 “案例” 来看一看最简单的安全漏洞，揭开安全测试的神秘面纱。</p>
+</div><div class="cl-preview-section"><p>我们就用一个非常常见，但是大家又非常容易忽视的点，验证机制下的 “忘记密码” 来谈起。</p>
+</div><div class="cl-preview-section"><p>当前互联网网站大多提供 “忘记密码” 功能，但是呢，这里面往往会存在一些典型的安全问题。核心问题就是忘记密码的流程跳过了身份验证。</p>
+</div><div class="cl-preview-section"><p>如果不考虑通过客服找回密码的话，通常网站设计有三种方式来认证用户：</p>
+</div><div class="cl-preview-section"><ol>
+<li>用户设定的安全问题。</li>
+<li>用户注册时留下的安全邮箱。</li>
+<li>给预留手机号发送验证码短信。</li>
+</ol>
+</div><div class="cl-preview-section"><p>基于这几种，我们来找些例子看看互联网公司都会犯哪些傻。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6dff600010cdf06000539.jpg" class="lazyload" style="cursor: pointer;"><br>
+第一类：记得我们上次说过，安全问题本质上还是信任问题。而有些网站过于 “信任” 用户，过分鄙视用户智商，以为用户都不抓包都不分析表单参数，想写什么就写什么。</p>
+</div><div class="cl-preview-section"><p>第一个小例子是很多年前搜狐邮箱，现在业务已经下线了 O (∩_∩) O ，在它的登录页中有一个找回密码功能，再点击下面的 “网上申诉”，在申诉页面的源代码里，不但有密码提示问题，Hiden 表单里竟然泄露问题答案，可获得任意用户修改密码问题答案，从而轻松修改任意用户邮箱密码。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0120001b02c11290770.png" class="lazyload" style="cursor: pointer;"><br>
+除了这样的质询问题漏洞，对于忘记密码邮件，也有可能有所漏洞。某网站贴心地实现了 “重新发送找回密码邮件” 功能，结果一起来看一下。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0250001688f08820347.png" class="lazyload" style="cursor: pointer;"><br>
+以往进行到这步，我们都会很乖的马上登录邮箱查看密码重置链接，这次在 “重发发送” 时使用 BURP 或其他工具把请求拦截下来：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e03a00013b0e08770187.png" class="lazyload" style="cursor: pointer;"><br>
+发现传递了 email 参数，尝试进行篡改，将 email 改成自己的邮箱地址；没想到居然发送成功，登录邮箱，收到了重置其他用户密码的邮件。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e04d0001a05803220141.png" class="lazyload" style="cursor: pointer;"><br>
+当然，还有我们现在最流行的发送手机短信，也是跑不掉的：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0600001116004170400.png" class="lazyload" style="cursor: pointer;"><br>
+将请求拦截下来，注意观察拦截短信效验码；经过多次试验。发现红色的部分 是拦截到的手机验证码。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0730001b16b06540198.png" class="lazyload" style="cursor: pointer;"><br>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="1564729416393" data-original="https://www.imooc.com/read/48/article/assets/26-8.png" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p>除了这样简单就拿到了验证码的，也可以像之前邮箱一样，去修改发送的手机号码，扭转乾坤：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0840001123806730521.png" class="lazyload" style="cursor: pointer;"><br>
+上边的几个小例子是用一些绕过的手段来破坏了验证机制的防守。</p>
+</div><div class="cl-preview-section"><p>我们再来看看另外一种类型： 知道这种明文的不太安全，所以考虑了加密，但是太过依赖 MD5 加密，事实让你知道，大多数时候，MD5 不是神器！</p>
+</div><div class="cl-preview-section"><p>虽然 MD5 是个非常牛叉的非对称加密算法，只能 Encode 没办法 Decode。但是千万不要忘记了劳动人民的智慧，于是网络上搞出了 MD5 的彩虹表，可以破解很多的 MD5 加密，所以曾经的途牛也中招了。。。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0950001469106620276.png" class="lazyload" style="cursor: pointer;"><br>
+初看这个链接感觉没有太大问题，毕竟还是将关键字符进行了加密，不太容易破解，然而现实总是打脸的：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e0a70001ade307710190.png" class="lazyload" style="cursor: pointer;"><br>
+我们发现居然是 ID 的简单加密，那如果有人想要恶意利用这个漏洞，只需要遍历 id 和 id 对应的 MD5 就可以轻松破译很多的用户了。</p>
+</div><div class="cl-preview-section"><p>这样的例子也不在少数：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da6e18100010aca08950523.png" class="lazyload" style="cursor: pointer;"><br>
+除了上面两类，常用的手段还包括：</p>
+</div><div class="cl-preview-section"><ul>
+<li><strong>暴力破解</strong>，如手机四位验证码的暴力破解，密码提示问题的相关穷举破解等。</li>
+<li><strong>组合破解</strong>，包括表单参数分析、MD5 decode、暴破综合运用等。</li>
+</ul>
+</div><div class="cl-preview-section"><p>OK，我们简单总结一下在忘记密码，这样一个很容易被忽视的小功能上可能存在的问题：</p>
+</div><div class="cl-preview-section"><ol>
+<li>需要确认应用程序，中是否有隐含的忘记密码功能，或不通过用户名查询即可访问的情况。</li>
+<li>如果恢复机制使用质询方式，则确定用户能否枚举用户名来得到质询信息，与猜测密码相比，响应质询更容易。</li>
+<li>如果在忘记密码的请求响应中，生成一封包含恢复 URL 的电子邮件，大量此类 URL 并试图分析和预测其发送 URL 的模式，是否可以得到其他未知用户的恢复 URL。</li>
+<li>无论是使用邮件，还是发送手机验证码，查看是否可以拦截请求以修改目标邮箱或手机号，从而达到绕过的目的。</li>
+</ol>
+</div><div class="cl-preview-section"><p>我们通过一些简单的例子，就算一个抛砖引玉的作用吧，当然，前文中这些例子呢，都是现实中已经修复并公布的安全漏洞，今天拿出来仅仅让大家引以为戒，更好的认识安全测试，也让 “安全漏洞” 与大家不再陌生。我们也能看到，即便是很小的一个点，也可能有如此的安全威胁，足以见得安全测试的重要性了。</p>
+</div><div class="cl-preview-section"><p>对于安全测试，可能要完整的说下去还有很多，如果想要真的搞清楚安全测试，首先第一步要了解漏洞的原理，接下来才能去学习其测试方法，与其他测试方式不同的是，在功能测试里我们更多只是发现问题、定位问题，而在安全测试里，我们还要掌握安全漏洞的防范措施，真正做到 “教开发人员写代码”，毕竟，目前很多的开发还不太注重代码的安全性。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/925">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            27 世界那么大，我想去看看 - Web安全简介
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/927">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            29 到底什么才算测试开发？
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

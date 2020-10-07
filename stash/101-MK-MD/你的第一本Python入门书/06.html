@@ -1,0 +1,264 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        06 一串数据怎么存—列表和字符串
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-08-26 10:09:38
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img.mukewang.com/5d633f450001900052002917.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">知识犹如人体的血液一样宝贵。<p class="author">——高士其</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>上一节中讲了数据类型，有一个问题，之前所介绍的数据类型大多是用来表示单个数据的。比如整数型，一个整数型的变量只能保存一个整数。又如布尔型，一个布尔型的变量只能保存一个布尔值。浮点型和 None 型也是如此。要是此刻有一系列的数据，那该怎么在程序里保存和使用呢？</p>
+</div><div class="cl-preview-section"><p>举个栗子：当我的只有一个电话号码的时候，我可以使用整数型来表示，并保存在变量里：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">tel <span class="token operator">=</span> <span class="token number">13011110000</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>但如果有十个电话号码，该怎么来表示和使用它们呢？</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>13011110000<br>
+18022221111<br>
+13433332222<br>
+13344443333<br>
+17855554444<br>
+13866665555<br>
+15177776666<br>
+13388887777<br>
+18799998888<br>
+17800009999</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>你可能会说，「那就用十个变量」，像这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">tel01 <span class="token operator">=</span> <span class="token number">13011110000</span>
+tel02 <span class="token operator">=</span> <span class="token number">18022221111</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+tel10 <span class="token operator">=</span> <span class="token number">17800009999</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>或者「把它们用逗号拼在一起然后放到字符串里」：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">tels <span class="token operator">=</span> <span class="token string">'13011110000,18022221111,13433332222,13344443333,17855554444,13866665555,15177776666,13388887777,18799998888,17800009999'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>是的，看起来这似乎能解决问题。但是这两种办法的弊端也很明显。第一种使用多个变量的方式，在数据量很大的情况下使用起来会十分繁琐；第二种使用字符串的方式，如果我们需要对其中的某些数据做处理，那这种方式就很不方便灵活了。</p>
+</div><div class="cl-preview-section"><p>这时我们可以选择使用列表。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="列表（list）">列表（List）</h3>
+</div><div class="cl-preview-section"><p><strong>列表</strong>是一种用于保存批量数据的数据类型。它和整数型、布尔型等数据类型一样都被内置在 Python 中。</p>
+</div><div class="cl-preview-section"><h4 id="列表的写法">列表的写法</h4>
+</div><div class="cl-preview-section"><p>列表的写法为 <code>[ 数据项1, 数据项2, ..., 数据项N ]</code>，方括号就代表列表，每个数据项放在方括号中并用逗号分隔。</p>
+</div><div class="cl-preview-section"><p>如之前的那一串电话号码可以这样来保存：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">tels <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">13011110000</span><span class="token punctuation">,</span> <span class="token number">18022221111</span><span class="token punctuation">,</span> <span class="token number">13433332222</span><span class="token punctuation">,</span> <span class="token number">13344443333</span><span class="token punctuation">,</span> <span class="token number">17855554444</span><span class="token punctuation">,</span> <span class="token number">13866665555</span><span class="token punctuation">,</span> <span class="token number">15177776666</span><span class="token punctuation">,</span> <span class="token number">13388887777</span><span class="token punctuation">,</span> <span class="token number">18799998888</span><span class="token punctuation">,</span> <span class="token number">17800009999</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：为了方便阅读，我们也可以把把这个列表写成多行的形式：</p>
+<pre class="  language-python"><code class="prism  language-python">tels <span class="token operator">=</span> <span class="token punctuation">[</span>
+ <span class="token number">13011110000</span><span class="token punctuation">,</span> 
+ <span class="token number">18022221111</span><span class="token punctuation">,</span> 
+ <span class="token number">13433332222</span><span class="token punctuation">,</span> 
+ <span class="token number">13344443333</span><span class="token punctuation">,</span> 
+ <span class="token number">17855554444</span><span class="token punctuation">,</span> 
+ <span class="token number">13866665555</span><span class="token punctuation">,</span> 
+ <span class="token number">15177776666</span><span class="token punctuation">,</span> 
+ <span class="token number">13388887777</span><span class="token punctuation">,</span> 
+ <span class="token number">18799998888</span><span class="token punctuation">,</span> 
+ <span class="token number">17800009999</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p>每个数据项一行，这样是不是更好看了！</p>
+<p>在解释器的交互模式中输入这样的多行代码时，我们会发现第一行的提示符是 <code>&gt;&gt;&gt;</code>，之后每行的提示符会变成 <code>...</code>，直到完成了多行输入则又变回 <code>&gt;&gt;&gt;</code>。如：</p>
+<p>&gt;&gt;&gt; tels = [<br>
+… 13011110000,<br>
+… 18022221111,<br>
+… 13433332222<br>
+… ]<br>
+&gt;&gt;&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>列表中的数据可以是任意类型的。比如整数型、字符串类型和布尔类型等：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">'about'</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><h4 id="列表索引">列表索引</h4>
+</div><div class="cl-preview-section"><p>列表中的每个数据项都是有先后次序的，最前面的数据项的位置编号为 0，之后依次是 1 ，2 …… N，这个位置编号在编程中的术语叫做<strong>索引</strong>（Index）。注意 Python 中索引是从 0 开始计数的，0 即代表第一个位置。</p>
+</div><div class="cl-preview-section"><p>可以通过符号 <code>[]</code> 来获取某个索引所对应的数据项。比如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; fruits = [‘apple’, ‘banana’, ‘cherry’, ‘durian’]<br>
+&gt;&gt;&gt; <strong>fruits[0]</strong><br>
+’apple’<br>
+&gt;&gt;&gt; <strong>fruits[2]</strong><br>
+’cherry’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>上面的 <code>fruits</code> 有 4 项数据，所以最大的索引是 <code>3</code>。如果我们强行要用更大的索引值去取数据会怎样呢，来试一下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; fruits[4]<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+IndexError: list index out of range</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到代码直接就报错了，具体信息为「list index out of range」，列表索引超出范围。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：这是 Python 的典型报错形式，这里有三行内容（也可能会有很多行），前两行是错误定位，描述出错的位置（如某文件的某行），后面是错误描述，指出这是个 <code>IndexError</code> 错误，具体信息为「list index out of range」。</p>
+<p>若大家在写代码时遇到错误，可以按照这种方法尝试自己分析错误信息。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>除了通过索引去获取值，也可以通过索引去改变列表中某项数据的值。通过赋值的方式来实现：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'pear'</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; fruits[0]<br>
+‘apple’</p>
+<p>&gt;&gt;&gt; <strong>fruits[0] = 'pear’</strong><br>
+&gt;&gt;&gt; fruits[0]<br>
+‘pear’</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="列表的长度">列表的长度</h4>
+</div><div class="cl-preview-section"><p>列表中数据项的个数，叫做<strong>列表（的）长度</strong>。</p>
+</div><div class="cl-preview-section"><p>想要获得列表的长度可以使用 <code>len()</code> 这个东西。像这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">len</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>len(fruits)</strong><br>
+4</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>len([1, 2, 3, 4, 5, 6, 7])</strong><br>
+7</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：<code>len()</code> 是 Python 中的内置函数。函数的概念会在之后的章节中介绍。</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="向列表添加数据">向列表添加数据</h4>
+</div><div class="cl-preview-section"><p>之前使用时，列表中的数据在一开始就已经被确定下来了，并一直保持着这个长度。但在很多时候，我们需要随时向列表中添加数据。</p>
+</div><div class="cl-preview-section"><p><strong>向列表的末尾添加数据</strong>可以用 <code>.append()</code>这个东西，它的写法是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>append<span class="token punctuation">(</span>新数据<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>看一个示例。这里首先创建了一个空的列表，将其变量命名为 <code>fruits</code>，然后通过 <code>.append()</code> 向其中添加内容。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; fruits = []<br>
+&gt;&gt;&gt; fruits<br>
+[]</p>
+<p>&gt;&gt;&gt; fruits.append(‘pear’)<br>
+&gt;&gt;&gt; fruits<br>
+[‘pear’]</p>
+<p>&gt;&gt;&gt; fruits.append(‘lemon’)<br>
+&gt;&gt;&gt; fruits<br>
+[‘pear’, ‘lemon’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：append() 是列表的方法。「方法」具体是什么我们在之后的面向对象章节中介绍。这里暂且把方法理解为某个数据类型自带的功能，如 append() 是列表自带的功能。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="字符串（string）">字符串（String）</h3>
+</div><div class="cl-preview-section"><p>字符串也可以保存批量数据，只不过其中的数据项只能是字符。</p>
+</div><div class="cl-preview-section"><p>我们在前一个章节中介绍过字符串，字符串是用来表示文本的数据类型。字符串以单引号或双引号以及包裹在其中的若干字符组成，如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token string">'good good study'</span>
+<span class="token string">'100'</span>
+<span class="token string">'江畔何人初见月，江月何年初照人'</span>
+</code></pre>
+</div><div class="cl-preview-section"><h4 id="字符串索引">字符串索引</h4>
+</div><div class="cl-preview-section"><p>从形式上我们不难看出，字符串中的字符也是有先后次序的。字符串是字符的有序序列，所以也具有索引。也可以根据索引取出其中某一个字符。其索引使用方式和列表相同：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token string">'good good study'</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; ‘good good study’[3]<br>
+‘d’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>也可以先把字符串保存在变量里，然后在变量上使用索引。结果是一样的：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">words <span class="token operator">=</span> <span class="token string">'good good study'</span>
+words<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; words = ‘good good study’<br>
+&gt;&gt;&gt; words[3]<br>
+‘d’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>有一点需要注意，字符串不能像列表那样通过索引去改变数据项的值。因为字符串类型的值是<strong>不可变的</strong>（Immutable），我们不能在原地修改它其中的某个字符。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; words = ‘good good study’<br>
+&gt;&gt;&gt; words[3] = 'b’<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+TypeError: ‘str’ object does not support item assignment</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>上面报出一个 TypeError 错误，具体信息为「‘str’ object does not support item assignment」，其中「‘str’ object」指的就是字符串，它不支持直接为其中某一个项（字符）赋值。</p>
+</div><div class="cl-preview-section"><h4 id="字符串长度">字符串长度</h4>
+</div><div class="cl-preview-section"><p>字符串中字符的个数也就是<strong>字符串的长度</strong>（包括空格在内的所有空白符号）。</p>
+</div><div class="cl-preview-section"><p>获取字符串长度的方式和列表一样，也是使用 <code>len()</code>：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">'good good study'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; len(‘good good study’)<br>
+15</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>如果我们想要保存和表示批量数据，可以使用 Python 中的列表（List）类型。列表是有序序列，能保存任意类型的数据项，可以通过索引（Index）来获取和修改其中某一个数据项，可以通过 <code>len()</code> 函数来获取列表的长度，也可以通过 <code>.append()</code> 在列表末尾追加数据项。</p>
+</div><div class="cl-preview-section"><p>如果数据是文本，那么可以用字符串类型（String）来表示。字符串类型是字符的有序序列，可以通过索引获取某个位置的字符，也可以通过 <code>len()</code> 函数来获取长度。</p>
+</div><div class="cl-preview-section"><p>Python 中的列表和字符串还有很多功能，之后讲「数据结构」时为大家一一介绍。</p>
+</div><div class="cl-preview-section"><hr>
+</div><div class="cl-preview-section"><blockquote>
+<p>多语言比较：</p>
+<p>数组是保存和表示批量数据的最基本的结构，它也是构造字符串、集合和容器的基石。</p>
+<p><strong>Python 中没有数组概念</strong>，取而代之的是列表这种更高级的数据结构，列表涵盖了数组的功能并提供了更多且更强大的功能。</p>
+<p>Java 中，用 <code>类型[]</code> 的写法来表示数组：</p>
+<pre class="  language-java"><code class="prism  language-java"><span class="token comment">// 定义数组</span>
+<span class="token keyword">int</span> numbers<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 定义数组并用指定值初始化：</span>
+<span class="token keyword">int</span> numbers<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>C/C++ 定义数组：</p>
+<pre class="  language-c"><code class="prism  language-c"><span class="token comment">// 定义数组</span>
+<span class="token keyword">int</span> numbers<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 定义数组并用指定值初始化：</span>
+<span class="token keyword">int</span> numbers<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Go 语言定义数组：</p>
+<pre class="  language-go"><code class="prism  language-go"><span class="token comment">// 定义数组</span>
+<span class="token keyword">var</span> numbers <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token builtin">int</span>
+
+<span class="token comment">// 定义数组并用指定值初始化：</span>
+<span class="token keyword">var</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span>
+</code></pre>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/812">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            05 数据的名字和种类—变量和类型
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/815">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            07 不只有一条路—分支和循环
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

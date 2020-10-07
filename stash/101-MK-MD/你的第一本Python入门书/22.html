@@ -1,0 +1,404 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        22 Python 的小招数：其它常用语言特性
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-14 10:00:45
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5da3d6c30001da2306400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">人要有毅力，否则将一事无成。<p class="author">——居里夫人</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="索引和切片相关">索引和切片相关</h2>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="索引">索引</h3>
+</div><div class="cl-preview-section"><p>序列（列表、元组、字符串）的索引可以为负值，此时将按逆序从序列中的取元素。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[-1]<br>
+‘e’<br>
+&gt;&gt;&gt; chars[-2]<br>
+‘d’<br>
+&gt;&gt;&gt; chars[-5]<br>
+‘a’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>索引 <code>-1</code> 表示最后一个元素。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="切片">切片</h3>
+</div><div class="cl-preview-section"><p>之前介绍过切片的用法，使用它可以从序列中取出一个子序列。切片以索引区间 <code>[起始索引:结束索引]</code> 来表示，注意这是一个左开右闭区间。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[1:3]<br>
+[‘b’, ‘c’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>如果起始索引为 0，则可以省略起始索引。如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[:3]<br>
+[‘a’, ‘b’, ‘c’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>如果结束索引等于序列长度，则可以省略结束索引。此时相当于从起始索引一直取到最后一个元素。如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt;  chars[3:]<br>
+[‘d’, ‘e’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>也可以既省略起始索引也省略结束索引，那么将取整个序列：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[:]<br>
+[‘a’, ‘b’, ‘c’, ‘d’, ‘e’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>起始索引和结束索引可以为负值：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[1:-2]<br>
+[‘b’, ‘c’]<br>
+&gt;&gt;&gt; chars[-3:-1]<br>
+[‘c’, ‘d’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>切片中可以指定步长，用第三个参数表示。步长表示索引的间隔，如 <code>[0:5:2]</code> 表示从索引 <code>0</code> 至 <code>5</code>，每隔 <code>2</code> 个索引取一次值。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[0:5:2]<br>
+[‘a’, ‘c’, ‘e’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>步长也可以为负值，使用如下方式即可翻转一个序列：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]<br>
+&gt;&gt;&gt; chars[::-1]<br>
+[‘e’, ‘d’, ‘c’, ‘b’, ‘a’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="赋值相关">赋值相关</h2>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="连续赋值">连续赋值</h3>
+</div><div class="cl-preview-section"><p>Python 允许连续赋值操作，如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">a <span class="token operator">=</span> b <span class="token operator">=</span> c <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>其等效于:</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">c <span class="token operator">=</span> <span class="token number">1</span>
+b <span class="token operator">=</span> c
+a <span class="token operator">=</span> b
+</code></pre>
+</div><div class="cl-preview-section"><p>也就是说，连续赋值时，从右至左依次被赋值。</p>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="拆包">拆包</h3>
+</div><div class="cl-preview-section"><p>多个变量和多个值可以用一个赋值符号（<code>=</code>）做到同时赋值。赋值时，将根据位置关系，将 <code>=</code> 右侧的值分别赋值给左侧的变量。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a<br>
+1<br>
+&gt;&gt;&gt; b<br>
+2</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>它等效于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>它将元祖中的每个元素拆解出来，然后分别赋值给前面的变量。这种操作叫作<strong>拆包</strong>.</p>
+</div><div class="cl-preview-section"><p>类似的，列表、字符串、字典也可以被拆包。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a, b = [1, 2]<br>
+&gt;&gt;&gt; a<br>
+1<br>
+&gt;&gt;&gt; b<br>
+2</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a,  b = ‘12’<br>
+&gt;&gt;&gt; a<br>
+’1’<br>
+&gt;&gt;&gt; b<br>
+’2’</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a, b = {1: ‘a’, 2: ‘b’}   # 注意字典拆包时拆出来的是每个键<br>
+&gt;&gt;&gt; a<br>
+1<br>
+&gt;&gt;&gt; b<br>
+2</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>拆包时，<code>=</code> 右侧的序列的长度需要与左侧的变量个数相同。如果不相同，可以使用 <code>*变量</code> 的形式一次接收多个元素。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">a<span class="token punctuation">,</span> <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a<br>
+1<br>
+&gt;&gt;&gt; b<br>
+[2, 3, 4]</p>
+</blockquote>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token operator">*</span>a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a<br>
+[1, 2, 3]<br>
+&gt;&gt;&gt; b<br>
+4</p>
+</blockquote>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">a<span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a<br>
+1<br>
+&gt;&gt;&gt; b<br>
+[2, 3]<br>
+&gt;&gt;&gt; c<br>
+4</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，元组中多出来的元素被整合为了一个列表。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：</p>
+<p>交换两个变量的值，可以简单地使用</p>
+<pre class="  language-python"><code class="prism  language-python">a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+</code></pre>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="赋值中的-or-关键字">赋值中的 or 关键字</h3>
+</div><div class="cl-preview-section"><p><code>or</code> 关键字一般用在 <code>if</code> 语句中，表达多个条件间的或操作。</p>
+</div><div class="cl-preview-section"><p><code>or</code> 也常被用在赋值中，如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">x <span class="token operator">=</span> a <span class="token operator">or</span> b
+</code></pre>
+</div><div class="cl-preview-section"><p>它表达的是，如果 <code>bool(a)</code> 为 <code>True</code>，则将 <code>a</code> 赋值给 <code>x</code>，否则将 <code>b</code> 赋值给 <code>x</code>。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; x = ‘ab’ or 3<br>
+&gt;&gt;&gt; x<br>
+’ab’<br>
+&gt;&gt;&gt; x = ‘’ or 3<br>
+&gt;&gt;&gt; x<br>
+3</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h2 id="控制语句相关">控制语句相关</h2>
+</div><div class="cl-preview-section"><a id="anchor_8_virtual" class="virtual_anchor"></a><h3 id="if-三元表达式">if 三元表达式</h3>
+</div><div class="cl-preview-section"><p>假如我们要计算一个数的绝对值，可以使用 <code>if else</code> 语句来表达：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> x <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> x
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> <span class="token operator">-</span>x
+</code></pre>
+</div><div class="cl-preview-section"><p>这有一种简化的写法—— <code>if else</code> 三元表达式，只需要一行代码：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">result <span class="token operator">=</span> x <span class="token keyword">if</span> x <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span>x
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; x = -15<br>
+&gt;&gt;&gt; x if x &gt; 0 else -x<br>
+15</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>if</code> 三元表达式的读法有点不符合阅读习惯。它是从语句中间的 <code>if</code> 条件开始读，若条件满足，则获得左边的值 <code>x</code>，若条件不满足，则获得 <code>else</code> 下的值 <code>-x</code>。</p>
+</div><div class="cl-preview-section"><a id="anchor_9_virtual" class="virtual_anchor"></a><h3 id="for-else-语句">for else 语句</h3>
+</div><div class="cl-preview-section"><p><code>for</code> 循环大家都很了解了，但是你可能还不知道，<code>for</code> 循环后面可以接一个 <code>else</code> 语句。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'所有项被迭代使用'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; for i in range(5):<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(i)<br>
+… else:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘所有项被迭代’)<br>
+…<br>
+0<br>
+1<br>
+2<br>
+3<br>
+4<br>
+所有项被迭代</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，如果 <code>for</code> 循环中所有的项被迭代，则会继续执行 <code>else</code> 语句中的代码。</p>
+</div><div class="cl-preview-section"><p>但 <code>else</code> 中的代码总是被执行吗？也不是的。只有在 <code>for</code> 循环没有被 <code>break</code> 时，才会执行后续 <code>else</code> 中的代码。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'所有项被迭代使用'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; for i in range(5):<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  if i == 3:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  break<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(i)<br>
+… else:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘所有项被迭代使用’)<br>
+…<br>
+0<br>
+1<br>
+2</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，一旦 <code>for</code> 循环被 <code>break</code>，后续的 <code>else</code> 语句将不被执行。</p>
+</div><div class="cl-preview-section"><a id="anchor_10_virtual" class="virtual_anchor"></a><h3 id="while-else-语句">while else 语句</h3>
+</div><div class="cl-preview-section"><p>与 <code>for else</code> 语句类似，<code>while</code> 语句后也可以接 <code>else</code> 语句。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'这是 else 语句'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; i = 0<br>
+&gt;&gt;&gt; while i &lt; 5:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(i)<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  i += 1<br>
+… else:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘这是 else 语句’)<br>
+…<br>
+0<br>
+1<br>
+2<br>
+3<br>
+4<br>
+这是 else 语句</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>同样的，一旦 <code>while</code> 循环被 <code>break</code>，则后续的 <code>else</code> 语句将不被执行。</p>
+</div><div class="cl-preview-section"><a id="anchor_11_virtual" class="virtual_anchor"></a><h3 id="try-except-else-语句">try except else 语句</h3>
+</div><div class="cl-preview-section"><p><code>try except</code> 语句的后面同样可以接 <code>else</code> 语句：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">except</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'有异常发生，不执行 else 语句'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'没有异常发生，执行 else 语句'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>如果 <code>try</code> 下有异常抛出，则不执行 <code>else</code> 语句。如果没有异常抛出，则执行 <code>else</code> 语句。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; try:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  pass<br>
+… except:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘有异常发生，不执行 else 语句’)<br>
+… else:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘没有异常发生，执行 else 语句’)<br>
+…<br>
+没有异常发生，执行 else 语句</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; try:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  <strong>raise Exception</strong><br>
+… except:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘有异常发生，不执行 else 语句’)<br>
+… else:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘没有异常发生，执行 else 语句’)<br>
+…<br>
+有异常发生，不执行 else 语句</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_12_virtual" class="virtual_anchor"></a><h2 id="类相关">类相关</h2>
+</div><div class="cl-preview-section"><a id="anchor_13_virtual" class="virtual_anchor"></a><h3 id="类属性--对象属性动态绑定">类属性 / 对象属性动态绑定</h3>
+</div><div class="cl-preview-section"><p>之前我们在使用类属性或对象属性时，属性是在定义类的时候一起被定义的。另外我们也可以在运行时动态地给类或对象添加属性。</p>
+</div><div class="cl-preview-section"><p>如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; class A:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  pass<br>
+…<br>
+&gt;&gt;&gt; A.apple = ‘apple’<br>
+&gt;&gt;&gt; A.apple<br>
+’apple’</p>
+<p>&gt;&gt;&gt; a = A()<br>
+&gt;&gt;&gt; a.banana = ‘banana’<br>
+&gt;&gt;&gt; a.banana<br>
+’banana’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>只要向一个不存在的属性赋值，便会创建出这个属性。</p>
+</div><div class="cl-preview-section"><a id="anchor_14_virtual" class="virtual_anchor"></a><h3 id="property">@property</h3>
+</div><div class="cl-preview-section"><p>装饰器 <code>@property</code> 可以将类中的方法转换为属性。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    @<span class="token builtin">property</span>
+    <span class="token keyword">def</span> <span class="token function">apple</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'apple'</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a = A()<br>
+&gt;&gt;&gt; a.apple<br>
+’apple’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>被 <code>@property</code> 装饰的方法，可以像属性一样被使用。但是有一个限制，这个属性是只读的，不能被修改。如果修改将会报错，如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a.apple = 'banana’<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;  File “”, line 1, in <br>
+AttributeError: can’t set attribute</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>有没有什么办法让这个属性可以被修改呢，也就是变成可写的？有的，但需要再添加一个方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    @<span class="token builtin">property</span>
+    <span class="token keyword">def</span> <span class="token function">apple</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_apple
+    
+    @apple<span class="token punctuation">.</span>setter
+    <span class="token keyword">def</span> <span class="token function">apple</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_apple <span class="token operator">=</span> value
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a = A()<br>
+&gt;&gt;&gt; a.apple = ‘banana’<br>
+&gt;&gt;&gt; a.apple<br>
+’banana’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>我们首先对第一个 <code>apple()</code> 方法使用了 <code>@property</code> 装饰器，这样 <code>apple</code> 也就变成了一个只读属性。与此同时这会自动生成出一个新的装饰器 <code>@apple.setter</code>，使用这个装饰器来装饰第二个 <code>apple()</code> 方法后，<code>apple</code> 属性就变成可写的了。</p>
+</div><div class="cl-preview-section"><p>这里的关键是，<strong>用 <code>@property</code> 装饰一个方法，会自动生成名为  <code>@方法名.setter</code> 的装饰器</strong>。</p>
+</div><div class="cl-preview-section"><a id="anchor_15_virtual" class="virtual_anchor"></a><h3 id="自定义异常">自定义异常</h3>
+</div><div class="cl-preview-section"><p>Python 中内置有很多异常，当我们需要使用异常时，从中挑选出合适的异常即可。但有些时候，可能需要根据业务场景自定义自己的异常。</p>
+</div><div class="cl-preview-section"><p>自定义异常的方式很简单，只需要定义一个类，这个类继承自 <code>Exception</code> 类或其子类即可。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">FileParseException</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_16_virtual" class="virtual_anchor"></a><h2 id="函数相关">函数相关</h2>
+</div><div class="cl-preview-section"><p>Python 是动态类型，在写 Python 代码的时候，不需要直接指明数据类型，但这有时也会带来阅读和 IDE（或其它工具）静态分析上的障碍。</p>
+</div><div class="cl-preview-section"><p>针对这个问题，我们可以考虑为函数的加上参数类型标注，以及返回值类型标注。</p>
+</div><div class="cl-preview-section"><a id="anchor_17_virtual" class="virtual_anchor"></a><h3 id="函数参数类型标注">函数参数类型标注</h3>
+</div><div class="cl-preview-section"><p>函数参数类型标注的写法如下，在每个参数的后面加上冒号（<code>:</code>）并标明类型：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token string">', hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>上述便指明了参数 <code>name</code> 为 <code>str</code> 类型。</p>
+</div><div class="cl-preview-section"><p>Python 并不会根据标注对参数作类型校验，这只是为了方便阅读和 IDE 静态分析。</p>
+</div><div class="cl-preview-section"><a id="anchor_18_virtual" class="virtual_anchor"></a><h3 id="函数返回值类型标注">函数返回值类型标注</h3>
+</div><div class="cl-preview-section"><p>函数的返回值类型标注如下，在参数列表的后面加上右箭头（<code>-&gt;</code>）并标明类型：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+	<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token string">', hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>同样的，Python 并不会根据标注对返回值作类型校验，只是方便阅读和 IDE 静态分析。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/830">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            21 给凡人添加超能力：入手装饰器
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/832">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            23 不简单的输入输出：IO 操作
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

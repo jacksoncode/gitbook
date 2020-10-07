@@ -1,0 +1,101 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        05 你不是一个人在战斗 - 遇到问题的正确姿势
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-02 20:50:07
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img2.sycdn.imooc.com/5d6cb3a30001dabe06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">勤能补拙是良训，一分辛劳一分才。<p class="author">——华罗庚</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>在我们实际测试学习的过程中，不管你是在进行功能测试、环境部署、代码编程、工具使用、框架搭建等等，都不可避免的遇到各种各样的问题。遇到问题，一有不顺利了就去找别人请教，这样是不可取的，非但透支了与他人的关系，更是对个人的学习和记忆不利。就像我们前边聊过的，懒惰的拿来主义并不能带来效率上的提高。</p>
+</div><div class="cl-preview-section"><p>然而实际面对问题的时候，很多人都会突然不知所措，找不到任何头绪。那么应该怎么办呢？我在这里简单总结一下测试遇到问题的一些常见的排查方法。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="确认是否环境问题">确认是否环境问题</h2>
+</div><div class="cl-preview-section"><p>在大家实际遇到的问题中，我大致总结了一下，大约有 50% 的问题是由于环境引发的。比如，有的同学在启动 WAMP 的时候发现 MySQL 启动异常，于是非常生气地告诉我：这个 WAMP 不能用，启动报错。其实仔细排查一下就会发现，由于本地已经存在一个运行中的 MySQL 服务，占用了 3306 端口导致启动失败。</p>
+</div><div class="cl-preview-section"><p>再例如，我们使用 LoadRunner 录制脚本时，无法弹出 IE 浏览器，这时候需要考虑的环境因素就比较多了，包括操作系统版本、LR 版本、浏览器版本以及浏览器设置。当然，我了解，大家很多对这些环境问题不甚了解，自己很难排查。我这里推荐大家一个很简单的判断方法，就是当遇到工具安装和基础使用的问题，而明明网上以及老师都可用只有你不可用时候，那么八成就是环境问题，先去查询排查一下。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="错误日志的作用">错误日志的作用</h2>
+</div><div class="cl-preview-section"><p>不知道是不是因为我的要求过高导致的，我在去很多企业做内训、以及线上线下学员沟通都发现一个通病，80% 以上的测试人员不去看日志。很多人回答我说：测试为什么还要看日志，找开发不就好了？这是一种很浅显的理解，觉得测试人员最重要的就是发现问题，至于找问题，NoNo，那就交给开发人员搞定吧。</p>
+</div><div class="cl-preview-section"><p>我们从两个角度来说日志的作用。先说我们在测试的过程中发现了 Bug，既然测试人员不需要修正 Bug，那么到底还需不需要能看懂日志，需不需要找到问题发生的点和原因呢？我个人觉得是十分必要的。在中小型公司里，之所以测试不受重视主要在于测试只去做 “测” 的工作，而实际上在一线互联网公司里，测试人员需要承担的职责更多，不仅仅是发现问题，还包括定位问题、指明解决问题的方法。</p>
+</div><div class="cl-preview-section"><p>通过对日志的分析，也能更进一步了解发现问题到底是由于环境、数据、上下游系统还是系统本身的 Bug，也避免了提出更多的无效问题。举个例子来说，当我们系统异常难以排查时候，我们发现日志中包含如下问题：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d6c8f5600014d9c12500547.png" class="lazyload" style="cursor: pointer;"><br>
+Ok，这是我们在前端看不到的错误信息，通过这里，我们确定，这个错误是由于后端分库分表算法计算异常引起的。那我们可以更深入定位一下算法的问题，也可以直接将该算法存在问题提给开发，这样呢，就减少了很多开发排查问题的工作量，也更容易赢得开发的尊重。</p>
+</div><div class="cl-preview-section"><p>上面的第一个角度，换个角度来说，我们测试人员自己也会在工作过程中碰到自己的问题，有的是代码端的，有的是工具端的。比如 Selenium 执行报错，比如 LoadRunner 录制报错，这个时候请求开发明显是更加不靠谱的，还是需要自己首先解决问题。Selenium 脚本执行时候有时候会遇到错误如下：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d6c8f6c0001309412490141.png" class="lazyload" style="cursor: pointer;"><br>
+我们找到核心关键字，有经验的同学这时候就知道了 elment not visible 可能出现的情况有两种，一是定位的标识不唯一，二是元素之间有所遮挡，所以我们要开始分别排查两种情况的可能性，这就是我们分析问题的过程，处处离不开对日志的分析。Jmeter、LoadRunner 这样的商用工具同样有自己的错误提示，同样可以帮助我们去分析问题。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="善用搜索引擎">善用搜索引擎</h2>
+</div><div class="cl-preview-section"><p>其实这一点算是前边内容的延伸，既然要独立解决问题，就少不了搜索相关问题和解决办法。曾经跟测试圈里的某资深专家聊天时候提到过：其实现在绝大多数的人不会用搜索引擎，现在回想一下，深以为然。我猜可能有很多同学会觉得不服气，但是最近至少几年我遇到的很多学员的问题都是由于 “不会搜索” 造成的，比如说：最近有个同学问我，他想找一段随机产生手机号的代码，可是怎么搜都搜不到。我觉得比较好奇，就追问他自己是怎么搜的，他说搜索 “随机手机号”，出来都是什么生成器啊之类的，没有可用的代码。我告诉他，试着在前边加个 Java？果然，很快找到了。</p>
+</div><div class="cl-preview-section"><p>这个例子很小，但是却反映了大家使用搜索引擎的最大的问题：<strong>不会找关键字</strong>。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="不够精简">不够精简</h3>
+</div><div class="cl-preview-section"><p>有很多人很喜欢直接在搜索引擎里边搜 “如何…”、“怎么办…”、“怎么才能… 呢” 这样的关键字，尽管一般的搜索引擎都会过滤一些语气词，也能够搜到一些结果，但是精简检索式无疑是提高检索效率最好的方法。</p>
+</div><div class="cl-preview-section"><p>至于方法可以比较简单，把你想提问的问题写下来，把其中的形容词、疑问词都筛掉，只留下大多数的名词就可以了，可以填充一些必要的修饰。比如你要搜索 “哪个自动化测试工具最好用”，可以直接筛选成为 “自动化测试 好用” 就可以了。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="缺少信息">缺少信息</h3>
+</div><div class="cl-preview-section"><p>和不够精简相对的，就是缺少信息。其实最前边的 “随机手机号” 就是很好的例子。在搜索过程中一定要标识自己的需求。如果我们要搜索某一个算法，一定要加上语言或者 “算法” 等字样标识，类似 “Java XXX”、“XXX 算法” 或者 “XXX 代码”，这样会准确很多。</p>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="筛除杂质">筛除杂质</h3>
+</div><div class="cl-preview-section"><p>很多同学找到日志中或者是控制台的报错，看不懂直接就扔到了搜索引擎里边去搜，发现找不到任何结果。这是为什么呢？搜索前一定要筛选掉你报错信息里的杂质，拿最纯正的错误去搜索。什么是杂质？我们特有的类名、变量名、参数值、报错信息中的中文都会是一些杂质，需要筛除掉。我们简单来看一个报错：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d6c8f9f00019c9611050084.png" class="lazyload" style="cursor: pointer;"><br>
+在这个报错里，需要筛选掉的信息包括各种 ip 等等，实际更好的搜索内容为：No connection could be made because the target machine actively refused it。这样才能获得最适合的结果。</p>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="专业精准">专业精准</h3>
+</div><div class="cl-preview-section"><p>当我们寻找某个领域的内容时候，越是用大而泛的词语，搜索出来的结果多而浅，而越是用专业而精准的关键词，得到的结果少而精。比如我们现在要测试的是一个大数据模型，可是现在不知道如何去测，当你搜索 “大数据测试” 的时候，你会得到很多宽泛的结果，而当你了解了你的模型，转而去搜 “Hadoop 测试”、“MapReduce 验证” 等关键字时候往往能够得到更精确的信息。</p>
+</div><div class="cl-preview-section"><p>除了不会找关键字的问题以外，其实我们在搜索问题时可以尝试不同的搜索引擎。“兼听则明偏信则暗”，兼容 Google 和百度才是技术人的大成，因为 Google 更容易搜索到国外一些论坛的解决方案，而百度中国内的论坛 — 知乎、CSDN、简书等的权重更高。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d6c8fb60001a01504190210.png" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d6c8fc20001a07506290194.png" class="lazyload" style="cursor: pointer;"><br>
+当然，即便是搜索的结果，也不可尽信。老话讲 “择其善者而从之，其不善者而改之” 是十分有道理的，所以搜索到解决方案了，最重要的是分析是否适用和尝试是否可以解决。在网上找东西是一个愉快的过程，有一点像在 “淘宝”，不但需要火眼金睛，还需要与浩瀚的信息斗智斗勇。</p>
+</div><div class="cl-preview-section"><p>我在这里简单列一下我自己觉得搜索结果相对可靠的一些网站，仅供参考：</p>
+</div><div class="cl-preview-section"><p>1） 国外论坛</p>
+</div><div class="cl-preview-section"><p>Stack Overflow、Reddit、CodeProject、Bytes</p>
+</div><div class="cl-preview-section"><p>2） 国内网站</p>
+</div><div class="cl-preview-section"><p>CSDN、简书、知乎</p>
+</div><div class="cl-preview-section"><p>排名不分先后，如果大家在查询问题时候发现上述网站的结果，可以优先点开看看（访问不了的网站需要翻墙，这个就不细节讨论了，大家懂的）。其实我们工作中测试中 80% 的问题，都已经被别人遭遇过了，我们会搜索就可以解决其中的大半，剩下的 20% 才是研究，世上无难事，只要会搜索。</p>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h2 id="寻求帮助">寻求帮助</h2>
+</div><div class="cl-preview-section"><p>如果经过我们的分析、查找、尝试仍然没有解决的话，那么就有必要向他人求助了。求助也就是提问，关于向他人提问的过程，我有很多话想跟大家聊，所以将在下边一个小节好好跟大家聊聊 “提问的艺术”。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/902">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            04 努力≠高效-测试高效学习浅谈
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/904">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            06 提问的艺术
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">2</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/1168762/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/54586425000103f602200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/1168762/articles" target="_blank">                                         <div class="name l">Python工程师</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     勤能补拙是良训,一分辛苦一分才.                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3768">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3768">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3768" data-uid="1168762" data-src="/read/48/article/903" data-type="15">举报</div>                                                                          <div class="time r">5天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8104289/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img1.mukewang.com/5d6dd422000105b809600960-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8104289/articles" target="_blank">                                         <div class="name l">小酱酱</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     风落老师，好崇拜你呀，思维果然不在一个层面，感觉一定会有很多收货                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="1870">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>2</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="1870">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="1870" data-uid="8104289" data-src="/read/48/article/903" data-type="15">举报</div>                                                                          <div class="time r">2019-09-11</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img2.mukewang.com/5b2a0c4d0001029d09600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                         <div class="name l">风落几番</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8104289/articles" target="_blank">                                                                 <div class="name l">小酱酱</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     谢谢谢谢，像我们这么容易骄傲的少年，面对夸奖还是难以抑制内心的喜悦啊！！                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="1716" data-name="风落几番">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="1716" data-uid="6433657" data-src="/read/48/article/903" data-type="16">举报</div>                                                                                                          <div class="time r">2019-09-16 11:00:10</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

@@ -1,0 +1,600 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        14 这么多的数据结构（二）：字典、集合
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-16 10:21:49
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d7ef1ae0001cea506400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">天才就是长期劳动的结果。<p class="author">——牛顿</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="四、字典">四、字典</h3>
+</div><div class="cl-preview-section"><p>字典是一种用来存放若干键值对的数据类型。</p>
+</div><div class="cl-preview-section"><p>什么是键值对呢？<strong>键值对</strong>就是两个对象，其中一个是用来做定位的数据，叫做<strong>键</strong>（Key），另一个是要存放的数据，叫做<strong>值</strong>（Value）。在字典中，键值对作为一个整体被存放，我们可以通过键来快速获取到对应的值。</p>
+</div><div class="cl-preview-section"><p>在 Python 中字典用花括号（<code>{}</code>）来表示，键值对以 <code>键:值</code> 的方式写入花括号中，有多个键值对时用逗号分隔。</p>
+</div><div class="cl-preview-section"><p>如 <code>{'010': 'beijing', '021': 'shanghai'}</code> 便是一个字典，其中包含两个键值对</p>
+</div><div class="cl-preview-section"><ul>
+<li><code>'010': 'beijing'</code></li>
+<li><code>'021': 'shanghai'</code></li>
+</ul>
+</div><div class="cl-preview-section"><p>使用时，我们可以通过 <code>'010'</code> 快速查询到其对应的值是 <code>'beijing'</code>。这就好比现实中的一本字典一样，通过拼音或偏旁来映射一个具体的字词，以此来实现字词的快速查找，而这个拼音或偏旁就相当于 Python 字典的键，而字词就相当于 Python 字典的值，它们在字典中是映射关系。</p>
+</div><div class="cl-preview-section"><p>Python 字典中的键是有要求的，需要是不可变的类型，如元组、字符串、数字。而字典中的值可以是任意类型。字典本身是可变的，我们可以向其中添加、删除、修改键值对。</p>
+</div><div class="cl-preview-section"><p>因为字典不是序列，更不是有序的，所有它没有列表那样的索引，也不能保证每个键值对的存放次序。</p>
+</div><div class="cl-preview-section"><h4 id="创建字典">创建字典</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>创建空的字典</p>
+<pre class="  language-python"><code class="prism  language-python">字典 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>empty_dict = {}</strong><br>
+&gt;&gt;&gt; empty_dict<br>
+{}</p>
+</blockquote>
+</li>
+<li>
+<p>创建包含键值对的字典</p>
+<pre class="  language-python"><code class="prism  language-python">字典 <span class="token operator">=</span> <span class="token punctuation">{</span>键<span class="token number">1</span><span class="token punctuation">:</span>值<span class="token number">1</span><span class="token punctuation">,</span> 键<span class="token number">2</span><span class="token punctuation">:</span>值<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> 键N<span class="token punctuation">:</span>值N<span class="token punctuation">}</span>
+</code></pre>
+<p>如城市和其对应的电话区号：</p>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}</strong><br>
+&gt;&gt;&gt; codes<br>
+{‘beijing’: ‘010’, ‘shanghai’: ‘021’}</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="字典键值对的添加">字典键值对的添加</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>向字典中增加键值对</p>
+<pre class="  language-python"><code class="prism  language-python">字典<span class="token punctuation">[</span>键<span class="token punctuation">]</span> <span class="token operator">=</span> 值
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes[‘tianjin’] = '022’</strong><br>
+&gt;&gt;&gt; codes<br>
+{‘beijing’: ‘010’, ‘shanghai’: ‘021’, ‘tianjin’: ‘022’}</p>
+</blockquote>
+<p>使用这种方式时，若字典中没有这个键，则会创建这个键值对；若字典中原本已有这个键，则是修改键所对应的值。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="键值对的获取">键值对的获取</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过键获取值</p>
+<pre class="  language-python"><code class="prism  language-python">值 <span class="token operator">=</span> 字典<span class="token punctuation">[</span>键<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}</strong><br>
+&gt;&gt;&gt; codes[‘beijing’]<br>
+‘010’</p>
+</blockquote>
+<p>注意若键不存在则将抛出 <code>KeyError</code> 异常：</p>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; codes[‘a’]<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+KeyError: ‘a’</p>
+</blockquote>
+</li>
+<li>
+<p>通过键获取值（ <code>get</code> 方法）</p>
+<p>如果通过键获取值时不希望 <code>KeyError</code> 异常抛出，可以使用 <code>get</code> 方法，若键不存在，则直接返回 <code>None</code>。</p>
+<pre class="  language-python"><code class="prism  language-python">值 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>get<span class="token punctuation">(</span>键<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.get(‘a’)</strong><br>
+&gt;&gt;&gt;</p>
+</blockquote>
+<blockquote>
+<p>返回的 <code>None</code> 代表什么都没有，所以没有任何值显示。</p>
+</blockquote>
+<p>也可以给 <code>get</code> 方法传递第二个参数作为默认值，使得键不存在时直接返回默认值。</p>
+<pre class="  language-python"><code class="prism  language-python">值 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>get<span class="token punctuation">(</span>键<span class="token punctuation">,</span> 默认值<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.get(‘a’, ‘000’)</strong><br>
+&gt;&gt;&gt; ‘000’</p>
+</blockquote>
+</li>
+<li>
+<p>判断字典中是否包含某个键</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 键 <span class="token keyword">in</span> 字典
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>‘beijing’ in codes</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>‘guangzhou’ in codes</strong><br>
+False</p>
+</blockquote>
+</li>
+<li>
+<p>获取所有键</p>
+<pre class="  language-python"><code class="prism  language-python">键的列表 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.keys()</strong><br>
+dict_keys([‘beijing’, ‘shanghai’])</p>
+</blockquote>
+<p>获取到的所有键是以迭代器的形式存在，至于什么是迭代器我们将在之后的章节中介绍。在这里我们可以用 <code>list()</code> 函数将迭代器转换为列表。如下：</p>
+<blockquote>
+<p>&gt;&gt;&gt; list(codes.keys())<br>
+[‘beijing’, ‘shanghai’]</p>
+</blockquote>
+</li>
+<li>
+<p>获取所有值</p>
+<pre class="  language-python"><code class="prism  language-python">值的列表 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.values()</strong><br>
+dict_values([‘010’, ‘021’])</p>
+</blockquote>
+<p>获取到的所有值是以迭代器的形式存在，我们用 <code>list()</code> 函数将迭代器转换为列表。如下：</p>
+<blockquote>
+<p>&gt;&gt;&gt; list(codes.values())<br>
+[‘010’, ‘021’]</p>
+</blockquote>
+</li>
+<li>
+<p>获取所有键值对的列表</p>
+<pre class="  language-python"><code class="prism  language-python">值的列表 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.items()</strong><br>
+dict_items([(‘beijing’, ‘010’), (‘shanghai’, ‘021’)])</p>
+</blockquote>
+<p>获取到的所有键值对是以迭代器的形式存在，我们用 <code>list()</code> 函数将迭代器转换为列表。如下：</p>
+<blockquote>
+<p>&gt;&gt;&gt; list(codes.items())<br>
+[(‘beijing’, ‘010’), (‘shanghai’, ‘021’)]</p>
+</blockquote>
+<p>列表中的每一个元素是都是二元组（即包含两个元素的元组），每个二元组的第一个元素是键，第二个元素是值。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="字典键值对的删除">字典键值对的删除</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过键删除键值对</p>
+<p>可以使用 <code>pop</code> 方法删除一个键值对，并将值返回。</p>
+<pre class="  language-python"><code class="prism  language-python">值 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>键<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.pop(‘beijing’)</strong><br>
+’010’<br>
+&gt;&gt;&gt; codes<br>
+{‘shanghai’: ‘021’}</p>
+</blockquote>
+<p>如果 <code>pop</code> 一个不存在的键，则会抛出 <code>KeyError</code> 异常：</p>
+<blockquote>
+<p>&gt;&gt;&gt; codes.pop(‘a’)<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+KeyError: ‘a’</p>
+</blockquote>
+<p>如果你不希望异常抛出，可以传递 <code>pop</code> 方法的第二个参数作为默认值。默认值仅在键不存在时生效，此时方法将直接返回这个默认值，且跳过删除操作：</p>
+<pre class="  language-python"><code class="prism  language-python">值 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>键<span class="token punctuation">,</span> 默认值<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.pop(‘guangzhou’, ‘000’)</strong><br>
+’000’</p>
+</blockquote>
+</li>
+<li>
+<p>通过键删除键值对（<code>del</code> 方法）</p>
+<p>也可以通过关键字 <code>del</code> 来删除键值对。</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">del</span> 字典<span class="token punctuation">[</span>键<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>del codes[‘beijing’]</strong><br>
+&gt;&gt;&gt; codes<br>
+{‘shanghai’: ‘021’}</p>
+</blockquote>
+</li>
+<li>
+<p>随机删除一个键值对</p>
+<p>使用 <code>popitem</code> 随机删除一个键值对，并返回这个键值对的二元组，二元组的第一个元素是键，第二个元素是值。</p>
+<pre class="  language-python"><code class="prism  language-python">键值二元组 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>popitem<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.popitem()</strong><br>
+(‘shanghai’, ‘021’)<br>
+&gt;&gt;&gt; codes<br>
+{‘beijing’: ‘010’}</p>
+</blockquote>
+</li>
+<li>
+<p>清空所有键值对</p>
+<pre class="  language-python"><code class="prism  language-python">键值二元组 <span class="token operator">=</span> 字典<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.clear()</strong><br>
+&gt;&gt;&gt; codes<br>
+{}</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="字典中键值对修改">字典中键值对修改</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>修改键对应的值</p>
+<pre class="  language-python"><code class="prism  language-python">字典<span class="token punctuation">[</span>键<span class="token punctuation">]</span> <span class="token operator">=</span> 值
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’}<br>
+&gt;&gt;&gt; <strong>codes[‘beijing’] = '021’</strong><br>
+&gt;&gt;&gt; codes<br>
+{‘beijing’: ‘021’}</p>
+</blockquote>
+<p>如果键不存在，则创建键值对。</p>
+</li>
+<li>
+<p>用字典批量更新键值对</p>
+<pre class="  language-python"><code class="prism  language-python">字典<span class="token punctuation">.</span>update<span class="token punctuation">(</span>另一字典<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>codes.update({‘guangzhou’: ‘020’, ‘shanghai’: ‘000’})</strong><br>
+&gt;&gt;&gt; codes<br>
+{‘beijing’: ‘010’, ‘shanghai’: ‘000’, ‘guangzhou’: ‘020’}</p>
+</blockquote>
+<p>可以看到字典中新增了 <code>'guangzhou': '020'</code> 这个键值对，同时将 <code>'shanghai': '021'</code> 修改为 <code>'shanghai': '000'</code>。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="什么时候用字典">什么时候用字典</h4>
+</div><div class="cl-preview-section"><p>字典的显著优势是可以通过键快速地查询数据。字典中的元素以键值对的形式存在，使用时通过键来获取和修改值，由于字典内部的特殊实现，字典通过键获取值的效率非常高。</p>
+</div><div class="cl-preview-section"><p>如果我们希望将批量的数据存放起来，并且在需要时能以很高的执行效率来获取其中某个指定的数据，这时就可以使用字典。除此之外，如果我们想在程序中暂时维护一个映射关系，也可以使用字典，因为字典本质上就是一个映射关系。</p>
+</div><div class="cl-preview-section"><p>如，我们可以将城市名和对应的区号保存在字典中，这样就可以通过城市名快速地查询到其区号，而不需要进行遍历。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">area_codes <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'北京'</span><span class="token punctuation">:</span> <span class="token string">'010'</span><span class="token punctuation">,</span>
+    <span class="token string">'上海'</span><span class="token punctuation">:</span> <span class="token string">'021'</span><span class="token punctuation">,</span>
+    <span class="token string">'天津'</span><span class="token punctuation">:</span> <span class="token string">'022'</span><span class="token punctuation">,</span>
+    <span class="token string">'重庆'</span><span class="token punctuation">:</span> <span class="token string">'023'</span><span class="token punctuation">,</span>
+    <span class="token string">'沈阳'</span><span class="token punctuation">:</span> <span class="token string">'024'</span><span class="token punctuation">,</span>
+    <span class="token string">'南京'</span><span class="token punctuation">:</span> <span class="token string">'025'</span><span class="token punctuation">,</span>
+    <span class="token string">'武汉'</span><span class="token punctuation">:</span> <span class="token string">'027'</span><span class="token punctuation">,</span>
+    <span class="token string">'成都'</span><span class="token punctuation">:</span> <span class="token string">'028'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; area_codes[‘成都’]<br>
+‘028’<br>
+&gt;&gt;&gt; area_codes[‘南京’]<br>
+‘025’</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="五、集合">五、集合</h3>
+</div><div class="cl-preview-section"><p>集合是一个用于存放批量元素的数据类型，它不是有序的，其中的元素<strong>没有顺序</strong>关系。集合中的元素<strong>没有重复</strong>，重复的元素将被自动剔除最终只留下一个。</p>
+</div><div class="cl-preview-section"><p>集合也是用花括号（<code>{}</code>）来表示，不同于字典的是，花括号中放的是一个个数据，而不是键值对。</p>
+</div><div class="cl-preview-section"><p>集合是可变的，我们可以向其中添加、删除、修改元素。</p>
+</div><div class="cl-preview-section"><h4 id="创建集合">创建集合</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>创建包含元素的集合</p>
+<pre class="  language-python"><code class="prism  language-python">集合 <span class="token operator">=</span> <span class="token punctuation">{</span>元素<span class="token number">1</span><span class="token punctuation">,</span> 元素<span class="token number">2</span><span class="token punctuation">,</span> 元素N<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>numbers = {1, 2, 3}</strong><br>
+&gt;&gt;&gt; numbers<br>
+{1, 2, 3}</p>
+</blockquote>
+</li>
+<li>
+<p>创建空集合</p>
+<pre class="  language-python"><code class="prism  language-python">集合 <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>注意创建空集合不能直接使用 <code>{}</code>，那样是表示空字典，而是使用 <code>set()</code>，这才表示空集合。</p>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>empty_set = set()</strong><br>
+&gt;&gt;&gt; empty_set<br>
+set()</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="集合元素的添加">集合元素的添加</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>向集合中添加一个元素</p>
+<pre class="  language-python"><code class="prism  language-python">集合<span class="token punctuation">.</span>add<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2}<br>
+&gt;&gt;&gt; <strong>numbers.add(3)</strong><br>
+&gt;&gt;&gt; numbers<br>
+{1, 2, 3}</p>
+</blockquote>
+<p>向集合中添加重复元素时，会被去重处理。</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2}<br>
+&gt;&gt;&gt; <strong>numbers.add(2)</strong><br>
+&gt;&gt;&gt; numbers<br>
+{1, 2}</p>
+</blockquote>
+</li>
+<li>
+<p>从另一集合中批量添加元素</p>
+<pre class="  language-python"><code class="prism  language-python">集合<span class="token punctuation">.</span>update<span class="token punctuation">(</span>另一集合<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {1, 2}<br>
+&gt;&gt;&gt; numbers_2 = {2, 3, 4}<br>
+&gt;&gt;&gt; <strong>numbers_1.update(numbers_2)</strong><br>
+&gt;&gt;&gt; numbers_1<br>
+{1, 2, 3, 4}</p>
+</blockquote>
+<p>可以看到，集合<code>numbers_2</code> 中的所有元素被添加到了集合 <code>numbers_1</code> 中，并且其中重复的元素被剔除仅保留一份。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="集合元素的获取">集合元素的获取</h4>
+</div><div class="cl-preview-section"><p>集合不能像列表那样通过索引来获取元素，也不能像字典那样通过键来获取值，集合没法直接获取到某个指定的元素。想要获取元素，只能通过遍历的方式。</p>
+</div><div class="cl-preview-section"><p>虽然集合不能直接获取到元素，但是我们依然可以用 <code>in</code> 关键字来判断元素是否存在于集合中。</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>查看元素是否存在于集合中</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 元素 <span class="token keyword">in</span> 集合
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = {‘a’, ‘b’, ‘c’}<br>
+&gt;&gt;&gt; <strong>‘a’ in letters</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>‘z’ in letters</strong><br>
+False</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="集合元素的删除">集合元素的删除</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>随机删除一个元素，并返回这个元素</p>
+<pre class="  language-python"><code class="prism  language-python">元素 <span class="token operator">=</span> 集合<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>使用 <code>pop</code> 方法随机删除一个元素的时候，这个元素会被返回。</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3}<br>
+&gt;&gt;&gt; <strong>numbers.pop()</strong><br>
+1<br>
+&gt;&gt;&gt; <strong>numbers.pop()</strong><br>
+2<br>
+&gt;&gt;&gt; numbers<br>
+{3}</p>
+</blockquote>
+</li>
+<li>
+<p>删除一个指定的元素</p>
+<pre class="  language-python"><code class="prism  language-python">集合<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3}<br>
+&gt;&gt;&gt; <strong>numbers.remove(1)</strong><br>
+&gt;&gt;&gt; numbers<br>
+{2, 3}</p>
+</blockquote>
+<p>如果要删除的元素不存在，则抛出 <code>KeyError</code> 异常：</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3}<br>
+&gt;&gt;&gt; numbers.remove(4)<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+KeyError: 4</p>
+</blockquote>
+</li>
+<li>
+<p>删除一个指定的元素，且不抛出 <code>KeyError</code> 异常</p>
+<p>使用 <code>remove</code> 方法删除一个不存在的元素时，会抛出 <code>KeyError</code> 异常，如果我们不想让异常抛出，可以使用 <code>discard</code> 方法。</p>
+<pre class="  language-python"><code class="prism  language-python">集合<span class="token punctuation">.</span>discard<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3}<br>
+&gt;&gt;&gt; <strong>numbers.discard(4)</strong><br>
+&gt;&gt;&gt; numbers<br>
+{1, 2, 3}</p>
+</blockquote>
+</li>
+<li>
+<p>清空所有元素</p>
+<pre class="  language-python"><code class="prism  language-python">集合<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>与列表和字典一样，想要清空所有元素，可以使用 <code>clear</code> 方法。</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3}<br>
+&gt;&gt;&gt; <strong>numbers.clear()</strong><br>
+&gt;&gt;&gt; numbers<br>
+set()</p>
+</blockquote>
+<p>顺便考大家一个问题，为什么元组没有这个方法？因为元组是不可变的！我们不能删除元组的元素，也不能添加和修改元素。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="集合的运算">集合的运算</h4>
+</div><div class="cl-preview-section"><p>看到这里你可能会想，集合不就是阉割版的列表嘛？不是的，集合的功能不止于此。</p>
+</div><div class="cl-preview-section"><p>Python 中的集合和数学中的集合颇为相似，首先集合的所有元素都是唯一的，不存在重复；此外集合有子集、超集的概念，也可以进行交集、并集、差集的运算。</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>求交集</p>
+<p>可以通过 <code>intersection</code> 方法求多个集合的交集。</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1.</span>intersection<span class="token punctuation">(</span>集合<span class="token number">2</span><span class="token punctuation">,</span> 集合<span class="token number">3</span><span class="token punctuation">,</span> 集合N<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {1, 2, 3}<br>
+&gt;&gt;&gt; numbers_2 = {2, 3, 4}<br>
+&gt;&gt;&gt; numbers_3 = {3, 4, 5}<br>
+&gt;&gt;&gt; <strong>numbers_1.intersection(numbers_2, numbers_3)</strong><br>
+{3}</p>
+</blockquote>
+<p>也可以直接使用<strong>与运算符</strong> <code>&amp;</code> 来代替，完全等效：</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1</span> <span class="token operator">&amp;</span> 集合<span class="token number">2</span> <span class="token operator">&amp;</span> 集合N
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>numbers_1 &amp; numbers_2 &amp; numbers_3</strong><br>
+{3}</p>
+</blockquote>
+</li>
+<li>
+<p>求并集</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1.</span>union<span class="token punctuation">(</span>集合<span class="token number">2</span><span class="token punctuation">,</span> 集合<span class="token number">3</span><span class="token punctuation">,</span> 集合N<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {1, 2, 3}<br>
+&gt;&gt;&gt; numbers_2 = {2, 3, 4}<br>
+&gt;&gt;&gt; numbers_3 = {3, 4, 5}<br>
+&gt;&gt;&gt; <strong>numbers_1.union(numbers_2, numbers_3)</strong><br>
+{1, 2, 3, 4, 5}</p>
+</blockquote>
+<p>也可以直接使用<strong>或运算符</strong> <code>|</code> 来代替，完全等效：</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1</span> <span class="token operator">|</span> 集合<span class="token number">2</span> <span class="token operator">|</span> 集合N
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>numbers_1 | numbers_2 | numbers_3</strong><br>
+{1, 2, 3, 4, 5}</p>
+</blockquote>
+</li>
+<li>
+<p>求差集</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1.</span>difference<span class="token punctuation">(</span>集合<span class="token number">2</span><span class="token punctuation">,</span> 集合<span class="token number">3</span><span class="token punctuation">,</span> 集合N<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {1, 2, 3}<br>
+&gt;&gt;&gt; numbers_2 = {2, 3, 4}<br>
+&gt;&gt;&gt; numbers_3 = {3, 4, 5}<br>
+&gt;&gt;&gt; <strong>numbers_1.difference(numbers_2, numbers_3)</strong><br>
+{1}</p>
+</blockquote>
+<p>也可以直接使用运算符 <code>-</code> 来代替，完全等效：</p>
+<pre class="  language-python"><code class="prism  language-python">交集 <span class="token operator">=</span> 集合<span class="token number">1</span> <span class="token operator">-</span> 集合<span class="token number">2</span> <span class="token operator">-</span> 集合N
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>numbers_1 - numbers_2 - numbers_3</strong><br>
+{1}</p>
+</blockquote>
+</li>
+<li>
+<p>判断是否为子集</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 集合<span class="token number">1.</span>issubset<span class="token punctuation">(</span>集合<span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>判断 <code>集合1</code> 是否为 <code>集合2</code> 的子集。</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {2, 3}<br>
+&gt;&gt;&gt; numbers_2 = {1, 2, 3}<br>
+&gt;&gt;&gt; <strong>numbers_1.issubset(numbers_2)</strong><br>
+True<br>
+&gt;&gt;&gt; numbers_3 = {3, 4}<br>
+&gt;&gt;&gt; <strong>numbers_1.issubset(numbers_3)</strong><br>
+False</p>
+</blockquote>
+</li>
+<li>
+<p>判断是否为超集</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 集合<span class="token number">1.</span>issuperset<span class="token punctuation">(</span>集合<span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>判断 <code>集合1</code> 是否为 <code>集合2</code> 的子集。</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers_1 = {1, 2, 3}<br>
+&gt;&gt;&gt; numbers_2 = {2, 3}<br>
+&gt;&gt;&gt; <strong>numbers_1.issuperset(numbers_2)</strong><br>
+True<br>
+&gt;&gt;&gt; numbers_3 = {3, 4}<br>
+&gt;&gt;&gt; <strong>numbers_1.issuperset(numbers_3)</strong><br>
+False</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="集合运算示例">集合运算示例</h4>
+</div><div class="cl-preview-section"><p>集合运算在编程时有什么用呢？以差集为例举个例子。</p>
+</div><div class="cl-preview-section"><p>假如大学里有一个班，班里同学的花名册是「赵大，钱二，孙三，李四，周五，吴六，郑七，王八」。有一天上课，老师要求同学们在一张白纸上签到，大家陆续写上了自己的名字，上面有「周五，李四，王八，赵大，钱二，冯九，陈十」。哪些人缺席了呢？</p>
+</div><div class="cl-preview-section"><p>要判断哪些人缺席了，通常的做法时，逐一从签到表上取出名字，然后去花名册上寻找并做标记，最终花名册上没被标记的名字便是缺席的。有些麻烦，这可苦了助教了。</p>
+</div><div class="cl-preview-section"><p>我们可以用 Python 集合来快速解决这个问题。将花名册上的名字保存在集合中，将签到表上的名字保存在另一个集合中，然后求一下差集。如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 花名册 = {‘赵大’, ‘钱二’, ‘孙三’, ‘李四’, ‘周五’, ‘吴六’, ‘郑七’, ‘王八’}<br>
+&gt;&gt;&gt; 签到表 = {‘周五’, ‘李四’, ‘王八’, ‘赵大’, ‘钱二’, ‘冯九’, ‘陈十’}<br>
+&gt;&gt;&gt; <strong>花名册 - 签到表</strong><br>
+{‘吴六’, ‘孙三’, ‘郑七’}</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>吴六，孙三，郑七没来！</p>
+</div><div class="cl-preview-section"><p>我们用反过来用 <code>签到表 - 花名册</code> 看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>签到表 - 花名册</strong><br>
+{‘陈十’, ‘冯九’}</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>还有两个旁听生！</p>
+</div><div class="cl-preview-section"><h4 id="什么时候用集合">什么时候用集合</h4>
+</div><div class="cl-preview-section"><p>集合非常重要的一个特性是元素无重复，每个元素都是唯一的，重复的元素将被自动剔除（去重）。</p>
+</div><div class="cl-preview-section"><p>所以如果我们需要存放一系列的数据，并且不希望其中出现重复，那么就可以使用集合。</p>
+</div><div class="cl-preview-section"><p>另外如果想计算两个数据集的交集、并集、差集，使用集合来承载数据再合适不过了，集合自带的集合运算能轻松解决这些问题。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="获取字典和集合中的元素数量">获取字典和集合中的元素数量</h3>
+</div><div class="cl-preview-section"><p>我们可以通过 <code>len()</code> 函数来获取字典中的键值对数量和集合中的元素数量。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; codes = {‘beijing’: ‘010’, ‘shanghai’: ‘021’}<br>
+&gt;&gt;&gt; <strong>len(codes)</strong><br>
+2</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = {1, 2, 3, 4}<br>
+&gt;&gt;&gt; <strong>len(numbers)</strong><br>
+4</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>字典是一种用来存放若干键值对的数据类型，可通过键来快速查找值。</p>
+</div><div class="cl-preview-section"><p>字典的键需要是不可变的类型，如数字，字符串和元组。字典的值可以是任意类型。字典本身是可变的，所以可向其中添加、修改、删除键值对。</p>
+</div><div class="cl-preview-section"><p>集合是一个用于存放批量元素的序列。它不是有序的，且元素<strong>不会有重复</strong>。集合也是可变的，我们可以向其中添加、删除、修改元素。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/822">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            13 这么多的数据结构（一）：列表、元祖、字符串
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/824">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            15 Python大法初体验：内置函数
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/5594265/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/596ed93a0001cfb901000100-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/5594265/articles" target="_blank">                                         <div class="name l">qq_不忘_7</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     判断超集应该是集合2是否是集合1的子集                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3831">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3831">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3831" data-uid="5594265" data-src="/read/46/article/823" data-type="15">举报</div>                                                                          <div class="time r">1天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

@@ -1,0 +1,206 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        26 更加 Python 的 Python 代码风格
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-25 10:10:01
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5db2596e00010d2006400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">你若要喜爱你自己的价值，你就得给世界创造价值。<p class="author">——歌德</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="代码风格是什么">代码风格是什么</h2>
+</div><div class="cl-preview-section"><p>代码编写好后交由计算机执行，计算机不关心代码文本的布局、各类对象的命名，只要合乎语法和语义，代码就可按预期被执行。</p>
+</div><div class="cl-preview-section"><p>围绕着代码，人（开发者）的作用看起来似乎只是单纯地输出代码。其实不然，开发者不仅输出代码，也需要从代码中获取信息，需要经常性地阅读代码。</p>
+</div><div class="cl-preview-section"><p>阅读代码的过程可能发生在开发调试、维护修改 bug 时，毕竟开发者的记忆是有限的，自己写过的代码可能在不久后便会有遗忘，日后需要反复回顾以确认细节。另一个阅读代码的典型情形是，开发过程中往往不是一个人在写代码，通常需要进行团队协作，这时我们可能需要阅读别人的代码以便熟悉对方的代码逻辑。</p>
+</div><div class="cl-preview-section"><p>总而言之，代码不仅仅是被用来执行的，也会被开发者经常性地阅读，无论这些代码是自己所写还是别人所写。</p>
+</div><div class="cl-preview-section"><p>良好的、统一的代码风格会给阅读带来非常大的便利，能尽可能地降低代码阅读障碍，提升阅读效率。同时对于编码者来说，良好的、统一的代码风格能让人有一种固定的模式可依循，以便写出高可读性的代码。</p>
+</div><div class="cl-preview-section"><p>我们可以在公司或部门这个层面制定 Python 代码风格，将其用于各个项目，每个开发者遵从这些代码风格来编写代码。</p>
+</div><div class="cl-preview-section"><p>当然我们也有更省事、更通用的方法，使用 Python 社区所制定的 <a href="https://www.python.org/dev/peps/pep-0008/">Python 代码风格</a>（PEP 8）。这其中非常详细地列举出了应该遵守的代码风格，在这里我们只选取其中重要的、常用的部分进行介绍。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="命名">命名</h2>
+</div><div class="cl-preview-section"><p>Python 中的命名主要有三种风格：</p>
+</div><div class="cl-preview-section"><ol>
+<li>全小写+下划线：所有字母均使用小写形式，多个单词时用下划线（<code>_</code>）分隔，如 <code>response</code>、<code>message_body</code>、<code>seconds_per_hour</code></li>
+<li>全大写+下划线：所有字母均使用大写形式，多个单词时用下划线（<code>_</code>）分隔，如 <code>DATETIME</code>、<code>MAX_SEGMENT_LIFETIME</code></li>
+<li>驼峰写法：一个或多个单词，每个单词的首字母大写，如 <code>String</code>、<code>CurrentTime</code></li>
+</ol>
+</div><div class="cl-preview-section"><p>每种风格有不同的使用场景，不可随意使用，具体如下。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="变量和函数">变量和函数</h3>
+</div><div class="cl-preview-section"><p>变量和函数使用「全小写+下划线」的命名方式：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">seconds_per_day
+</code></pre>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">print_hello<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="类名">类名</h3>
+</div><div class="cl-preview-section"><p>类的命名采用「驼峰写法」：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">MyClass
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="异常名">异常名</h3>
+</div><div class="cl-preview-section"><p>异常也是类，所以也使用「驼峰写法」，并且以「Error」结尾：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">FileParseError
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="常量">常量</h3>
+</div><div class="cl-preview-section"><p>常量使用「全大写+下划线」命名：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">MAX_RETRY_TIMES
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="模块名和包名">模块名和包名</h3>
+</div><div class="cl-preview-section"><p>包名和模块名应该短小。</p>
+</div><div class="cl-preview-section"><p>模块可使用「小写 + 下划线」的方式命名：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">open_api
+</code></pre>
+</div><div class="cl-preview-section"><p>包名仅使用小写字母命名，其中不建议使用下划线：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">requests
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h2 id="缩进、换行">缩进、换行</h2>
+</div><div class="cl-preview-section"><a id="anchor_8_virtual" class="virtual_anchor"></a><h3 id="缩进">缩进</h3>
+</div><div class="cl-preview-section"><p>Python 代码格外注重缩进，强制用缩进来区分代码块，以及子代码块。</p>
+</div><div class="cl-preview-section"><p>每级缩进应使用 4 个空格。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> condition：
+            <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>有时我们习惯于使用 Tab 键来缩进代码，这时可在编辑器或 IDE 中将 Tab 键的效果设置为 4 个空格。</p>
+</div><div class="cl-preview-section"><a id="anchor_9_virtual" class="virtual_anchor"></a><h3 id="换行">换行</h3>
+</div><div class="cl-preview-section"><p>每行代码的最大字符数为 79。若某一行代码过长，可以将其换行书写。</p>
+</div><div class="cl-preview-section"><p>定义函数时，将参数换行后<strong>缩进两次</strong>，以和代码块相区分。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token comment"># 建议：</span>
+<span class="token keyword">def</span> <span class="token function">long_function_name</span><span class="token punctuation">(</span>
+        var_one<span class="token punctuation">,</span> var_two<span class="token punctuation">,</span> var_three<span class="token punctuation">,</span>
+        var_four<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>var_one<span class="token punctuation">)</span>
+
+<span class="token comment"># 不建议：</span>
+<span class="token keyword">def</span> <span class="token function">long_function_name</span><span class="token punctuation">(</span>
+    var_one<span class="token punctuation">,</span> var_two<span class="token punctuation">,</span> var_three<span class="token punctuation">,</span>
+    var_four<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>var_one<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>函数调用时，若左括号后紧跟参数，后续行与左括号对齐。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token comment"># 建议：</span>
+foo <span class="token operator">=</span> long_function_name<span class="token punctuation">(</span>var_one<span class="token punctuation">,</span> var_two<span class="token punctuation">,</span>
+                         var_three<span class="token punctuation">,</span> var_four<span class="token punctuation">)</span>
+
+<span class="token comment"># 不建议：</span>
+foo <span class="token operator">=</span> long_function_name<span class="token punctuation">(</span>var_one<span class="token punctuation">,</span> var_two<span class="token punctuation">,</span>
+    var_three<span class="token punctuation">,</span> var_four<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>函数调用时，若左括号后没有参数，后续行可任意缩进，无需与左括号对齐。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token comment"># 建议：</span>
+foo <span class="token operator">=</span> long_function_name<span class="token punctuation">(</span>
+    var_one<span class="token punctuation">,</span> var_two<span class="token punctuation">,</span>
+    var_three<span class="token punctuation">,</span> var_four<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>多行结构中（列表、元组、集合、函数参数列表），其中元素及右括号可换行书写。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token comment"># 右括号可与元素对齐</span>
+my_list <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+
+result <span class="token operator">=</span> some_function_that_takes_arguments<span class="token punctuation">(</span>
+    <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span>
+    <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+<span class="token comment"># 右括号也可顶格书写</span>
+my_list <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+result <span class="token operator">=</span> some_function_that_takes_arguments<span class="token punctuation">(</span>
+    <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span>
+    <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>Python 中小括号、中括号、大括号中的对象可以直接被换行，而无需添加其它符号（这叫隐式换行），如上。但其它情况下，代码换行书写，需要在每行末尾添加反斜杠（<code>\</code>）。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'/path/to/some/file/you/want/to/read'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> file_1<span class="token punctuation">,</span> \
+     <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'/path/to/some/file/being/written'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> file_2<span class="token punctuation">:</span>
+    file_2<span class="token punctuation">.</span>write<span class="token punctuation">(</span>file_1<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>定义函数和类时，多个函数或类之间使用<strong>两个空行</strong>进行分隔：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">foo1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  	<span class="token keyword">pass</span>
+
+
+<span class="token keyword">def</span> <span class="token function">foo2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">pass</span>
+  
+
+<span class="token keyword">class</span> <span class="token class-name">MyClass1</span><span class="token punctuation">:</span>
+  	<span class="token keyword">pass</span>
+  
+
+<span class="token keyword">class</span> <span class="token class-name">MyClass2</span><span class="token punctuation">:</span>
+  	<span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>类中的定义方法时，多个方法间用<strong>一个空行</strong>进行分隔。</p>
+</div><div class="cl-preview-section"><a id="anchor_10_virtual" class="virtual_anchor"></a><h2 id="导入">导入</h2>
+</div><div class="cl-preview-section"><p>使用 <code>import</code> 时，<code>import</code> 语句应位于文件顶部，模块注释和文档字符串之后。</p>
+</div><div class="cl-preview-section"><p><code>import</code> 按下列类型和顺序使用：</p>
+</div><div class="cl-preview-section"><ol>
+<li>标准库导入</li>
+<li>第三方库导入</li>
+<li>本地库导入</li>
+</ol>
+</div><div class="cl-preview-section"><p>以上分为三个分组，每个分组间用一个空行分隔。</p>
+</div><div class="cl-preview-section"><a id="anchor_11_virtual" class="virtual_anchor"></a><h2 id="注释">注释</h2>
+</div><div class="cl-preview-section"><ol>
+<li>注释以 <code>#</code> 及一个空格开始</li>
+<li>行内注释和代码间至少要有两个空格分隔</li>
+<li>注释与代码矛盾比没有注释更糟，修改代码前首先修改注释</li>
+<li>注释应该是完整的句子或短句，并且第一个单词首字母大写</li>
+</ol>
+</div><div class="cl-preview-section"><a id="anchor_12_virtual" class="virtual_anchor"></a><h2 id="完整代码风格内容">完整代码风格内容</h2>
+</div><div class="cl-preview-section"><p>以上是常用的代码风格说明，关于 Python 完整的代码风格指导，可以阅读 <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 – Style Guide for Python Code</a>（英文原版），也可以自行搜索「PEP 8 翻译」。建议大家仔细阅读。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/834">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            25 Python的影分身之术：虚拟环境
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/836">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            27 这么多条路，你想走那一条？
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

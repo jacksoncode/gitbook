@@ -1,0 +1,107 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        25 不懂监控与调优，就像白天不懂夜的黑
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-12 11:33:36
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img.mukewang.com/5da1459c0001359706400360.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">富贵必从勤苦得。<p class="author">——杜甫</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>大家好，我是风落，是一名测试，也是半个开发，同时还偶尔客串下面试官。很突兀的重复介绍自己一半是怕大家忘记了我是谁，另外一半是想从 “客串面试官” 聊到今天的话题。粗算一下，大概我面试过的早就超过了三位数，但是在面试过程中，尤其是性能测试，给我一种很奇怪的感觉：大多数会用 LoadRunner 或者 Jmeter 的同学，认为自己是熟悉性能测试；而把工具用的比较不错，能截图给出工具的结果，分析下 TPS 的就认为自己是掌握了性能测试。这不是夸张，而是这些面试者真的这么认为，并且也认为性能测试自己能够给出通过或者不通过的结果，剩下的就不关自己事情了。</p>
+</div><div class="cl-preview-section"><p>就像前边说过的，所谓工具使用真的只是性能测试的一部分，甚至是很小的一部分。上一回，我们谈了，我认为最重要的性能场景设计，今天我们来谈另一个话题：监控与调优。既然有了 “最重要”，那么监控与调优，再加上 “第二重要” 的标识并没有什么意思，在我看来，监控和调优能力，是区别于一般性能测试工程师和高级测试工程师最本质的特征。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="性能测试的本质">性能测试的本质</h3>
+</div><div class="cl-preview-section"><p>再说监控和调优之前，我们先来想一下我们进行性能测试的最终目的是什么？是给出性能结果么？</p>
+</div><div class="cl-preview-section"><p>这当然是我们的目的之一，其实在我看来，本质上的目标主要分两个方面：</p>
+</div><div class="cl-preview-section"><ol>
+<li><strong>有没有足够的能力</strong>。这就是说我们来验证系统是不是符合我们想要的性能要求，比如我们预计的性能指标是 100w 存量用户、1w 同时在线、800 交易并发下能够控制响应时间在 3s 内，性能测试的目的，首先就是要看看现有情况下是否能够满足。</li>
+<li><strong>能力的规划</strong>。一般情况下很难一下子就满足，那么这就是怎么样才能让系统达到我们要求的性能能力。是不是可以通过增加服务器、修改配置、优化 SQL、修改程序等方式来提升系统能力，使性能达标。</li>
+</ol>
+</div><div class="cl-preview-section"><p>在这两方面之中，更重要的就是后者，也就是通过监控调优的手段，让系统运行的更好，打破软件硬件方面的瓶颈。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="系统可能存在的瓶颈">系统可能存在的瓶颈</h3>
+</div><div class="cl-preview-section"><p>先来说说瓶颈，知己知彼方能百战不殆，再去监控它调试它之前我们先要做的就是了解它，知道什么地方可能出现问题。</p>
+</div><div class="cl-preview-section"><p>从硬件的角度上说，一般可能存在瓶颈的点，包括磁盘空间不足，导致的运行速度下降、CPU、内存、磁盘 I/O 读写速率等方面。</p>
+</div><div class="cl-preview-section"><p>软件的角度就包括多个方面，一方面是服务器方面的配置，比如由于 TOMCAT 或者 Weblogic 等中间件，连接池参数配置不合理会造成瓶颈；另一方面是应用自身，例如程序架构的不合理，代码不当引起的内存泄露、GC 不彻底等问题；最后一方面，应该算得上是性能测试里遇到瓶颈比较多的了，那就是数据库方面。包括数据库的索引、锁、不合理的表空间设计、慢 SQL 等等。</p>
+</div><div class="cl-preview-section"><p>其实说起来应该还有一个地方，就是网络层面，但是由于我们的性能测试一般更多的是在局域网下进行，忽略网络影响，所以在测试过程中可以忽略。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="性能测试的监控">性能测试的监控</h3>
+</div><div class="cl-preview-section"><p>由于上边提到的各方面的瓶颈，所以我们在进行性能测试的时候，一定要注意对软硬件方面的监控。我这里不去跟大家详细去说监控的细节，大体聊一下常用的监控点和工具。</p>
+</div><div class="cl-preview-section"><ol>
+<li><strong>操作系统监控</strong>：Windows 服务器 - Perfmon；Linux 服务器 - TOP / Nmon /netstat 等</li>
+<li><strong>数据库性能监控</strong>：Oracle - Spotlight on Oracle； Mysql - MySQLMTOP</li>
+<li><strong>TOMCAT 监控</strong>：Lambda Probe</li>
+<li><strong>JVM 监控</strong>： Jmap / Jstack / Jconsole / JProfiler 等</li>
+</ol>
+</div><div class="cl-preview-section"><p>综合这些，可以达到对整个系统的有效监控，包含所有的软硬件数据，结合着性能测试工具里 TPS、响应时间等数据，可以更好的横向对比分析出可能存在的性能问题，并逐步优化解决。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="性能优化">性能优化</h3>
+</div><div class="cl-preview-section"><p>优化其实是很难说清楚的一个点，也是在性能测试里很需要经验的地方，我们聊几种常见的场景：</p>
+</div><div class="cl-preview-section"><p><strong>Round 1 ： 响应时间慢</strong></p>
+</div><div class="cl-preview-section"><p>这恐怕是我们遇到最多的场景，直观上看过去就是响应的非常慢。这个时候我们的调优方式就是把整个的 Response Time（RT）通过日志进行不断的分解，例如，我们现在是把一个 RPC（Dubbo）的服务部署在 Tomcat 中，上游用  Nginx 做反向代理。在这样的架构下，一个完整的 RT 就会包括前端 RT、网络传输时间、Nginx RT、Tomcat RT、Dubbo 服务 RT 和数据库 RT。如果存在问题，我们可以请开发配合在各个局部增加日志，观察具体响应时间慢的点，从而进行后续的优化动作。</p>
+</div><div class="cl-preview-section"><p><strong>Round 2 ： TPS 波动大</strong></p>
+</div><div class="cl-preview-section"><p>一般来说，性能测试的 TPS 应该随着并发量的上升而呈跟随上升趋势直至稳定，但是有时候我们会发现，被测系统的 TPS 非常不稳定，上下波动非常大。排除网络可能造成的影响，在实际测试过程中可能遇到最大的可能就是：<strong>被压测服务器上存在其他运行的服务争抢资源或者垃圾回收的问题。</strong></p>
+</div><div class="cl-preview-section"><p>其中后者的可能性居多，一般都是出现有频繁的 FGC。这就是需要我们结合着对 JVM 监控的数据来进行分析，修改 JVM 内存参数或代码逻辑，达到优化的目的。</p>
+</div><div class="cl-preview-section"><p><strong>Round 3 ： 开始加压正常，到某一个点突然开始出现错误，并越来越多</strong></p>
+</div><div class="cl-preview-section"><p>这种情况多数可能是由于服务器、中间件等配置的线程数、超时时间造成的影响，线程数过小，服务端同时可以处理的请求就少，自然到达一定的并发就会等待，最终超时错误。</p>
+</div><div class="cl-preview-section"><p><strong>Round 4 ： 并发数增加，TPS 不增加，CPU 内存利用率都不高</strong></p>
+</div><div class="cl-preview-section"><p>这类问题我遇到过的更多时候是由于 <strong>数据库的慢 SQL 或者不恰当的代码或数据库锁机制造成的。</strong> 一般优先排查数据库 SQL 问题，通过数据库日志判断 SQL 执行时间，查看是否需要优化；如果 SQL 没有问题，那么就需要与开发同学一起沟通确认代码中是否有不恰当的同步锁等等。</p>
+</div><div class="cl-preview-section"><p>当然，这都是经过不断总结到的经验来分析出来的常见的性能优化场景。那么如果你碰到一个性能问题，却不知道问题出在哪儿，一般情况下，我们排查问题的顺序是从上到下：先查服务器硬件瓶颈（CPU、内存、I/O），再看是否由于配置问题引起，接下来查看数据库、SQL 是否存在瓶颈，最后是应用代码逻辑、JVM。</p>
+</div><div class="cl-preview-section"><p>同时，一定不要忘记另外一个点：前端性能。当你发现后端请求响应时间一切正常，但是通过前端访问仍然存在性能瓶颈的时候，一定不要忘记前端加载过程带来的影响，而针对前端性能的测试使用 YSlow 是比较方便的。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da146e10001c68b07420288.png" class="lazyload" style="cursor: pointer;"><br>
+顺便也介绍一下，前端性能问题最常见的一些优化方式：</p>
+</div><div class="cl-preview-section"><ul>
+<li>合并 HTTP 请求，减少请求数量</li>
+<li>资源压缩</li>
+<li>使用浏览器缓存</li>
+<li>图片的优化：雪碧图等方式</li>
+</ul>
+</div><div class="cl-preview-section"><p>当然，这里边只是介绍了一些性能监控与调优要关注的东西和一部分要点，并没有详细去跟大家说到底怎么监控、用什么命令、怎么去看，也没有去细节的讲每个部件到底怎么调优，所以，如果想要真正掌握性能测试，还需要真正上手去实验、去探索、“遇事不决找百度 "，这样才能搞定” 性能 “这座大山。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/922">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            24 比“码脚本”更重要的事：性能场景分析
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/924">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            26 站在LoadRunner与Jmeter的十字路口
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/4670214/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5dd8f47e0001290205000325-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/4670214/articles" target="_blank">                                         <div class="name l">SCXR</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     老师，我近期才学性能测试，看了您的LoadRunner的视频课程，也算入门了。性能测试是在做完功能测试之后才做的，那如果性能测试测出bug之后并且修改了代码，那功能测试是否还需要再做一遍？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3080">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3080">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3080" data-uid="4670214" data-src="/read/48/article/923" data-type="15">举报</div>                                                                          <div class="time r">2019-12-03</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img.mukewang.com/5b2a0c4d0001029d09600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                         <div class="name l">风落几番</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/4670214/articles" target="_blank">                                                                 <div class="name l">SCXR</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     看修改什么了，这其实需要你对代码有一定掌握，了解这次修改具体的修改点是什么。其实如果有自动化的话，每次修改都应该回归一下为好                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2822" data-name="风落几番">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2822" data-uid="6433657" data-src="/read/48/article/923" data-type="16">举报</div>                                                                                                          <div class="time r">2019-12-10 08:36:46</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

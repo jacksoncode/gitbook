@@ -1,0 +1,93 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        18 平台设计深入讨论：技术的进步还是能力的倒退？
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-27 15:59:59
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img3.mukewang.com/5d8db9df0001918106400360.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">每个人的生命都是一只小船，理想是小船的风帆。<p class="author">——张海迪</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="为什么要搭建自动化测试平台？">为什么要搭建自动化测试平台？</h2>
+</div><div class="cl-preview-section"><p>在公司里，如果我们可以根据自己的实际情况，搭建出一套实用的自动化测试框架，并且将之付诸于实际使用的话，才可以说我们已经践行了自动化测试。而我在实际工作中发现：在同一个公司内的不同项目组，由于大家对技术的掌握不同、业务的需求度和封装方式不同，所以出现了在同一个公司内，并行多套自动化测试框架的情况。A 部门擅长 Java，B 部门擅长 Python，我想搞个通用的数据驱动，他想做一个新颖的行为驱动，于是框架难以统一，总是在重复造轮子。</p>
+</div><div class="cl-preview-section"><p>这是对于测试技术比较强的公司存在的烦恼，同样，在我参与过自动化测试建设的很多中小公司中，又存在另外一个极端：由于长期进行的都是纯功能测试，测试团队完全没有代码经验，无论自动化测试框架设计的再容易、再简单，也仍然还是需要测试人员自己去编写一部分代码的。更有不少公司由于人员流动性很强，所以希望能够尽量降低自动化测试的学习成本，能够达到 “来之能用” 的程度。</p>
+</div><div class="cl-preview-section"><p>所以，搭建一个统一的自动化测试平台就可以解决这样的问题，这也是很多公司老板最想要的，对于测试人员来说，不需要再去写代码，直接在一个界面上操作选择一下，输入一点参数，就能达到自动化测试的目的了。而且大家的风格比较统一，自动化脚本呢又不会因为人员变更而丢失，更加便于集中维护了。</p>
+</div><div class="cl-preview-section"><p>于是，最近几年里，我听到的、见到的开始搭建自动化平台的公司，如雨后春笋般不断的出现。但是一个自动化测试平台的初衷，是不是仅仅像上边提到的就够了？</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="自动化测试平台的目标">自动化测试平台的目标</h2>
+</div><div class="cl-preview-section"><p>可以无需代码基础，直接上手自动化，这当然是最基本的目标了。那么除此之外呢？</p>
+</div><div class="cl-preview-section"><p>我们很多时候，还希望自动化测试平台能够解决更多的事情，从接口、UI 再到 APP 自动化可以全面覆盖，通过平台建设完成更多的测试任务，得到更高的测试覆盖率，才能从量变达到质变，让自动化测试更有效地发挥威力。</p>
+</div><div class="cl-preview-section"><p>除了想让平台 “多而好”，我们还希望它运行的速度快。无人值守的自动化测试当然好，但是很多时候，持续集成往往是在工作时间发生，如果能够更快捷的完全冒烟，甚至是系统自动化测试，那自然是极好的。</p>
+</div><div class="cl-preview-section"><p>最后的一点，是我自己的有感而发。自动化测试的确可以提升一部分我们的效率，但是并不是无止境的，我在一家公司中看到整个自动化测试集群达到了 60 台服务器之巨大，规模之大令人叹为观止，其中每台都有非常具体细节的用途。</p>
+</div><div class="cl-preview-section"><p>我仔细跟他们算了一笔账，这 60 台云上服务器每月成本大概在 20w 左右，而经过数据分析，实际上的使用率每台不足 5%，在这里耗费了大量的资源。</p>
+</div><div class="cl-preview-section"><p>所以 “省” 是自动化测试平台的另一个重要目标，硬件软件资源是节约成本的一方面，用最小的代价做最多的事情，所以规划很重要。另外，人力资源也是成本的一部分，所以平台的可用性越高，用户体验越友好，人力成本呢就越低。</p>
+</div><div class="cl-preview-section"><p>说到这里，居然也恰好，符合了我们 "建设社会主义" 的总路线：“多快好省” 的方针 O (∩_∩) O。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="自动化测试平台的建设思路">自动化测试平台的建设思路</h2>
+</div><div class="cl-preview-section"><p>我曾经花了不短的时间，研究了目前市面上做的比较好的自动化测试平台，从腾讯的 UTP、阿里的云效、51testing 的 TestWriter 到近几年开源的 AutoLink、LuckyFrame 再到我自己编写的自动化测试平台，所有这些好的平台的架构（王婆：呸，还把自己放进去，不要脸）都有共通之处：</p>
+</div><div class="cl-preview-section"><ul>
+<li>整体上的框架思路都分为 Web 端和后台服务端</li>
+<li>无一例外采用了关键字驱动的思想</li>
+<li> Web 端与服务端分离，Web 端负责把关键字存储到数据库中，服务端负责关键字的解析和自动化的执行</li>
+<li>服务端的底层大多通过 Selenium、RobotFrame Work 来支持</li>
+</ul>
+</div><div class="cl-preview-section"><p>这就是自动化测试平台的整体建设思路。更细节的话，我们仍可以通过腾讯 UTP 的架构设计略窥一二：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d8dc0c7000178d407370635.png" class="lazyload" style="cursor: pointer;"><br>
+总结来说是，以关键字驱动为核心，坚持前后端分离、多模块、大量三方架构服务集成、测试过程结果监控为基本原则的 “测试平台” 初级阶段基本路线。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="技术的进步还是能力的倒退？">技术的进步还是能力的倒退？</h2>
+</div><div class="cl-preview-section"><p>聊了这么多，一直在说我们应该去如何建设自动化测试平台，我想在这里问大家这样一个问题：建设测试平台到底是不是一件好事？</p>
+</div><div class="cl-preview-section"><p><strong>如果我现在是个老板</strong>，那么我会觉得一套完善的测试平台体系是非常必要的，能够大大节约我的成本，随便找一些应届毕业的小同学，就可以上手做自动化测试了，非常便捷。</p>
+</div><div class="cl-preview-section"><p><strong>如果我现在是一名测试平台的开发者</strong>，我会觉得非常有挑战，能够很大程度上锻炼甚至提升我自己技术上的能力，给我一个机会探索自动化测试未知的世界，在这个过程中，我会觉得自己在不断进步和成长。</p>
+</div><div class="cl-preview-section"><p><strong>如果我现在是一名多年的功能测试人员</strong>，我会觉得平台的思路很好，能够减轻自己一部分负担，让自己更专注在探索性测试和错误推测测试中去。</p>
+</div><div class="cl-preview-section"><p><strong>如果我现在是一个刚出校园的 “小菜鸟”</strong>，我会觉得自动化测试平台并不能让我收获很多，因为我看不到代码也学不到自动化测试的思想，平台对我来说仅仅是一种特殊的进行功能测试的工具，几乎没有太大的学习价值，毕竟，自动化平台没有也很难有一统市场的平台出现。长此以往使用下去，反而会让自己的测试能力和代码能力都倒退一点点。</p>
+</div><div class="cl-preview-section"><p>从不同人不同角度来看，对于自动化平台也会产生不同的理解。所以，对于平台来说，认真对待、无需迷信就是最好的态度。自动化测试平台是把双刃剑，既可以培养优秀的测试开发储备人才，又可以节约成本；同样，也会舍弃掉未来很多 “新人” 的代码探究之路和发展潜力。那么，尽量尝试着去建设好它，使用好它，让它给你的测试之路提供更多的正能量。</p>
+</div><div class="cl-preview-section"><p>那么，你是怎么看的呢？</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/915">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            17 框架提升指南：从持续集成到测试数据收集
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/917">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            19 从零开始了解接口测试与工具
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/6669458/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img1.mukewang.com/533e4d660001312002000200-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/6669458/articles" target="_blank">                                         <div class="name l">简单随风</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     UI自动化平台搭建，是必须找一台测试机搭建么？还是可以只部在服务器上做无页面启动，或者我什么其他更好的方式？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2825">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2825">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2825" data-uid="6669458" data-src="/read/48/article/916" data-type="15">举报</div>                                                                          <div class="time r">2019-11-15</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img3.mukewang.com/5b2a0c4d0001029d09600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                         <div class="name l">风落几番</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/6669458/articles" target="_blank">                                                                 <div class="name l">简单随风</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     如果你是有界面的，那还是有一台服务器更好，分发节点node可以放在自己机器上，也可以有其他服务器来跑。无界面的，其实我觉得也是单独服务器更好一点，这样便于后续维护~                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2547" data-name="风落几番">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2547" data-uid="6433657" data-src="/read/48/article/916" data-type="16">举报</div>                                                                                                          <div class="time r">2019-11-18 14:35:59</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

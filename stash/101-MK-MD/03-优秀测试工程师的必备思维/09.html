@@ -1,0 +1,175 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        09 论高质量的BUG
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-11 17:59:29
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.sycdn.imooc.com/5d770b9800010fb706400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">立志是事业的大门，工作是登堂入室的旅程。<p class="author">——巴斯德</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="从一个“不完美”的-bug-聊起">从一个 “不完美” 的 bug 聊起</h2>
+</div><div class="cl-preview-section"><p>这次的主题源于我曾经的一次<strong>发火</strong>，在项目总结会议上，我们在做 BUG Review 的时候，发现了类似这样一个 BUG： XXX 充值接口调用报错，XXX 购买接口调用报错。完了，就这么简单，我仔细观察了一下 BUG 的详情，神马都木有。并且这样的一个 BUG 还是由一个有着几年工作经验的同学提出的，顿时很想说一句：你的 BUG 提的这么棒棒的，你家里人知道吗？</p>
+</div><div class="cl-preview-section"><p>“捉虫”、找 BUG 是测试人员必须具备的能力，不管在任何公司，测试人员在执行测试任务的过程中，发现 BUG、提出 BUG 以及跟踪 BUG 都是十分必要且重要的工作。可以说，BUG 是我们与开发人员沟通的必备桥梁，但是呢，总是会有这样一种现象发生：我们提出的 BUG 质量不高，让开发人员无法一下子弄明白。这样就需要更多的线下沟通，经常会出现这样的对话:</p>
+</div><div class="cl-preview-section"><ul>
+<li>*DEV：* 小风小风，你来描述下这个 BUG？</li>
+<li>*TESTER：*BLABLA…（此处省略 200 字）</li>
+<li>*DEV：* 你那存了日志么？还是在哪台服务器上我能看一下？</li>
+<li>*TESTER：* 等会啊，我回去发给你。</li>
+<li>*DEV：* 算了算了，你在我本地操作下我看看吧。</li>
+</ul>
+</div><div class="cl-preview-section"><p>如此一来折腾也增加了沟通成本，浪费了时间，光是讲明白一个问题大概 5 到 10 min 就过去了，更重要的是，在非常忙碌的情况下，大家也会感到很烦躁，影响心情。所以提 BUG 不仅仅是我们测试人员的技能，更应该考虑我们 BUG 的面向对象：开发人员。开发人员需要什么信息，我们就自然应该在提出时候包含。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="编写高质量的bug">编写高质量的 BUG</h2>
+</div><div class="cl-preview-section"><p>我们先换位思考一下，假如我们是开发，会让我们觉得无法理解弄清楚的几种情况：</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>BUG 过于简单，只有一句话，描述不清</p>
+<p>开发人员最怕的就是这种类型的 BUG，举个例子：</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d770b5a0001d80606870123.png" class="lazyload" style="cursor: pointer;"><br>
+这时候心里的 OS 就有了 “灵魂三问”：有什么问题？怎么操作出来的问题？给个问题的截图好不好？</p>
+</div><div class="cl-preview-section"><ol start="2">
+<li>
+<p>发现 BUG 的场景过程没有完全保留，重现困难</p>
+</li>
+<li>
+<p>多个问题合并成一个，开发不容易定位，也有可能漏过问题</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><p>我们知道了自身的症状，那么就从这里开始，一起聊一聊一个优秀的 BUG，应该包含哪些方面的内容呢？</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="标题">标题</h3>
+<p>其实每一个 BUG 也都是一个小的文档，既然是文档，我们首先就要做好一个 “标题党”，当然，此 “标题党” 非彼标题党。作为一只优秀的标题，要清晰明确简洁的说明两个 “W”：</p>
+<ol>
+<li><strong>Which</strong>： 哪个系统的哪个功能？</li>
+<li><strong>What happened</strong>：出现了什么样的问题？</li>
+</ol>
+<p>也记住另外一个规范：每条缺陷报告只包括一个缺陷。就像刚刚说的，这样可以让开发认真的定位和对待单一的 BUG，对于测试人员自己来说，也只需要每次校验一个 BUG 是否修正。像最开始我提到的让我发火的 BUG 就实不足取。</p>
+</li>
+<li>
+<a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="环境配置">环境配置</h3>
+<p>如果涉及环境因素的话，比如，有些兼容性问题只在某个浏览器、某个手机系统甚至是某个型号的机器上等等，就需要指明问题复现所在的环境配置信息。</p>
+</li>
+<li>
+<a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="前置条件">前置条件</h3>
+<p>有时候，有些问题是需要在某些特殊条件、特殊操作或者特殊数据下才会引发的，这时候最好添加上这部分的描述，便于问题的复现。</p>
+</li>
+<li>
+<a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="重现步骤">重现步骤</h3>
+<p>从用户角度出发来描述重现步骤，步与步之间不应该有太大的业务跳跃。每一个步骤尽量只记录一个操作，保证快速准确的重复缺陷，确认步骤完整，准确，简短：“完整” 就是说没有缺漏，“准确” 是步骤正确，“简短” 则是要没有多余的步骤，直指问题的核心。</p>
+</li>
+<li>
+<a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="结果">结果</h3>
+<p>这里的结果其实包含两方面，一是 “期望结果”，二是 “实际结果”，之所以会产生 BUG，一定是实际结果不符合期望而导致的，所以对于结果一定要描述清楚，否则的话就会变成：</p>
+<p><em>W：你错了没？</em></p>
+<p><em>M：我哪儿错了？</em></p>
+<p><em>W：你自己哪儿错了你都不知道？！</em></p>
+<p>相信各位童鞋都深有体会（OS：榴莲键盘主板便宜出售，量大从优）。</p>
+</li>
+<li>
+<a id="anchor_7_virtual" class="virtual_anchor"></a><h3 id="优先级">优先级</h3>
+<p>凡事都有轻重缓急，所以对于 BUG 来说也是一样，表示自己对于该 BUG 的紧急程度的评估。一般情况下，我们分为下边几级：</p>
+<ol>
+<li><strong>Critical</strong>：非常紧急，需要开发人员立即解决的 BUG，大多数情况下是<strong>阻断性的 BUG</strong>，不解决的话无法继续测试</li>
+<li><strong> High</strong>：高优先级 BUG，希望尽快解决，一般属于比较大的核心业务功能缺陷，但暂时不影响后续测试。</li>
+<li><strong>Medium</strong>：一般优先级，大多数情况下是非核心业务缺陷，建议在发布前要解决的 BUG。</li>
+<li><strong>Low</strong>：低优先级 BUG，如果能够在发布前解决更好，实在工时紧张可以酌情向后推迟修改，大多数属于优化、用户体验等建议。</li>
+</ol>
+</li>
+<li>
+<a id="anchor_8_virtual" class="virtual_anchor"></a><h3 id="附件">附件</h3>
+<p>附件是非常非常重要的！为了更加方便开发人员定位修改问题，也是方便测试人员自己去回归测试 BUG，适当的附件内容是很有益处的，附件的内容可以多种多样，比较常见的包括：</p>
+<ol>
+<li><strong>截图</strong>：发生问题时的截图对于重现问题有着很重要的意义，也是问题真实存在的证据。</li>
+<li><strong>视频</strong>：有很多时候，单单依靠截图也很难重现 BUG，这时候如果在缺陷发生或者测试重现的时候能够录制一个短视频，那么对于开发人员来说，简直就是一场 “及时雨”。</li>
+<li><strong>错误日志</strong>：如果你能够找到 BUG 发生时候的具体日志，那对于你自身的提升和开发人员定位问题的好处都是显而易见的。开发人员可以通过此找出报错的打码，测试人员也可以学到更多关于服务器、中间件包括项目业务和部署深入的内容。</li>
+</ol>
+</li>
+<li>
+<a id="anchor_9_virtual" class="virtual_anchor"></a><h3 id="发生原因分析">发生原因分析</h3>
+<p>这里就需要大家有一定的代码基础了。如果我们可以自己通过日志等内容定位发生问题的代码和大体原因，我们对于当前系统的理解和测试就可以算是更上了一层楼。当然，这不是必须的，需要大家量力而为。</p>
+</li>
+</ul>
+</div><div class="cl-preview-section"><p>如果你能够完美的做到上边几点，那么这就诞生了一个个出自于你的高质量的 BUG 了，不仅仅有助于提高项目组中定位和修复问题的效率，同样也锻炼体现了你自己的能力，也更容易得到开发和领导的认可。那么问题来了，刚刚提到了那么多方面，如果每个都这么做，这要耗费多少精力啊？所以，回到我们最初的想法，提出缺陷的意义是更好、更有效的服务于开发和测试团队之间的沟通和未来的回顾，大可不必拘泥于某种特定的格式，适合你的适合当前缺陷的才是最好的，并不是每一个项目都需要覆盖完美，只是一旦需要，我们希望能够看到它们。</p>
+</div><div class="cl-preview-section"><a id="anchor_10_virtual" class="virtual_anchor"></a><h2 id="难以重现的bug">难以重现的 BUG</h2>
+</div><div class="cl-preview-section"><p>在漫长的测试生涯中，我们总会碰上一些难以理解的 “诡异” 事情。偶尔我们发现了一个问题，又按照之前的步骤重新操作了一遍，咦，发现很诡异的事情发生了：刚刚的问题无法重现了！再次尝试多次，仍无法重现。于是，我们心安理得的骗自己：可能是刚才网络异常了吧。可是不知道什么时候，又偶遇了同样的问题，可是又难以重现，这时候该怎么办呢？</p>
+</div><div class="cl-preview-section"><p>首先，尽量在第一时间截图留痕，如果在问题第一次偶发时候没有在意，那么一旦重现失败后续又再次出现的时候，一定要截图存档。</p>
+</div><div class="cl-preview-section"><p>其次，尝试多次（我们暂定 20 次左右）仍然不能重现，不要继续浪费时间，尽快的去看当时发生问题时的日志，通过日志来追溯当时可能发生的情况，例如多人同步操作，数据库死锁，服务器断线等情况。</p>
+</div><div class="cl-preview-section"><p>接下来，通过当时的数据、环境、配置、特殊操作等再尽量多尝试几次，同时，可以与组内其他测试人员交叉测试，不管是否可以发现，都要把问题提出，并且通知开发，标识该问题为难以重现的 BUG，请开发人员与自己一同通过白盒或代码走查的方式尝试定位。</p>
+</div><div class="cl-preview-section"><p>最后，如果仍难以发现并修改，那么就需要及时评估该问题的影响范围，影响较小的留存后续跟踪，影响较大的则上报项目经理协调解决。</p>
+</div><div class="cl-preview-section"><a id="anchor_11_virtual" class="virtual_anchor"></a><h2 id="提出-bug-的四重境界">提出 BUG 的四重境界</h2>
+</div><div class="cl-preview-section"><p>就如同我们打游戏一样，同样一个英雄，在不同的玩家手里可以用出不一样的效果，测试亦然。同样是发现 BUG，不同的 tester 同样会有不同的境界。</p>
+</div><div class="cl-preview-section"><a id="anchor_12_virtual" class="virtual_anchor"></a><h3 id="第一重：筑基。">第一重：筑基。</h3>
+</div><div class="cl-preview-section"><p>顾名思义，这一重境界还是铸造基础阶段，我们能够找出问题，但是可能描述不太清楚。如：</p>
+</div><div class="cl-preview-section"><p><u>在进行添加购物车、结算操作时，报错。</u>上述的 BUG 描述仅仅能够做到发现问题，至于是什么操作，什么报错，并不能够指引开发人员去具体复现和定位。所以如果要打分的话，这样的 BUG 我可以给打 30 分。</p>
+</div><div class="cl-preview-section"><a id="anchor_13_virtual" class="virtual_anchor"></a><h3 id="第二重：灵寂。">第二重：灵寂。</h3>
+</div><div class="cl-preview-section"><p>在武侠中，这是能力大提升后的平稳阶段，也是步入更高殿堂的前阶段。在这重境界中，我们开始不但能够找到问题，也能够描述清楚问题。</p>
+</div><div class="cl-preview-section"><p><u>添加商品进入购物车，点击结算未发生跳转，错误信息页面提示：“error:null”。截图及日志见附件。</u></p>
+</div><div class="cl-preview-section"><p>这样的描述加上附件已经基本能够达到让开发人员看懂并着手解决了，在没有代码能力的前提下，可以算是将功能测试做到了不错的境界。所以，这样的描述可以打到 60 分。</p>
+</div><div class="cl-preview-section"><a id="anchor_14_virtual" class="virtual_anchor"></a><h3 id="第三重：元婴。">第三重：元婴。</h3>
+</div><div class="cl-preview-section"><p>这是真正步入修真殿堂的一步，对于测试来说，也是更进一步的体现。在这重境界中，我们开始去阅读、去审查代码，去尝试找出代码存在的问题。</p>
+</div><div class="cl-preview-section"><p><u>添加商品进入购物车，点击结算未发生跳转，错误信息页面提示：“error:null”。截图及日志见附件。根据日志排查，在 XX 类中 XX 行位置，报空指针异常，可能由于前边对 XX 参数未赋值。</u></p>
+</div><div class="cl-preview-section"><p>这样我们做到的不仅仅是发现问题，描述问题，同时定位错误发生的原因。这样我们可以达到 80 分。</p>
+</div><div class="cl-preview-section"><a id="anchor_15_virtual" class="virtual_anchor"></a><h3 id="第四重：大乘。">第四重：大乘。</h3>
+</div><div class="cl-preview-section"><p>巩固修为的果实，慢慢累积力量，直到圆满，也就意味着我们测试能力的大成，对我们的要求也就更高了，基本可以做到：<strong>教开发人员写代码</strong>。这也是我觉得测试的最高境界了。</p>
+</div><div class="cl-preview-section"><p><u>添加商品进入购物车，点击结算未发生跳转，错误信息页面提示：“error:null”。截图及日志见附件。根据日志排查，在 XX 类中 XX 行位置，报空指针异常，分析由于前边对 a 参数未赋值。建议修改：从前边调用用户信息查询接口的返回对象中，将其中的 b 参数赋值到 a 参数中，再调用结算接口。</u></p>
+</div><div class="cl-preview-section"><p>在这重境界里，对我们的要求是：找到问题、描述清楚、定位问题且提供解决思路。能做到这样的话，我们可以打个 99 分了。教开发写代码，是我们做功能测试的巅峰，也是大家不断提升自己能力的体现。</p>
+</div><div class="cl-preview-section"><a id="anchor_16_virtual" class="virtual_anchor"></a><h2 id="bug的后续跟踪">BUG 的后续跟踪</h2>
+</div><div class="cl-preview-section"><p>BUG 提交完不是结束，只是一个流程的开始。你仍然需要实时跟踪 BUG 的进展，甚至对于一些优先等级高的 BUG，还需要去关注修改的进度。通常请款下一个 BUG 的生命周期是：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img1.sycdn.imooc.com/5d770b750001640005910638.png" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p>所以，按照上边来说，我们的状态变化就会是：<strong>New -&gt; Open -&gt; Fixed -&gt; Close</strong> 。</p>
+</div><div class="cl-preview-section"><p>当然，除此之外，任何一个大型项目结束后，还需要对 BUG 进行分析和汇总，分析问题出现的原因及未来避免方案。总结开来，BUG 是我们测试生涯中不可缺少的一部分，同时也不是非常简单的工作，我们需要不断磨砺自己的技术能力，提出高质量的 BUG，也让我们未来的测试道路越走越好，越走越宽。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/906">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            08 厉兵秣马：如何设计优秀的测试用例
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/908">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            10 从青铜到黄金：功能测试进阶路上还需要哪些非测试技能
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">
+                </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

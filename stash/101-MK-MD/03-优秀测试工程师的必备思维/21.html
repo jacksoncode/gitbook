@@ -1,0 +1,110 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        21 求同存异：论移动测试与传统测试
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-11-27 14:53:20
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img4.mukewang.com/5d96a79b0001009406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">衡量一个人的真正品格，是看他在知道没人看见的时候干些什么。<p class="author">——孟德斯鸠</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>随着手机的重度使用，近几年来再谈到测试，APP 测试是不可或缺的一环，尤其是互联网行业，会把 60% 到 70% 的精力投入到 APP 的研发测试工作中去，所以在面试、在入职工作的过程中，每个人都面临着移动 APP 带来的挑战。</p>
+</div><div class="cl-preview-section"><p>包括我自己在内，在面试过程中也会很多嘴的问一句：有没有做过 APP 测试？觉得 APP 测试跟传统我们在做测试的时候有什么相同和不同之处呢？尽管我们所要做的事情大多数时候与 APP 并无关联，但是仍然很希望我的面试者可以有这方面的思考和认识。</p>
+</div><div class="cl-preview-section"><p>如果你遇到像我这样的面试官问到了这样的问题，你该如何作答呢？</p>
+</div><div class="cl-preview-section"><p>对于这个问题千万不要张嘴就回答：没做过 APP 测试相关的，不太清楚。俗话说 “没吃过猪肉还没见过猪跑么”，作为每天手机不离手的一份子，如果直接说不清楚不会就太差强人意了。</p>
+</div><div class="cl-preview-section"><p>所以先说一下 APP 测试与传统测试的相同点：</p>
+</div><div class="cl-preview-section"><ol>
+<li>测试的流程相同：其实不仅仅是测试流程，整个项目流程也大体一致，从需求到设计再到测试执行，其中的测试活动是没有区别的。</li>
+<li>从测试类型来说，APP 测试与传统测试也都需要进行功能测试、性能测试、安全测试、验收测试等各个阶段。</li>
+<li>在功能测试设计上也没有太大的变化，我们同样需要通过边界值、等价类、判定表、错误推测等各种方法来设计测试用例。</li>
+</ol>
+</div><div class="cl-preview-section"><p>当然，APP 测试在细节上还是要比传统测试复杂一些的，我们一起来从几个方面看看它与传统测试到底有哪些不同：</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="安装、卸载与升级更新测试">1. 安装、卸载与升级更新测试</h3>
+</div><div class="cl-preview-section"><p>这是我们在传统的 WEB 测试中所不具备的场景，也是移动测试的特殊所在。测试一个 APP 它的安装卸载和更新过程，最基本就要考虑不同的操作系统、不同的系统版本、不同的厂商 UI 的修改以及不同的应用商店带来的影响。</p>
+</div><div class="cl-preview-section"><p>先来说说安装过程，由于移动应用的属性，我们要考虑安装过程中是否能取消；如果过程中出现意外，比如死机了、没电了、自动重启了或者断网了怎么办；再有安装空间不足了会怎样等等。</p>
+</div><div class="cl-preview-section"><p>同样的，升级过程也是一样要考虑到，是否强制升级；新老版本是否兼容；升级过程中意外情况是否正常回滚；升级过程用户的数据、状态的保留；跨版本更新处理等。</p>
+</div><div class="cl-preview-section"><p>相对而言，卸载还是更简单一些的，只是包含卸载结果和工程的意外处理。当然，作为一个手机重度用户我们知道，APP 删除仍然会有部分数据留存，这也是我们要测试的一部分。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="耗电量和发热测试">2. 耗电量和发热测试</h3>
+</div><div class="cl-preview-section"><p>我们在使用电脑的时候往往不 care 电量的问题，但是对于移动 APP 来说，耗电量也是决定性的因素。我自己使用的华为手机一旦出现某应用耗电量过大的情况，就会自动给予一个提醒，那么只要不是我自己的重度应用或者有可以替代的应用，我一定会考虑把它卸载。发热也是一样，很多时候这是跟耗电同时发生的。</p>
+</div><div class="cl-preview-section"><p>所以，我们在测试的过程中要额外考虑到 APP 正常运行频繁操作、APP 运行无操作和 APP 后台运行三种情况下耗电量情况。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="流量测试">3. 流量测试</h3>
+</div><div class="cl-preview-section"><p>其实曾经的我们对于流量的关注更甚于耗电量之上，随着流量费用的降低和无限流量套餐的普及，流量的耗费已经不再是决定性的因素。但是作为 APP 测试而言，我们仍然需要考虑，不应让自己的 APP 产生过多的流量，增加用户有可能存在的流量费用。</p>
+</div><div class="cl-preview-section"><p>通常情况下测试的工具可以 Android 系统的 adb 和 IOS 系统的 Xcode 轻松分析监控，但是监控数据不是目的，我们的目的在于怎样减少流量。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="兼容性测试">4. 兼容性测试</h3>
+</div><div class="cl-preview-section"><p>WEB 端测试的时候也需要进行兼容性测试，但是关注的细节不太一样，对于 WEB 来说，最重要的兼容性就是浏览器的兼容，而 APP，要综合考虑到不同操作系统、不同屏幕大小、不同语言设置、不同网络连接、不同主流机型上的兼容性，甚至还要考虑在同一个设备上与其他主流  APP 的兼容性。比如我们开发一款游戏 APP，如果它跟微信、支付宝不兼容，那么想来用户一定是卸载你的 APP。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="弱网测试">5. 弱网测试</h3>
+</div><div class="cl-preview-section"><p>与 WEB 应用更大不同的地方在于移动应用的用户使用 app 产品的过程中，不可能永远都处在 WIFI 满格的情况下。在地铁里、公交上，甚至是电梯、车库、隧道等等的场景里，我们的 APP 会如何表现，这同样是我们的关注的重点。所以，对于移动应用测试来说，要保证能够在网络环境不良的复杂网络环境下的质量。</p>
+</div><div class="cl-preview-section"><p>目前来说主流的弱网测试工具主要有三种：</p>
+</div><div class="cl-preview-section"><ul>
+<li>Fiddler</li>
+<li>NEWT（Network Emulator for Windows Toolkit）</li>
+<li>ATC（Augmented Traffic Control）</li>
+</ul>
+</div><div class="cl-preview-section"><p>Fiddler 使用简单，但是归根结底还是以抓包为主，不是专业弱网工具；所以我们在专业进行弱网测试的时候还是选择微软的 NEWT 或者 Facebook 的 ATC 更多一点，如果考虑到 ATC 开源的属性，可以把 ATC 当做首选。</p>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="中断测试">6. 中断测试</h3>
+</div><div class="cl-preview-section"><p>中断测试是说我们在 APP 运行的过程中，由于其他事件影响或者中断了当前应用的相关测试。这是我觉得 APP 测试最异于传统测试的部分，也是我们在测试过程中最容易疏忽的部分。</p>
+</div><div class="cl-preview-section"><p>比如我们都遇到过的情况：APP 正在用，突然来了个电话，或者突然又短信、微信或者其他 APP 的推送；又或者我们同时开着多个 APP，来回切换使用等等，这样的场景会很多，所以需要你在第一时间总结一下可能会出现的中断场景，可以维护到自己的常用测试集中，未来所有的 APP 测试都可以遵循同一套用例完成。</p>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="手势测试">7. 手势测试</h3>
+</div><div class="cl-preview-section"><p>这是移动端的另一大特性，用户的手势操作需要在 APP 中进行或多或少的适配。</p>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h3 id="权限测试">8. 权限测试</h3>
+</div><div class="cl-preview-section"><p>移动端的权限控制，比如 APP 是否可以使用摄像头、是否可以使用麦克风等对 APP 自身的影响、权限不足时的提示和引导等，这也是我们在 APP 测试时候要关注的方面。</p>
+</div><div class="cl-preview-section"><a id="anchor_8_virtual" class="virtual_anchor"></a><h3 id="客户端性能">9. 客户端性能</h3>
+</div><div class="cl-preview-section"><p>一般情况下，在 WEB 端我们更强调的是服务端性能，也就是接口的性能，然而到移动端时候，我们除了要考虑服务端的接口性能，还要同时考虑客户端的性能问题，这包括：CPU、内存、前边提过的耗电量和流量、FPS 等等。不然，一个明明很好的应用，如果只能在高端机上运行，一旦在低端、老手机上边安装就会卡到爆，那也是必然不行的。</p>
+</div><div class="cl-preview-section"><a id="anchor_9_virtual" class="virtual_anchor"></a><h3 id="极限测试">10. 极限测试</h3>
+</div><div class="cl-preview-section"><p>这里我说的极限测试就是移动 APP 在一定临界状态下的行为，比如内存、系统存储占用超过 95%、切换飞行模式、时区切换、持久使用下的内存泄露等等。</p>
+</div><div class="cl-preview-section"><a id="anchor_10_virtual" class="virtual_anchor"></a><h3 id="非功能测试">11. 非功能测试</h3>
+</div><div class="cl-preview-section"><p>直到最后，我们才提到非功能测试，或者我们把它叫做用户体验测试。现在是一个 APP 泛滥的时代，没有哪个新的 APP 能够垄断某一个领域，只要一个新的思路登场，立刻出现很多竞品。所以，如果留住用户和吸引其他用户，就需要有更好的体验。用户体验测试在 APP 中显得尤为重要。</p>
+</div><div class="cl-preview-section"><p>当然，体验这个东西是一定有很强烈的主观性的。我觉得好用的功能、我认为好看的建筑、我感觉帅气的打扮也许到了你眼中一无是处。所以一个优秀的用户体验测试，不仅仅要依靠测试人员自己的经验，还要考虑到，真实用户的反馈。这时候就产生了关于用户体验的 α 测试以及金丝雀发布等运维手段。</p>
+</div><div class="cl-preview-section"><p>OK，聊了很多关于移动测试和传统测试的不同，本来是想更加短小精悍的给大家一个面试的答案，但是为了能让大家更好的理解，所以扩展开来聊了这么多。那么，就还请大家自己理解并总结一下，回到开篇的问题：</p>
+</div><div class="cl-preview-section"><p><em>如果你被问到：你觉得 APP 测试跟传统我们在做测试的时候有什么相同和不同之处，你该如何作答呢？</em></p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/918">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            20 如何用代码框架实现接口测试？
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/920">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            22 探索移动自动化的世界
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

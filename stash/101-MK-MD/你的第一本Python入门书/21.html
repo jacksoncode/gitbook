@@ -1,0 +1,293 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        21 给凡人添加超能力：入手装饰器
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-11 10:30:51
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d9fe90a0001b51b06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">富贵必从勤苦得。<p class="author">——杜甫</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>在学习装饰器前，我们先来了解两个函数概念。</p>
+</div><div class="cl-preview-section"><h2 id="函数中定义函数">函数中定义函数</h2>
+</div><div class="cl-preview-section"><p>在 Python 中，函数内部是可以嵌套地定义函数的。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">print_twice</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">repeat</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word <span class="token operator">*</span> times
+    
+    <span class="token keyword">print</span><span class="token punctuation">(</span>repeat<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; print_twice('go ')<br>
+gogo</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>内层函数只能在包裹它的外层函数中使用，而不能在外层函数外使用。比如上面的 <code>repeat()</code> 可以在 <code>print_twice()</code> 中使用，但是不能在  <code>print_twice()</code> 的外部使用。</p>
+</div><div class="cl-preview-section"><p>另外，内层函数中可以使用外层函数的参数或其它变量。如上面的参数 <code>word</code>。</p>
+</div><div class="cl-preview-section"><h2 id="函数返回函数">函数返回函数</h2>
+</div><div class="cl-preview-section"><p>之前我们学习过，函数可以作为另一个函数的参数。类似的，函数的返回值也可以是一个函数。</p>
+</div><div class="cl-preview-section"><p>如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">print_words</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">repeat</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word <span class="token operator">*</span> times
+    
+    <span class="token keyword">return</span> repeat
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; f = print_words(‘go’)<br>
+&gt;&gt;&gt; f<br>
+&lt;function print_words..repeat at 0x10befe620&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>我们调用 <code>print_words()</code> 并用变量 <code>f</code> 接收其返回值，<code>f</code> 是个函数，是 <code>print_words</code> 下的 <code>repeat</code> 函数。</p>
+</div><div class="cl-preview-section"><p>既然 <code>f</code> 是个函数，自然可以被调用，这也就相当于调用 <code>repeat()</code>：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; f(2)<br>
+‘gogo’</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：我们直接调用 <code>f</code>（也就是 <code>repeat()</code>）时，<code>repeat()</code> 内部会使用变量 <code>word</code>，而这个变量时定义在外层函数 <code>print_words()</code> 中的，却会一直伴随 <code>repeat()</code> 而存在，这在 Python 中叫作闭包。</p>
+</blockquote>
+</div><div class="cl-preview-section"><h2 id="装饰器是什么">装饰器是什么</h2>
+</div><div class="cl-preview-section"><p>好了，回到正题，来看看什么是装饰器。我们在《类进阶》章节中介绍过类方法和静态方法的定义方式，还记得吗，定义它们时需要用到 <code>@classmethod</code> 和 <code>@staticmethod</code>，它们就是装饰器。写法为 <code>@装饰器名称</code>。</p>
+</div><div class="cl-preview-section"><p><strong>装饰器</strong>用来增强一个现有函数的功能，并且不改变这个函数的调用方式。这种增强是非侵入式的，也就是说无需直接修改函数内部的代码，而是在函数的外部做文章。</p>
+</div><div class="cl-preview-section"><p>举个例子，假设我们有这样一个函数：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello()<br>
+Hello!</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这个函数非常简单，每次调用会输出「Hello!」，假如我们想在每次输出「Hello!」的同时附带上当前的时间，像这样：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello()<br>
+[ 2019-09-14 16:38:10.942802 ]<br>
+Hello!<br>
+&gt;&gt;&gt; say_hello()<br>
+[ 2019-09-14 16:42:58.409742 ]<br>
+Hello!</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>如果想具备上面的功能，但又不想修改 <code>say_hello()</code> 函数的内部实现，该怎么做？</p>
+</div><div class="cl-preview-section"><p>这就是装饰器的典型使用场景了——非侵入的情况下让函数具备更多的功能。</p>
+</div><div class="cl-preview-section"><p>假设我们已经有了一个能满足该需求的装饰器 <code>@time</code> ，只要像这样来装饰 <code>say_hello()</code> 即可：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">@time
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span> 
+</code></pre>
+</div><div class="cl-preview-section"><p>函数的调用方式依然不变：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello()</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>当然，虽然 Python 中内置有一些装饰器，如 <code>@classmethod</code>、<code>@staticmethod</code>，但并没 <code>@time</code>，所以我们需要自己来定义它。</p>
+</div><div class="cl-preview-section"><h2 id="自定义装饰器">自定义装饰器</h2>
+</div><div class="cl-preview-section"><p>我们来自定义之前所说的装饰器 <code>@time</code>，要求是使用它可以在函数调用时输出调用时间。</p>
+</div><div class="cl-preview-section"><p>这里直接给出 <code>@time</code> 的实现：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> datetime    <span class="token comment"># 日期时间相关库，用于后续获取当前时间</span>
+
+<span class="token keyword">def</span> <span class="token function">time</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'['</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+</code></pre>
+</div><div class="cl-preview-section"><p>我们暂且不关注具体的实现细节，先使用一下看看：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">@time
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello()<br>
+[ 2019-09-14 16:42:58.409742 ]<br>
+Hello!<br>
+&gt;&gt;&gt; say_hello()<br>
+[ 2019-09-15 09:44:06.155869 ]<br>
+Hello!</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>没有问题，效果和预期相同！那这是什么原理呢？</p>
+</div><div class="cl-preview-section"><h3 id="装饰器原理">装饰器原理</h3>
+</div><div class="cl-preview-section"><p>其实，</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">@time
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>等效于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+
+say_hello <span class="token operator">=</span> time<span class="token punctuation">(</span>say_hello<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>也就是说，我们用 <code>@time</code> 装饰 <code>say_hello()</code> 时，Python 会在背后做了这样一个操作（<strong>重点</strong>）：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">say_hello <span class="token operator">=</span> time<span class="token punctuation">(</span>say_hello<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><strong><code>@time</code>（包括所有装饰器）本质上是个以函数作为参数，并返回函数的函数</strong>。不妨回过头来观察下 <code>@time</code> 实现:</p>
+</div><div class="cl-preview-section"><blockquote>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> datetime    <span class="token comment"># 日期时间相关库，用于后续获取当前时间</span>
+
+<span class="token keyword">def</span> <span class="token function">time</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'['</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+</code></pre>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>say_hello = time(say_hello)</code> 这句代码将函数 <code>say_hello</code> 作为参数来调用 <code>time()</code>，<code>time()</code> 将其内部定义的函数返回了出来，并替换了函数 <code>say_hello</code>。结合装饰器实现来看， <code>say_hello()</code> 其实变成了 <code>time()</code> 中的 <code>wrapper()</code>。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello<br>
+&lt;function time..wrapper at 0x10befea60&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>那就来具体看下 <code>wrapper()</code>：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'['</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>wrapper()</code> 其实也非常简单，其内部的 <code>print('[', datetime.datetime.now(), ']')</code> 以 <code>[ 时间 ]</code> 的格式将当前时间输出出来，达成了「输出函数调用时间」的目的。其中 <code>datetime.datetime.now()</code> 用于获取当前的时间。</p>
+</div><div class="cl-preview-section"><p>最后一句 <code>return func(*args, **kw)</code> 比较关键，这里调用函数 <code>func()</code> 并将其结果返回出去。<code>func()</code> 是什么？它就是 <code>say_hello()</code>。最初 <code>say_hello</code> 作为参数被传入 <code>time()</code> 中，其参数名便是 <code>func</code>。</p>
+</div><div class="cl-preview-section"><p>参数 <code>*args</code> 和 <code>**kw</code> 是什么？还记得我们在《函数进阶》中的内容吗，<code>*args</code> 可以接收一切非关键字参数，而 <code>**kw</code> 可以接收一切关键字参数，两个结合起来一起使用就可以接收一切参数了。用在这里的作用是，接收调用 <code>say_hello()</code> 时的所有参数，并悉数传给 <code>func()</code>。</p>
+</div><div class="cl-preview-section"><p>稍作梳理我们就能明白，装饰器之所以能够增强一个函数的功能，其实就是将被装饰函数用新函数替换，虽然还是同一个函数名，但函数内部实现已经变了。而这个新函数的内部在添加了一些功能的后，还会调用之前被装饰的函数。这样就相当于对被装饰的函数做了非侵入的扩展。</p>
+</div><div class="cl-preview-section"><h2 id="functools.wraps-装饰器">functools.wraps 装饰器</h2>
+</div><div class="cl-preview-section"><p>当一个函数不被装饰器装饰时，其函数名称就是自己。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; def say_hello():<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘Hello!’)<br>
+…<br>
+&gt;&gt;&gt; say_hello<br>
+&lt;function say_hello at 0x10efbb1e0&gt;</p>
+<p>&gt;&gt;&gt; say_hello.__name__<br>
+‘say_hello’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>在解释器中直接输入 <code>say_hello</code>，显示其为 <code>function say_hello</code>。使用 <code>say_hello.__name__</code>，可以直接获取到其函数名称，此处显示为 <code>say_hello</code>。</p>
+</div><div class="cl-preview-section"><p>如果我们用装饰器 <code>@time</code> 来修饰这个函数，那结果就不同了：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; @time<br>
+… def say_hello():<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  print(‘Hello!’)<br>
+…<br>
+&gt;&gt;&gt; say_hello<br>
+&lt;function time..wrapper at 0x10efbb048&gt;</p>
+<p>&gt;&gt;&gt; say_hello.__name__<br>
+‘wrapper’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到其名字信息被装饰器中的函数 <code>wrapper</code> 覆盖了。</p>
+</div><div class="cl-preview-section"><p>是的，由于装饰器本质上是用一个新的函数来替换被装饰的函数，所以函数的元信息会被覆盖。</p>
+</div><div class="cl-preview-section"><p>那有没有什么方式保留被装饰函数的元信息呢？有的，可以在定义装饰器时使用 <code>@functools.wraps</code> 装饰器。使用如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> functools
+
+<span class="token keyword">def</span> <span class="token function">time</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    @functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'['</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello<br>
+&lt;function say_hello at 0x10ef5c378&gt;</p>
+<p>&gt;&gt;&gt; say_hello.__name__<br>
+‘say_hello’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到使用 <code>@functools.wraps</code> 后，元信息恢复如初，不留痕迹。</p>
+</div><div class="cl-preview-section"><h2 id="带参数的装饰器">带参数的装饰器</h2>
+</div><div class="cl-preview-section"><p>既然装饰器本质上是个函数，那这个函数能不能有参数呢？答案是可以有。</p>
+</div><div class="cl-preview-section"><p>举个例子，刚才我们输出的时间格式是 <code>[ 2019-09-14 16:42:58.409742 ]</code>，如果我们想要自行指定这个格式，可以考虑用装饰器参数的形式来设置。</p>
+</div><div class="cl-preview-section"><p>带时间格式的装饰器如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> functools
+
+<span class="token keyword">def</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token builtin">format</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        @functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+        <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> wrapper
+    <span class="token keyword">return</span> decorator
+</code></pre>
+</div><div class="cl-preview-section"><p>可以看到，这回装饰器变成了三层函数嵌套的形式。是的，如果需要指定装饰器的参数，那么就需要在原来装饰器的基础上在再加一层函数。</p>
+</div><div class="cl-preview-section"><p><code>wrapper()</code> 中原本的 <code>print('[', datetime.datetime.now(), ']')</code>  被修改为 <code>print(datetime.datetime.now().strftime(format))</code>，其中的 <code>format</code> 便是装饰器的参数，也就是时间格式。</p>
+</div><div class="cl-preview-section"><p>使用时，在装饰器 <code>@time</code> 后添加括号并写上参数：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">@time<span class="token punctuation">(</span><span class="token string">'%Y/%m/%d %H:%M:%S'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; say_hello()<br>
+2019/09/15 10:00:24<br>
+Hello!</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到时间格式已经根据我们的设置而生效。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：</p>
+<p><code>'%Y/%m/%d %H:%M'</code> 是 <code>datetime</code> 包中用于指定时间格式的字符串，其中：</p>
+<ul>
+<li><code>%Y</code> 表示年</li>
+<li><code>%m</code> 表示月</li>
+<li><code>%d</code> 表示天</li>
+<li><code>%H</code> 表示小时</li>
+<li><code>%M</code> 表示分钟</li>
+<li><code>%S</code> 表示秒。</li>
+</ul>
+</blockquote>
+</div><div class="cl-preview-section"><h3 id="带参数的装饰器原理">带参数的装饰器原理</h3>
+</div><div class="cl-preview-section"><p>带参数的装饰器的实现为什么要三层函数嵌套？看了下面的等效代码你就明白了！</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">@time<span class="token punctuation">(</span><span class="token string">'%Y/%m/%d %H:%M:%S'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>等效于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span>
+
+say_hello <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token string">'%Y/%m/%d %H:%M:%S'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>say_hello<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>而不带参数的装饰器的等效代码是 <code>say_hello = time(say_hello)</code>。对比可以看出，带参数的装饰器的等效代码多了一次函数调用，通过这种方式将装饰器参数传递到内部的两层函数中，这之后便回到了不带参数的装饰器的情形。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/829">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            20 从小独栋升级为别墅区：函数式编程
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/831">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            22 Python 的小招数：其它常用语言特性
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/4645584/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/545868ff0001bfbb02200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/4645584/articles" target="_blank">                                         <div class="name l">游云浮世绘</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     say_hello = time('%Y/%m/%d %H:%M:%S')(say_hello)  老师您好，请问下文章最后这个是什么意思呢，time（A）（B） 是啥意思？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3281">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3281">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3281" data-uid="4645584" data-src="/read/46/article/830" data-type="15">举报</div>                                                                          <div class="time r">2019-12-16</div>                                 </div>                             </div>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

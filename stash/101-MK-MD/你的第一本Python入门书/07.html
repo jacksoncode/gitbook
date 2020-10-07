@@ -1,0 +1,450 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        07 不只有一条路—分支和循环
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-08-28 10:04:03
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img3.mukewang.com/5d65e10b0001764806400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">不经一翻彻骨寒，怎得梅花扑鼻香。<p class="author">——宋帆</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>前面的章节中我们学习了数据类型、变量、赋值、数值运算，并且用这些知识编写程序来做一些简单的运算，比如「计算一年有多少秒」。像这样的程序，执行流程是完全固定的，每个步骤事先确定好，运行时一步一步地线性地向下执行。</p>
+</div><div class="cl-preview-section"><p>但是很多时候程序的功能会比较复杂，单一的执行流程并无法满足要求，程序在运行时可能需要对一些条件作出判断，然后选择执行不同的流程。这时就需要<strong>分支</strong>和<strong>循环</strong>语句了。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="input、print-和-int-函数">input()、print() 和 int() 函数</h3>
+</div><div class="cl-preview-section"><p>在开始学习分支和循环前，为了可以让程序与我们交互，先来学习三个函数。至于什么是函数，我们暂且把它看作是程序中具有某种功能的组件，下一小节中将会详细介绍函数的概念。</p>
+</div><div class="cl-preview-section"><h4 id="input-函数">input() 函数</h4>
+</div><div class="cl-preview-section"><p>如果想要通过命令行与程序交互，可以使用 <code>input()</code> 函数。</p>
+</div><div class="cl-preview-section"><p><code>input()</code> 函数可以在代码执行到此处时输出显示一段提示文本，然后等待我们的输入。在输入内容并按下回车键后，程序将读取输入内容并继续向下执行。读取到的输入内容可赋值给变量，供后续使用。写法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">读取到的输入 <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'提示文本'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>age = input(‘请输入你的年龄：’)</strong><br>
+请输入你的年龄：30<br>
+&gt;&gt;&gt; age<br>
+’30’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这行代码会在命令行中显示「请输入你的年龄：」，然后等待输入，读取到输入内容后赋值给 <code>age</code> 变量。</p>
+</div><div class="cl-preview-section"><p><code>input()</code> 返回的结果是字符串类型，如 <code>'30'</code>。如果我们需要整数型，可以使用 <code>int()</code> 函数进行转换。</p>
+</div><div class="cl-preview-section"><h4 id="int-函数">int() 函数</h4>
+</div><div class="cl-preview-section"><p><code>int()</code> 函数可以将字符串、浮点型转换整数型。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">int</span><span class="token punctuation">(</span>字符串或浮点数<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>将字符串类型 ‘1000’ 转换为整数型 1000：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>int(‘1000’)</strong><br>
+1000</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>将浮点数 3.14 转化为整数：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>int(3.14)</strong><br>
+3</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="print-函数">print() 函数</h4>
+</div><div class="cl-preview-section"><p><code>print()</code> 函数可以将指定的内容输出到命令行中。写法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'要输出的内容'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>print(‘Hello World!’)</strong><br>
+Hello World!<br>
+&gt;&gt;&gt; <strong>print(‘你的年龄是’, 20)</strong><br>
+你的年龄是 20</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>要输出的内容放在括号中，多项内容时用逗号分隔，显示时每项以空格分隔。</p>
+</div><div class="cl-preview-section"><h4 id="input、print-示例">input()、print() 示例</h4>
+</div><div class="cl-preview-section"><p>我们可以把 <code>input()</code> 和 <code>print()</code> 结合起来。如下面这两行代码将在命令行中提示「请输入你的年龄：」，然后等待输入，手动输入年龄后按下回车键，将显示「你的年龄是 x」。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">age <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入你的年龄：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你的年龄是'</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>我们把代码保存到文件中，文件命名为 <code>age.py</code>， 然后执行下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入你的年龄：18<br>
+你的年龄是 18</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="分支">分支</h3>
+</div><div class="cl-preview-section"><p>上一个例子很简单，接收一个输入内容然后把该内容显示出来。现在难度升级。在刚才代码的基础上，如果所输入的年龄小于 18 岁，那么在最后再显示一句勉励语——「好好学习，天天向上」。如何来实现？</p>
+</div><div class="cl-preview-section"><h4 id="if-语句">if 语句</h4>
+</div><div class="cl-preview-section"><p>如果想要表达「如果……」或者「当……」这种情形，需要用到 <code>if</code> 语句。它的写法是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>它的执行规则是，若「条件」满足，则执行 <code>if</code> 下的「代码块」，若「条件」不满足则不执行。</p>
+</div><div class="cl-preview-section"><p><strong>条件满足指的是，条件的结果为布尔值 <code>True</code>，或非零数字，或非空字符串，或非空列表。</strong></p>
+</div><div class="cl-preview-section"><p><strong>代码块</strong>就是一段代码（可以是一行或多行），这段代码作为一个整体以缩进的形式嵌套在 <code>if</code> 下面。按照通常的规范，缩进以 4 个空格表示。</p>
+</div><div class="cl-preview-section"><p>回到我们之前的需求上，「当年龄小于 18 岁」就可以通过 <code>if</code> 语句来实现。完整代码如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">age <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入你的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 注意此处用 `int()` 将 `input()` 的结果由字符串转换为整数型</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你的年龄是'</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好好学习，天天向上'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>保存在文件中，执行一下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入你的年龄：17<br>
+你的年龄是 17<br>
+好好学习，天天向上</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入你的年龄：30<br>
+你的年龄是 30</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，当所输入的年龄小于 18 时，程序在最后输出了「好好学习，天天向上」，而输入年龄大于 18 时则没有。</p>
+</div><div class="cl-preview-section"><h4 id="else-语句">else 语句</h4>
+</div><div class="cl-preview-section"><p>又在上面的基础上，如果输入的年龄大于等于 18 岁，输出「革命尚未成功，同志任需努力」。该如何实现？</p>
+</div><div class="cl-preview-section"><p>我们可以在 <code>if</code> 语句之后紧接着使用 <code>else</code> 语句，当 <code>if</code> 的条件不满足时，将直接执行 <code>else</code> 的代码块。写法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件<span class="token punctuation">:</span>
+    代码块 <span class="token number">1</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    代码块 <span class="token number">2</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>若条件满足，则执行代码块 1，若不满足则执行代码块 2。所以之前的需求我们可以这样实现：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">age <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入你的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你的年龄是'</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好好学习，天天向上'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'革命尚未成功，同志仍需努力'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>执行下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入你的年龄：18<br>
+你的年龄是 18<br>
+革命尚未成功，同志任需努力</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入你的年龄：17<br>
+你的年龄是 17<br>
+好好学习，天天向上</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="elif-语句">elif 语句</h4>
+</div><div class="cl-preview-section"><p>我们可以看到，<code>if</code> 和 <code>else</code> 表达的是「如果……否则……」这样的二元对立的条件，非此即彼。但有时我们还需要表达「如果……或者……或者……否则……」这样多个条件间的选择。</p>
+</div><div class="cl-preview-section"><p>举个例子，下表是年龄和其对应的人生阶段。</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>年龄</th>
+<th>人生阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-6 岁</td>
+<td>童年</td>
+</tr>
+<tr>
+<td>7-17 岁</td>
+<td>少年</td>
+</tr>
+<tr>
+<td>18-40 岁</td>
+<td>青年</td>
+</tr>
+<tr>
+<td>41-65 岁</td>
+<td>中年</td>
+</tr>
+<tr>
+<td>65 岁之后</td>
+<td>老年</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>当我们在程序中输入一个年龄时，输出对应的人生阶段。该如何实现？我们先用汉语来描述一下代码逻辑（这种自然语言描述的代码逻辑，也叫作<strong>伪代码</strong>）：</p>
+</div><div class="cl-preview-section"><pre><code>如果年龄小于等于 6:
+    输出童年
+如果年龄介于 7 到 17:
+    输出少年
+如果年龄介于 18 到 40:
+    输出青年
+如果年龄介于 41 到 65:
+    输出中年
+否则:
+    输出老年 
+</code></pre>
+</div><div class="cl-preview-section"><p>可以看到，我们需要依次进行多个条件判断。要实现它就要用到 <code>elif</code> 语句了，字面上它是 else if 的简写。</p>
+</div><div class="cl-preview-section"><p><code>elif</code> 置于 <code>if</code> 和 <code>else</code> 之间，可以有任意个：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件 <span class="token number">1</span><span class="token punctuation">:</span>
+    代码块 <span class="token number">1</span>
+<span class="token keyword">elif</span> 条件 <span class="token number">2</span><span class="token punctuation">:</span>
+    代码块 <span class="token number">2</span>
+<span class="token keyword">else</span>
+    代码块 <span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>之前根据年龄输出人生阶段的需求，可以这样实现：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">age <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> age <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'童年'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">7</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span><span class="token number">17</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'少年'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">18</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">40</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'青年'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">41</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">65</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'中年'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老年'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 age.py<br>
+请输入年龄：3<br>
+童年<br>
+➜  ~ python3 age.py<br>
+请输入年龄：17<br>
+少年<br>
+➜  ~ python3 age.py<br>
+请输入年龄：30<br>
+青年<br>
+➜  ~ python3 age.py<br>
+请输入年龄：65<br>
+中年<br>
+➜  ~ python3 age.py<br>
+请输入年龄：100<br>
+老年</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="分支语句小结">分支语句小结</h4>
+</div><div class="cl-preview-section"><p>如上所述，<code>if</code> 可以配合 <code>elif</code> 和 <code>else</code> 一起使用。代码执行时，将会从第一个条件开始依次验证判断，若其中某个条件满足，则执行对应的代码块，此时后续条件将直接跳过不再验证。</p>
+</div><div class="cl-preview-section"><p>一个 <code>if</code>-<code>elif</code>-<code>else</code> 组合中，<code>elif</code> 可出现任意次数，<code>else</code> 可出现 0 或 1 次。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="while-循环">while 循环</h3>
+</div><div class="cl-preview-section"><p>之前介绍的 <code>if</code> 语句，是根据条件来选择执行还是不执行代码块。我们还有一种很重要的场景——根据条件来判断代码块该不该被重复执行，也就是<strong>循环</strong>。</p>
+</div><div class="cl-preview-section"><p>在 Python 中可以使用 <code>while</code> 语句来执行循环操作，写法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">while</span> 条件<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>它的执行流程是，从 <code>while 条件</code>这句出发，判断条件是否满足，若满足则执行代码块，然后再次回到 <code>while 条件</code>，判断条件是否满足……循环往复，直到条件不满足。</p>
+</div><div class="cl-preview-section"><p>可以看到，如果这里的条件一直满足且固定不变，那么循环将无穷无尽地执行下去，这称之为<strong>死循环</strong>。一般情况下我们很少会刻意使用死循环，更多的是让条件处于变化中，在循环的某一时刻条件不被满足然后退出循环。</p>
+</div><div class="cl-preview-section"><h4 id="循环示例">循环示例</h4>
+</div><div class="cl-preview-section"><p>举个例子，如何输出 100 次「你很棒」？</p>
+</div><div class="cl-preview-section"><p>显然我们可以利用循环来节省代码，对循环条件做一个设计，让它刚好执行 100 次后结束。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">count <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">while</span> count <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你很棒'</span><span class="token punctuation">)</span>
+    count <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>利用一个计数器 <code>count</code> 让它保存循环的次数，当 <code>count</code> 小于 100 就执行循环，代码块每执行一次就给 <code>count</code> 加 <code>1</code>。我们在大脑中试着来模拟这个流程，用大脑来调试（Debug）。</p>
+</div><div class="cl-preview-section"><p>将代码写入文件 loop.py，执行下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 loop.py<br>
+你很棒<br>
+你很棒<br>
+你很棒<br>
+…</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>程序将如预期输出 100 行「你很棒」。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：<code>count = count + 1</code> 可以简写为 <code>count += 1</code></p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="条件的与、或、取反">条件的与、或、取反</h3>
+</div><div class="cl-preview-section"><p><code>if</code> 语句和 <code>while</code> 语句中的条件可以由多个语句组合表达。</p>
+</div><div class="cl-preview-section"><h4 id="and-关键字">and 关键字</h4>
+</div><div class="cl-preview-section"><p>要表达多个条件同时满足的情况，可以使用 <strong><code>and</code> 关键字</strong>。使用 <code>and</code> 关键字时，在所有并列的条件均满足的情况下结果为 <code>True</code>。至少一个条件不满足时结果为 <code>False</code>。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 2 &gt; 1 <strong>and</strong> ‘abc’ == ‘abc’ <strong>and</strong> True<br>
+True<br>
+&gt;&gt;&gt; 1 &gt; 0 <strong>and</strong> 0 != 0<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>在 <code>if</code> 语句中可以这样使用 <code>and</code> 关键字 ：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件<span class="token number">1</span> <span class="token operator">and</span> 条件<span class="token number">2</span> <span class="token operator">and</span> 条件N<span class="token punctuation">:</span>
+	代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>上述 <code>if</code> 语句只有在所有的条件均满足的情况下，代码块才会被执行。</p>
+</div><div class="cl-preview-section"><p>例如我们假设把年龄大于 30 并且为男性的人称为大叔，「年龄大于 30 」和「男性」是两个判断条件，并且需要同时满足，这种情况就可以用 <code>and</code> 关键字来表达。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> age <span class="token operator">&gt;</span> <span class="token number">30</span> <span class="token operator">and</span> sex <span class="token operator">==</span> <span class="token string">'male'</span><span class="token punctuation">:</span>
+	<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'大叔'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><h4 id="or-关键字">or 关键字</h4>
+</div><div class="cl-preview-section"><p>要表达多个条件中至少一个满足即可的情况，可以使用 <strong><code>or</code> 关键字</strong>。使用 <code>or</code> 关键字时，并列的条件中至少有一个满足时，结果为 <code>True</code>。全部不满足时结果为 <code>False</code>。</p>
+</div><div class="cl-preview-section"><p>在 <code>if</code> 语句中可以这样使用 <code>or</code> 关键字 ：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件<span class="token number">1</span> <span class="token operator">or</span> 条件<span class="token number">2</span> <span class="token operator">or</span> 条件N<span class="token punctuation">:</span>
+	代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>上述 <code>if</code> 语句中只要有任意一个（或多个）条件满足，代码块就会被执行。</p>
+</div><div class="cl-preview-section"><h4 id="not-关键字">not 关键字</h4>
+</div><div class="cl-preview-section"><p><strong>not 关键字</strong>可以将一个布尔值取反。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>not</strong> True<br>
+False<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; <strong>not</strong> 1 &gt; 0<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>用在 <code>if</code> 语句和 <code>while</code> 语句的条件上时，条件的结果被反转。</p>
+</div><div class="cl-preview-section"><p>在 <code>if</code> 语句中可以这样使用 <code>not</code> 关键字 ：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> <span class="token operator">not</span> 条件<span class="token punctuation">:</span>
+	代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>上述 <code>if</code> 语句在条件不满足时执行代码块，条件满足时反而不执行，因为 <code>not</code> 关键字对结果取了反。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="for-循环">for 循环</h3>
+</div><div class="cl-preview-section"><p>前面介绍了 <code>while</code> 循环，在 Python 中还有一种循环方式——<code>for</code> 循环。</p>
+</div><div class="cl-preview-section"><p><code>for</code> 循环更多的是用于从头到尾地去扫描列表、字符串这类数据结构中的每一个项，这种方式叫做<strong>遍历</strong>或<strong>迭代</strong>。</p>
+</div><div class="cl-preview-section"><p><code>for</code> 循环写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">for</span> 项 <span class="token keyword">in</span> 序列<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>其执行过程是，反复执行 <code>for 项 in 序列</code> 语句和其代码块，<code>项</code> 的值依次用序列的各个数据项替换，直到序列的所有项被遍历一遍。</p>
+</div><div class="cl-preview-section"><p>比如，有个列表为 <code>['apple', 'banana', 'cherry', 'durian']</code>，我们想依次输出它的每个列表项，就可以用 <code>for</code> 循环。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">fruit_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'cherry'</span><span class="token punctuation">,</span> <span class="token string">'durian'</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> fruit <span class="token keyword">in</span> fruit_list<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>将代码写入 <code>for.py</code>，执行下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 for.py<br>
+apple<br>
+banana<br>
+cherry<br>
+durian</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，</p>
+</div><div class="cl-preview-section"><ol>
+<li>第一次循环时， <code>fruit</code> 的值为 <code>apple</code></li>
+<li>第二次循环时， <code>fruit</code> 的值为 <code>banana</code></li>
+<li>第三次循环时， <code>fruit</code> 的值为 <code>cherry</code></li>
+<li>第四次循环时， <code>fruit</code> 的值为 <code>durian</code></li>
+</ol>
+</div><div class="cl-preview-section"><p>每次循环时 <code>fruit</code> 都自动被赋予新的值，直到 <code>fruit_list</code> 的所有列表项遍历完，循环退出。</p>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p><code>input()</code> 函数可以在程序运行到此处时输出一段提示文本，然后停留在此等待我们的输入，输入内容后按下回车键，程序将读取输入内容并向下执行。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">age <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入你的年龄：'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>print()</code> 函数可以将内容输出到命令行中，内容放到括号中，多项内容时可用逗号分隔。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你的年龄是'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>int()</code> 函数可以将字符串、浮点型转换整数型。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">int</span><span class="token punctuation">(</span>字符串或浮点数<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>if</code>，<code>elif</code>，<code>else</code> 组合使用，根据条件来选择对应的执行路径。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">if</span> 条件 <span class="token number">1</span><span class="token punctuation">:</span>
+    代码块 <span class="token number">1</span>
+<span class="token keyword">elif</span> 条件 <span class="token number">2</span><span class="token punctuation">:</span>
+    代码块 <span class="token number">2</span>
+<span class="token keyword">else</span>
+    代码块 <span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>while</code> 语句来用执行循环操作，根据条件来判断代码块该不该被重复执行。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">while</span> 条件<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p><code>for</code> 循环通常用于执行遍历操作。写法为：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">for</span> 项 <span class="token keyword">in</span> 序列<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><hr>
+</div><div class="cl-preview-section"><blockquote>
+<p>多语言比较：</p>
+<p>Java 中的分支语句：</p>
+<pre class="  language-java"><code class="prism  language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">1</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">2</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">3</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>C/C++ 中的分支语句：</p>
+<pre class="  language-c"><code class="prism  language-c"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">1</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">2</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">3</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Go 中的分支语句：</p>
+<pre class="  language-go"><code class="prism  language-go"><span class="token keyword">if</span> 条件<span class="token number">1</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">1</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> 条件<span class="token number">2</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">2</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+ 代码块<span class="token number">3</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Java 中的循环：</p>
+<pre class="  language-java"><code class="prism  language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 或 for each 形式</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token operator">:</span> numbers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+</code></pre>
+<p>C/C++ 中的循环：</p>
+<pre class="  language-c"><code class="prism  language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Go 中的循环：</p>
+<pre class="  language-go"><code class="prism  language-go"><span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> a <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 相当于 while </span>
+<span class="token keyword">for</span> 条件 <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+
+<span class="token comment">// for each 形式</span>
+<span class="token keyword">for</span> index<span class="token punctuation">,</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> numbers <span class="token punctuation">{</span>
+ 代码块
+<span class="token punctuation">}</span>
+</code></pre>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/814">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            06 一串数据怎么存—列表和字符串
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/816">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            08 将代码放进盒子—函数
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/3543028/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5458633f0001c2a902200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/3543028/articles" target="_blank">                                         <div class="name l">慕粉3543028</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     哈哈哈，沙发签一下啊啊啊                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3819">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3819">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3819" data-uid="3543028" data-src="/read/46/article/815" data-type="15">举报</div>                                                                          <div class="time r">1天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

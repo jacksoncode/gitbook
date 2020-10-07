@@ -1,0 +1,188 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        20 从小独栋升级为别墅区：函数式编程
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-09 09:35:32
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img.mukewang.com/5d919afc0001665d06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">天才免不了有障碍，因为障碍会创造天才。<p class="author">——罗曼·罗兰</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><h2 id="函数赋值给变量">函数赋值给变量</h2>
+</div><div class="cl-preview-section"><p>在 Python 中，所有的对象都可以赋值给变量，<strong>包括函数</strong>。这可能有点出乎意料，我们不妨来试一试：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> name <span class="token operator">+</span> <span class="token string">', hello!'</span>
+
+f <span class="token operator">=</span> say_hello
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; f(‘开发者’)<br>
+‘开发者, hello!’</p>
+<p>&gt;&gt;&gt; f<br>
+&lt;function say_hello at 0x10befec80&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>注意，这里被赋值的是函数本身，而不是函数的结果。赋值后，变量 <code>f</code> 与函数 <code>say_hello</code> 绑定，<code>f</code> 也就相当于是 <code>say_hello</code> 的别名，完全可以用调用 <code>say_hello</code> 的方式来调用 <code>f</code>。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：类也可以赋值给变量。如：</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Apple</span><span class="token punctuation">:</span>
+    who_am_i <span class="token operator">=</span> <span class="token string">'apple'</span>
+
+banana <span class="token operator">=</span> Apple
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; banana.who_am_i<br>
+’apple’</p>
+</blockquote>
+<p>注意，被赋值的是类本身，而不是类实例化后的对象。赋值后，变量 <code>banana</code> 与类 <code>Apple</code> 绑定，<code>banana</code> 也就相当于是 <code>Apple</code> 的别名，使用 <code>banana</code> 就相当于使用 <code>Apple</code>。</p>
+</blockquote>
+</div><div class="cl-preview-section"><h2 id="函数作为函数参数">函数作为函数参数</h2>
+</div><div class="cl-preview-section"><p>一切对象都可以作为函数的参数，包括另一个函数。接受函数作为参数的函数，称为高阶函数。这和数学中的高阶函数有些相似。</p>
+</div><div class="cl-preview-section"><p>来看一个函数作为参数的例子。</p>
+</div><div class="cl-preview-section"><p>这个例子中，我们实现了一个函数，它从给定的数字列表中筛选数字，而具体的筛选策略由另一个函数决定并以参数的形式存在：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">filter_nums</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> want_it<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>n <span class="token keyword">for</span> n <span class="token keyword">in</span> nums <span class="token keyword">if</span> want_it<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>函数 <code>filter_nums</code> 用来筛选数字，它接受两个参数，<code>nums</code> 是包含所有待筛选数字的列表，<code>want_it</code> 是一个函数，用来决定某个数字是否保留。</p>
+</div><div class="cl-preview-section"><p>我们选定一个简单的策略来实现下 <code>want_it</code> 参数所对应的函数（其函数名不必为 <code>want_it</code>）：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">want_it</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> num <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这里 <code>want_it</code> 接受一个数字作为参数，如果这个数字是 2 的倍数，则返回 <code>True</code>，否则返回 <code>False</code>。</p>
+</div><div class="cl-preview-section"><p>调用一下 <code>filter_nums</code> 试试：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; def filter_nums(nums, want_it):<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  return [n for n in nums if want_it(n)]<br>
+…<br>
+&gt;&gt;&gt; def want_it(num):<br>
+…&nbsp;&nbsp;&nbsp;&nbsp;  return num % 2 == 0<br>
+…<br>
+&gt;&gt;&gt; filter_nums([11, 12, 13, 14, 15, 16, 17, 18], want_it)<br>
+[12, 14, 16, 18]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这里每个数字都经过 <code>want_it()</code> 函数的判断，而 <code>want_it()</code> 是以 <code>filter_num()</code>  第二个参数的形式传递进去，供 <code>filter_num()</code> 调用。</p>
+</div><div class="cl-preview-section"><h2 id="lambda-表达式">lambda 表达式</h2>
+</div><div class="cl-preview-section"><p>在 Python 中，可以通过 lambda 表达式来便捷地定义一个功能简单的函数，这个函数只有实现没有名字，所以叫作匿名函数。</p>
+</div><div class="cl-preview-section"><p>lambda 表达式的写法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">lambda</span> 参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> 参数N<span class="token punctuation">:</span> 函数实现
+</code></pre>
+</div><div class="cl-preview-section"><p>使用上述表达式将定义一个匿名函数，这个匿名函数可接受若干参数，参数写在冒号前（<code>:</code>），多个参数时用逗号分隔，其实现写在冒号后（<code>:</code>）。</p>
+</div><div class="cl-preview-section"><p>举个例子：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">f <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">**</span> <span class="token number">2</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这个 lambda 表达式定义了一个匿名函数，这个匿名函数接受一个参数 <code>x</code>，返回 <code>x ** 2</code> 的计算结果。同时赋值语句将这个匿名函数赋值给了变量 <code>f</code>。<strong>注意 <code>f</code> 保存的是函数，而不是函数结果。</strong></p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; f<br>
+&lt;function  at 0x10bcba0d0&gt;</p>
+<p>&gt;&gt;&gt; f(4)<br>
+16<br>
+&gt;&gt;&gt; f(9)<br>
+81</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>通过观察上述示例可以发现，lambda 表达式中并没有 <code>return</code> 关键字，但结果被返回出来。是的，匿名函数的 <code>函数实现</code> 的执行结果就会作为它的返回值，无需使用 <code>return</code> 关键字。</p>
+</div><div class="cl-preview-section"><p>从功能上来看，<code>lambda x: x ** 2</code> 等同于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">no_name</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">**</span> <span class="token number">2</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; no_name(4)<br>
+16</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>一般情况下，我们不会像 <code>f = lambda x: x ** 2</code> 这样直接将匿名函数赋值给变量，然后去用这个变量。而是在需要将函数作为参数时，才去使用 lambda 表达式，这样就无需在函数调用前去定义另外一个函数了。</p>
+</div><div class="cl-preview-section"><p>如我们刚才写的函数 <code>filter_nums</code>：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">filter_nums</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> want_it<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>n <span class="token keyword">for</span> n <span class="token keyword">in</span> nums <span class="token keyword">if</span> want_it<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>它的 <code>want_it</code> 参数需要是一个函数 ，这时用 lambda 表达式便能方便的解决问题。可以像这样来使用：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; filter_nums([11, 12, 13, 14, 15, 16, 17, 18], <strong>lambda x: x % 2 == 0</strong>)<br>
+[12, 14, 16, 18]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>以前讲内置函数的时候，我们介绍过排序函数 <code>sorted()</code>。它有一个参数 <code>key</code>，用来在排序复杂元素时，指定排序所使用的字段，这个参数需要是个函数，同样可以用 lambda 表达式来解决：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; codes = [(‘上海’, ‘021’), (‘北京’, ‘010’), (‘成都’, ‘028’), (‘广州’, ‘020’)]<br>
+&gt;&gt;&gt; sorted(codes, key=<strong>lambda x: x[1]</strong>)	# 以区号字典来排序<br>
+[(‘北京’, ‘010’), (‘广州’, ‘020’), (‘上海’, ‘021’), (‘成都’, ‘028’)]</p>
+</blockquote>
+</div><div class="cl-preview-section"><h2 id="map-和-filter">map() 和 filter()</h2>
+</div><div class="cl-preview-section"><p>Python 内置有两个非常好用的高阶函数 <code>map()</code> 和 <code>filter()</code>。</p>
+</div><div class="cl-preview-section"><p><code>filter()</code> 用于从可迭代对象中筛选元素。用法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">filter</span><span class="token punctuation">(</span>筛选函数<span class="token punctuation">,</span> 可迭代对象<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>filter()</code> 依次对 <code>可迭代对象</code> 中的每个元素调用 <code>筛选函数</code>，如果返回值为 <code>True</code>，则当前这个元素会被保留，否则被排除。最终返回一个包含所有被保留元素的迭代器。</p>
+</div><div class="cl-preview-section"><p>显然这里的 <code>筛选函数</code> 可以用 lambda 表达式来创建。</p>
+</div><div class="cl-preview-section"><p>例如，从 <code>['a', 'b', 'cd', 'efg', 'hig', 'klmn', 'opqr']</code> 筛选出长度为奇数的字符串。可以这样写：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'cd'</span><span class="token punctuation">,</span> <span class="token string">'efg'</span><span class="token punctuation">,</span> <span class="token string">'hig'</span><span class="token punctuation">,</span> <span class="token string">'klmn'</span><span class="token punctuation">,</span> <span class="token string">'opqr'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; list(<strong>filter(lambda x: len(x) % 2 == 1, [‘a’, ‘b’, ‘cd’, ‘efg’, ‘hig’, ‘klmn’, ‘opqr’])</strong>)<br>
+[‘a’, ‘b’, ‘efg’, ‘hig’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>这里我们用 <code>list()</code> 将迭代器转换为列表。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>map()</code> 用于对可迭代对象中每一个元素逐一作处理。用法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">map</span><span class="token punctuation">(</span>处理函数<span class="token punctuation">,</span> 可迭代对象<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p><code>map()</code> 依次对 <code>可迭代对象</code> 中的每个元素调用 <code>处理函数</code>，最终返回一个包含所有被处理过后的元素的迭代器。</p>
+</div><div class="cl-preview-section"><p>显然这里的 <code>处理函数</code> 也可以用 lambda 表达式来创建。</p>
+</div><div class="cl-preview-section"><p>例如，将 <code>['a', 'b', 'cd', 'efg', 'hig', 'klmn', 'opqr']</code> 全部转换为大写。可以这样来写：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'cd'</span><span class="token punctuation">,</span> <span class="token string">'efg'</span><span class="token punctuation">,</span> <span class="token string">'hig'</span><span class="token punctuation">,</span> <span class="token string">'klmn'</span><span class="token punctuation">,</span> <span class="token string">'opqr'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; list(map(lambda x: x.upper(), [‘a’, ‘b’, ‘cd’, ‘efg’, ‘hig’, ‘klmn’, ‘opqr’]))<br>
+[‘A’, ‘B’, ‘CD’, ‘EFG’, ‘HIG’, ‘KLMN’, ‘OPQR’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>这里我们用 <code>list()</code> 将迭代器转换为列表。</p>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/828">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            19 让你的模子更好用：类进阶
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/830">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            21 给凡人添加超能力：入手装饰器
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

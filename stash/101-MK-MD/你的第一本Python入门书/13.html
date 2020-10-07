@@ -1,0 +1,749 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        13 这么多的数据结构（一）：列表、元祖、字符串
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-11 10:02:15
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img2.mukewang.com/5d7855a1000102f106400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">人不可有傲气，但不可无傲骨。<p class="author">——徐悲鸿</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>我们之前学习了字符串和列表，除此之外 Python 中还内置有元组、字典、集合等常用的数据类型，它们都被用于存放批量数据。</p>
+</div><div class="cl-preview-section"><p>存放批量数据用列表不就行了吗，为什么还要这么多数据类型？这是因为在不同的场景下，对数据的读取和修改效率以及内存使用情况的要求是不一样的，为了满足不同的场景需求，需要以不同的组织形式来存放数据。上面所述的那些数据类型，本质上就是不同的数据组织形式，Python 直接为我们提供了它们的现成的实现，我们拿来即可使用，轻而易举地获取各种不同的存放、访问和修改数据的能力。</p>
+</div><div class="cl-preview-section"><p>列表、元祖、字典、集合、字符串这些数据类型中所存放的一个个单独的数据，叫作项（Item）或元素（Element）。这些数据类型除了可以存放元素以外，还能通过调用对象方法来操作管理其中的元素。</p>
+</div><div class="cl-preview-section"><p>我们来详细学习下这五种内置数据类型。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="一、列表">一、列表</h3>
+</div><div class="cl-preview-section"><p>列表是 Python 中非常常用的数据类型。之前的章节中我们学习过列表的一些基础知识，这个小节将会更深入地介绍列表的各种功能。</p>
+</div><div class="cl-preview-section"><p>列表是用于存放若干元素的<strong>有序序列</strong>。列表使用方括号（<code>[]</code>）来表示，其中的元素写入方括号中，多个元素时用逗号分隔，如 <code>[1, 'go', [0.1, 0.2]]</code>。它的元素可以是任意数据类型，甚至也可以是个列表。</p>
+</div><div class="cl-preview-section"><p>元素之间有顺序关系，每个元素都有自己的位置，每个位置从 0 开始依次标号，这个表示位置的数字叫作<strong>索引</strong>。</p>
+</div><div class="cl-preview-section"><p>列表被创建之后，我们可以对它做很多操作，包括添加元素，删除元素，修改元素，查找元素等。</p>
+</div><div class="cl-preview-section"><h4 id="创建列表">创建列表</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>创建空的列表：</p>
+<pre class="  language-python"><code class="prism  language-python">列表 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>items = []</strong><br>
+&gt;&gt;&gt; items<br>
+[]</p>
+</blockquote>
+</li>
+<li>
+<p>创建包含元素的列表：</p>
+<pre class="  language-python"><code class="prism  language-python">列表 <span class="token operator">=</span> <span class="token punctuation">[</span>元素<span class="token number">1</span><span class="token punctuation">,</span> 元素<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> 元素N<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>items = [1, 2, 3]</strong><br>
+&gt;&gt;&gt; items<br>
+[1, 2, 3]</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="列表元素的获取">列表元素的获取</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过索引获取元素</p>
+<pre class="  language-python"><code class="prism  language-python">元素 <span class="token operator">=</span> 列表<span class="token punctuation">[</span>索引<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters[2]</strong><br>
+’c’</p>
+</blockquote>
+</li>
+<li>
+<p>通过元素获取索引</p>
+<p>这种方式和上面相反，首先在列表中寻找元素，然后返回元素对应的索引。</p>
+<pre class="  language-python"><code class="prism  language-python">索引 <span class="token operator">=</span> 列表<span class="token punctuation">.</span>index<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.index(‘c’)</strong><br>
+2</p>
+</blockquote>
+</li>
+<li>
+<p>查看元素是否存在于列表中</p>
+<p>要想查看元素是否存在于列表中，需要借助 Python 的关键字 <code>in</code>，使用如下：</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 元素 <span class="token keyword">in</span> 列表
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>‘a’ in letters</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>‘z’ in letters</strong><br>
+False</p>
+</blockquote>
+</li>
+<li>
+<p>统计元素在列表中的个数</p>
+<p>统计元素在列表中的个数，或者说是元素在列表中出现的次数。</p>
+<pre class="  language-python"><code class="prism  language-python">个数 <span class="token operator">=</span> 列表<span class="token punctuation">.</span>count<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = [1, 2, 2, 3, 4, 5, 5, 7]<br>
+&gt;&gt;&gt; <strong>numbers.count(5)</strong><br>
+2</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="列表元素的添加">列表元素的添加</h4>
+</div><div class="cl-preview-section"><p>我们可以很灵活地向列表添加元素，如以追加的形式向列表末尾添加一个元素；以插入的形式向列表的任意位置插入元素；或者将一个列表中的所有元素批量的添加到另一个列表中。</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>向列表末尾追加元素</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>append<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’]<br>
+&gt;&gt;&gt; <strong>letters.append(‘c’)</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘a’, ‘b’, ‘c’]</p>
+</blockquote>
+</li>
+<li>
+<p>向列表的任意位置插入元素</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>insert<span class="token punctuation">(</span>索引<span class="token punctuation">,</span> 元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’]</p>
+<p>&gt;&gt;&gt; <strong>letters.insert(0, ‘c’)</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘c’, ‘a’, ‘b’]</p>
+<p>&gt;&gt;&gt; <strong>letters.insert(2, ‘d’)</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘c’, ‘a’, ‘d’, ‘b’]</p>
+</blockquote>
+</li>
+<li>
+<p>列表末尾追加另一个列表的所有元素</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>另一列表<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’]<br>
+&gt;&gt;&gt; <strong>letters.extend([‘c’, ‘d’, ‘e’])</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘a’, ‘b’, ‘c’, ‘d’, ‘e’]</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="列表元素的删除">列表元素的删除</h4>
+</div><div class="cl-preview-section"><p>删除元素的方式同样很灵活。</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>按索引删除元素</p>
+<pre class="  language-python"><code class="prism  language-python">元素 <span class="token operator">=</span> 列表<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>索引<span class="token punctuation">)</span>
+</code></pre>
+<p><code>pop(索引)</code> 会将索引对应的元素从列表中删除，同时返回这个元素。</p>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.pop(0)</strong><br>
+’a’<br>
+&gt;&gt;&gt; letters<br>
+[‘b’, ‘c’]</p>
+</blockquote>
+<p>也可以不传递索引，这样的话默认删除并返回最后一个元素。</p>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.pop()</strong><br>
+’c’<br>
+&gt;&gt;&gt; letters<br>
+[‘a’, ‘b’]</p>
+</blockquote>
+</li>
+<li>
+<p>按索引删除元素（<code>del</code> 方法)</p>
+<p>删除一个列表元素也可以使用 Python 中的 <code>del</code> 关键字，如下：</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">del</span> 列表<span class="token punctuation">[</span>索引<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>del letters[0]</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘b’, ‘c’]</p>
+</blockquote>
+</li>
+<li>
+<p>直接删除元素</p>
+<p>直接删除元素时，Python 会先在列表中遍历该元素，然后将匹配到的第一个元素删除。</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.remove(‘b’)</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘a’, ‘c’]</p>
+</blockquote>
+</li>
+<li>
+<p>清空所有元素</p>
+<p>清空所有元素即是把列表元素全部删除，最后仅为列表仅为 <code>[]</code>。</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.clear()</strong><br>
+&gt;&gt;&gt; letters<br>
+[]</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="列表元素的修改">列表元素的修改</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过赋值修改列表元素</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">[</span>索引<span class="token punctuation">]</span> <span class="token operator">=</span> 新元素
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters[2] = 'd’</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘a’, ‘b’, ‘d’]</p>
+</blockquote>
+</li>
+<li>
+<p>反转整个列表</p>
+<p>反转整个列表会将所有的元素倒序排列。</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; <strong>letters.reverse()</strong><br>
+&gt;&gt;&gt; letters<br>
+[‘c’, ‘b’, ‘a’]</p>
+</blockquote>
+</li>
+<li>
+<p>列表元素排序</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = [2, 4, 5, 2, 1, 5, 7, 3]<br>
+&gt;&gt;&gt; <strong>numbers.sort()</strong><br>
+&gt;&gt;&gt; numbers<br>
+[1, 2, 2, 3, 4, 5, 5, 7]</p>
+</blockquote>
+<p>也可以通过指定 <code>sort</code> 方法的 <code>reverse</code> 参数来倒序排列。</p>
+<pre class="  language-python"><code class="prism  language-python">列表<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = [2, 4, 5, 2, 1, 5, 7, 3]<br>
+&gt;&gt;&gt; <strong>numbers.sort(reverse=True)</strong><br>
+&gt;&gt;&gt; numbers<br>
+[7, 5, 5, 4, 3, 2, 2, 1]</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="二、元组">二、元组</h3>
+</div><div class="cl-preview-section"><p>元组和列表非常相似，也是用于存放元素的有序序列。它用的圆括号（<code>()</code>）表示，元素写入圆括号中，多个元素时用逗号分隔，如 <code>(1, 2, 3)</code>。</p>
+</div><div class="cl-preview-section"><p>元组同样具有索引，索引使用方式与列表一致。其元素同样可以是任意类型。</p>
+</div><div class="cl-preview-section"><p>看起来元组就是披着圆括号外衣的列表嘛！有什么区别？</p>
+</div><div class="cl-preview-section"><p>元组创建完成后，便不能向其中添加元素，也不能修改和删除其中的任何一个元素。所以它与列表相比，只能查找元素，也就是说只具备读的功能，不具备写的功能。元组的这一特性叫作<strong>不可变（性）</strong>（Immutable），而列表是<strong>可变的</strong>（Mutable）。</p>
+</div><div class="cl-preview-section"><h4 id="创建元组">创建元组</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>创建空的元组：</p>
+<pre class="  language-python"><code class="prism  language-python">元组 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>items = ()</strong><br>
+&gt;&gt;&gt; items<br>
+()</p>
+</blockquote>
+</li>
+<li>
+<p>创建包含多个元素的元组：</p>
+<pre class="  language-python"><code class="prism  language-python">元组 <span class="token operator">=</span> <span class="token punctuation">(</span>元素<span class="token number">1</span><span class="token punctuation">,</span> 元素<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> 元素N<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>items = (1, 2, 3)</strong><br>
+&gt;&gt;&gt; items<br>
+(1, 2, 3)</p>
+</blockquote>
+</li>
+<li>
+<p>创建只包含一个元素的元组</p>
+<p>只包含一个元素的情况需要单独说明一下，因为它的形式与直觉不相符。</p>
+<p>创建只包含一个元素的元组，需要在唯一的那个元素后面<strong>加上逗号</strong>，如：</p>
+<pre class="  language-python"><code class="prism  language-python">元组 <span class="token operator">=</span> <span class="token punctuation">(</span>元素<span class="token punctuation">,</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>items = (1,)</strong><br>
+&gt;&gt;&gt; items<br>
+(1,)</p>
+</blockquote>
+<p>这是因为，如果括号中只有一个元素，那么 Python 会将这个括号当作优先级符号进行处理（像数学中的那样），而不是当作元组。可以试一下：</p>
+<blockquote>
+<p>&gt;&gt;&gt; items = (1)<br>
+&gt;&gt;&gt; items<br>
+1<br>
+&gt;&gt;&gt; type(items)<br>
+&lt;class ‘int’&gt;</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="元组元素的获取">元组元素的获取</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过索引获取元素</p>
+<pre class="  language-python"><code class="prism  language-python">元素 <span class="token operator">=</span> 元组<span class="token punctuation">[</span>索引<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = (‘a’, ‘b’, ‘c’)<br>
+&gt;&gt;&gt; <strong>letters[2]</strong><br>
+’c’</p>
+</blockquote>
+</li>
+<li>
+<p>通过元素获取索引</p>
+<pre class="  language-python"><code class="prism  language-python">索引 <span class="token operator">=</span> 元组<span class="token punctuation">.</span>index<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = (‘a’, ‘b’, ‘c’)<br>
+&gt;&gt;&gt; <strong>letters.index(‘c’)</strong><br>
+2</p>
+</blockquote>
+</li>
+<li>
+<p>查看元素是否存在于元组中</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 元素 <span class="token keyword">in</span> 元组
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; letters = (‘a’, ‘b’, ‘c’)<br>
+&gt;&gt;&gt; <strong>‘a’ in letters</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>‘z’ in letters</strong><br>
+False</p>
+</blockquote>
+</li>
+<li>
+<p>统计元素在元组中出现的个数</p>
+<pre class="  language-python"><code class="prism  language-python">个数 <span class="token operator">=</span> 元组<span class="token punctuation">.</span>count<span class="token punctuation">(</span>元素<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = (1, 2, 2, 3, 4, 5, 5, 7)<br>
+&gt;&gt;&gt; <strong>numbers.count(5)</strong><br>
+2</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="元组和列表的差别">元组和列表的差别</h4>
+</div><div class="cl-preview-section"><p>我们可以看到，元组所具有的操作在使用方式上与和列表非常相似，甚至在一定程度上可以将元组看作是列表的精简版，但它们之间也有明显的差别。</p>
+</div><div class="cl-preview-section"><ul>
+<li>元组是不可变的（Immutable），列表是可变的（Mutable），元组在被创建之后，就不能添加、删除和修改元素，而列表可以</li>
+<li>一般情况下元组的性能在略高于列表</li>
+</ul>
+</div><div class="cl-preview-section"><p>我们在什么时候用列表，什么时候用元组？</p>
+</div><div class="cl-preview-section"><p>列表还是元组，通常性能不是从它们中做选择的主要考虑因素，因为它们之间的性能差异不是很大。我们的选择通常围绕着可变和不可变的特性进行，当我们需要添加元素或修改元素时，使用列表；当我们希望所有元素在创建之后便不再改变，可使用元组。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="三、字符串">三、字符串</h3>
+</div><div class="cl-preview-section"><p>字符串也是 Python 中非常常用的内置数据类型。我们之前学习过字符串的一些内容，现在来深入的了解下。</p>
+</div><div class="cl-preview-section"><p>字符串是 Python 中用来存放字符序列的数据类型，其中的元素只能是字符。字符串使用单引号或双引号来表示，如 <code>'pick'</code>，<code>"cherry"</code>，通常我们首先使用单引号。</p>
+</div><div class="cl-preview-section"><p>字符串是有序序列，可以使用索引来获取其中某个位置的元素。它是不可变的，被创建之后其中的元素（也就是字符）不能被修改和删除。</p>
+</div><div class="cl-preview-section"><h4 id="创建字符串">创建字符串</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>创建空字符串（即不包含字符的字符串）：</p>
+<pre class="  language-python"><code class="prism  language-python">字符串 <span class="token operator">=</span> <span class="token string">''</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>string = ''</strong><br>
+&gt;&gt;&gt; string<br>
+’’</p>
+</blockquote>
+</li>
+<li>
+<p>创建包含元素的字符串：</p>
+<pre class="  language-python"><code class="prism  language-python">字符串 <span class="token operator">=</span> <span class="token string">'若干字符'</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>string = 'happy’</strong><br>
+&gt;&gt;&gt; string<br>
+’happy’</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="字符的获取">字符的获取</h4>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>通过索引获取字符</p>
+<pre class="  language-python"><code class="prism  language-python">字符 <span class="token operator">=</span> 字符串<span class="token punctuation">[</span>索引<span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string[2]</strong><br>
+’p’</p>
+</blockquote>
+</li>
+<li>
+<p>通过子串获取索引</p>
+<p>所谓子串就是从字符串中截取下来的一部分，可以是一个字符，一部分字符、全部字符、或空字符串，如 <code>'a'</code>、<code>'ppy'</code>、<code>'happy'</code>、<code>''</code> 都是 ‘happy’ 的子串。查找子串时，返回的是子串的第一个字符的索引。</p>
+<pre class="  language-python"><code class="prism  language-python">索引 <span class="token operator">=</span> 字符串<span class="token punctuation">.</span>index<span class="token punctuation">(</span>字符<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.index(‘p’)</strong><br>
+2</p>
+</blockquote>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.index(‘app’)</strong><br>
+1</p>
+</blockquote>
+<p>当字符或子串不存在时，<code>index</code> 方法将抛出 <code>ValueError</code> 错误。</p>
+<p>也可采用字符串的 <code>find</code> 方法来查找子串，使用方式与 <code>index</code> 一致，不同点在于 <code>find</code> 方法未找到子串时返回数字 <code>-1</code>，而不抛异常。</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.find(‘app’)</strong><br>
+1<br>
+&gt;&gt;&gt; <strong>string.find(‘z’)</strong><br>
+-1</p>
+</blockquote>
+</li>
+<li>
+<p>查看字符是否存在于字符串中</p>
+<p>查看字符是否存在于字符串中，需要借助 Python 的关键字 <code>in</code>，如下：</p>
+<pre class="  language-python"><code class="prism  language-python">布尔值 <span class="token operator">=</span> 字符 <span class="token keyword">in</span> 字符串
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>‘a’ in string</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>‘z’ in string</strong><br>
+False</p>
+</blockquote>
+</li>
+<li>
+<p>统计字符在字符串中的个数</p>
+<pre class="  language-python"><code class="prism  language-python">个数 <span class="token operator">=</span> 字符串<span class="token punctuation">.</span>count<span class="token punctuation">(</span>字符<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.count(‘p’)</strong><br>
+2</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="字符串的处理">字符串的处理</h4>
+</div><div class="cl-preview-section"><p>字符串自带的方法非常多，除了上面介绍的几个之外还有四十多个，这是因为字符处理是编程时的一项高频工作。Python 将这些字符处理相关的功能以方法的形式集成在字符串里。</p>
+</div><div class="cl-preview-section"><p>这里列举几个常见的方法：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>startswith：判断字符串是否以某个子串开头，返回布尔值</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.startswith(‘ha’)</strong><br>
+True</p>
+</blockquote>
+</li>
+<li>
+<p>endswith：判断字符串是否以某个子串结尾，返回布尔值</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.endswith(‘y’)</strong><br>
+True</p>
+</blockquote>
+</li>
+<li>
+<p>replace：将字符串的子串用一个另一个字符串替换，返回一个新的字符串</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.replace(‘y’, ‘iness’)</strong><br>
+’happiness’</p>
+</blockquote>
+</li>
+<li>
+<p>strip：去除字符串前后的空白符号，如空格、换行符、制表符，返回一个新的字符串</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ’  \t   happy  \n’<br>
+&gt;&gt;&gt; <strong>string.strip()</strong><br>
+’happy’</p>
+</blockquote>
+</li>
+<li>
+<p>split：将字符串用某个子串分隔开，分隔后的各个部分放入列表中，并返回这个列表</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘I am happy’<br>
+&gt;&gt;&gt; <strong>string.split(’ ')</strong><br>
+[‘I’, ‘am’, ‘happy’]</p>
+</blockquote>
+</li>
+<li>
+<p>join：将一个序列中的元素用某个字符（串）拼接，组成一个大的字符串，并返回这个字符串</p>
+<blockquote>
+<p>&gt;&gt;&gt; words = [‘I’, ‘am’, ‘happy’]<br>
+&gt;&gt;&gt; <strong>’ '.join(words)</strong><br>
+’I am happy’</p>
+</blockquote>
+</li>
+<li>
+<p>upper：将字符串转化为大写字母形式，返回一个新的字符串</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘happy’<br>
+&gt;&gt;&gt; <strong>string.upper()</strong><br>
+’HAPPY’</p>
+</blockquote>
+</li>
+<li>
+<p>lower：将字符串转化为小写字母形式，返回一个新的字符串</p>
+<blockquote>
+<p>&gt;&gt;&gt; string = ‘HAPPY’<br>
+&gt;&gt;&gt; <strong>string.lower()</strong><br>
+’happy’</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><p>注意上面的这些字符处理功能，对字符串作处理后都是返回一个新的字符串，而不会直接修改原有的字符串。为什么呢？字符串不可变呀！</p>
+</div><div class="cl-preview-section"><h4 id="字符转义">字符转义</h4>
+</div><div class="cl-preview-section"><p>我们在创建字符串时，有一些字符是没法直接在引号中表示的，如单引号或双引号，因为这和表示字符串本身的符号冲突了，如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>string = 'I’m happy’</strong><br>
+File “”, line 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp; string = ‘I’m happy’<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^<br>
+SyntaxError: invalid syntax</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>抛出 <code>SyntaxError</code> 语法错误异常，因为 Python 将 <code>string = 'I'</code> 看作字符串的赋值，而后面的 <code>m happy'</code> 就无法解析了，因为不符合任何语法。</p>
+</div><div class="cl-preview-section"><p>这时就需要使用<strong>字符转义</strong>了，我们在这类无法直接在字符串中表示的字符前加上 <code>\</code> 符号，形如 <code>\'</code>，这样 Python 在解析时就能理解这是嵌入在字符串中的单引号 <code>'</code>：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>string = 'I\'m happy’</strong><br>
+&gt;&gt;&gt; string<br>
+"I’m happy"</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>像 <code>\'</code> 这样在前面加了反斜杠（\），为了能在字符串中正常表示的字符，叫作<strong>转义字符</strong>。而这个转化的行为叫作<strong>字符转义</strong>。</p>
+</div><div class="cl-preview-section"><p>与单引号的用法相同，双引号用 <code>\"</code> 来转义。</p>
+</div><div class="cl-preview-section"><p>字符串中的 <code>\</code> 用来做字符转义了，那怎么在字符串中表示斜杆 <code>\</code> 这个字符呢？使用 <code>\\</code>，将斜杆 <code>\</code> 转义一下。除此之外，有一些空白符号也需要用转义字符来表示，因为我们没办法直接在字符串中表示它们，如常见的换行（<code>\n</code>），制表符（<code>\t</code>），回车（<code>\r</code>）。</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>常用的转义字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\'</code></td>
+<td>单引号</td>
+</tr>
+<tr>
+<td><code>\"</code></td>
+<td>双引号</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>换行符</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符（Tab）</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>举个例子，如果在字符串使用了 <code>\n</code>，那么在用 <code>print()</code> 输出字符串的时候，这个字符串会被换行输出。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>print(‘第一行\n第二行’)</strong><br>
+第一行<br>
+第二行</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>使用 <code>\n</code> 换行符使得我们能够在一行的字符串来表示多行的内容。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：转义字符虽然在书写时使用了两个字符，但是在程序中它只是一个字符。可以自己来试验下：<br>
+&gt;&gt;&gt; <strong>len(’\n’)</strong><br>
+1<br>
+&gt;&gt;&gt; <strong>len(’\’’)</strong><br>
+1</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>如果我们就想在字符串中表示 <code>\n</code> 这两个字符，而不是让它表示换行，该怎么办？有两种方式：</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>使用 <code>\\n</code>，将 <code>\n</code> 前面的反斜杠转义</p>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>print(‘第一行\\n第二行’)</strong><br>
+第一行\n第二行</p>
+</blockquote>
+</li>
+<li>
+<p>使用原始字符串</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><h4 id="原始字符串">原始字符串</h4>
+</div><div class="cl-preview-section"><p>原始字符串就是在字符串的起始引号前加上一个 <code>r</code> 或 <code>R</code> 字母，这样字符串中的内容将不会被转义，将按照原样输出。使用方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">r<span class="token string">'字符串内容'</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt; <strong>print(r’第一行\n第二行’)</strong><br>
+第一行\n第二行</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="多行字符串">多行字符串</h4>
+</div><div class="cl-preview-section"><p>我们之前所使用的字符串都被书写成一行，要想让字符串可以跨行书写，写成多行的形式，有两种方法：</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>字符串的每行末尾使用 <code>\</code> 续行</p>
+<p>以多行的形式书写字符串，每行的末尾使用 <code>\</code> 续行。需要注意输出内容为一行。</p>
+<pre class="  language-python"><code class="prism  language-python">string <span class="token operator">=</span> '第一行\
+第二行\
+第三行'
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>string = '第一行\<br>
+… 第二行\<br>
+… 第三行’</strong><br>
+&gt;&gt;&gt; print(string)<br>
+‘第一行第二行第三行’</p>
+</blockquote>
+<p>可以看到这种方式可以让字符串以多行的方式来书写，但是输出内容还是被当作一行。如果想要输出内容为多行，需要在字符串中显式地使用 <code>\n</code> 进行换行。</p>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>string = '第一行\n\<br>
+… 第二行\n\<br>
+… 第三行’</strong><br>
+&gt;&gt;&gt; print(string)<br>
+第一行<br>
+第二行<br>
+第三行</p>
+</blockquote>
+</li>
+<li>
+<p>使用三个单引号或三个双引号来表示字符串</p>
+<p>在 Python 中字符串也可以使用三个单引号或三个双引号来表示字符串，这样字符串中的内容就可以多行书写，<strong>并且被多行输出</strong>。</p>
+<pre class="  language-python"><code class="prism  language-python">string <span class="token operator">=</span> <span class="token triple-quoted-string string">'''第一行
+第二行
+第三行'''</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; <strong>string = ‘’‘第一行<br>
+… 第二行<br>
+… 第三行’’'</strong><br>
+&gt;&gt;&gt; print(string)<br>
+第一行<br>
+第二行<br>
+第三行</p>
+</blockquote>
+<p>使用三引号的方式，字符串可被多行书写，且被多行输出，其中不需要显式地指明 <code>\n</code> 换行。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="列表、元组、字符串的通用操作">列表、元组、字符串的通用操作</h3>
+</div><div class="cl-preview-section"><p>我们把列表、元组、字符串统称为<strong>序列</strong>。</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p>使用 <code>len()</code> 函数获取序列长度</p>
+<blockquote>
+<p>&gt;&gt;&gt; letters = (‘a’, ‘b’)<br>
+&gt;&gt;&gt; <strong>len(letters)</strong><br>
+2</p>
+</blockquote>
+<blockquote>
+<p>&gt;&gt;&gt; letters = ‘abcd’<br>
+&gt;&gt;&gt; <strong>len(letters)</strong><br>
+4</p>
+</blockquote>
+</li>
+<li>
+<p>获取序列中的一个子序列</p>
+<p>获取序列中的子序列可以使用<strong>切片</strong>，以 <code>[起始索引:结束索引]</code> 表示。切片其实代表一个索引区间，这个区间是一个<strong>左开右闭区间</strong>，该区间内的所有元素作为子序列被返回。如：</p>
+<blockquote>
+<p>&gt;&gt;&gt; numbers = (1, 2, 3, 4, 5)<br>
+&gt;&gt;&gt; <strong>numbers[0:2]</strong><br>
+(1, 2)</p>
+<p>&gt;&gt;&gt; <strong>numbers[2:4]</strong><br>
+(3, 4)</p>
+</blockquote>
+<blockquote>
+<p>&gt;&gt;&gt; letters = ‘abcd’<br>
+&gt;&gt;&gt; <strong>letters[1:5]</strong><br>
+’bcd’</p>
+</blockquote>
+</li>
+<li>
+<p>使用 <code>+</code> 符号来拼接两个序列</p>
+<blockquote>
+<p>&gt;&gt;&gt; letters_1 = (‘a’, ‘b’)<br>
+&gt;&gt;&gt; letters_2 = (‘c’, ‘d’, ‘e’)<br>
+&gt;&gt;&gt; <strong>letters_1 + letters_2</strong><br>
+(‘a’, ‘b’, ‘c’, ‘d’, ‘e’)</p>
+</blockquote>
+<blockquote>
+<p>&gt;&gt;&gt; letters_1 = ‘ab’<br>
+&gt;&gt;&gt; letters_2 = ‘cde’<br>
+&gt;&gt;&gt; <strong>letters_1 + letters_2</strong><br>
+’abcde’</p>
+</blockquote>
+</li>
+<li>
+<p>使用 <code>*</code> 符号来重复序列中的元素</p>
+<blockquote>
+<p>&gt;&gt;&gt; letters = (‘a’, ‘b’)<br>
+&gt;&gt;&gt; <strong>letters * 3</strong><br>
+(‘a’, ‘b’, ‘a’, ‘b’, ‘a’, ‘b’)</p>
+</blockquote>
+<blockquote>
+<p>&gt;&gt;&gt; letters = ‘abcd’<br>
+&gt;&gt;&gt; <strong>letters * 2</strong><br>
+’abcdabcd’</p>
+</blockquote>
+</li>
+</ol>
+</div><div class="cl-preview-section"><p>注意上面的操作结果都是返回一个新的序列，不会对修改序列的内部元素。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>列表、元组、字符串都是有序序列，都可以使用索引。</p>
+</div><div class="cl-preview-section"><p>列表和元组中可以存放任意数据类型的元素，而字符串中只能存放字符。</p>
+</div><div class="cl-preview-section"><p>列表是可变的，而元组和字符串是不可变的。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/821">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            12 练习—密码生成器
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/823">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            14 这么多的数据结构（二）：字典、集合
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">3</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/7315125/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5e37924c00012ed204040404-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/7315125/articles" target="_blank">                                         <div class="name l">超越自我56</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     切片:以 [起始索引:结束索引] 表示。切片其实代表一个索引区间，这个区间是一个左开右闭区间.....
+应该是左闭右开吧 检查一下                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3806">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>2</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3806">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3806" data-uid="7315125" data-src="/read/46/article/822" data-type="15">举报</div>                                                                          <div class="time r">2天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8464740/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img3.mukewang.com/5b8cf2e300015c3b02000200-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8464740/articles" target="_blank">                                         <div class="name l">慕移动9026459</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     我想问一下是不是可以这样去理解，元组其实就相当于C语言的数组，而列表就相当于C语言的链表。                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3794">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3794">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3794" data-uid="8464740" data-src="/read/46/article/822" data-type="15">举报</div>                                                                          <div class="time r">3天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8247259/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img.mukewang.com/5daae1a40001b23f07400741-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8247259/articles" target="_blank">                                         <div class="name l">Leo梁</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     列表.sort(reverse=True)，这个如何理解？不懂                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3044">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3044">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3044" data-uid="8247259" data-src="/read/46/article/822" data-type="15">举报</div>                                                                          <div class="time r">2019-11-29</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/8202504/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img3.mukewang.com/5de85e6500012c8709600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/8202504/articles" target="_blank">                                                         <div class="name l">慕莱坞2594481</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8247259/articles" target="_blank">                                                                 <div class="name l">Leo梁</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     reverse是反向的意思，设置参数值为true表示反向排序&lt;br /&gt;                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="3228" data-name="慕莱坞2594481">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="3228" data-uid="8202504" data-src="/read/46/article/822" data-type="16">举报</div>                                                                                                          <div class="time r">23小时前</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

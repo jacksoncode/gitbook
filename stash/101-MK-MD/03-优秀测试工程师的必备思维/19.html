@@ -1,0 +1,148 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        19 从零开始了解接口测试与工具
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-09 09:31:28
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img4.mukewang.com/5d9069720001d4df06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">受苦的人，没有悲观的权利。<p class="author">——尼采</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>前边我们主要介绍了 UI 自动化测试，我在刚刚工作的时候，只要提到自动化测试就是指 UI 自动化。但是在经过了实践之后，我们发现 UI 自动化测试，其实并没有我们想象得那么美好：</p>
+</div><div class="cl-preview-section"><ul>
+<li>项目的迭代修改，或者部分功能增强很容易毁掉我们的测试脚本，让我们需要大面积修改；</li>
+<li>本身基于 UI 的端到端测试，经常出现某些不可预期的问题，导致我们发现脚本运行失败，需要大量时间排查，并且很多时候不是源于程序的问题，而是脚本的某些细节处理和网络原因；</li>
+<li>无论是用框架或者平台，脚本的编写成本还是比较高的。</li>
+</ul>
+</div><div class="cl-preview-section"><p>所以，基于 UI 的自动化测试，虽然有着这样、那样的优点，但是始终存在着脆弱、<strong>编写成本高</strong>、<strong>失败概率大</strong>等缺陷。Martin Fowler 在非常著名的一篇文章《Test Pyramid》（测试金字塔）中，从敏捷测试的角度，非常详细的描述了测试的金字塔结构。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906b2700019d0d05400373.jpg" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p>金字塔模型告诉我们什么呢？首先，在金字塔这样的自底向上结构中，<strong>越靠近底层，测试越稳定</strong>，所以我们投入的也应该越高；同样的，<strong>越是底层，发现问题越早、越高效，修改和维护的成本也就越低</strong>。</p>
+</div><div class="cl-preview-section"><p>所以在金字塔最底层的是<strong>单元测试</strong>，单元测试一般情况下，是由白盒测试工程师，或者更多的由开发人员本人来完成的。单元测试是对于最底层的类啊、方法啊进行的测试，所以能够提供最快的反馈。所以要把单元测试做到最重。</p>
+</div><div class="cl-preview-section"><p>接下来是<strong>接口测试</strong>，Martin Fowler 认为需要引用面向应用程序服务层的中间层测试，称之为 “SubcutaneousTest”（皮下测试）。对于我们来说，皮下测试更多的就是 <strong> API 接口层测试</strong>。API 测试是底层代码到最上层 UI 实现的桥梁，是对外暴露的接口和服务。</p>
+</div><div class="cl-preview-section"><p>最上层就是 UI 自动化测试，是对于用户来说模拟度最高的测试，我们前边也介绍了很多，由于众所周知的缺点，我们把它放在最上层，做是一定要做的，但是在敏捷中重量级要放轻。</p>
+</div><div class="cl-preview-section"><p>OK，这是敏捷时代对于软件测试认识的第一步，据我的了解，很多公司连这一步还没有走出来，持续停留在把重心放到 UI 自动化的阶段。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="互联网的蛋型模型">互联网的蛋型模型</h2>
+</div><div class="cl-preview-section"><p>我和我的很多小伙伴们都在互联网公司，每次沟通都在聊关于 “TDD” 的进展。虽然用单元测试驱动开发是很好的思想，但是在互联网公司里，无论开发还是测试，都不可能有时间去做全面的单元测试。所以金字塔最底层的 UNIT 大多时候无法保障。</p>
+</div><div class="cl-preview-section"><p>随着互联网微服务架构的流行、前后端分离的实现，我们会发现在测试过程中，即使前端 UI 测试发现了问题，也需要排查具体是哪一层面上出现的 BUG，所以其实微服务架构下，对测试的要求会变得更高。</p>
+</div><div class="cl-preview-section"><p>而所谓的微服务，本质上呢，就是多个服务之间的接口调用，所以把 UI 测试和接口测试分离也成为了测试的重中之重。加上接口测试稳定性高、开发效率高、执行周期短、改动较少的特点，所以在互联网时代，大多数采用的方式是：<strong>轻 UI 自动化、重接口自动化、部分单元测试覆盖的策略</strong>，也就是小标题中介绍的<strong>蛋型模型</strong>。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906d210001ef9404420497.jpg" class="lazyload" style="cursor: pointer;"><br>
+PS：图…… 画得的确是一本正经的丑，不过不要 Care 这些细节哈。这样的蛋型结构是基于接口测试的高投资回报比决定的。这时候，有同学又要 diss 风落了：你已经讲了好久接口测试了，到底接口测试是干嘛的？</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="什么是接口测试？">什么是接口测试？</h2>
+</div><div class="cl-preview-section"><p>如果你去百度这个概念，那么几乎 100% 会得到这样的结果：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p><em>接口测试是测试系统组件间接口的一种测试。接口测试主要用于检测外部系统与系统之间以及内部各个子系统之间的交互点。测试的重点是要检查数据的交换，传递和控制管理过程，以及系统间的相互逻辑依赖关系等。</em></p>
+</blockquote>
+</div><div class="cl-preview-section"><p>我们换个方式理解：比如我们有个很喜欢玩的小游戏，这个游戏呢，需要我们拿手机登录一个 APP 玩，可是我们是爱岗敬业的好同学啊，工作时间怎么能敢明目张胆的打开手机玩游戏，那怎么办呢？聪明的我们想了个办法，既然游戏是从 APP 里点击触发了很多请求，比如造建筑啊、收金币啊等等，我们为啥不能跳过这个 APP 直接触发呢？这样的思考方式就造就了很多外挂的诞生……</p>
+</div><div class="cl-preview-section"><p>接口测试就是这样，我们直接跳过 UI 层面的操作，直接访问下游系统，给我们暴露出来的服务接口，这个时候我们模仿的就不是客户啦，而是我们的前端，这就是接口测试的概念。</p>
+</div><div class="cl-preview-section"><p>我们同样可以像功能测试一样，按照边界值、等价类等等的设计方法来设计接口的输入参数，同时根据接口的最终返回来进行返回的判断，整个过程仍然是完整的功能测试，只是绕过了前端的解析过程。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>基于前边说过的接口测试的特点（稳定性高、开发效率高、执行周期短、改动较少），所以使用接口测试来完成持续集成、SmokeTest 等效率是非常高的。</p>
+<p>同时，基于我自己的经验，我觉得接口测试也远远比 UI 自动化测试更简单。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="怎么做接口测试">怎么做接口测试</h2>
+</div><div class="cl-preview-section"><p>就像我们前边说的，接口测试很简单，它忽略了前端，也会忽略很多的业务属性交互，更核心的点就在于三个地方：</p>
+</div><div class="cl-preview-section"><ol>
+<li>接口的入参数据；</li>
+<li>模拟接口测试的工具；</li>
+<li>验证接口的出参返回。</li>
+</ol>
+</div><div class="cl-preview-section"><p>比如我们有一个这样的 HTTP 接口：</p>
+</div><div class="cl-preview-section"><pre><code>https://api.jisuapi.com/areacode/city2code?appkey=bc1147aa2662e4b5&amp;city=XX
+</code></pre>
+</div><div class="cl-preview-section"><p>这个 API 的接口功能非常简单：就是基于城市来查一下城市对应的区号。比如说我的请求是 “city = 北京”，返回的结果就是：</p>
+</div><div class="cl-preview-section"><pre><code>{"status":0,"msg":"ok","result":[{"province":"北京","city":"","town":"","areacode":"010"}]}
+</code></pre>
+</div><div class="cl-preview-section"><p>这样的接口就是一个 Restful 风格的 API，最简单的测试方式就是直接把请求扔进浏览器里边去就好了：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906e6a00018e6b07250080.png" class="lazyload" style="cursor: pointer;"><br>
+我们可以根据请求所对应的参数进行修改和调整，修改我们的入参 city，按照功能测试的方式可以有边界值、等价类等等，再这里就不一一举例分析了。</p>
+</div><div class="cl-preview-section"><p>就这么简单就可以了么？答案当然是否定的，我们对 HTTP 请求都有一定的了解，这是一个 GET 请求，所以我们可以很容易的把它扔进浏览器搞定，那么如果是一个 POST 请求呢？或者我们有更多的要求和参数呢？</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="接口测试的工具">接口测试的工具</h2>
+</div><div class="cl-preview-section"><p>HTTP 请求比较常用的工具有很多，例如：POSTMAN、JMETER、SOAPUI 甚至是 LoadRunner 等工具都可以帮助我们进行接口测试的开发，而且不需要我们有太多的代码基础就可以实现。我相信大家可以飞快地通过 GOOGLE 获得这些工具的用法，所以我不在这里赘述了，按照我的老习惯，咱们用其中之一抛砖引玉一下。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906eb9000199dc05000293.jpg" class="lazyload" style="cursor: pointer;"><br>
+Postman 应该就是目前最常用的 HTTP 模拟请求的工具了，我最初使用这个工具的时候还只是一个 Chrome 插件，现在已经是一个完全独立的应用了。我们简单聊一下如何使用它来完成上边请求的接口测试：</p>
+</div><div class="cl-preview-section"><ol>
+<li>选择创建一个新的 Request：</li>
+</ol>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906ef40001488613600362.jpg" class="lazyload" style="cursor: pointer;"><br>
+2. 接下来选择适合的请求方法，输入对应的 URL 地址和参数：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906f380001d9be13590412.png" class="lazyload" style="cursor: pointer;"><br>
+3. 点击 “Send”：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906f5000018ef313500505.jpg" class="lazyload" style="cursor: pointer;"><br>
+这样我们就完成了一次最简单的调用，可以看到返回的 Response 结果展示在下方，并且不需要任何其它格式转换器，可以直接在 Postman 中将结果格式转换为 XML 或者 JSON：<br>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906f740001ca3205390234.jpg" class="lazyload" style="cursor: pointer;"><br>
+除了简单的调用，Postman 还可以帮助我们去完成更复杂的结果验证、用例规划等等，接下来我们可以牛刀小试一下。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h2 id="复杂场景的应用">复杂场景的应用</h2>
+</div><div class="cl-preview-section"><p>当然，很多情况下由于复杂的业务场景，我们在进行接口测试的时候，不仅仅是单一的接口调用，而是一系列的接口，而且会存在请求 B 需要使用前一个请求 A 中返回的结果的情况，这种情况下我们需要解决的问题，就是如何将多个请求关联起来。</p>
+</div><div class="cl-preview-section"><p>所以我们可以增加一个场景，刚刚我们是通过城市查出了区号，接下来我们再根据查询的结果反查一下城市和地区，接口是这样的：</p>
+</div><div class="cl-preview-section"><pre><code>&lt;https://api.jisuapi.com/areacode/query?appkey=bc1147aa2662e4b5&amp;areacode=XXX&gt;
+</code></pre>
+</div><div class="cl-preview-section"><p>那我们在第一个接口的基础上，增加环境变量：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906fab00017cbf13510604.jpg" class="lazyload" style="cursor: pointer;"><br>
+在请求 A 中的 Tests 界面进行后续逻辑，将参数存入环境变量中：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906fe40001aebb13280571.jpg" class="lazyload" style="cursor: pointer;"><br>
+那么这个变量就可以放到下一个请求中应用了：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d906ffc0001d25613240500.jpg" class="lazyload" style="cursor: pointer;"><br>
+接下来我们将完整的 collection 执行就可以看到参数传递的结果啦：</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d90700f0001174e13300598.jpg" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d9070230001d5c012470705.jpg" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><p>那么举一反三，更复杂的场景都可以通过 Postman 的代码编写搞定了。同样的，前边提到的结果验证等也可以通过这里编码的形式完成，自然不用多说。Postman 还有更多的功能等待你去探索。</p>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h2 id="总结">总结</h2>
+</div><div class="cl-preview-section"><p>我们搞清楚了几件事：</p>
+</div><div class="cl-preview-section"><ol>
+<li>敏捷测试的金字塔模型和蛋型模型让我们能够合理有计划的规划整体测试架构；</li>
+<li>接口测试是什么，我们为什么要做接口测试以及要怎么做接口测试；</li>
+<li>接下来我们通过一个简单的查询区号的接口，了解了 API 请求的样子以及简单测试工具 Postman 的使用；</li>
+<li>复杂场景下的参数传递如何使用。</li>
+</ol>
+</div><div class="cl-preview-section"><p>所以，接口测试真的很简单，并没有大家想的那么 “高大上” 和复杂。在互联网公司中，接口测试越来越重要，需要大家牢牢掌握。最后，大家可以用 Postman 或其他工具尝试开始接口自动化测试，也欢迎大家把感想发出来一起讨论。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/916">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            18 平台设计深入讨论：技术的进步还是能力的倒退？
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/918">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            20 如何用代码框架实现接口测试？
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">3</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/2149096/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5b1a89950001deb514401280-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/2149096/articles" target="_blank">                                         <div class="name l">mingliu</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     请问风落老师，做了接口测试的话，那又要如何进行界面测试呢？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2725">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2725">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2725" data-uid="2149096" data-src="/read/48/article/917" data-type="15">举报</div>                                                                          <div class="time r">2019-11-08</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img4.mukewang.com/5b2a0c4d0001029d09600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                         <div class="name l">风落几番</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/2149096/articles" target="_blank">                                                                 <div class="name l">mingliu</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     接口测试是验证接口逻辑的，不包含界面的哈~界面的自动化是后边的web自动化~                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2511" data-name="风落几番">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2511" data-uid="6433657" data-src="/read/48/article/917" data-type="16">举报</div>                                                                                                          <div class="time r">2019-11-14 16:45:32</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/7419505/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img1.mukewang.com/5d9d77f90001b36410801920-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/7419505/articles" target="_blank">                                         <div class="name l">土豆稀饭</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     学习到了postman的高阶用法，厉害                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2242">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2242">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2242" data-uid="7419505" data-src="/read/48/article/917" data-type="15">举报</div>                                                                          <div class="time r">2019-10-08</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/1366059/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5b5a825300018b4f09600960-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/1366059/articles" target="_blank">                                         <div class="name l">清浅如水_静待</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     老师什么时候出接口自动化测试的实战课程呀？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2229">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2229">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2229" data-uid="1366059" data-src="/read/48/article/917" data-type="15">举报</div>                                                                          <div class="time r">2019-10-08</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img4.mukewang.com/5b2a0c4d0001029d09600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/6433657/articles" target="_blank">                                                         <div class="name l">风落几番</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/1366059/articles" target="_blank">                                                                 <div class="name l">清浅如水_静待</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     额~接口自动化实战课程有其他老师的哈，所以风落暂时就不出咧~~                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2031" data-name="风落几番">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2031" data-uid="6433657" data-src="/read/48/article/917" data-type="16">举报</div>                                                                                                          <div class="time r">2019-10-09 10:35:40</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

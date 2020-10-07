@@ -1,0 +1,399 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        19 让你的模子更好用：类进阶
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-30 10:14:50
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img.mukewang.com/5d91650f0001139406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">受苦的人，没有悲观的权利。<p class="author">——尼采</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="类属性和类方法">类属性和类方法</h2>
+</div><div class="cl-preview-section"><p>之前介绍类的时候，我们学习了对象属性和对象方法。对象属性和对象方法是绑定在对象这个层次上的，也就是说需要先创建对象，然后才能使用对象的属性和方法。</p>
+</div><div class="cl-preview-section"><p>即：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">对象 <span class="token operator">=</span> 类<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+对象<span class="token punctuation">.</span>属性
+对象<span class="token punctuation">.</span>方法<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>除此之外，还有一种<strong>绑定在类这个层面</strong>的属性和方法，叫作类属性和类方法。使用类属性和类方法时，不用创建对象，直接通过类来使用。</p>
+</div><div class="cl-preview-section"><p>类属性和类方法的使用方式：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">类<span class="token punctuation">.</span>属性
+类<span class="token punctuation">.</span>方法<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="类属性的定义">类属性的定义</h3>
+</div><div class="cl-preview-section"><p>类属性如何定义呢？</p>
+</div><div class="cl-preview-section"><p>只要将属性定义在类之中方法之外即可。如下面的 <code>属性1</code> 和 <code>属性2</code>：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类：
+	属性<span class="token number">1</span> <span class="token operator">=</span> X
+    属性<span class="token number">2</span> <span class="token operator">=</span> Y
+    
+    <span class="token keyword">def</span> 某方法<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>举个例子:</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Char</span><span class="token punctuation">:</span>
+    letters <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+    digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这里定义了类 <code>Char</code>，有两个类属性，这两个类属性分别包含所有大写字母和所有数字。可以通过类名来使用这两个类属性，此时无需创建对象：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.letters<br>
+’ABCDEFGHIJKLMNOPQRSTUVWXYZ’<br>
+&gt;&gt;&gt; Char.digits<br>
+’0123456789’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>当然，类所创建出来的对象也能使用类属性：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; char = Char()<br>
+&gt;&gt;&gt; char.letters<br>
+’ABCDEFGHIJKLMNOPQRSTUVWXYZ’<br>
+&gt;&gt;&gt; char.digits<br>
+’0123456789’</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="类方法的定义">类方法的定义</h3>
+</div><div class="cl-preview-section"><p>再来看下类方法的定义方法。类方法的定义需要借助于装饰器，装饰器具体是什么后续文章中会介绍，目前只要知道用法即可。</p>
+</div><div class="cl-preview-section"><p>定义类方法时，需要在方法的前面加上装饰器 <code>@classmethod</code>。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类<span class="token punctuation">:</span>
+	@<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> 类方法<span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>注意与对象方法不同，类方法的第一个参数通常命名为 <code>cls</code>，表示当前这个类本身。我们可以通过该参数来引用类属性，或类中其它类方法。</p>
+</div><div class="cl-preview-section"><p>类方法中可以使用该类的类属性，但不能使用该类的对象属性。因为类方法隶属于类，而对象属性隶属于对象，使用类方法时可能还没有对象被创建出来。</p>
+</div><div class="cl-preview-section"><p>在之前 <code>Char</code> 类的基础上，我们加上随机获取任意字符的类方法。代码如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Char</span><span class="token punctuation">:</span>
+    letters <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+    digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_letter</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>letters<span class="token punctuation">)</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_digits</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>digits<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>方法 <code>random_letter()</code> 可以从属性 <code>letters</code> 随机获取一个大写字母；方法 <code>random_digits()</code> 可以从属性 <code>digits</code> 随机获取一个数字。它们函数体中的 <code>random.choice()</code> 可从指定序列中随机获取一个元素。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.random_digits()<br>
+‘8’<br>
+&gt;&gt;&gt; Char.random_letter()<br>
+‘X’</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：<code>import</code> 语句不仅可用于模块的开头，也可用于模块的任意位置，如函数中。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="静态方法">静态方法</h2>
+</div><div class="cl-preview-section"><p>与类方法有点相似的是静态方法，静态方法也可直接通过类名来调用，不必先创建对象。不同在于类方法的第一个参数是类自身（<code>cls</code>），而静态方法没有这样的参数。如果方法需要和其它类属性或类方法交互，那么可以将其定义成类方法；如果方法<strong>无需</strong>和其它类属性或类方法交互，那么可以将其定义成静态方法。</p>
+</div><div class="cl-preview-section"><p>定义静态方法时，需要在方法的前面加上装饰器 <code>@staticmethod</code>。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类<span class="token punctuation">:</span>
+	@<span class="token builtin">staticmethod</span>
+    <span class="token keyword">def</span> 静态方法<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>之前的例子中，我们可以从类属性 <code>letters</code> 和 <code>digits</code> 中随机获取字符，如果想要自己来指定字符的范围，并从中获取一个随机字符，可以再来定义一个静态方法 <code>random_char()</code>。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Char</span><span class="token punctuation">:</span>
+    letters <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+    digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_letter</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>letters<span class="token punctuation">)</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_digits</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>digits<span class="token punctuation">)</span>
+    
+    @<span class="token builtin">staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_char</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>string<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        	<span class="token keyword">raise</span> TypeError<span class="token punctuation">(</span><span class="token string">'需要字符串参数'</span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>静态方法 <code>random_char</code> 从传入的字符串中随机挑选出一个字符。之所以定义成静态方法，是因为它无需与类属性交互。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.random_char(‘imooc2019’)<br>
+‘0’<br>
+&gt;&gt;&gt; Char.random_char(‘imooc2019’)<br>
+‘m’</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h2 id="私有属性、方法">私有属性、方法</h2>
+</div><div class="cl-preview-section"><p>类属性 <code>letters</code> 和 <code>digits</code> 是为了提供给同一个类中的类方法使用，但我们可以通过类或对象从类的外部直接访问它们。比如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">Char<span class="token punctuation">.</span>letters
+Char<span class="token punctuation">.</span>digits
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.letters<br>
+’ABCDEFGHIJKLMNOPQRSTUVWXYZ’<br>
+&gt;&gt;&gt; Char.digits<br>
+’0123456789’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>有时我们不想把过多的信息暴露出去，有没有什么方法来限制属性不被类外部所访问，而是只能在类中使用？</p>
+</div><div class="cl-preview-section"><p>答案是有的，我们只需要在命名上动动手脚，将属性或方法的名称用 <code>__</code>（两个下划线）开头即可。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Char</span><span class="token punctuation">:</span>
+    __letters <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+    __digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_letter</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>__letters<span class="token punctuation">)</span>
+	
+    @<span class="token builtin">classmethod</span>
+    <span class="token keyword">def</span> <span class="token function">random_digits</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>cls<span class="token punctuation">.</span>__digits<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>从类外部访问这两个属性看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt;  Char.__letters<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+AttributeError: type object ‘Char’ has no attribute ‘__letters’</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.__digits<br>
+Traceback (most recent call last):<br>
+&nbsp;&nbsp;&nbsp;&nbsp; File “”, line 1, in <br>
+AttributeError: type object ‘Char’ has no attribute ‘__digits’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，修改过后的属性不能直接被访问了，解释器抛出 <code>AttributeError</code> 异常，提示类中没有这个属性。</p>
+</div><div class="cl-preview-section"><p>但位于同一个类中的方法还是可以正常使用这些属性：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char.random_letter()<br>
+‘N’<br>
+&gt;&gt;&gt; Char.random_digits()<br>
+‘4’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>像这样以 <code>__</code>（两个下划线）开头的属性我们称为<strong>私有属性</strong>。顾名思义，它是类所私有的，不能在类外部使用。</p>
+</div><div class="cl-preview-section"><p>上述是以类属性作为示例，该规则对类方法、对象属性、对象方法同样适用。只需在名称前加上 <code>__</code>（两个下划线）即可。</p>
+</div><div class="cl-preview-section"><p>我们也可以使用 <code>_</code>（一个下划线）前缀来声明某属性或方法是私有的，但是这种形式只是一种使用者间的约定，并不在解释器层面作限制。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Char</span><span class="token punctuation">:</span>
+    _letters <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+    _digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>上面的 <code>_letters</code> 和 <code>_digits</code> 也可看作私有属性，只不过是约定上的私有，通过名称前缀 <code>_</code>（一个下滑线）向使用者告知这是私有的。但你如果非要使用，依然可以用。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; Char._letters<br>
+’ABCDEFGHIJKLMNOPQRSTUVWXYZ’<br>
+&gt;&gt;&gt; Char._digits<br>
+’0123456789’</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h2 id="特殊方法">特殊方法</h2>
+</div><div class="cl-preview-section"><p>类中以 <code>__</code> 开头并以 <code>__</code> 结尾的方法是特殊方法，特殊方法有特殊的用途。它们可以直接调用，也可以通过一些内置函数或操作符来间接调用，如之前学习过的 <code>__init__()</code>、<code>__next__()</code>。</p>
+</div><div class="cl-preview-section"><p>特殊方法很多，在这里我们简单例举几个：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p><code>__init__()</code></p>
+<p><code>__init__()</code> 是非常典型的一个特殊方法，它用于对象的初始化。在实例化类的过程中，被自动调用。</p>
+</li>
+<li>
+<p><code>__next__()</code></p>
+<p>在迭代器章节中我们讲过，对迭代器调用 <code>next()</code> 函数，便能生成下一个值。这个过程的背后，<code>next()</code> 调用了迭代器的 <code>__next__()</code> 方法。</p>
+</li>
+<li>
+<p><code>__len__()</code></p>
+<p>你可能会好奇，为什么调用 <code>len()</code> 函数时，便能返回一个容器的长度？原因就是容器类中实现了 <code>__len__()</code> 方法，调用  <code>len()</code> 函数时将自动调用容器的 <code>__len__()</code> 方法。</p>
+</li>
+<li>
+<p><code>__str__()</code></p>
+<p>在使用 <code>print()</code> 函数时将自动调用类的 <code>__str__()</code> 方法。如：</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'这是 A 的对象'</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; a = A()<br>
+&gt;&gt;&gt; print(a)<br>
+这是 A 的对象`</p>
+</blockquote>
+</li>
+<li>
+<p><code>__getitem__()</code></p>
+<p>诸如列表、元素、字符串这样的序列，我们可以通过索引的方式来获取其中的元素，这背后便是 <code>__getitem__()</code> 在起作用。</p>
+<p><code>'abc'[2]</code> 即等同于 <code>'abc'.__getitem__(2)</code>。</p>
+<blockquote>
+<p>&gt;&gt;&gt; ‘abc’[2]<br>
+‘c’<br>
+&gt;&gt;&gt; ‘abc’.__getitem__(2)<br>
+‘c’</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h2 id="继承">继承</h2>
+</div><div class="cl-preview-section"><p>如果想基于一个现有的类，获取其全部能力，并以此扩展出一个更强大的类，此时可以使用类的<strong>继承</strong>。被继承的类叫作父类（或基类），继承者叫作子类（或派生类）。</p>
+</div><div class="cl-preview-section"><p>定义时，子类名称的后面加上括号并写入父类。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 父类<span class="token punctuation">:</span>
+    父类的实现
+    
+<span class="token keyword">class</span> 子类<span class="token punctuation">(</span>父类<span class="token punctuation">)</span>：
+	子类的实现
+</code></pre>
+</div><div class="cl-preview-section"><p>例如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>apple <span class="token operator">=</span> <span class="token string">'apple'</span>
+    
+    <span class="token keyword">def</span> <span class="token function">have</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I hava an'</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>apple<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">def</span> <span class="token function">who</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I am an object of B'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; b = B()</p>
+<p>&gt;&gt;&gt; b.who()<br>
+I am an object of B</p>
+<p>&gt;&gt;&gt; b.apple<br>
+’apple’</p>
+<p>&gt;&gt;&gt; b.have()<br>
+I hava an apple</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，虽然类 <code>B</code> 中什么都没定义，但由于 <code>B</code> 继承自 <code>A</code>，所以它拥有 <code>A</code> 的属性和方法。</p>
+</div><div class="cl-preview-section"><p>子类 <code>B</code> 中当然也可以定义自己的属性。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>banana <span class="token operator">=</span> <span class="token string">'banana'</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; b = B()<br>
+&gt;&gt;&gt; b.banana<br>
+’banana’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>我们在 <code>B</code> 中定义 <code>__init__()</code> 方法，并在其中定义了 <code>B</code> 自己的属性 <code>banana</code>。</p>
+</div><div class="cl-preview-section"><p><code>super().__init__()</code> 这一句代码是什么作用？由于我们在子类中定义了 <code>__init__()</code> 方法，这会导致子类无法再获取父类的属性，加上这行代码就能在子类初始化的同时初始化父类。<code>super()</code> 用在类的方法中时，返回父类对象。</p>
+</div><div class="cl-preview-section"><p>子类中出现和父类同名的方法会怎么样？答案是子类会覆盖父类的同名方法。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>apple <span class="token operator">=</span> <span class="token string">'apple'</span>
+    
+    <span class="token keyword">def</span> <span class="token function">have</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I hava an'</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>apple<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>banana <span class="token operator">=</span> <span class="token string">'banana'</span>
+	
+	<span class="token keyword">def</span> <span class="token function">have</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I hava an'</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>banana<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; b = B()<br>
+&gt;&gt;&gt; b.have()<br>
+I hava an banana</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h3 id="继承链">继承链</h3>
+</div><div class="cl-preview-section"><p>子类可以继承父类，同样的，父类也可以继承它自己的父类，如此一层一层继承下去。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+	<span class="token keyword">def</span> <span class="token function">have</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I hava an apple'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">pass</span>
+
+<span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; c = C()<br>
+&gt;&gt;&gt; c.have()<br>
+I hava an apple</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>在这里 <code>A</code> 是继承链的顶端，<code>B</code> 和 <code>C</code> 都是它的子类（孙子类）。</p>
+</div><div class="cl-preview-section"><p>其实 <code>A</code> 也有继承，它继承自 <code>object</code>。任何类的根源都是 <code>object</code> 类。如果一个类没有指定所继承的类，那么它默认继承  <code>object</code>。</p>
+</div><div class="cl-preview-section"><p><code>A</code> 中也可以显式指明其继承于  <code>object</code> ：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">def</span> <span class="token function">have</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'I hava an apple'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>如果想要判断一个类是否是另一个类的子类，可以使用内置函数  <code>issubclass()</code> 。用法如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; issubclass(C, A)<br>
+True<br>
+&gt;&gt;&gt; issubclass(B, A)<br>
+True<br>
+&gt;&gt;&gt; issubclass(C, B)<br>
+True</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_8_virtual" class="virtual_anchor"></a><h3 id="多继承">多继承</h3>
+</div><div class="cl-preview-section"><p>子类可以同时继承多个父类，这样它便拥有了多份能力。</p>
+</div><div class="cl-preview-section"><p>定义时，子类名称后面加上括号并写入多个父类。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">get_apple</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'apple'</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">get_banana</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'banana'</span>
+
+<span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> B<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; c = C()<br>
+&gt;&gt;&gt; c.get_apple()<br>
+‘apple’<br>
+&gt;&gt;&gt; c.get_banana()<br>
+‘banana’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>此时 <code>C</code> 便同时拥有了 <code>A</code> 和 <code>B</code> 的能力。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/827">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            18 把盒子升级为豪宅：函数进阶
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/829">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            20 从小独栋升级为别墅区：函数式编程
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

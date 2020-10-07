@@ -1,0 +1,305 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        17 生成器表达式和列表生成式
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-25 10:03:10
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img4.mukewang.com/5d8acac70001139406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">一个不注意小事情的人，永远不会成功大事业。<p class="author">——戴尔·卡耐基</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="列表生成式">列表生成式</h2>
+</div><div class="cl-preview-section"><p>如果我们想要构造一个包含指定元素或者具有某种规则的列表，比如 2 的指数幂序列 <code>[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]</code>， 该怎么做？</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>最简单的办法，直接将这些数原样写入代码来创建列表：</p>
+<pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">]</span>
+</code></pre>
+<p>这种办法当然是可行的，不过也有很大的局限。像这样直接将数据写入代码的做法，叫做硬编码。很多情况下我们不会使用硬编码的方式来创建列表（或者其它容器），因为列表中有什么数据往往在写代码时是不能确定的，通常在程序运行过程中通过计算得到，或从程序外部读入（比如从数据库 / 文件 / 网络中读入）。另外当数据量很大时，使用硬编码也是一件繁琐低效的事。</p>
+</li>
+<li>
+<p>还有一种办法，创建一个空的列表，之后通过计算（或其它操作）获得各个元素，并添加到列表中：</p>
+<pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+exponent <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> exponent <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">:</span>
+    nums<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> exponent<span class="token punctuation">)</span>
+    exponent <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; nums<br>
+[2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]</p>
+</blockquote>
+<p>这样方式完全可行，也没有什么缺陷。</p>
+</li>
+<li>
+<p>或者，对一个现有的可迭代对象中的各个元素做处理，构造出一个新的列表：</p>
+<pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">:</span>		<span class="token comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+    nums<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> i<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; nums<br>
+[2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]</p>
+</blockquote>
+<p>这段代码可以用一种简洁的方式写出，只需要一行代码：</p>
+<pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">**</span> i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; nums<br>
+[2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]</p>
+</blockquote>
+<p>这行代码就是我们这个章节要所讲的<strong>列表生成式</strong>。顾名思义，列表生成式最终生成的是一个列表，它是用已有的可迭代对象来构造新列表的便捷方法。</p>
+</li>
+</ul>
+</div><div class="cl-preview-section"><blockquote>
+<p>提示：如果不清楚什么是可迭代对象，可以看一下上一篇文章《深入理解迭代器和生成器》。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="列表生成式的写法">列表生成式的写法</h3>
+</div><div class="cl-preview-section"><p>列表生成式的语法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span>对项的操作 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这个写法怎么理解呢？</p>
+</div><div class="cl-preview-section"><p>首先，这句代码的阅读顺序是：<code>for 项 in 可迭代对象</code> -&gt; <code>对项的操作</code>。其次，外围的方括号（<code>[]</code>）表明这是列表生成式，最终的结果是一个列表。</p>
+</div><div class="cl-preview-section"><p><code>for 项 in 可迭代对象</code> 这部分和 <code>for</code> 循环很相似，通过迭代可迭代对象，每次取出一个项。对于取出的项，我们可以对它做一些处理，也就是表达式中的 <code>对项的操作</code> 部分。最终，可迭代对象中的所有项都会被迭代和处理，并被收集起来形成一个新的列表。</p>
+</div><div class="cl-preview-section"><p>这个过程用伪代码来描述的话是这样的：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">列表 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象<span class="token punctuation">:</span>
+	新项 <span class="token operator">=</span> 对项的操作<span class="token punctuation">(</span>项<span class="token punctuation">)</span>
+    列表<span class="token punctuation">.</span>appent<span class="token punctuation">(</span>新项<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>来看一个例子：</p>
+</div><div class="cl-preview-section"><p>这里有个列表：<code>['a', 'b', 'c', 'd', 'e']</code>，怎样把其中的每个小写字母转换为大写？可以这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span>char<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>[char.upper() for char in [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]]</strong><br>
+[‘A’, ‘B’, ‘C’, ‘D’, ‘E’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>如果你不能一下子理解，不妨比较一下用 <code>for</code> 循环来实现的版本。它们之间是等价的：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">chars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    chars<span class="token punctuation">.</span>append<span class="token punctuation">(</span>char<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; chars<br>
+[‘A’, ‘B’, ‘C’, ‘D’, ‘E’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>再来谈谈 <code>[对项的操作 for 项 in 可迭代对象]</code> 中的 <code>对项的操作</code>，这个操作它可以简单，也可以很复杂。</p>
+</div><div class="cl-preview-section"><p>简单来看，我们可以直接使用 <code>项</code> 本身而不做任何处理。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; [char for char in ‘ABCDEF’]<br>
+[‘A’, ‘B’, ‘C’, ‘D’, ‘E’, ‘F’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>当然如果是要得到这个结果，我们应该直接使用 <code>list('ABCDEF')</code>：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; list(‘ABCDEF’)<br>
+[‘A’, ‘B’, ‘C’, ‘D’, ‘E’, ‘F’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>复杂来看，我们可以对 <code>项</code> 进行一系列的处理。如分别将 <code>'abcde'</code> 中每个字母的大写形式和小写形式放到元组中：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span><span class="token punctuation">(</span>char<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> char<span class="token punctuation">)</span> <span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token string">'abcde'</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; [(char.upper(), char) for char in ‘abcde’]<br>
+[(‘A’, ‘a’), (‘B’, ‘b’), (‘C’, ‘c’), (‘D’, ‘d’), (‘E’, ‘e’)]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这里我们将每个 <code>char</code> 转换为了 <code>(char.upper(), char)</code>，并且其中 <code>char</code> 被多次用到。</p>
+</div><div class="cl-preview-section"><p>上个例子等价于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token string">'abcde'</span><span class="token punctuation">:</span>
+    result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>char<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> char<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; result<br>
+[(‘A’, ‘a’), (‘B’, ‘b’), (‘C’, ‘c’), (‘D’, ‘d’), (‘E’, ‘e’)]</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="列表生成式中使用-if">列表生成式中使用 if</h4>
+</div><div class="cl-preview-section"><p>在列表生成式的中，每次迭代的 <code>项</code> 是可以被筛选过滤的，使用 <code>if</code> 关键字。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span>对项的操作 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象 <span class="token keyword">if</span> 对项的判断<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>它的阅读顺序是：<code>for 项 in 可迭代对象</code> -&gt; <code>if 对项的判断</code> -&gt; <code>对项的操作</code>。</p>
+</div><div class="cl-preview-section"><p>每次迭代时所取出的 <code>项</code>，要先经过 <code>对项的判断</code>，如果结果为 <code>True</code>，才会由 <code>对项的操作</code> 处理。如果 <code>对项的判断</code> 的结果为 <code>False</code>，后续 <code>对项的操作</code> 会被跳过，此时最终列表的长度也会减少。</p>
+</div><div class="cl-preview-section"><p>举个例子，<code>[2 ** i for i in range(1, 11)]</code> 可以生成出 2<sup>0～2</sup>10 间的整数，如果我们只想要其中的奇数次方的值，该怎么做？</p>
+</div><div class="cl-preview-section"><p>这时就可以在列表中使用 <code>if</code> 关键字：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">**</span> i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; [2 ** i for i in range(1, 11) if i % 2 == 1 ]<br>
+[2, 8, 32, 128, 512]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这里的阅读顺序是：</p>
+</div><div class="cl-preview-section"><ol>
+<li><code>for e in range(1, 11)</code></li>
+<li><code>if e % 2 == 1</code></li>
+<li><code>2 ** e</code></li>
+</ol>
+</div><div class="cl-preview-section"><p>上述代码等价于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        nums<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> i<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; nums<br>
+[2, 8, 32, 128, 512]</p>
+</blockquote>
+</div><div class="cl-preview-section"><h4 id="列表生成式中嵌套-for">列表生成式中嵌套 for</h4>
+</div><div class="cl-preview-section"><p>列表生成式中的 <code>for</code> 中还可以再嵌套 <code>for</code>。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span>对项<span class="token number">1</span>和<span class="token punctuation">(</span>或<span class="token punctuation">)</span>项<span class="token number">2</span>的操作 <span class="token keyword">for</span> 项<span class="token number">1</span> <span class="token keyword">in</span> 可迭代对象<span class="token number">1</span> <span class="token keyword">for</span> 项<span class="token number">2</span> <span class="token keyword">in</span> 可迭代对象<span class="token number">2</span><span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>它等价于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">列表 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> 项<span class="token number">1</span> <span class="token keyword">in</span> 可迭代对象<span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> 项<span class="token number">2</span> <span class="token keyword">in</span> 可迭代对象<span class="token number">2</span><span class="token punctuation">:</span>
+        新项 <span class="token operator">=</span> 对项<span class="token number">1</span>和<span class="token punctuation">(</span>或<span class="token punctuation">)</span>项<span class="token number">2</span>的操作<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        列表<span class="token punctuation">.</span>append<span class="token punctuation">(</span>新项<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>看起来有点复杂，我们看个例子：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+chars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>c <span class="token operator">*</span> n <span class="token keyword">for</span> n <span class="token keyword">in</span> nums <span class="token keyword">for</span> c <span class="token keyword">in</span> chars<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; nums = [1, 2, 3]<br>
+&gt;&gt;&gt; chars = [‘a’, ‘b’, ‘c’]<br>
+&gt;&gt;&gt; [c * n for n in nums for c in chars]<br>
+[‘a’, ‘b’, ‘c’, ‘aa’, ‘bb’, ‘cc’, ‘aaa’, ‘bbb’, ‘ccc’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>它等价于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+chars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> nums<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> chars<span class="token punctuation">:</span>
+        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c <span class="token operator">*</span> n<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; result<br>
+[‘a’, ‘b’, ‘c’, ‘aa’, ‘bb’, ‘cc’, ‘aaa’, ‘bbb’, ‘ccc’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>[对项1和(或)项2的操作 for 项1 in 可迭代对象1 for 项2 in 可迭代对象2]</code> 中的 <code>可迭代对象2</code> 可以是 <code>项1</code> 本身。也就是可以写成：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">[</span>对项和<span class="token punctuation">(</span>或<span class="token punctuation">)</span>子项的操作 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象 <span class="token keyword">for</span> 子项 <span class="token keyword">in</span> 项<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>例如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">strings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'bb'</span><span class="token punctuation">,</span> <span class="token string">'cc'</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>char <span class="token keyword">for</span> string <span class="token keyword">in</span> strings <span class="token keyword">for</span> char <span class="token keyword">in</span> string<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; strings = [‘aa’, ‘bb’, ‘cc’]<br>
+&gt;&gt;&gt; [char for string in strings for char in string]<br>
+[‘a’, ‘a’, ‘b’, ‘b’, ‘c’, ‘c’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>它等价于：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">strings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'bb'</span><span class="token punctuation">,</span> <span class="token string">'cc'</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> string <span class="token keyword">in</span> strings<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> string<span class="token punctuation">:</span>
+        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>char<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; result<br>
+[‘a’, ‘a’, ‘b’, ‘b’, ‘c’, ‘c’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="字典生成式">字典生成式</h2>
+</div><div class="cl-preview-section"><p>便捷地构造列表可以使用列表生成式，同样的，想要通过已有的可迭代对象来便捷地构造字典，可以使用<strong>字典生成式</strong>。</p>
+</div><div class="cl-preview-section"><p>字典生成式的写法是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">{</span>键<span class="token punctuation">:</span> 值 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象<span class="token punctuation">}</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>和列表生成式非常相似，不同之处在于它使用的是花括号（<code>{}</code>），另外还使用 <code>键: 值</code> 形式。</p>
+</div><div class="cl-preview-section"><p>举个例子，有字符串 <code>'abcde'</code>，以每个小字母作为键，对应大写字母作为值的来构造个字典：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">{</span>char<span class="token punctuation">:</span> char<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token string">'abcde'</span><span class="token punctuation">}</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; {char: char.upper() for char in ‘abcde’}<br>
+{‘a’: ‘A’, ‘b’: ‘B’, ‘c’: ‘C’, ‘d’: ‘D’, ‘e’: ‘E’}</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>同样的，字典生成式中也可以使用 <code>if</code> 和嵌套 <code>for</code>，使用方法参照列表生成式。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="集合生成式">集合生成式</h2>
+</div><div class="cl-preview-section"><p>想要通过已有的可迭代对象来构造集合，可以使用<strong>集合生成式</strong>。</p>
+</div><div class="cl-preview-section"><p>你可能已经猜到了，只需要将列表生成式的方括号（<code>[]</code>）替换为花括号（<code>{}</code>）即可：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">{</span>对项的操作 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象<span class="token punctuation">}</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>例如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">{</span>char<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token string">'ABCDABCD'</span><span class="token punctuation">}</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; {char.lower() for char in ‘ABCDABCD’}<br>
+{‘c’, ‘a’, ‘d’, ‘b’}</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>提示：通过这个例子也能看到集合的重要特性——无序且无重复。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>同样的，集合生成式中也可以使用 <code>if</code> 和嵌套 <code>for</code>。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h2 id="生成器表达式">生成器表达式</h2>
+</div><div class="cl-preview-section"><p>上面有列表生成式、字典生成式、集合生成式，那么是不是也有「元组生成式」？是不是用圆括号来表示就可以了？</p>
+</div><div class="cl-preview-section"><p>不是的，Python 中并没有「元组生成式」！虽然 Python 中确实有类似的圆括号的写法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">(</span>对项的操作 <span class="token keyword">for</span> 项 <span class="token keyword">in</span> 可迭代对象<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>但这可不是什么「元组生成式」，而是我们上一章节学习过的<strong>生成器表达式</strong>。</p>
+</div><div class="cl-preview-section"><p>生成器表达式是一种创建生成器的便捷方法。虽然写法上和列表生成式、字典生成式、集合生成式相似，却有着本质的不同，因为它创建出来的是生成器，而不是列表、字典、集合这类容器。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token punctuation">(</span>char<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> char <span class="token keyword">in</span> <span class="token string">'ABCDEF'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; g = (char.lower() for char in ‘ABCDEF’)<br>
+&gt;&gt;&gt; g<br>
+&lt;generator object  at 0x103da6c78&gt;<br>
+&gt;&gt;&gt; next(g)<br>
+‘a’<br>
+&gt;&gt;&gt; next(g)<br>
+‘b’</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>提示：如果你对生成器有些遗忘，不妨看下前一篇文章《深入理解迭代器和生成器》。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>生成器表达式中同样可以使用  <code>if</code> 和嵌套 <code>for</code>，使用方法和列表生成式相同。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/825">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            16 深入理解下迭代器和生成器
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/827">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            18 把盒子升级为豪宅：函数进阶
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

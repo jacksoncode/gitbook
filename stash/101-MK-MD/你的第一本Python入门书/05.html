@@ -1,0 +1,392 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        05 数据的名字和种类—变量和类型
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-08-23 11:03:57
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d5f57950001071c06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">不经一翻彻骨寒，怎得梅花扑鼻香。<p class="author">——宋帆</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="初探数据种类">初探数据种类</h2>
+</div><div class="cl-preview-section"><p>在正式开始学习这个小节之前你要明白，现在我们是在学习写程序。那么在写程序之前你要知道程序的作用是什么？</p>
+</div><div class="cl-preview-section"><p>程序的主要作用是处理数据。数据的种类有很多，我们在手机和电脑上看到的那些文字、数字、图片、视频、页面样式等等都是数据。这些数据都是由程序来处理并显示到屏幕上的。</p>
+</div><div class="cl-preview-section"><p>虽然数据的种类形形色色，并且有些看起来比较复杂，但是在编程时它们实际上都是由一些非常基本的数据形式（或经过组合）来表示。这些基本数据形式有哪些呢？比如有常用到的数字和字符，以及其它的诸如数组、字节序列等形式。</p>
+</div><div class="cl-preview-section"><p>以数字和字符为例，为大家介绍下在代码中它们是怎么表示的。</p>
+</div><div class="cl-preview-section"><p>对于数字，数字在代码中的表示形式和平时的电脑输入一样，直接书写即可：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">123</span>
+</code></pre>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">3.14159</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>对于字符，和平时的书写稍有不同，Python 代码中表示字符时一定要给字符括上单引号或双引号：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token string">'How are you?'</span>
+</code></pre>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token string">'嗨！'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这些不同的数据表示（书写）形式，对应着不同的数据种类，而不同的数据种类又具有不同的功能或者作用。</p>
+</div><div class="cl-preview-section"><p>我们将代码中的数据种类称为<strong>数据类型</strong>，也就是数据的类型。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="数据类型">数据类型</h2>
+</div><div class="cl-preview-section"><p>代码中的所有数据都是有类型的。</p>
+</div><div class="cl-preview-section"><p>数字所对应的数据类型有<strong>整数型</strong>以及<strong>浮点型</strong>。整数型表示整数数字，比如：<code>0</code>，<code>-59</code>，<code>100</code>。浮点型表示小数数字，如 <code>-3.5</code>，<code>0.25</code>，<code>0.0</code>。</p>
+</div><div class="cl-preview-section"><p>字符所对应的数据类型叫<strong>字符串</strong>，所谓字符串就是一串字符。它里面可以是任意语言的字符，比如 <code>'哼哼哈嘿'</code>，<code>'Good Good Study'</code>。当然字符串里也可以只有一个字符，比如 <code>'a'</code>。</p>
+</div><div class="cl-preview-section"><p>有一种表示「是」或「否」的类型，叫做<strong>布尔型</strong>。它的值叫布尔值，只有 <code>True</code> 和 <code>False</code> 两种取值。这就好比考试时的判断题，结果只能二选一，要么「是」要么「否」。</p>
+</div><div class="cl-preview-section"><p>另外还有一种很特别的类型：<strong>None 型</strong>，表示什么都没有，它就一个取值 <code>None</code>。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：为了不增加大家的记忆负担，这里只介绍这五种基本数据类型，后续的我们慢慢掌握。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>考大家一个问题，在代码中 <code>1000</code> 和 <code>'1000'</code> 是相同的东西吗？答案是不同，一个是数字，一个是字符串，数据类型不同。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="数值运算">数值运算</h2>
+</div><div class="cl-preview-section"><p>对于整数型和浮点型，因为它们都被用来表示数值，理所应当这二者可以做数值运算，也就是加减乘除等操作。</p>
+</div><div class="cl-preview-section"><p>我们进入 Python 解释器交互模式中，输入代码试验一下这些数值运算：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>加法</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">33</span><span class="token operator">+</span><span class="token number">725</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 33+725<br>
+758</p>
+</blockquote>
+</li>
+<li>
+<p>减法</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">12</span><span class="token operator">-</span><span class="token number">24</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 12-24<br>
+-12</p>
+</blockquote>
+</li>
+<li>
+<p>乘法</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">8</span><span class="token operator">*</span><span class="token number">12.5</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 8*12.5<br>
+100.0</p>
+</blockquote>
+</li>
+<li>
+<p>除法</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">1</span><span class="token operator">/</span><span class="token number">3</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 1/3<br>
+0.3333333333333333</p>
+</blockquote>
+</li>
+<li>
+<p>除余</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">10</span><span class="token operator">%</span><span class="token number">3</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 10%3<br>
+1</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><p>可以看到，数值的加（<code>+</code>）、减（<code>-</code>）、乘（<code>*</code>）、除（<code>/</code>）、除余（<code>%</code>）都可以被计算。这些操作也是多种程序语言所通用的，除此之外 Python 还内置了次方运算（<code>**</code>）和整除（<code>//</code>）：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>次方</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">2</span><span class="token operator">**</span><span class="token number">3</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 2**3<br>
+8</p>
+</blockquote>
+</li>
+<li>
+<p>整除</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token number">9</span><span class="token operator">//</span><span class="token number">2</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; 9//2<br>
+4</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><p>这恐怕是 Python 的最简单的用法了——当作计算器！</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：通常我们为了美观，会在上面的运算符号的左右各加上一个空格，如 <code>12 - 24</code>，<code>2 ** 3</code>。</p>
+<p>之后的代码示例中我们会添加空格。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="比较运算">比较运算</h2>
+</div><div class="cl-preview-section"><p>整数型和浮点型除了数值运算外，还可以做比较运算，也就是比较两个数值的大小。比较的结果是布尔值。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">2</span> <span class="token operator">&gt;</span> <span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 2 &gt; 3<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">2</span> <span class="token operator">&lt;=</span> <span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 2 &lt;= 3<br>
+True</p>
+</blockquote>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 2 == 3<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>比较运算的运算符可以是大于（<code>&gt;</code>），小于（<code>&lt;</code>），大于等于（<code>&gt;=</code>），小于等于（<code>&lt;=</code>），等于（<code>==</code>），不等于（<code>!=</code>）。其写法与数学中的比较运算很相似，但不同的是「等于」和「不等于」，尤其注意「等于」是用两个等号 <code>==</code> 表示。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h2 id="变量和赋值">变量和赋值</h2>
+</div><div class="cl-preview-section"><p>刚才我们学习了数值运算，那我们现在来算算一周有多少秒，一年有多少秒。</p>
+</div><div class="cl-preview-section"><p>首先我们不难得出一天有 <code>60 * 60 * 24</code> 秒。我们可以暂时把这个结果用某种方式记录下来，以便后续使用。用什么方式记录呢？我们可以使用变量。</p>
+</div><div class="cl-preview-section"><p><strong>变量</strong>其实就是编程者给代码中的某个数据所取的名字，之后的编程过程中使用这个名字就相当于使用它背后的数据。简单地来理解的话，我们可以把变量看作是代码中用于保存数据的临时容器。</p>
+</div><div class="cl-preview-section"><p>创建变量的动作我们称之为<strong>定义变量</strong>。如下是定义变量的方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">seconds_per_day <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">24</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>在这里我们起了个名字 <code>seconds_per_day</code>，并且通过符号 <code>=</code> 把 <code>60 * 60 * 24</code> 的计算结果给了它。<code>seconds_per_day</code> 这个名字就是我们所定义的变量，它的值（也就是其背后的数据）是 <code>60 * 60 * 24</code> 的实际运算结果。也就是说我们将一天的秒数 <code>60 * 60 * 24</code> 保存在了变量 <code>seconds_per_day</code> 中。</p>
+</div><div class="cl-preview-section"><p>等号（<code>=</code>） 在代码中是<strong>赋值</strong>的意思，表示将 <code>=</code> 右边的值赋予 <code>=</code> 左边的变量。注意赋值用等号 <code>=</code> 表示，而「等于」用 <code>==</code> （连续两个等号）表示。</p>
+</div><div class="cl-preview-section"><p>执行刚才的代码后，紧接着输入 <code>seconds_per_day</code> 可以看到这个变量的值：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; seconds_per_day<br>
+86400</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>回到「一周有多少秒」的问题上去。我们有了表示一天的秒数的 <code>seconds_per_day</code> 变量，那我们的程序就可以这样写下去：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">seconds_per_day <span class="token operator">*</span> <span class="token number">7</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; seconds_per_day * 7<br>
+604800</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>一天的秒数乘以七（天），最终结果是 <code>604800</code>，没有任何问题。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>刚才的完整连贯代码是：</p>
+<pre class="  language-python"><code class="prism  language-python">seconds_per_day <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">24</span>
+seconds_per_day <span class="token operator">*</span> <span class="token number">7</span>
+</code></pre>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="变量的好处">变量的好处</h3>
+</div><div class="cl-preview-section"><p>你可能会说「一周的秒数，直接计算 <code>60 * 60 * 24 * 7</code> 不就好了，也用不着使用变量」？是的，有时确实可以不使用变量。但使用变量有一个好处，那就是可以暂存一个中间结果，方便之后去重复利用它。</p>
+</div><div class="cl-preview-section"><p>比如我们现在还想要再算一下「一年有多少秒」，因为前面已经算好了一天的秒数 <code>seconds_per_day</code>，所以可以直接拿来利用：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">seconds_per_day <span class="token operator">*</span> <span class="token number">365</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; seconds_per_day * 365<br>
+31536000</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>除此之外变量的好处还有，你可以通过妥当的变量名字来改善程序的可读性（阅读的容易程度）。比如我们在代码里写下 <code>60 * 60 * 24</code>，别人（包括未来的你自己）在阅读时很难一下子理解这串运算表示什么。但是如果这样写呢： <code>seconds_per_day = 60 * 60 * 24</code>。噢，原来是指一天的秒数。</p>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h2 id="用赋值更新变量">用赋值更新变量</h2>
+</div><div class="cl-preview-section"><p>前面内容中的变量是在定义的时候被赋值的，其实变量被定义后也可以反复给这个变量赋予新的值，这样变量中的数据就被更新了。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; day = 1<br>
+&gt;&gt;&gt; day<br>
+1<br>
+&gt;&gt;&gt; day = 2<br>
+&gt;&gt;&gt; day<br>
+2<br>
+&gt;&gt;&gt; day = 3<br>
+&gt;&gt;&gt; day<br>
+3</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h2 id="变量和数据类型的关系">变量和数据类型的关系</h2>
+</div><div class="cl-preview-section"><p>变量用来保存数据，而数据类型用来指明数据的种类。</p>
+</div><div class="cl-preview-section"><p>刚才我们使用了 <code>seconds_per_day = 60 * 60 * 24</code> 语句来定义变量 <code>seconds_per_day</code>，并将它赋值为 <code>60 * 60 * 24</code>。因为变量 <code>seconds_per_day</code> 中保存的是个整数型的值，所以我们说 <code>seconds_per_day</code> 是个整数型（的）变量。</p>
+</div><div class="cl-preview-section"><a id="anchor_8_virtual" class="virtual_anchor"></a><h2 id="总结">总结</h2>
+</div><div class="cl-preview-section"><a id="anchor_9_virtual" class="virtual_anchor"></a><h3 id="数据类型-1">数据类型</h3>
+</div><div class="cl-preview-section"><p>这个章节中我们提到的 Python 基础数据类型有：</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>表示</th>
+<th>取值示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整数型</td>
+<td>整数</td>
+<td><code>-59</code>，<code>100</code></td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>小数</td>
+<td><code>-3.5</code>，<code>0.01</code></td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>文本</td>
+<td><code>'哼哼哈嘿'</code>，<code>'Good Good Study'</code></td>
+</tr>
+<tr>
+<td>布尔型</td>
+<td>是与非</td>
+<td><code>True</code>，<code>False</code></td>
+</tr>
+<tr>
+<td>None 型</td>
+<td>什么都没有</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>Python 中的数据类型不止这些，之后会渐渐涉及，表格中的这些类型也会在之后被应用到。</p>
+</div><div class="cl-preview-section"><a id="anchor_10_virtual" class="virtual_anchor"></a><h3 id="数值运算-1">数值运算</h3>
+</div><div class="cl-preview-section"><p>数值运算的符号有：</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>加法</td>
+<td><code>1 + 1</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>减法</td>
+<td><code>2 - 3</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>乘法</td>
+<td><code>4 * 5</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>除法</td>
+<td><code>6 / 7</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>取余</td>
+<td><code>8 % 9</code></td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>次方</td>
+<td><code>2 ** 3</code>（2 的 3 次方）</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>整除</td>
+<td><code>5 // 4</code></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><a id="anchor_11_virtual" class="virtual_anchor"></a><h3 id="数值比较">数值比较</h3>
+</div><div class="cl-preview-section"><p>数值比较的符号有：</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>等于</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不等于</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>上面的内容看起来罗列了很多，但其实不会带来记忆负担。数值运算和数值比较与数学上的概念和符号大致相同，略有区别而已。</p>
+</div><div class="cl-preview-section"><a id="anchor_12_virtual" class="virtual_anchor"></a><h3 id="变量和赋值-1">变量和赋值</h3>
+</div><div class="cl-preview-section"><p>我们通过以下形式来定义变量和赋值：</p>
+</div><div class="cl-preview-section"><pre class="  language-py"><code class="prism  language-py">变量名 <span class="token operator">=</span> 数据值
+</code></pre>
+</div><div class="cl-preview-section"><hr>
+</div><div class="cl-preview-section"><blockquote>
+<p>多语言比较：</p>
+<p>「多语言比较」这部分内容，是为让大家了解本章节所介绍的语言基本特性在其它语言中是如何表达的。大家可以了解体会它们之间的相识之处。</p>
+<p>不同于动态类型的 Python，在静态类型的语言中数据类型还有长度一说，也就是类型所能容纳的数据大小。并且变量在定义时还需先声明它的类型。以整数型为例。Java 中的整数型根据长度的不同分为：byte（1 字节）、short（2 字节）、int（4 字节）、long（8 字节），浮点型分为 float（4 字节）、double（8 字节）。其它语言也有一些类似。C/C++ 中的整数型有「有无符号」之分（如 <code>unsigned int</code> 表示无符号的 <code>int</code> 型，也就是说这只能表示 0 和正数，不能表示负数）。</p>
+<p><strong>Java</strong> 定义变量并初始化：</p>
+<pre class="  language-java"><code class="prism  language-java"><span class="token keyword">int</span> yearDays <span class="token operator">=</span> <span class="token number">365</span>
+</code></pre>
+<p><strong>C/C++</strong> 定义变量并初始化：</p>
+<pre class="  language-c"><code class="prism  language-c"><span class="token keyword">int</span> yearDays <span class="token operator">=</span> <span class="token number">365</span> 
+</code></pre>
+<p>把 C 和 C++ 合并称为 C/C++，是因为 C++ 基本上是 C 的强大很多的超集，虽然 C++ 严格来说不是 100% 兼容 C，但几乎是兼容的。</p>
+<p><strong>Go</strong> 语言定义变量并初始化：</p>
+<pre class="  language-go"><code class="prism  language-go"><span class="token keyword">var</span> yearDays <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">365</span>
+</code></pre>
+<p>Go 语言中的变量定义需要加上关键字 var，且数据类型（这里是 <code>int</code>）放在变量名后面。或者采用另一种写法：</p>
+<pre class="  language-go"><code class="prism  language-go">yearDays <span class="token operator">:=</span> <span class="token number">365</span>
+</code></pre>
+<p>这种写法不但可以省略关键字 <code>var</code> 还可以省略数据类型，数据类型可直接由编译器推导出来。</p>
+<p>以上语言在变量定义后，都可通过下述语句再次赋值：</p>
+<pre class="  language-python"><code class="prism  language-python">yearDays <span class="token operator">=</span> <span class="token number">366</span>
+</code></pre>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/811">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            04 如何运行 Python 代码？
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/814">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            06 一串数据怎么存—列表和字符串
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">6</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8202504/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5de85e6500012c8709600960-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8202504/articles" target="_blank">                                         <div class="name l">慕莱坞2594481</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     python里面的非运算。不是not吗？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3805">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3805">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3805" data-uid="8202504" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/1891012/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5cc143a900012c2d07410673-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/1891012/articles" target="_blank">                                         <div class="name l">K21vin</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     Python的None和JavaScript的Null是同一个概念吗？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3660">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3660">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3660" data-uid="1891012" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2020-01-16</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/8336360/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img3.mukewang.com/5dd76d350001a6b309600960-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/8336360/articles" target="_blank">                                                         <div class="name l">7306403</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/1891012/articles" target="_blank">                                                                 <div class="name l">K21vin</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     可以这么理解                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="3238" data-name="7306403">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="3238" data-uid="8336360" data-src="/read/46/article/812" data-type="16">举报</div>                                                                                                          <div class="time r">16小时前</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/2791871/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5333a0490001f9ff02200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/2791871/articles" target="_blank">                                         <div class="name l">木子二月鸟</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     多语言比较这部分很有创意，也很实用，虽然不一定用到，但是帮助加深记忆，谢谢老师！                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2568">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2568">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2568" data-uid="2791871" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2019-10-29</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/4597348/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img.mukewang.com/5da671160001d92201680191-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/4597348/articles" target="_blank">                                         <div class="name l">老韩Linux</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     可以发一个完整的Python学习路线吗？
+可以开发完整的项目，从前端到后台。                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2447">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2447">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2447" data-uid="4597348" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2019-10-23</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/7777438/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img.mukewang.com/5cc92b3200010fea09700970-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/7777438/articles" target="_blank">                                         <div class="name l">广东靓仔</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     请问现在更新完了吗?                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2218">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2218">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2218" data-uid="7777438" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2019-10-06</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7655886/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img2.mukewang.com/5dbb973000012c1810801206-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/7655886/articles" target="_blank">                                                         <div class="name l">DongHj</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/7777438/articles" target="_blank">                                                                 <div class="name l">广东靓仔</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     同学你好，现在专栏还没有更新完成哦                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2044" data-name="DongHj">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2044" data-uid="7655886" data-src="/read/46/article/812" data-type="16">举报</div>                                                                                                          <div class="time r">2019-10-10 13:59:25</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/1219423/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img.mukewang.com/545863c10001865402200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/1219423/articles" target="_blank">                                         <div class="name l">Just90</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     要是可以和 Javascript 比较下就好了，因为 Javascrpt 和 python 同样作为解释型语言，对比之后记忆更深，并且使用 JavaScript 的人也非常多                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2145">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2145">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2145" data-uid="1219423" data-src="/read/46/article/812" data-type="15">举报</div>                                                                          <div class="time r">2019-09-29</div>                                 </div>                             </div>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

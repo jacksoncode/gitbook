@@ -1,0 +1,207 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        04 如何运行 Python 代码？
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-11-26 09:47:23
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img2.mukewang.com/5d5686c0000163c506400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">人的影响短暂而微弱，书的影响则广泛而深远。<p class="author">——普希金</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>上节课我带着大家来让 Python 在我们的电脑上安家落户。既然安装成功了，那么使用起来也不是问题。运行 Python 代码有两种方式。一种是直接在 Python 解释器中的输入代码，然后就地执行它（也就是交互模式）。另一种是把 Python 代码保存到文件中，之后去执行这个文件。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="交互模式执行-python-代码">交互模式执行 Python 代码</h2>
+</div><div class="cl-preview-section"><p>先来看下如何在交互模式下执行 Python 代码。首先进入 Python 解释器交互模式，进入方法是：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>使用 Linux 和 MacOS 的读者在命令行（虚拟终端）中执行命令</p>
+<pre><code>python3
+</code></pre>
+</li>
+<li>
+<p>使用 Windows 的读者在命令行（CMD）中执行命令</p>
+<pre><code>python
+</code></pre>
+</li>
+</ul>
+</div><div class="cl-preview-section"><p>之后你会看一些版本和帮助信息：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜ ~ python3  Python 3.7.3 (default, Mar 27 2019, 09:23:15)<br>
+[Clang 10.0.1 (clang-1001.0.46.3)] on darwin<br>
+Type “help”, “copyright”, “credits” or “license” for more information.<br>
+&gt;&gt;&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这便是 Python 解释器交互模式，上例中左下角的 <code>&gt;&gt;&gt;</code> 表示这里是输入代码的地方，此时正在等待你的输入。试着输入一些内容，然后按回车键去执行它：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">12345</span> <span class="token operator">+</span> <span class="token number">54321</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 12345 + 54321<br>
+66666</p>
+</blockquote>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token string">'apple'</span> <span class="token operator">+</span> <span class="token string">'pen'</span>
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; ‘apple’ + ‘pen’<br>
+‘applepen’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，按下回车键后解释器会立即执行刚才输入的代码，并直接将执行结果输出出来。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="执行-python-文件">执行 Python 文件</h2>
+</div><div class="cl-preview-section"><p>再来看下如何执行 Python 文件。所谓 Python 文件，其实就是保存 Python 代码的文件，通常将其文件后缀名约定为 <code>.py</code>。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：其实用别的后缀名甚至不用后缀名都是可以的，但是既然是约定，那么大家就该遵守。<code>.py</code> 后缀能很清晰的表明这是 Python 文件。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>我们来创建一个文件，如 <code>today.py</code>，然后把以下代码拷贝进去：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> datetime  
+today <span class="token operator">=</span> datetime<span class="token punctuation">.</span>date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y{}%m{}%d{}'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token string">'年月日'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'今天是：'</span> <span class="token operator">+</span> today<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>然后通过 Python 命令来执行这个 <code>today.py</code> 文件：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>Windows 下执行：</p>
+<pre><code>python today.py
+</code></pre>
+<blockquote>
+<p>C:&gt; python today.py<br>
+今天是：2019年07月03日</p>
+</blockquote>
+</li>
+<li>
+<p>Linux 和 MacOS 下执行：</p>
+<pre><code>python3 today.py
+</code></pre>
+<blockquote>
+<p>➜ ~ python3 today.py<br>
+今天是：2019年07月03日</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><blockquote>
+<p>注意：上述文件使用的是省略了路径前缀的相对路径形式，执行命令前须先进入到 Python 文件所在目录（即确保工作目录和文件所在目录一致），否则解释器会找不到该文件。也可以直接使用绝对路径的形式，如 <code>python C:\Users\happy\today.py</code>，此时无需考虑工作目录。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h2 id="交互模式执行和-python-文件执行的差别">交互模式执行和 Python 文件执行的差别</h2>
+</div><div class="cl-preview-section"><p>显而易见，Python 代码的交互模式执行和文件执行在使用形式上是不同的。除此之外，在输出结果的方式上这两种方法也存在一些不同。</p>
+</div><div class="cl-preview-section"><p>比如代码：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token number">12345</span> <span class="token operator">+</span> <span class="token number">54321</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>在交互模式下执行时，计算结果会被直接输出出来：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 12345 + 54321<br>
+66666</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>在这里我们没有使用任何输出操作，代码执行时计算出结果并自动输出。</p>
+</div><div class="cl-preview-section"><p>而如果把这行代码写到文件里（如 <code>add.py</code>），然后使用文件执行的方式来执行它，这时命令行中没有任何内容被输出显示。如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜ ~ python3 add.py<br>
+➜ ~</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这是因为文件执行时，每个语句的执行结果并不会被自动输出，<strong>除非代码中有明确的输出操作</strong>。</p>
+</div><div class="cl-preview-section"><p>这输出操作具体是什么呢？比如 Python 里有个叫 <code>print()</code> 函数的东西，它可以把结果输出显示到命令行中。使用时只需将想要输出的内容放在 <code>print()</code> 的括号中，像这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">12345</span> <span class="token operator">+</span> <span class="token number">54321</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>好了，我们修改下文件中的代码，用 <code>print(12345 + 54321)</code> 完整替换原来的 <code>12345 + 54321</code>，再次执行下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜ ~ python3 add.py<br>
+66666</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这样结果就显示出来了。交互模式下当然也可以使用 <code>print()</code>，效果也是一样的。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>注意：代码中的所有符号，包括括号「()」、逗号「,」、分号「;」等必须使用<strong>英文半角</strong>符号，否则程序会出错。</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：print() 是 Python 的内置函数（函数概念后续会提到），无需从包（程序库）中导入。准确来讲，它的行为是将内容写到标准输出中。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h2 id="交互模式-or-python-文件？">交互模式 or Python 文件？</h2>
+</div><div class="cl-preview-section"><p>在做 Python 开发时，大多数时候都是用执行 Python 文件的方式来运行代码。交互模式往往只是在试验小段代码，或者用 Python 做一些简单事情的时候才会去使用。原因是：</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>大多数场景下，我们的程序需要以自动化的方式来运行，而交互模式顾名思义是需要人的参与的，不便于自动化</p>
+</li>
+<li>
+<p>把代码写到文件里方便反复执行</p>
+</li>
+<li>
+<p>交互模式下的输入体验不佳，编写大段代码时不够便利</p>
+</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h2 id="趁手的代码编辑器">趁手的代码编辑器</h2>
+</div><div class="cl-preview-section"><p>执行 Python 文件是运行 Python 代码的主要方式，正因为如此，我们需要一个好用的编辑器来编写 Python 文件，毕竟系统自带的文本编辑器太简陋了。</p>
+</div><div class="cl-preview-section"><p>用来写代码的编辑器实在很多，比如老牌的 VIM、Emacs，之后的 Atom、Sublime，以及新秀 VS code。除此之外，还可以用重量级的 IDE（Integrated Development Environment——集成开发环境）。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：编辑器通常有代码编辑、高亮显示、基于历史记录的代码补全等功能。IDE 在编辑器的基础上还支持基于静态分析的代码补全，引用查看，代码跳转，重构，代码格式化，编辑时错误提示，风格提示等强大且常用的功能。</p>
+<p>编辑器能通过插件来扩展得到这些功能，但需要经历一番折腾。想省些力气的读者可以直接用 IDE 来做开发。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这里分别推荐一款代码编辑和一款 IDE：</p>
+</div><div class="cl-preview-section"><ul>
+<li>VS code，微软开源的优秀代码编辑器。 <a href="https://code.visualstudio.com">官方下载页面</a></li>
+</ul>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d54c18200019d9523080972.png" class="lazyload" style="cursor: pointer;"></p>
+</div><div class="cl-preview-section"><ul>
+<li>PyCharm。它是 Python 领域口碑和人气双高的 IDE。有付费的个人版本和免费的社区版本，我们使用社区版本就足够了。<a href="https://www.jetbrains.com/pycharm/download/">官方下载页面</a><br>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5d54c1930001ad7e20641082.png" class="lazyload" style="cursor: pointer;"></li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h2 id="本专栏代码演示说明">本专栏代码演示说明</h2>
+</div><div class="cl-preview-section"><p>值得说明的是，后续文章中的代码执行演示以交互模式为主。交互模式的典型标记是 <code>&gt;&gt;&gt;</code> 提示符，如下示例就是在解释器交互模式下进行的：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; 33+725<br>
+758</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>另外在代码较长时，本专栏也会使用执行 Python 文件的方式来作代码执行演示。此时的典型标记是 <code>➜ ~</code>，表明这是在命令行（即 Windows CMD 或 Llinux / MacOS 虚拟终端）中执行命令。如下：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜ ~ python3 hello.py<br>
+hello</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：上述使用的是 Linux / MacOS 下的 <code>python3</code> 命令，使用 Windows 的读者请自行替换为 <code>python</code>。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>这是本专栏的代码演示形式。读者自己试验代码时，是选择交互模式还是 Python 文件的方式完全由个人喜好而定。如果使用 Python 文件的方式，请不要忘记想要输出执行结果需要在代码里使用 <code>print()</code>。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/810">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            03 让 Python 在你的电脑上安家落户
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/812">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            05 数据的名字和种类—变量和类型
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">2</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8076827/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img3.mukewang.com/5458456b0001812002200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8076827/articles" target="_blank">                                         <div class="name l">weixin_慕斯卡9537365</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     今天加入学习，之前有学过基础知识；但对类的使用还不太熟悉，少有练习。同样期望能快速更新，特别想看对应章节和练习。谢谢老师｡◕‿◕｡也请推荐一些学习书籍或网友                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="1545">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="1545">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="1545" data-uid="8076827" data-src="/read/46/article/811" data-type="15">举报</div>                                                                          <div class="time r">2019-08-23</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img1.mukewang.com/5d5496f200014b7e11001100-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                         <div class="name l">黄浮云</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8076827/articles" target="_blank">                                                                 <div class="name l">weixin_慕斯卡9537365</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     第2章节中会有类的介绍，第3章节中会更深入地来探讨类，不过专栏还需要按照预定进度来更新。如果你着急想学习类方面的内容的话，不妨先看看 Python 官方文档的类章节，中译版：https://docs.python.org/zh-cn/3/tutorial/classes.html；英文原版：https://docs.python.org/3/tutorial/classes.html。至于网友，不如你加我微信好了 flocloud ?                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="1334" data-name="黄浮云">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="1334" data-uid="7904211" data-src="/read/46/article/811" data-type="16">举报</div>                                                                                                          <div class="time r">2019-08-23 22:26:11</div>                                                 </div>                                             </div>                                         </li>                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/8076827/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img3.mukewang.com/5458456b0001812002200220-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/8076827/articles" target="_blank">                                                         <div class="name l">weixin_慕斯卡9537365</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8076827/articles" target="_blank">                                                                 <div class="name l">weixin_慕斯卡9537365</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     谢谢黄老师?                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="1335" data-name="weixin_慕斯卡9537365">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="1335" data-uid="8076827" data-src="/read/46/article/811" data-type="16">举报</div>                                                                                                          <div class="time r">2019-08-24 09:39:08</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/6590227/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5ad61654000164b807410721-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/6590227/articles" target="_blank">                                         <div class="name l">橘彩星光</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     老师能不能一天多更新几节                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="1505">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="1505">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="1505" data-uid="6590227" data-src="/read/46/article/811" data-type="15">举报</div>                                                                          <div class="time r">2019-08-21</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img.mukewang.com/5d5496f200014b7e11001100-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                         <div class="name l">黄浮云</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/6590227/articles" target="_blank">                                                                 <div class="name l">橘彩星光</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     不好意思哈，这个专栏是按照每周三篇的进度来更新的，不过从第2章开始每篇文章的知识密度会渐渐大起来。                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="1333" data-name="黄浮云">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="1333" data-uid="7904211" data-src="/read/46/article/811" data-type="16">举报</div>                                                                                                          <div class="time r">2019-08-23 22:11:30</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

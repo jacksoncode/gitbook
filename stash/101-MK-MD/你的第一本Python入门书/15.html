@@ -1,0 +1,416 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        15 Python大法初体验：内置函数
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-18 10:40:42
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d8199210001350306400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">虚心使人进步，骄傲使人落后。<p class="author">——毛泽东</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>Python 中内置有很多常用的函数，这些函数无需从模块中导入，可直接使用。由于内置函数有六七十个之多，故这里不一一介绍，只介绍一些最常用的。</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="数据类型相关">数据类型相关</h3>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>功能</th>
+<th align="right">示例</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dict()</code></td>
+<td>将参数转换为字典类型</td>
+<td align="right"><code>dict(a=1, b=2, c=3)</code></td>
+<td><code>{'a': 1, 'b': 2, 'c': 3}</code></td>
+</tr>
+<tr>
+<td><code>float()</code></td>
+<td>将字符串或数字转换为浮点型</td>
+<td align="right"><code>float('0.22')</code></td>
+<td><code>0.22</code></td>
+</tr>
+<tr>
+<td><code>int()</code></td>
+<td>将字符串或数字转换为整数型</td>
+<td align="right"><code>int(1.23)</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>list()</code></td>
+<td>将元组、字符串等可迭代对象转换为列表</td>
+<td align="right"><code>list('abc')</code></td>
+<td><code>['a', 'b', 'c']</code></td>
+</tr>
+<tr>
+<td><code>tuple()</code></td>
+<td>将列表、字符串等可迭代对象转换为元组</td>
+<td align="right"><code>tuple([1, 2, 3])</code></td>
+<td><code>(1, 2, 3)</code></td>
+</tr>
+<tr>
+<td><code>set()</code></td>
+<td>1.创建空集合；2.将可迭代对象转换为列表集合</td>
+<td align="right"><code>set('abc')</code></td>
+<td><code>{'b', 'a', 'c'}</code></td>
+</tr>
+<tr>
+<td><code>str()</code></td>
+<td>将参数转换为字符串</td>
+<td align="right"><code>str(3.14)</code></td>
+<td><code>'3.14'</code></td>
+</tr>
+<tr>
+<td><code>bytes()</code></td>
+<td>将参数转换为字节序列</td>
+<td align="right"><code>bytes(4)</code></td>
+<td><code>b'\x00\x00\x00\x00</code></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><blockquote>
+<p>扩展：上表中的函数严格来讲并不是函数，而是类，只是其命名风格和使用方式和函数类似。</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>可迭代对象：如列表、元组、字符串、集合、字典等。关于可迭代对象的细节见下一章节。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="数值计算相关">数值计算相关</h3>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>功能</th>
+<th align="right">示例</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max()</code></td>
+<td>求最大值</td>
+<td align="right"><code>max([13, 2, 0.6, -51, 7])</code></td>
+<td><code>13</code></td>
+</tr>
+<tr>
+<td><code>min()</code></td>
+<td>求最小值</td>
+<td align="right"><code>min([13, 2, 0.6, -51, 7])</code></td>
+<td><code>-51</code></td>
+</tr>
+<tr>
+<td><code>sum()</code></td>
+<td>求和</td>
+<td align="right"><code>sum([13, 2, 0.6, -51, 7])</code></td>
+<td><code>-28.4</code></td>
+</tr>
+<tr>
+<td><code>abs()</code></td>
+<td>求绝对值</td>
+<td align="right"><code>abs(-51)</code></td>
+<td><code>51</code></td>
+</tr>
+<tr>
+<td><code>pow()</code></td>
+<td>求次方</td>
+<td align="right"><code>pow(2, 10)</code></td>
+<td><code>1024</code></td>
+</tr>
+<tr>
+<td><code>bin()</code></td>
+<td>转换为二进制</td>
+<td align="right"><code>bin(77)</code></td>
+<td><code>'0b1001101'</code> （注意结果为字符串）</td>
+</tr>
+<tr>
+<td><code>hex()</code></td>
+<td>转换为十六进制</td>
+<td align="right"><code>hex(77)</code></td>
+<td><code>'0x4d'</code> （注意结果为字符串）</td>
+</tr>
+<tr>
+<td><code>round()</code></td>
+<td>浮点数四舍五入</td>
+<td align="right"><code>round(4.5678, 2)</code> （第二个参数为小数精度）</td>
+<td><code>4.57</code></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="bool-值判断相关">bool 值判断相关</h3>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool()</code></td>
+<td>判断参数是否为真，为真则返回 <code>True</code>，否则返回 <code>False</code>。「为真」指的是，表达式的结果为布尔值 <code>True</code>，或非零数字，或非空字符串，或非空列表</td>
+</tr>
+<tr>
+<td><code>all()</code></td>
+<td>如果可迭代对象中的所有值，在逐一应用 <code>bool(值)</code> 后结果都为 <code>True</code>，则返回 <code>True</code>，否则返回 <code>False</code></td>
+</tr>
+<tr>
+<td><code>any()</code></td>
+<td>如果可迭代对象中的任意一个或多个值，在应用 <code>bool(值)</code> 后结果为 <code>True</code>，则返回 <code>True</code>，否则返回 <code>False</code></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>示例：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; bool(2)<br>
+True<br>
+&gt;&gt;&gt; bool(0)<br>
+False<br>
+&gt;&gt;&gt; bool([1, 2, 3])<br>
+True<br>
+&gt;&gt;&gt; bool([])<br>
+False<br>
+&gt;&gt;&gt; bool(‘abc’)<br>
+True<br>
+&gt;&gt;&gt; bool(’’)<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; all([‘a’, 1, [1]])<br>
+True<br>
+&gt;&gt;&gt; all([‘a’, 0, [1]])<br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; any([’’, 0, []])<br>
+False<br>
+&gt;&gt;&gt; any([‘a’, 0, []])<br>
+True</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="io-相关">IO 相关</h3>
+</div><div class="cl-preview-section"><p>IO 即输入输出。</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input()</code></td>
+<td>从标准输入中读取字符串</td>
+</tr>
+<tr>
+<td><code>print()</code></td>
+<td>将内容写入标准输出中</td>
+</tr>
+<tr>
+<td><code>open()</code></td>
+<td>打开一个文件。之后便可以对文件做读写操作。详见 IO 操作章节</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="元数据相关">元数据相关</h3>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type()</code></td>
+<td>获取对象的类型</td>
+</tr>
+<tr>
+<td><code>isinstance()</code></td>
+<td>判断对象是否是某个类（或其子类）的对象</td>
+</tr>
+<tr>
+<td><code>dir()</code></td>
+<td>获取类或对象中的所有方法和属性；无参数时获取当前作用域下的所有名字</td>
+</tr>
+<tr>
+<td><code>id()</code></td>
+<td>返回一个对象的唯一标识。在我们所使用的 CPython 中这个唯一标识实际为该对象在内存中的地址</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p><code>type()</code> 示例：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = [1, 2, 3]<br>
+&gt;&gt;&gt; <strong>type(numbers)</strong><br>
+&lt;class ‘list’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>isinstance()</code> 示例：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = [1, 2, 3]<br>
+&gt;&gt;&gt; <strong>isinstance(numbers, list)</strong><br>
+True<br>
+&gt;&gt;&gt; <strong>isinstance(numbers, str)</strong><br>
+False</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>也可以把多个类型放在元组中，其中一个与对象的类型相符即为 <code>True</code>，若无相符则为 <code>False</code>。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = [1, 2, 3]<br>
+&gt;&gt;&gt; <strong>isinstance(numbers, (list, str))</strong><br>
+True</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>dir()</code> 示例：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; dir(list)<br>
+[’__add__’, ‘__class__’, ‘__contains__’, ‘__delattr__’, ‘__delitem__’, ‘__dir__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__getitem__’, ‘__gt__’, ‘__hash__’, ‘__iadd__’, '__imul__, ‘__init__’, ‘__init_subclass__’, ‘__iter__’, ‘__le__’, ‘__len__’, ‘__lt__’, ‘__mul__’, ‘__ne__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__reversed__’, ‘__rmul__’, ‘__setattr__’, ‘__setitem__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘append’, ‘clear’, ‘copy’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>id()</code> 示例：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; number = 1<br>
+&gt;&gt;&gt; <strong>id(number)</strong><br>
+4411695232</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = [1, 2, 3, 4]<br>
+&gt;&gt;&gt; <strong>id(numbers)</strong><br>
+4417622792</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="help">help()</h3>
+</div><div class="cl-preview-section"><p>解释器交互模式下获取某个函数、类的帮助信息，非常实用。</p>
+</div><div class="cl-preview-section"><p>比如查看内置函数 <code>any()</code> 的用法：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; <strong>help(any)</strong>	# 只需使用函数名字</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>将显示出 <code>any()</code> 的帮助信息：</p>
+</div><div class="cl-preview-section"><pre><code>Help on built-in function any in module builtins:
+
+any(iterable, /)
+    Return True if bool(x) is True for any x in the iterable.
+    
+    If the iterable is empty, return False.
+(END)
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>按下 <code>q</code> 键退出上述界面。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>对于这个章节中的内置函数，如果你有不清楚的地方，便可以用 <code>help()</code> 来查看使用说明。</p>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="sorted">sorted()</h3>
+</div><div class="cl-preview-section"><p>对可迭代对象中的数据进行排序，返回一个新的列表。</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = (4, 5, 2, 8, 9, 1, 0)<br>
+&gt;&gt;&gt; <strong>sorted(numbers)</strong><br>
+[0, 1, 2, 4, 5, 8, 9]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>通过参数 <code>reverse=True</code> 指定倒序：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; numbers = (4, 5, 2, 8, 9, 1, 0)<br>
+&gt;&gt;&gt; <strong>sorted(numbers, reverse=True)</strong><br>
+[9, 8, 5, 4, 2, 1, 0]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>通过参数 <code>key</code> 指定排序时所使用的字段：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; codes = [(‘上海’, ‘021’), (‘北京’, ‘010’), (‘成都’, ‘028’), (‘广州’, ‘020’)]<br>
+&gt;&gt;&gt; <strong>sorted(codes, key=lambda x: x[1])</strong><br>
+[(‘北京’, ‘010’), (‘广州’, ‘020’), (‘上海’, ‘021’), (‘成都’, ‘028’)]</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：指定 key 排序需要用到 lambda 表达式。有关 lambda 表达式的内容将在函数式编程章节中介绍。</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_7_virtual" class="virtual_anchor"></a><h3 id="range">range()</h3>
+</div><div class="cl-preview-section"><p>获取一个整数序列。可指定起始数值，结束数值，增长步长。</p>
+</div><div class="cl-preview-section"><p>在 <code>for</code> 循环中想要指定循环次数时非常有用。</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>指定起始数值和结束数值，获取一个连续的整数序列</p>
+<pre class="  language-python"><code class="prism  language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&gt;&gt;&gt; for i in range(2, 6):<br>
+…     print(i)<br>
+…<br>
+2<br>
+3<br>
+4<br>
+5</p>
+</blockquote>
+<p>注意，生成的数值范围为左开右闭区间，即不包括所指定的结束数值。</p>
+</li>
+<li>
+<p>只指定结束数值，此时起始数值默认为 <code>0</code></p>
+<blockquote>
+<p>&gt;&gt;&gt; for i in range(4):<br>
+…     print(i)<br>
+…<br>
+0<br>
+1<br>
+2<br>
+3</p>
+</blockquote>
+</li>
+<li>
+<p>指定步长（第三个参数）</p>
+<blockquote>
+<p>&gt;&gt;&gt; for i in range(3, 15, 3):<br>
+…     print(i)<br>
+…<br>
+3<br>
+6<br>
+9<br>
+12</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><blockquote>
+<p>扩展：<code>range()</code> 返回的并不是容器，而是可迭代对象，关于可迭代对象的细节见下一章节</p>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/823">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            14 这么多的数据结构（二）：字典、集合
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/825">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            16 深入理解下迭代器和生成器
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

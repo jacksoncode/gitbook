@@ -1,0 +1,223 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        11 更大的代码盒子—模块和包
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-06 09:45:46
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img3.mukewang.com/5d71ba0f0001ab4406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">勤学如春起之苗，不见其增，日有所长。<p class="author">——陶潜</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="什么是模块">什么是模块</h3>
+</div><div class="cl-preview-section"><p>之前介绍过两种运行 Python 代码的方式，一种是解释器的交互模式，另一种是直接运行 Python 代码文件。</p>
+</div><div class="cl-preview-section"><p>在 Python 中，每一个 Python 代码文件就是一个<strong>模块</strong>。写程序时，我们可以将代码分散在不同的模块（文件）中，然后在一个模块里引用另一个模块的内容。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="模块的导入">模块的导入</h3>
+</div><div class="cl-preview-section"><p>在一个模块中引用（导入）另一个模块，可以使用 <code>import</code> 语句:</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 模块名
+</code></pre>
+</div><div class="cl-preview-section"><p>这里的模块名是除去 <code>.py</code> 后缀的文件名称。如，想要导入模块 <code>abc.py</code>，只需 <code>import abc</code>。</p>
+</div><div class="cl-preview-section"><p><code>import</code> 模块之后，就可以使用被导入模块中的名字（变量、函数类）。方式如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">模块名<span class="token punctuation">.</span>变量
+模块名<span class="token punctuation">.</span>函数
+模块名<span class="token punctuation">.</span>类
+</code></pre>
+</div><div class="cl-preview-section"><h4 id="导入及使用模块示例">导入及使用模块示例</h4>
+</div><div class="cl-preview-section"><p>我们用个例子来试验下模块的导入和使用，在这个例子中，农民种下果树，然后等待果树结果收获。</p>
+</div><div class="cl-preview-section"><p>在同一个目录下创建两个模块：</p>
+</div><div class="cl-preview-section"><pre class="  language-undefined"><code class="prism language-\  language-undefined">tree_farmer  # 目录名
+	|___tree.py # 文件名
+	|___farmer.py # 文件名
+</code></pre>
+</div><div class="cl-preview-section"><p>第一个模块名为 <code>tree.py</code>，内容如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+
+fruit_name <span class="token operator">=</span> <span class="token string">''</span>
+
+<span class="token keyword">def</span> <span class="token function">harvest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>fruit_name<span class="token punctuation">]</span> <span class="token operator">*</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>代码中各个变量和函数的功能如下：</p>
+</div><div class="cl-preview-section"><ul>
+<li><code>fruit_name</code> 用来保存水果名称。将在函数 <code>harvest()</code> 中使用；</li>
+<li><code>random.randint(1, 9)</code>，随机生成 1～9 中的一个数；</li>
+<li><code>[fruit_name] * 数字</code>，该形式是将列表项重复若干遍。比如执行 <code>['X'] * 3</code> 将得到 <code>['X', 'X', 'X']</code>；</li>
+<li>总体而言，<code>harvest()</code> 函数返回一个包含 1～9 个列表项的列表，其中每个项都是 <code>fruit_name</code> 的值。</li>
+</ul>
+</div><div class="cl-preview-section"><p>第二个模块名为 <code>farmer.py</code>，内容如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> tree
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'种下一棵果树。'</span><span class="token punctuation">)</span>
+tree<span class="token punctuation">.</span>fruit_name <span class="token operator">=</span> <span class="token string">'apple'</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'等啊等，树长大了，可以收获了！'</span><span class="token punctuation">)</span>
+fruits <span class="token operator">=</span> tree<span class="token punctuation">.</span>harvest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>代码中，</p>
+</div><div class="cl-preview-section"><ul>
+<li>第一行用 <code>import tree</code> 将 <code>tree.py</code> 模块导入进来（使用 <code>import</code> 导入时不需要写 <code>.py</code> 后缀）；</li>
+<li>导入 <code>tree</code> 模块后，就可以使用其中的变量和函数了。将 <code>tree.fruit_name</code> 设置为 apple，调用 <code>tree.harvest()</code> 来收获 apple。</li>
+</ul>
+</div><div class="cl-preview-section"><p>执行下模块 <code>farmer.py</code>  看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 farmer.py<br>
+种下一棵果树。<br>
+等啊等，树长大了，可以收获了！<br>
+[‘apple’, ‘apple’, ‘apple’, ‘apple’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>说明：apple 随机出现 1～9 个，所以你的结果可能和这里不一样。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到，执行 <code>farmer.py</code> 时，由于 <code>tree.py</code> 模块被导入，所以可以在 <code>farmer.py</code> 中使用 <code>tree.py</code> 的内容。</p>
+</div><div class="cl-preview-section"><h4 id="标准库模块的导入">标准库模块的导入</h4>
+</div><div class="cl-preview-section"><p>上面的例子中，我们自己定义了模块，然后在其它模块中使用它。其中有个地方不知道你有没有注意到，<code>tree.py</code> 的第一行代码是 <code>import random</code>，<code>random</code> 并不是我们所定义的模块，那它是从哪里来的呢？</p>
+</div><div class="cl-preview-section"><p><code>random</code> 是标准库中的一个模块。标准库是由 Python 官方开发的代码库，和解释器一起打包分发，其中包含非常多实用的模块，我们在使用时直接 <code>import</code> 进来即可。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="执行模块时传入参数">执行模块时传入参数</h3>
+</div><div class="cl-preview-section"><p>刚才我们用这种方式来执行模块：</p>
+</div><div class="cl-preview-section"><pre class="  language-sh"><code class="prism  language-sh">python3 模块文件名
+</code></pre>
+</div><div class="cl-preview-section"><p>其实我们还可以进一步将参数传递到模块中去，像这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-sh"><code class="prism  language-sh">python3 模块文件名 参数1 ...参数n
+</code></pre>
+</div><div class="cl-preview-section"><p>参数传递到模块中以后，我们可以通过 <code>sys</code> 模块来取出这些参数，参数放在 <code>sys.argv</code> 列表中：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> sys
+
+模块文件名 <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+参数<span class="token number">1</span>     <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+参数N     <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span>N<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>首先需要导入 <code>sys</code> 模块，这是个标准库中的模块。<code>sys.argv</code> 是个列表，执行模块时被传递进来的参数保存在其中，它的列表项分别为：</p>
+</div><div class="cl-preview-section"><ul>
+<li><code>sys.argv[0]</code> 保存当前被执行模块的文件名</li>
+<li><code>sys.argv[1]</code> 保存第 1 个参数</li>
+<li><code>sys.argv[2]</code> 保存第 2 个参数</li>
+<li>依次类推</li>
+</ul>
+</div><div class="cl-preview-section"><p>之前种果树那个例子中，<code>farmer.py</code> 固定种苹果树，我们可以改进一下，具体种什么树由传递的模块参数来决定。</p>
+</div><div class="cl-preview-section"><p>修改 <code>farmer.py</code> 的代码，内容如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> sys  <span class="token comment"># 新增</span>
+<span class="token keyword">import</span> tree
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'种下一棵果树。'</span><span class="token punctuation">)</span>
+tree<span class="token punctuation">.</span>fruit_name <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>   <span class="token comment"># 将 'apple' 改为 参数 sys.argv[1]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'等啊等，树长大了，可以收获了！'</span><span class="token punctuation">)</span>
+fruits <span class="token operator">=</span> tree<span class="token punctuation">.</span>harvest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>以「banana」为例执行下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 farmer.py banana<br>
+种下一棵果树。<br>
+等啊等，树长大了，可以收获了！<br>
+[‘banana’, ‘banana’, ‘banana’]</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>在这个例子中 <code>sys.argv</code> 的值是：</p>
+</div><div class="cl-preview-section"><ul>
+<li><code>sys.argv[0]</code>： farmer.py</li>
+<li><code>sys.argv[1]</code>： banana</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="什么是包">什么是包</h3>
+</div><div class="cl-preview-section"><p>之前我们将定义的两个模块放在同一目录下，然后通过 <code>import</code> 语句来相互引用，这是一种扁平的模块组织结构，当模块数量很大的时候就很不灵活了，也难以维护。</p>
+</div><div class="cl-preview-section"><p>Python 中可以用文件树这样的树形结构来组织模块，这种组织形式下的模块集合称为<strong>包</strong>（Package）。</p>
+</div><div class="cl-preview-section"><p>比如包的结构可以是这样的：</p>
+</div><div class="cl-preview-section"><pre><code>包/
+├── __init__.py
+├── 模块1.py
+├── 模块2.py
+├── 子包1/
+    ├── __init__.py
+    ├── 模块3.py
+    └── 模块4.py
+└── 子包2/
+    ├── __init__.py
+    ├── 模块5.py
+    └── 孙子包1/
+        ├── __init__.py
+        └── 模块6.py
+</code></pre>
+</div><div class="cl-preview-section"><p>这是个很明显的层级结构——包里面包含子包、子包包含孙子包…… 单独将子包或孙子包拿出来，它们也是包。</p>
+</div><div class="cl-preview-section"><p>包的存在形式是目录，模块的存在形式是目录下的文件。所以我们可以很容易地构造出这样一个包，只要在文件系统中创建相应的目录和文件即可。</p>
+</div><div class="cl-preview-section"><p>需要注意的是，每个层级的包下都需要有一个 <code>__init__.py</code> 模块。这是因为只有当目录中存在 <code>__init__.py</code> 时，Python 才会把这个目录当作包。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="包的导入">包的导入</h3>
+</div><div class="cl-preview-section"><p>导入包中模块的方法是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 包<span class="token punctuation">.</span>子包<span class="token punctuation">.</span>模块
+</code></pre>
+</div><div class="cl-preview-section"><p>从最顶层的包开始依次向下引用子包，直至目标模块。</p>
+</div><div class="cl-preview-section"><p>如，从上面示例的包结构中，</p>
+</div><div class="cl-preview-section"><p>导入 <code>模块1.py</code>，使用：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 包<span class="token punctuation">.</span>模块<span class="token number">1</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>导入 <code>模块3.py</code>，使用：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 包<span class="token punctuation">.</span>子包<span class="token number">1</span><span class="token punctuation">.</span>模块<span class="token number">3</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>导入 <code>模块6.py</code>，使用：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 包<span class="token punctuation">.</span>子包<span class="token number">2</span><span class="token punctuation">.</span>孙子包<span class="token number">1</span><span class="token punctuation">.</span>模块<span class="token number">6</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="为什么需要模块和包">为什么需要模块和包</h3>
+</div><div class="cl-preview-section"><p>模块的存在是为了更好的组织代码。将不同功能的代码分散在不同模块中，清晰地划分出各个模块的职责，有利于使用和维护代码，同时也可避免模块中的内容过长。</p>
+</div><div class="cl-preview-section"><p>包的存在是为了更好的组织模块。与模块同理，包在更高的抽象层次上组织着代码。</p>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>模块可以更好的组织代码，它的存在形式是文件。包的可以更好的组织模块，它的存在形式是目录。</p>
+</div><div class="cl-preview-section"><p>导入模块使用 <code>import</code> 语句：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 模块名
+</code></pre>
+</div><div class="cl-preview-section"><p>导入包下的模块：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> 包名<span class="token punctuation">.</span>模块名
+</code></pre>
+</div><div class="cl-preview-section"><p>模块导入后，可以使用该模块中所定义的名字（变量、函数类）。方式如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">模块名<span class="token punctuation">.</span>变量
+模块名<span class="token punctuation">.</span>函数
+模块名<span class="token punctuation">.</span>类
+</code></pre>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/819">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            10 定制一个模子—类
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/821">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            12 练习—密码生成器
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

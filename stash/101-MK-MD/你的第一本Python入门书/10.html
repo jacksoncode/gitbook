@@ -1,0 +1,290 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        10 定制一个模子—类
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-04 10:35:40
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d6f22f40001b6fb06400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">时间像海绵里的水，只要你愿意挤，总还是有的。<p class="author">——鲁迅</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="查看数据类型">查看数据类型</h3>
+</div><div class="cl-preview-section"><p>Python 中内置有这么一个函数，通过它可以查看变量或值的数据类型，它就是 <code>type()</code>。像这样来使用：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token builtin">type</span><span class="token punctuation">(</span>变量或值<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>执行几个例子看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(100)<br>
+&lt;class ‘int’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(3.14)<br>
+&lt;class ‘float’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(‘words’)<br>
+&lt;class ‘str’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(True)<br>
+&lt;class ‘bool’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(None)<br>
+&lt;class ‘NoneType’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type([1, 2, 3])<br>
+&lt;class ‘list’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>执行的结果是 <code>&lt;class '类型'&gt;</code> 形式，其中类型的含义是：</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>整数型</td>
+</tr>
+<tr>
+<td>float</td>
+<td>浮点型</td>
+</tr>
+<tr>
+<td>str</td>
+<td>字符串类型</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>布尔型</td>
+</tr>
+<tr>
+<td>NoneType</td>
+<td>None 类型</td>
+</tr>
+<tr>
+<td>list</td>
+<td>列表类型</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><blockquote>
+<p>上表中的这些数据类型，都内置在 Python 中。</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>那 <code>&lt;class '类型'&gt;</code> 中的 <code>class</code> 是指什么呢？</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="类">类</h3>
+</div><div class="cl-preview-section"><p><code>class</code> 是指面向对象编程范式中的一个概念——<strong>类</strong>。Python 中的数据类型就是类，一个类对应一种数据类型。类的具体对象中可以保存若干数据，以及用于操作这些数据的若干函数。</p>
+</div><div class="cl-preview-section"><p>我们来看一个例子：</p>
+</div><div class="cl-preview-section"><p>我们常用的字符串类型，就是名为 <code>str</code> 的类。一个 <code>str</code> 中可以保存若干字符，并且针对这些字符提供了一系列的操作函数。</p>
+</div><div class="cl-preview-section"><p>如 <code>'hello'</code> 就是一个 <code>str</code> 对象，我们可以把这个对象赋值给变量：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; words = ‘hello’<br>
+&gt;&gt;&gt; words<br>
+’hello’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>str</code> 对象自带的 <code>find()</code> 函数，可用于获取字符的索引：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; words.find(‘e’)<br>
+1</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>str</code> 对象自带的 <code>upper()</code> 函数，可用于获取英文字符的大写形式：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; words.upper()<br>
+‘HELLO’</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>除此 <code>str</code> 之外，前面列表中的那些数据类型也都是类。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="类的定义">类的定义</h3>
+</div><div class="cl-preview-section"><p>像 <code>str</code>、<code>int</code>、<code>list</code> 这样的类，是被预先定义好并且内置在 Python 中的。</p>
+</div><div class="cl-preview-section"><p>当然，我们也可以自己来定义类。</p>
+</div><div class="cl-preview-section"><p>类的定义方法是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这里定义了一个非常简单的类，名为 <code>A</code>。<code>pass</code> 是占位符，表示什么都不做或什么都没有。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="类的实例化">类的实例化</h3>
+</div><div class="cl-preview-section"><p>我们把类看作是自定义的数据类型，既然是类型，那么它只能用来表示数据的种类，不能直接用于保存数据。想要保存数据，就需要先创建一个属于这种类型的类似于容器的东西，这种容器就叫做<strong>对象</strong>（或称实例）。通过类产生对象的过程叫<strong>实例化</strong>。</p>
+</div><div class="cl-preview-section"><p>打个比方，类就相当于图纸，对象就相当于按照图纸所生产出来的产品。图纸能决定产品的内部构造以及所具有的功能，但图纸不能替代产品被直接使用。类能决定对象能保存什么样的数据，以及能拥有什么样的函数，但类不直接用来保存数据。</p>
+</div><div class="cl-preview-section"><p>定义好类以后，可以像这样实例化对象：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">变量 <span class="token operator">=</span> 类名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>通过 <code>类名()</code> 这样类似函数调用的方式生成出对象，并将对象赋值给 <code>变量</code>。</p>
+</div><div class="cl-preview-section"><p>如实例化之前的类 <code>A</code> 并将对象赋值为 <code>a</code>：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; class A:<br>
+…&nbsp;&nbsp;&nbsp;&nbsp; pass<br>
+…<br>
+&gt;&gt;&gt; a = A()</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>查看变量 <code>a</code> 的类型：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; type(a)<br>
+&lt;class ‘__main__.A’&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>可以看到类型是 <code>__main__.A</code>，表示模块 <code>__main__</code> 下的 <code>A</code> 类。模块的概念后续章节中介绍，现在只需关注类即可。</p>
+</div><div class="cl-preview-section"><p>可以看看 <code>a</code> 是什么：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; a<br>
+&lt;__main__.A object at 0x103d8e940&gt;</p>
+</blockquote>
+</div><div class="cl-preview-section"><p><code>a</code> 是 <code>A</code> 的对象，位于内存的 <code>0x103d8e940</code> 地址。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="对象属性">对象属性</h3>
+</div><div class="cl-preview-section"><p>之前定义的 <code>A</code> 类是一个空的类，像一个空壳子，它的对象 <code>a</code> 并没有保存任何数据。</p>
+</div><div class="cl-preview-section"><p>想要在对象中保存数据该怎么做呢？</p>
+</div><div class="cl-preview-section"><p>可以像这样来定义类，实例化的时候就可以用参数的形式将数据传入，并保存在对象中：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> 数据<span class="token number">1</span><span class="token punctuation">,</span> 数据<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>数据<span class="token number">1</span> <span class="token operator">=</span> 数据<span class="token number">1</span>
+        self<span class="token punctuation">.</span>数据<span class="token number">2</span> <span class="token operator">=</span> 数据<span class="token number">2</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>和之前相比类的内部多了一个函数 <code>__init__()</code>，<code>__init__()</code> 函数一方面可以接收要保存在对象中的数据，另一方面也可以在实例化类的时候做一些初始化工作。</p>
+</div><div class="cl-preview-section"><p>我们通过实际例子来学习。之前介绍的类（数据类型）要么保存一个数据，要么保存多个数据，假如现在想要一个不多不少只保存两个数据的类，这就需要我们自己来定义了。如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Pair</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> first<span class="token punctuation">,</span> second<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>first <span class="token operator">=</span> first
+        self<span class="token punctuation">.</span>second <span class="token operator">=</span> second
+</code></pre>
+</div><div class="cl-preview-section"><p>我们将这个类命名为 <code>Pair</code>，即表示数据对。</p>
+</div><div class="cl-preview-section"><p>它的 <code>__init__()</code> 函数有三个参数：</p>
+</div><div class="cl-preview-section"><ol>
+<li>第一个是 <code>self</code>，它是类中函数默认的第一个参数，表示对象自身。我们可以将数据赋值给 <code>self.数据名</code>，这样数据就保存在对象中了</li>
+<li><code>first</code> 是数据对的第一个值</li>
+<li><code>second</code> 是数据对的第二个值</li>
+</ol>
+</div><div class="cl-preview-section"><p>实例化的时候像这样传入数据：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">pair <span class="token operator">=</span> Pair<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这个过程中会自动调用 <code>__init__()</code> 函数，并将 <code>10</code> 传给了 <code>first</code> 参数，将 <code>20</code> 传给了 <code>second</code> 参数，而 <code>__init__()</code> 的第一个参数 <code>self</code> 是不需要传值的，Python 会自动填充这个参数。</p>
+</div><div class="cl-preview-section"><p>实例化之后我们可以通过 <code>pair</code> 对象来获取数据对中的数据，像这样：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">pair<span class="token punctuation">.</span>first
+pair<span class="token punctuation">.</span>second
+</code></pre>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; pair = Pair(10, 20)</p>
+<p>&gt;&gt;&gt; pair.first<br>
+10<br>
+&gt;&gt;&gt; pair.second<br>
+20</p>
+</blockquote>
+</div><div class="cl-preview-section"><p>通过 <code>pair = Pair(10, 20)</code> 来实例化 <code>Pair</code> 类，得到对象的变量 <code>pair</code>，使用 <code>pair.first</code>、<code>pair.second</code> 就可以获得对象中保存的数据了。</p>
+</div><div class="cl-preview-section"><p><code>first</code> 和 <code>second</code> 叫做 <code>Pair</code> 类的<strong>对象属性</strong>，一般也可以直接叫作属性。</p>
+</div><div class="cl-preview-section"><p>我们不仅可以通过对象获取对象属性的值，也能修改对象属性值。如：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; pair = Pair(10, 20)</p>
+<p>&gt;&gt;&gt; pair.first = 1000<br>
+1000<br>
+&gt;&gt;&gt; pair.first<br>
+1000</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="对象方法">对象方法</h3>
+</div><div class="cl-preview-section"><p>刚才在类中定义了对象属性，也可以在类中定义一些函数。这样的函数可直接由对象调用，例如我们之前学过的 <code>list.append()</code> 。</p>
+</div><div class="cl-preview-section"><p>定义在类中，供对象调用的函数称为<strong>对象方法</strong>，一般也可以直接叫作方法。定义方式如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    <span class="token keyword">def</span> 函数<span class="token number">1</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> 参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>定义对象方法时第一个参数默认使用 <code>self</code>，定义时必须有这个参数，但是调用时不必传递。之前介绍过的 <code>__init__()</code> 就是一个对象方法，不过是个特殊的对象方法。</p>
+</div><div class="cl-preview-section"><p>我们在之前 <code>Pair</code> 类的基础上定义一个方法，功能是交换对象的 <code>first</code> 和 <code>second</code> 属性的值。来实现一下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Pair</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> first<span class="token punctuation">,</span> second<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>first <span class="token operator">=</span> first
+        self<span class="token punctuation">.</span>second <span class="token operator">=</span> second
+        
+    <span class="token keyword">def</span> <span class="token function">swap</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>first<span class="token punctuation">,</span> self<span class="token punctuation">.</span>second <span class="token operator">=</span> self<span class="token punctuation">.</span>second<span class="token punctuation">,</span> self<span class="token punctuation">.</span>first
+</code></pre>
+</div><div class="cl-preview-section"><p>这个方法被命名为 <code>swap</code>，无需传递参数，内部通过</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">self<span class="token punctuation">.</span>first<span class="token punctuation">,</span> self<span class="token punctuation">.</span>second <span class="token operator">=</span> self<span class="token punctuation">.</span>second<span class="token punctuation">,</span> self<span class="token punctuation">.</span>first
+</code></pre>
+</div><div class="cl-preview-section"><p>实现了 <code>self.first</code> 和 <code>self.second</code> 两个值的交换。</p>
+</div><div class="cl-preview-section"><p>执行下看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>&gt;&gt;&gt; pair = Pair(10, 20)<br>
+&gt;&gt;&gt; pair.first<br>
+10<br>
+&gt;&gt;&gt; pair.second<br>
+20</p>
+<p>&gt;&gt;&gt; <strong>pair.swap()</strong></p>
+<p>&gt;&gt;&gt; pair.first<br>
+20<br>
+&gt;&gt;&gt; pair.second<br>
+10</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>定义类的方式是：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>在类中定义方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    <span class="token keyword">def</span> 方法<span class="token punctuation">(</span>self<span class="token punctuation">,</span> 参数<span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>数据<span class="token number">1</span> <span class="token operator">=</span> 数据<span class="token number">1</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>可以在 <code>__init__</code> 方法中定义对象属性，之后在实例化类的时候传入数据。如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Pair</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> first<span class="token punctuation">,</span> second<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>first <span class="token operator">=</span> first
+        self<span class="token punctuation">.</span>second <span class="token operator">=</span> second
+        
+pair <span class="token operator">=</span> Pair<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/818">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            09 知错能改—错误处理、异常机制
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/820">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            11 更大的代码盒子—模块和包
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">3</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8149169/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5b8cd79d00015eb402000200-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8149169/articles" target="_blank">                                         <div class="name l">慕娘0558415</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     定义类时，代码块中定义了两个函数，在实例化时传入的数据（10，20），程序如何判断是传入第一个函数，而不是传入第二个函数？另外程序执行第二个函数时是用pair.函数2，那如果类中还定义了其它函数，执行其它函数时是不是应该时pair.函数3、pair.函数4...                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3060">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3060">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3060" data-uid="8149169" data-src="/read/46/article/819" data-type="15">举报</div>                                                                          <div class="time r">2019-12-01</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/4842227/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img3.mukewang.com/58ad7a7b00013f6d01000100-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/4842227/articles" target="_blank">                                         <div class="name l">瘦削的猪</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     老师，在使用pycharm运行示例时，调用swap方法时，提示缺少self参数，在括号中填写实例化的对象后，才正常运行，请问这个是什么原因呢？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2654">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2654">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2654" data-uid="4842227" data-src="/read/46/article/819" data-type="15">举报</div>                                                                          <div class="time r">2019-11-04</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img4.mukewang.com/5d5496f200014b7e11001100-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                         <div class="name l">黄浮云</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/4842227/articles" target="_blank">                                                                 <div class="name l">瘦削的猪</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     我猜你可能是把 swap(self) 定义到了类外面，导致 swap(self) 变成了普通函数，而不是对象方法                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2404" data-name="黄浮云">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2404" data-uid="7904211" data-src="/read/46/article/819" data-type="16">举报</div>                                                                                                          <div class="time r">2019-11-06 22:40:26</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8021415/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img.mukewang.com/533e4cf4000151f602000200-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8021415/articles" target="_blank">                                         <div class="name l">WangFitZ</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     __init__()的对象方法有什么特殊之处？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2172">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2172">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2172" data-uid="8021415" data-src="/read/46/article/819" data-type="15">举报</div>                                                                          <div class="time r">2019-09-30</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img4.mukewang.com/5d5496f200014b7e11001100-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                         <div class="name l">黄浮云</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8021415/articles" target="_blank">                                                                 <div class="name l">WangFitZ</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     这个方法主要用作对象的初始化，在执行「对象 = 类名()」的时候，Python 会在创建对象的过程中自动调用 __init__() 方法                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="2405" data-name="黄浮云">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="2405" data-uid="7904211" data-src="/read/46/article/819" data-type="16">举报</div>                                                                                                          <div class="time r">2019-11-06 22:43:43</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

@@ -1,0 +1,118 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        13 你真的了解自动化测试么？
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-19 15:44:06
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img4.sycdn.imooc.com/5d81fe960001836a06400360.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">世上无难事,只要肯登攀。<p class="author">——毛泽东</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>通过前边对互联网行业的了解，我们真真切切的认识到自动化测试，对于我们来说非常非常重要。我相信很多同学已经了解甚至编写过自动化测试脚本了，但是请你静下心来想这样一个问题：自动化测试到底是什么？</p>
+</div><div class="cl-preview-section"><p>举一个形象一点的例子，我们俩在同一个公司且座位相邻，这天你跟我说：风落啊，我午休时候很容易睡过头，你能不能每天下午一点时候拍醒我？像我这么善良，又有同情心的人一定是满口答应了，可是一周之后我觉得叫你起床这件事又重复，而且还要每天记得，比较累。怎么办呢？我想了个好办法，花一周时间做了一个机器人，这个机器人每天 1 点固定去你座位上把你打醒。这样我就可以去做其他事情了，解放了我自己的人力来提升效率。</p>
+</div><div class="cl-preview-section"><p>这就是最简单的自动化测试了，归纳成比较官方的表达，就是把人为的测试行为转化为机器执行的一种过程，目标则是节省成本，提高测试效率。尽管这个定义很简单，但是实际上，我们在推进自动化测试的过程中，会产生很多的错误理解，这时候，我们再来想另一个问题：你做自动化测试的预期是什么？或者换个方式：你的项目中，进行自动化测试的目标是什么？</p>
+</div><div class="cl-preview-section"><p>我也就这个问题问过很多同学，我一点都不意外的收获了很多这样的回答：<em>我不知道为什么要做自动化测试，领导要做，我便做了。</em></p>
+</div><div class="cl-preview-section"><p>正是源于根本不清楚自动化测试的目的，也便会漫无目的去进行投入，所以很多公司的自动化测试走上了一条弯路。我曾经去到一个，自称自动化测试覆盖率达到 95% 的公司去做相关咨询，发现他们的自动化是这样的：</p>
+</div><div class="cl-preview-section"><ul>
+<li>按照功能测试用例用代码实现</li>
+<li>通过 Eclipse，选好环境</li>
+<li>右键 Run As TestNG</li>
+<li> 一个人，甚至是两个人一起目不转睛的盯着显示器</li>
+<li>步骤执行不成功，回到代码，Debug 找问题，修改代码</li>
+<li>部分脚本执行过程中卡住了，手动辅助点击，继续执行</li>
+</ul>
+</div><div class="cl-preview-section"><p>看到这里，我几乎崩溃了，这样真的是为了自动化而自动化，即使覆盖率达到了 95%，也并没有真正提升他们的效率，而这，正是他们要我去帮助解决的问题。很无奈的我，抓了一个自动化测试工程师，问他们这样做的原因，回答更是让人吐血：老板要做自动化，自动化不就是写脚本么，这难道不是自动化么？我们觉得这样很好啊。为什么要做自动化，这是领导的决定，我们都是执行的。而且以前都是这么做的啊，也没人说不对啊？</p>
+</div><div class="cl-preview-section"><p>这样的灵魂拷问让我几乎无言以对。这是我们很多公司里都出现的场景，为做自动化而做自动化，而公司上下都并没有理解自动化测试真正的意义，也没有对自动化测试的预期。自动化的真正产出不是代码，而是更好的流程和效率。所以，自动化测试也要考虑 ROI - 投入产出比。</p>
+</div><div class="cl-preview-section"><p>说到这里，又不得不聊我自己的另外一次经历。先前，被邀请到一家小型公司进行自动化梳理，老板给我提出了三大要求：</p>
+</div><div class="cl-preview-section"><ol>
+<li>自动化测试要覆盖 100% 功能测试，后续不需要再招聘功能测试人员。</li>
+<li>自动化测试要稳定，不需要太大的维护，他希望未来测试团队只有 2 到 3 名自动化人员。</li>
+<li>运行的结果可以自动报 BUG，不需要人工介入。</li>
+</ol>
+</div><div class="cl-preview-section"><p>一般情况下，不太懂自动化的老板或者 VP ，都会对自动化测试，抱有不切实际的幻想，觉得有了自动化测试可以省下很多人力成本，自动化测试能够做一切。这必然是不可能的，不要误认为自动化是万能的，就像我们有一所大房子，想要打扫的时候，我只需要按一个机器人的按钮，它就会自动的去擦桌子、扫地，把房子打扫的一尘不染。实际上自动化只是我们整个工作中的一个辅助性工具，再优秀的测试用例、再稳定的系统也不可能 100% 被自动化的。业务功能、复杂的逻辑、探索性的特殊操作，以及测试人员的经验，都是没有办法被自动化的。</p>
+</div><div class="cl-preview-section"><p>所以，综合这两个角度来看，我们对于自动化测试的期望既不能过低，也不宜过高。那么，让我们回答之前的问题，<strong>自动化测试的意义</strong>到底是什么呢？谨慎来说，是把我们的自动化测试应用到项目中去，在保证质量的前提下，让项目的测试成本低于纯手工测试。</p>
+</div><div class="cl-preview-section"><p>如果真的能满足这个要求，我们就可以认为自动化测试有意义了。接下来，让我们发扬咬文嚼字的风格，一起抠抠字眼，把这个要求细化一下：</p>
+</div><div class="cl-preview-section"><p>首先，第一个关键词就是 “<strong>自动化测试</strong>”。自动化测试的范畴到底有多大，在很多人看来自动化测试，就是那些可视化的 UI 层的自动化，什么 QTP、Selenium、Appium 这些东西，事实上远远不是，更不是在很多人看来，写个脚本就叫做自动化测试了。</p>
+</div><div class="cl-preview-section"><pre class="  language-java"><code class="prism  language-java">#coding<span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span>
+from selenium <span class="token keyword">import</span> webdriver
+<span class="token number">4</span> driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span><span class="token function">Chrome</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span><span class="token function">find_element_by_id</span><span class="token punctuation">(</span><span class="token string">"kw"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send_keys</span><span class="token punctuation">(</span><span class="token string">"fengluo"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span><span class="token function">find_element_by_id</span><span class="token punctuation">(</span><span class="token string">"su"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>这是一段很简单的代码，打开浏览器打开百度，输入 fengluo。这当然是个自动化脚本，但是就依赖于它，我们谁都不能说我们就会做自动化了。或者再前进一步，我们能够写很长的脚本，甚至可以实现 Jenkins 的一些持续集成，就算掌握了自动化测试么？</p>
+</div><div class="cl-preview-section"><p>一个好的自动化测试设计，不仅仅要能让用户方便使用，还需要符合一些基本原则。这些原则包括：可复用、易维护、定时处理、持续集成、可调试、测试结果自动通知等等。所以高效的自动化需要优秀的框架，而框架的概念，是一系列的被事先定义好的标准和规范。</p>
+</div><div class="cl-preview-section"><p>在自动化测试中，我们经常提到的对测试需求的解析、脚本设计、测试执行、测试报告、维护管理等等，通过框架将它们串联并封装起来，从而使框架的终端用户，能够更方便地使用。再具体到更细节的框架我们在后边的内容里详细再介绍。</p>
+</div><div class="cl-preview-section"><p>接下来是第二个关键词，“<strong>成本</strong>”。什么才是我们做自动化测试的成本呢？其实我们做自动化，核心的成本在于首次编写自动化脚本的时间成本，再有就是我们每一次迭代、每一次修改过程中维护自动化脚本的成本。就像前边一段说的，越是好的自动化设计，越能够进一步降低在自动化脚本编写和维护上的成本。</p>
+</div><div class="cl-preview-section"><p>最后一个关键字，“<strong>低于</strong>”。既然是个比较级的词，那么势必要用自动化与手工测试进行一番比较。我们的基本要求是让自动化的成本低于手工，所以如果用公式来形容的话，应该是：</p>
+</div><div class="cl-preview-section"><p>收益 = 手工测试成本 (自动化可覆盖部分)- 首次编写自动化脚本成本 - 自动化脚本维护成本</p>
+</div><div class="cl-preview-section"><p>当收益为正的时候，则证明我们的自动化确实卓有成效。但是如果大家写过一些自动化测试脚本的话，就会发现，在瀑布式、不稳定或者是小项目流程下，这个收益很可能为负收益；这就引出了另外一个话题：既然很容易出现负收益，那么为什么要做自动化？或者换个方式，什么项目适合自动化？</p>
+</div><div class="cl-preview-section"><p>放眼望去，国内外大多自动化比较成熟的公司，都有共同的特征：稳定 &amp; 迭代。</p>
+</div><div class="cl-preview-section"><p>所以像淘宝、京东这样的系统，一个版本发布以后要支持很多年，做的大多是 BUG 修改或者小的活动迭代，这样自动化的收益就会比较可观。在这种情况下，公式可以做这样的变更。</p>
+</div><div class="cl-preview-section"><p>收益 = 手工测试成本（自动化可覆盖部分）<em>迭代次数 - 首次编写自动化脚本成本 - 自动化脚本维护成本</em>迭代次数</p>
+</div><div class="cl-preview-section"><p>这样我们就会发现，只要我们在每个迭代中的维护成本小于手工回归成本，那么随着迭代次数的提高，收益就会无限增加。从这个公司我们也可以得出另外一点启示：<strong>一个项目的早期不适合自动化</strong>，因为需求的不断变化，业务逻辑的不断调整会使自动化的收益很低甚至为负。同时，并不是每个项目都适用于高度自动化，产品 UI 会频繁变动的，我们可能会用接口自动化来提升自动化覆盖率。</p>
+</div><div class="cl-preview-section"><p>当然，这个公式只能描述大概，并不精确，通过我对很多公司的了解，我发现很多时候，我们的自动化成本中还需要增加一项：</p>
+</div><div class="cl-preview-section"><p>收益 = 手工测试成本（自动化可覆盖部分）<em>迭代次数 - 首次编写自动化脚本成本 - 自动化脚本维护成本</em>迭代次数 - 延误成本</p>
+</div><div class="cl-preview-section"><p>什么是 “延误成本”？</p>
+</div><div class="cl-preview-section"><p>这里边我觉得更多的是管理、支持方面带来的困难。我曾经见过很多团队的测试总监，针对一套框架不断的进行会议评审、讨论、架构调整，更有团队 leader 甚至是老板多次更换自动化测试工具，最糟糕的是还有老板要求切换语言，从 JAVA 变成 PYTHON，为什么呢？因为 PYTHON 最近火啊。一旦遇到这种情况，延误成本将变得无穷高，自动化测试的收益和效率自然不必说，只能是一场灾难。最终测试人员工作的不开心，团队领导觉得自动化测试效率低、收益差，要不放弃自动化，要不然变成鸡肋。</p>
+</div><div class="cl-preview-section"><p>自动化还是一个很专业的领域，一个优秀的测试架构对于技术、架构和管理规划都有很高的要求。我毫不怀疑正在看到这篇文章的同学们一定有未来成为测试总监、VP 的大人物，也正像我在各种分享、在各个公司咨询时候，跟各种老板们说的最多的一句话：<strong>无论你懂不懂技术，请尊重自动化测试技术人员和架构的判断，自动化测试并不简单，也不是可以一蹴而就的，信任你的团队，让专业的人做专业的事情。</strong></p>
+</div><div class="cl-preview-section"><p>零零散散的说了很多，总结一下核心只有下边几点：</p>
+</div><div class="cl-preview-section"><ol>
+<li>不要为自动化而自动化，不是所有项目都需要自动化，自动化一定要保证收益才有意义</li>
+<li>自动化测试不仅仅是脚本，而是设计，通过更好的设计来降低成本提升收益</li>
+<li>国内大多公司的自动化还在路上，不要用错误的思想去认识自动化，做专业的自动化专家</li>
+</ol>
+</div><div class="cl-preview-section"><p>你是怎么做自动化的呢？有没有什么好的方法介绍？欢迎留言大家一起讨论。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/910">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            12 别人家的tester：一线互联网测试现状
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/912">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            14 回溯UI自动化测试工具的前世与今生
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">
+                </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

@@ -1,0 +1,113 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        24 比“码脚本”更重要的事：性能场景分析
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-11 18:01:06
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img.mukewang.com/5da0526d0001e7f506400360.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">时间像海绵里的水，只要你愿意挤，总还是有的。<p class="author">——鲁迅</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h2 id="论性能测试的流程">论性能测试的流程</h2>
+</div><div class="cl-preview-section"><p>在聊今天的主题之前，我们先来说说性能测试的流程，毕竟 “无规矩不成方圆” 嘛。上一次，我们先认识了什么是性能测试，了解到性能测试其实是一种非功能测试，但是对于我们测试人员来说，与功能测试一样，性能测试也需要有自己的 “规矩”。<br>
+<img src="https://img.mukewang.com/5da029db000179d607250228.jpg" alt="图片描述" data-original="https://img.mukewang.com/5da029db000179d607250228.jpg" class="" style="cursor: pointer; display: block;"><br>
+可能很多同学并不太理解性能测试，为什么还要做所谓的需求分析，很多人做性能测试都是拿来就做，直接上工具、码脚本、加压一气呵成，糊里糊涂做完了都不知道自己的结果是什么。再加上市面上确实很多教程、书籍都把重点放到 LoadRunner、Jmeter 等工具的使用上，让很多性能新手觉得 “性能测试 = 性能工具使用”，然而事实并非如此，在我看来，工具的使用只是性能测试的一部分，甚至是一小部分。</p>
+</div><div class="cl-preview-section"><p>所以，接下来我们要聊的就是我认为性能测试过程中最重要的工作：<strong>场景分析</strong>。如果没有合理正确的场景分析，那么性能测试的执行其实是没有任何意义的。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h2 id="性能测试之场景分析">性能测试之场景分析</h2>
+</div><div class="cl-preview-section"><p>在慕课上关于性能被提问最多的问题就是：风落老师，我要对一个网站做性能测试，应该压多少并发才合适啊？</p>
+</div><div class="cl-preview-section"><p>在没有任何背景、任何可参考数据下直接问这个问题，就如同直接问你：我要炒菜应该炒多久，放多少盐，放多少辣子？再好的厨子，你也要告诉他要炒什么菜？吃饭的人口重还是口淡？是想要微辣还是变态辣？</p>
+</div><div class="cl-preview-section"><p>同样的，想做好一道菜，不仅仅是用料的量，还有刀工、火候、菜品质量、调料选择等等多方面，而性能测试里也是同样，性能测试绝不仅仅是考虑 “多少并发” 这样简单的问题。</p>
+</div><div class="cl-preview-section"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="图片描述" data-original="https://img.mukewang.com/5da02a130001d37611190829.jpg" class="lazyload" style="cursor: pointer;"><br>
+上边这个图是我在慕课上一门性能课程中的实战纲要，算是比较完整的表明了在一个真实项目中应该如何去从零开始进行性能测试。而画红框的部分，就是我们性能测试中需求分析和场景设计的内容，可以很明显的看到，这会占据到我们性能测试完整流程中很大的一部分。</p>
+</div><div class="cl-preview-section"><p>所以，我们再把这部分再精炼一下，其实每一个性能测试的需求场景分析会分成两部分：性能测试指标和基于指标的场景设计。</p>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="性能测试指标分析">性能测试指标分析</h3>
+</div><div class="cl-preview-section"><p>在对任何一个测试系统进行性能测试之前，我们都要对这个系统有一个全面的了解和认识。这就像我现在是一个特级厨师，某个酒店请我帮忙给他们的菜品改造一下，那我可没办法上来就干，怎么办呢？我得知道一下原来的菜单是什么样子，就餐的客人是什么情况？之前的厨师是谁？后厨团队的水平如何？怎么用料火候去做的菜？以前客人的评价怎么样的。这样我才能给出改进措施。</p>
+</div><div class="cl-preview-section"><p>性能测试也是一样，首先，你得了解包括系统是做什么的，面向的客户群体是谁，业务范围和功能是什么；接下来你要清楚整体的系统架构是怎样的，服务器部署方式是什么，用了什么语言、连接的什么数据库、中间件是啥、协议又是什么；再来，如果系统是一个已经上线运行的系统（大多数新系统其实很少有性能测试需求，毕竟初始用户量还不大），你得明确系统历史的运行情况，系统的数据规模有多大，预计未来的规模会有多大。这会对你后续的性能目标评估以及未来的分析调优带来很大的便利。</p>
+</div><div class="cl-preview-section"><p>结束了么？当然不，一个特级厨师再强能力也是有限的，万一这家酒店菜单上有两千道菜岂不是要累死？所以我们的优化部分主要在哪儿呢？一是客人点的多的菜，二是以前评价低的菜，这样才能把原来的骂名变成夸赞，同时出现爆款美食。</p>
+</div><div class="cl-preview-section"><p>那么性能测试工程师，除了基础系统架构信息的调研，还需要对业务属性的信息进行评估。这就包括系统到底有哪些业务，哪些是核心的业务，核心业务的历史交易处理量有多少；哪些非核心的业务访问量也比较大或者有没有哪些场景之前出现过生产的性能瓶颈等等。这样，我们才能确定到底哪些地方要做性能测试，哪些不要以及应该如何场景的设计。</p>
+</div><div class="cl-preview-section"><p>接下来，就是要确定，我们的性能需求指标了。一道菜品，优化到什么程度才算优化合格，都应该有个指标来评估，那做菜很简单，从 “色香味” 三个指标去进行评估，再来观察客人的反应和评价。那性能测试也有自己关键指标的评估点，这些指标重点包括并发数、响应时间、TPS、资源利用率等等。</p>
+</div><div class="cl-preview-section"><p>例如：我们希望系统能够处理 50 个并发查询响应时间最大不超过 3s，或者我们系统可以保证每秒处理 100 个用户的交易，这都是比较明确的性能目标。这个目标应该从哪里获取呢？</p>
+</div><div class="cl-preview-section"><ol>
+<li>
+<p><strong>开发过程相关文档</strong>：有时候我们厨师对于菜品的优化就源于老板的要求，老板希望这个菜变的鲜美或者香辣、希望摆盘更精美好看等等，同样已有的文档是性能测试需求的基本来源，项目开发计划书、需求规格说明书、设计说明书、测试计划等文档都可能涉及性能测试的要求。通过收集这些资料，可以找到初步的性能需求。但是由于产品人员、需求人员一般不考虑软件性能，所以有可能不会提出很准确的性能要求，所以也需要我们性能测试人员给予专业的引导。</p>
+</li>
+<li>
+<p><strong>相似项目性能需求</strong>：什么东西好吃都是相对的，所以任何一个好厨子都不是闭门造车的，他要看看自家酒店其他厨子的菜怎么样，甚至还要出去看看别人家的厨子是怎么做的，才能更好的领悟出自己的特色。每个公司的产品线都不是单一的，同时不同公司的产品也不会说完全没有相似的地方。所以历史上的项目、其他公司对外公布的数据都可以作为性能测试需求的参考。比如说公司之前做过一个 618 的活动，那我们可以完全在这个基础上来评估双十一活动的性能需求；或者我们要做的是一个共享单车的产品，完全可以依照市面上已有的共享单车数据量和日处理书作为参考。</p>
+</li>
+<li>
+<p><strong>业界公认标准</strong> ： 性能测试主要对于响应时间有比较公认的标准。一般情况下，大多数互联网产品采取比较严格的性能响应标准：**2 秒以内，用户感受良好；2<sub> 5 秒，用户觉得可以接受；5</sub>10 秒，用户会觉得烦躁，会无法接受，从而导致频繁地刷新页面；超过 10 秒，用户完全无法忍受，直接离开。** 当然，一些特殊情况下，可以使用宽松一点的标准：8 秒以内，用户可接受；8~16 秒，50% 用户选择离开；32 秒后，90% 用户离开。目前互联网采取前者居多。</p>
+</li>
+<li>
+<p><strong>80/20 原则</strong>：80/20 原则就是系统在每个工作日有 80% 的业务是在 20% 的时间内集中完成，或者系统 80% 的用户会在 20% 的时间内集中进行应用操作。比如说，系统可能一天处理的业务总量是 10 万笔，每天系统开启的时间是 9 点到 20 点，我们来简单估算一下峰值的 TPS 就是用</p>
+<p>(100000<em>0.8)/(11</em>0.2*3600)=10.10</p>
+</li>
+<li>
+<p><strong>系统日志</strong>：现在日志分析是性能测试需求获取手段中最重要的一种，目前的互联网公司越来越重视日志分析。比如各大电商网站，数据挖掘是怎么分析用户行为的？很重要的一点就是对日志进行分析，评估用户的使用习惯。同样，通过分析日志，可以帮助性能测试人员快速获取系统性能参数，如并发量、响应时间、业务分布情况等。</p>
+</li>
+</ol>
+</div><div class="cl-preview-section"><p>到这里，通过上边几步，我们基本了解了系统的关键信息和预期的指标，接下来就是将我们的性能指标需求转变成为性能的场景。</p>
+</div><div class="cl-preview-section"><p><strong>场景设计</strong></p>
+</div><div class="cl-preview-section"><p>有了前边的准备，对于厨师来说，要进行菜品的优化就显得相对简单了。重点在于到底哪些地方需要进行性能测试、这些场景操作的数据库中有没有存量数据要求、要求有多少、需求分析中需要的并发数、响应时间等指标又是多少。</p>
+</div><div class="cl-preview-section"><p>先来确定下性能测试场景如何去选取：</p>
+</div><div class="cl-preview-section"><ol>
+<li>用户量访问比较大的功能</li>
+<li>与金钱相关比较重要的场景</li>
+<li>影响业务主流程的场景</li>
+<li>开发人员认为可能存在性能问题的场景</li>
+<li>应该考虑综合场景，防止线程争用导致现场死锁以及数据库死锁</li>
+<li>应该做稳定性场景测试，防止长时间运行导致的内存泄露情况发生</li>
+</ol>
+</div><div class="cl-preview-section"><p>再来，是我们的性能数据量。这个比较简单，例如现有系统的用户量为 1w，我们需要系统支持未来的用户量为 10w，那么登录功能对应的用户数据表存量应为 10w 左右，在这个基础之上来规划我们的测试。同样，比如同一个网站的页面展示，对应现在的数据也进行 10 倍的放大来进行初始性能数据量的估算。</p>
+</div><div class="cl-preview-section"><p>接下来就可以将三者结合起来，把场景、存量数据和性能需求合并起来，形成多个性能测试场景的用例设计。</p>
+</div><div class="cl-preview-section"><p>OK，到这里，一个比较完整的性能场景分析过程就结束了。简单么？恐怕并不。性能的场景分析是我们面对一个性能测试最难以下手的一点，这里不仅仅是我在这里跟大家聊几句就可以的，而是需要大家不断在实践中积累自己的经验，逐步掌握性能测试最重要的一环：场景分析。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/921">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            23 换个角度看世界-从为什么要做性能测试谈起
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/923">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            25 不懂监控与调优，就像白天不懂夜的黑
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/7419505/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5d9d77f90001b36410801920-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/7419505/articles" target="_blank">                                         <div class="name l">土豆稀饭</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     更新速度好快，一日一更，赞赞赞                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="2301">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="2301">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="2301" data-uid="7419505" data-src="/read/48/article/922" data-type="15">举报</div>                                                                          <div class="time r">2019-10-11</div>                                 </div>                             </div>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

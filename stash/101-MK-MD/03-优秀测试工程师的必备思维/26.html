@@ -1,0 +1,81 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        26 站在LoadRunner与Jmeter的十字路口
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-10-14 16:35:13
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img4.mukewang.com/5da14fd20001ee1406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">生活的理想，就是为了理想的生活。<p class="author">——张闻天</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>之所以把工具放在性能测试的最后，也是因为我觉得相比场景设计、监控分析来说，其实工具并不是太重要。但是 “学习性能测试到底应该学 LoadRunner 还是 Jmeter？”，这个问题仍然持续排在性能测试问题各大榜单排行的前列。所以，也还是跟大家简单聊一聊测试工具。</p>
+</div><div class="cl-preview-section"><p>相信如果给国内常用的性能测试工具做一个排行榜，LR 和 Jmeter 这两款工具一定是赫赫有名，关于两个工具的争论也一直没有停下过。我在这里也不想从什么是否收费、录制功能、安装方式、IP 欺骗、分布式各个方面去比较，因为我觉得没有非常大的意义。</p>
+</div><div class="cl-preview-section"><p>那什么有意义呢？</p>
+</div><div class="cl-preview-section"><p>我觉得首先我们要知道，LR 和 Jmeter 都可以满足我们对于性能测试的各种需求，无非就是本身工具支持，还是代码扩展来支持的问题；其次，二者去做性能测试的原理都是一致的，都是通过脚本，发送请求到应用服务器，监控服务器反馈的结果的一个过程。所以承认二者皆可行是很重要的前提，没必要非要褒一个踩一个。</p>
+</div><div class="cl-preview-section"><p>那么接下来我想说说我用这两个工具的体会：</p>
+</div><div class="cl-preview-section"><p>刚开始做性能接触的就是 LR，后来随着对 JAVA 使用的强依赖逐步开始使用 Jmeter，可以算的上对两个工具都用的还比较深度。比较起来的话，LR 的界面交互使用做的更好，支持协议全，各种功能也比较完整，监控视图漂亮，初学者用起来的文档多，上手快，而且更接近于底层，坑也相对比较少，这是它的优点。缺点嘛，就是 LR 虽然支持分布式，但是因为主节点一般为了 GUI 都是放在 windows 上的，发挥能力有限，同时由于很重，加压能力也比较有限；加上 LR 客户端过大，所以基于云端部署会比较重，对于服务器的要求也比较高。</p>
+</div><div class="cl-preview-section"><p>反过来看看 Jmeter，它的优势当然是轻量级，同时开源社区后续更新也可以期待，如果有一定的代码能力，那么几乎可以完成所有的性能测试工作，缺点就是 GUI 设计太希望小白化，所以过度封装，以至于使用起来觉得并不友好；jmx 脚本对应的 XML 格式太不直观，不方便维护和管理，代码调试也不方便。对于我来说，我认为其最大的优势就是一点，开源。开源可以方便去做二次开发、数据结果也更加开放，完全可以自己去做后续处理，也很容易去做一些全流程、持续集成。大公司目前更多的还是抛弃了 LR 投向各种开源二次开发套路的怀抱，Non-GUI 模式也是大势所趋。</p>
+</div><div class="cl-preview-section"><p>这么比较起来，好像看起来我在推荐 Jmeter，但是其实并不是完全的。如果站在一个性能测试专家的角度，Jmeter 自然是相比 LR 更加符合现代的测试策略，也更加符合 “造轮子写代码” 的希冀。但是对于初学性能来说，我觉得 LR 是更符合性能测试理念的，交互使用也更加便捷，让大家可以循序渐进的去了解性能测试。当你掌握了性能测试的各项精髓，再回过头来看看工具的话，我觉得切换上手都是非常容易的。</p>
+</div><div class="cl-preview-section"><p>不管怎样，回到最初的这句话，性能测试里最重要的是场景设计，其次可以算是监控分析调优，工具其实作用对于性能专家来说只是个加压的信号发生器。所以，工作习惯不同、使用场景不同，对于工具的需求也不同。</p>
+</div><div class="cl-preview-section"><p>目前一些比较大型的公司，也不再局限于 LR 和 Jmeter 的纠结之中，更多的会使用 ngrinder、gatling 这样开源的，虽然不适用于小白，但是对于互联网来说，能够制造更大的并发请求和更便捷的集群搭建。当然还有最近开始展露头脚的 Locust，由于只是简单使用过，所以不好多做评价，但是对于并发请求的数量上也有非常好的支持。</p>
+</div><div class="cl-preview-section"><p>在我看来，未来的理想的性能测试工具，或者不能称之为工具，而是扩展成为解决方案，是应该能够除了满足我们的压力发生器以外，能够集成更多的功能，比如：</p>
+</div><div class="cl-preview-section"><ul>
+<li><strong>可持续集成、全流程性能</strong></li>
+<li><strong>监控平台化</strong>：目前不管用 LR、Jmeter 或者其他工具都需要到各个服务器节点中，去进行 CPU、内存、连接数、JVM、数据库、中间件等等的解控。如果最理想的方向发展的化，更好的集成所有监控功能，可以集合报表，便于我们定位问题，也更方便我们根据各种曲线图的拐点，来分析特定的指标和应用的 log。</li>
+<li><strong>历史性能留存和对比</strong>：一套完整的解决方案我们希望能够留存历史的各项性能数据，方便我们跟前一年、上一季度的服务器性能进行比较。</li>
+<li><strong>数据工厂</strong>：甚至说，我们期望的解决方案，能够完美的将某一时段的线上流量，通过数据清洗后，引入我们的性能测试环境，甚至我们可以在此基础上进行性能数据的增益。比如说：我们希望在当前的系统环境下，模拟去年双十一当天零点到零点三十分的流量模型，看现在是否比去年同期的性能有所提升；考虑到我们的活动会比去年有更大的推广力度，所以我们也可以将去年的流量增大 1.5 倍来进行测试。</li>
+</ul>
+</div><div class="cl-preview-section"><p>现在已经有一些平台基于此做了大胆的尝试，比如阿里的 PTS，在一定程度上解决了性能的很多问题，仍然有很大的提升改进空间，但是已经是阿里云上的标准化性能解决方案了。</p>
+</div><div class="cl-preview-section"><p>聊了这么多，还是最后想说，性能的工具其实是不断进阶、不断变化的，平台化也是性能测试的趋势，对于我们来说，重要的不是掌握什么工具，更不是去辩论孰好孰坏，而是掌握性能测试的思想，学习设计的思路，增强监控分析调优的能力。以我面试的经历来说，只聊工具的或者只会一种工具的，都还只是性能测试的初学者，还有很多的路要走。</p>
+</div><div class="cl-preview-section"><p>总之，性能测试对于我们来说，会随着架构、云端部署、Docker 等等或许我们还不知道的技术而不断改进，所以对于每个人来说，性能测试没有终点，还有很长的路要走，我们共勉。</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/923">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            25 不懂监控与调优，就像白天不懂夜的黑
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/48/article/925">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            27 世界那么大，我想去看看 - Web安全简介
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">0</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <div class="noData">                 <p>                     <i class="imv2-error_c"></i>                 </p>                 <p>目前暂无任何讨论</p>             </div>              </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

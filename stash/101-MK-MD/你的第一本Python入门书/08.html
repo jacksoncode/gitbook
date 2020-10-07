@@ -1,0 +1,269 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        08 将代码放进盒子—函数
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-08-30 11:14:33
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img1.mukewang.com/5d6894910001ab4406400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">一个不注意小事情的人，永远不会成功大事业。<p class="author">——戴尔·卡耐基</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>我们之前介绍过一些函数，如 <code>print()</code>、<code>int()</code>、<code>input()</code> 等。直接使用它们就可以获得一些功能，如向命令行输出内容、转换数字、获取命令行输入，那么它们到底是什么呢？</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="函数的初步理解">函数的初步理解</h3>
+</div><div class="cl-preview-section"><p>大家应该都非常熟悉数学上的函数，简单来说数学上的函数就是一个映射关系，给定一个 x，经映射后将得到 y 值，至于这其中的映射关系我们可以直接把它抽象为 y=f(x)。</p>
+</div><div class="cl-preview-section"><p>程序中的函数与数学上的函数有一丝类似，我们也可以把它抽象地看作一个映射关系，给定输入参数后，经函数映射，返回输出结果。如之前我们使用过的 <code>int()</code> 和 <code>len()</code>：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">数字 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>字符串<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">长度 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>列表<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>给定输入值，经函数处理，返回输出值，这是函数最单纯的模式。</p>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="函数如何定义">函数如何定义</h3>
+</div><div class="cl-preview-section"><p>Python 中函数的定义方式如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> 函数名<span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>函数的输入值叫做<strong>函数参数</strong>，如上面的「参数1」、「参数2」。函数参数的个数可以是任意个，如 0 个、1 个或多个。需要注意参数是有顺序的，使用时要按对应位置传递参数。</p>
+</div><div class="cl-preview-section"><p>函数内部的代码块就是<strong>函数的实现</strong>。所有的函数功能都实现于此。</p>
+</div><div class="cl-preview-section"><p>函数的输出结果叫函数的<strong>返回值</strong>。函数可以没有返回值，也可以有一个或多个返回值。返回值通过 <code>return</code> 语句传递到函数外部，如：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y
+</code></pre>
+</div><div class="cl-preview-section"><h4 id="函数定义示例">函数定义示例</h4>
+</div><div class="cl-preview-section"><p>我们来编写一个函数试试，这个函数的需要的参数是年龄，返回值是年龄对应的人生阶段。</p>
+</div><div class="cl-preview-section"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>年龄</th>
+<th>人生阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-6 岁</td>
+<td>童年</td>
+</tr>
+<tr>
+<td>7-17 岁</td>
+<td>少年</td>
+</tr>
+<tr>
+<td>18-40 岁</td>
+<td>青年</td>
+</tr>
+<tr>
+<td>41-65 岁</td>
+<td>中年</td>
+</tr>
+<tr>
+<td>65 岁之后</td>
+<td>老年</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="cl-preview-section"><p>这个功能好像有点眼熟，没错，上一章节中我们完成过这个功能，现在把这个功能改写成函数。</p>
+</div><div class="cl-preview-section"><p>可以这样来定义这个函数：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">stage_of_life</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> age <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'童年'</span>
+    <span class="token keyword">elif</span> <span class="token number">7</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span><span class="token number">17</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'少年'</span>
+    <span class="token keyword">elif</span> <span class="token number">18</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">40</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'青年'</span>
+    <span class="token keyword">elif</span> <span class="token number">41</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">65</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'中年'</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'老年'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>我们给函数起名为 <code>stage_of_life</code>，需要一个参数 <code>age</code>，最终通过 <code>return</code> 语句返回对应的人生阶段，这个人生阶段就是函数的返回值。</p>
+</div><div class="cl-preview-section"><p>这里虽然有多个 <code>return</code> 语句，但是实际上每次函数使用时，只会有一个 <code>return</code> 语句被执行。</p>
+</div><div class="cl-preview-section"><h4 id="副作用">副作用</h4>
+</div><div class="cl-preview-section"><p>上面这个示例中，给定一个参数 <code>age</code>，便返回对应的人生阶段。函数内部只是做了一个映射，并没有对程序和系统的状态作出影响，这样的函数是<strong>纯函数</strong>。</p>
+</div><div class="cl-preview-section"><p>纯函数是函数的一个特例，更普遍的情况是，函数包含一些会引起程序或系统状态变化的操作，如修改全局变量、命令行输入输出、读写文件等，这样的变化叫做函数的<strong>副作用</strong>。</p>
+</div><div class="cl-preview-section"><p>副作用并不是不好的作用，它只是函数在输入值和输出值间映射之外，所附带的作用。副作用在有些时候是不可避免的。</p>
+</div><div class="cl-preview-section"><p>因为有了副作用，函数就<strong>不必</strong>完全遵从 <code>输入 -&gt; 映射 -&gt; 输出</code> 这种模式，函数可以在没有参数或返回值的情况下，拥有其功能。如果你看到一个函数没有参数或返回值，要自然的想到，那是副作用在发挥作用。</p>
+</div><div class="cl-preview-section"><p>没有参数没有返回值：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>有参数没有返回值：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">say_words</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>没有参数有返回值：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">3.14159</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="函数的调用">函数的调用</h3>
+</div><div class="cl-preview-section"><p>函数定义完成后，就可以在后续的代码中使用它了，对函数的使用叫做函数<strong>调用</strong>。</p>
+</div><div class="cl-preview-section"><p>以前我们调用过 <code>int()</code>、<code>len()</code>，它们是内置在 Python 语言中的函数，也就是<strong>内置函数</strong>。现在我们自己定义了 <code>stage_of_life</code>，调用的方式是一样的：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">stage_of_life</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> age <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'童年'</span>
+    <span class="token keyword">elif</span> <span class="token number">7</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span><span class="token number">17</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'少年'</span>
+    <span class="token keyword">elif</span> <span class="token number">18</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">40</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'青年'</span>
+    <span class="token keyword">elif</span> <span class="token number">41</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">65</span><span class="token punctuation">:</span> 
+		<span class="token keyword">return</span> <span class="token string">'中年'</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'老年'</span>
+
+stage <span class="token operator">=</span> stage_of_life<span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>stage<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>用参数的形式将数据传递给函数，用赋值语句来接收返回值。</p>
+</div><div class="cl-preview-section"><p>需要说明的是</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>函数有多个参数时，参数是有顺序的，要按对应位置将参数传递进去。</p>
+<blockquote>
+<p>&gt;&gt;&gt; def minus(x, y):<br>
+…     return x - y<br>
+…<br>
+&gt;&gt;&gt; minus(1, 3)<br>
+-2<br>
+&gt;&gt;&gt; minus(3, 1)<br>
+2</p>
+</blockquote>
+</li>
+<li>
+<p>函数需要先经过定义，之后才能被调用，否则解释器将找不到这个函数名，也就无法调用它。</p>
+<p>未定义函数便直接调用，解释器将报出「名字未定义」的错误：</p>
+<blockquote>
+<p>&gt;&gt;&gt; stage = abc(18)<br>
+Traceback (most recent call last):<br>
+File “”, line 1, in <br>
+NameError: name ‘abc’ is not defined</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="函数有什么用">函数有什么用</h3>
+</div><div class="cl-preview-section"><p>从形式上来看，函数将一段代码包裹起来，调用函数就像当于执行那段代码。代码所需要的数据我们可以通过函数参数的形式传递进去，代码的执行结果通过返回值出传递出来。那么函数到底有什么用呢？</p>
+</div><div class="cl-preview-section"><h4 id="抽象">抽象</h4>
+</div><div class="cl-preview-section"><p>函数的价值主要体现在调用时，而不是定义时。调用时函数就像个盒子，使用者不需要了解其中有什么代码，是什么样的逻辑，只要知道怎么使用它的功能就足够了。以 <code>len()</code> 函数为例，我们不知道这个函数的原理，但是能用它达到我们获取列表长度的目的，这就是它的重要价值。</p>
+</div><div class="cl-preview-section"><p>简单来说<strong>函数的主要作用是抽象</strong>，屏蔽繁杂的内部细节，让使用者在更高的层次上简单明了地使用其功能。我们之前说过「计算机的世界里最重要的原理之一就是抽象」，函数就是其一个体现。</p>
+</div><div class="cl-preview-section"><h4 id="代码复用">代码复用</h4>
+</div><div class="cl-preview-section"><p>因为具有抽象的好处，函数也延伸出另一个作用——<strong>复用</strong>，或者叫代码复用。也就是便于重复使用，节省代码。举个例子，假如我们想用程序计算并输出 -33，456，-0.03 的绝对值，不用函数时我们这样写：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">number <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">33</span>
+<span class="token keyword">if</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">-</span>number<span class="token punctuation">)</span>
+    
+number <span class="token operator">=</span> <span class="token number">456</span>
+<span class="token keyword">if</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">-</span>number<span class="token punctuation">)</span>
+    
+number <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.03</span>
+<span class="token keyword">if</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">-</span>number<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>显然有大量重复的代码，这些重复代码是可以避免的。用函数修改后如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">print_absolute</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">if</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+   <span class="token keyword">else</span><span class="token punctuation">:</span>
+       <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">-</span>number<span class="token punctuation">)</span> 
+       
+print_absolute<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">33</span><span class="token punctuation">)</span>
+print_absolute<span class="token punctuation">(</span><span class="token number">456</span><span class="token punctuation">)</span>
+print_absolute<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.03</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>代码量减少很多，也能应对未来的相同需求，这就是复用的好处。</p>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="什么时候用函数">什么时候用函数</h3>
+</div><div class="cl-preview-section"><p>看了上面函数的好处之后，想必你已经知道在什么时候用函数了吧？</p>
+</div><div class="cl-preview-section"><ul>
+<li>
+<p>需要通过函数的形式把这些复杂性隔离出来，之后在使用时只需调用这个函数即可，清晰且优雅。</p>
+</li>
+<li>
+<p>需要复用时。一段相似甚至完全一致的代码在多处被使用，可以考虑将这段代码定义为函数，然后在各处去调用它。</p>
+</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="总结">总结</h3>
+</div><div class="cl-preview-section"><p>函数的主要作用是抽象和代码复用。</p>
+</div><div class="cl-preview-section"><p>Python 中函数的定义方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> 函数名<span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    代码块
+</code></pre>
+</div><div class="cl-preview-section"><p>返回值通过 <code>return</code> 语句传递到函数外部。</p>
+</div><div class="cl-preview-section"><hr>
+</div><div class="cl-preview-section"><blockquote>
+<a id="anchor_6_virtual" class="virtual_anchor"></a><h3 id="多语言比较">多语言比较</h3>
+<p>Java 中所有的函数都需要定义在类中，类中的函数也叫做方法。</p>
+<p>Java 中定义函数：</p>
+<pre class="  language-java"><code class="prism  language-java"><span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+</code></pre>
+<p>C/C++ 中定义函数：</p>
+<pre class="  language-c"><code class="prism  language-c"><span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Go 中定义函数：</p>
+<pre class="  language-go"><code class="prism  language-go"><span class="token keyword">func</span> <span class="token function">max</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+</code></pre>
+</blockquote>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/815">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            07 不只有一条路—分支和循环
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/818">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            09 知错能改—错误处理、异常机制
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">1</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/1235814/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/5da32a040001913a06400640-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/1235814/articles" target="_blank">                                         <div class="name l">sunzhenyang</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     老师感觉这种写法有些赘余，既然elif了 age&lt;=6，那后面 7 &lt;= age 是不是可以省略
+def stage_of_life(age):
+    if age &lt;= 6:
+        return '童年'
+    elif 7 &lt;= age &lt;=17:
+...                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3208">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>1</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3208">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3208" data-uid="1235814" data-src="/read/46/article/816" data-type="15">举报</div>                                                                          <div class="time r">2019-12-10</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/8469912/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img1.mukewang.com/5b8cd3c10001e7b802000200-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/8469912/articles" target="_blank">                                                         <div class="name l">逐步求精</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/1235814/articles" target="_blank">                                                                 <div class="name l">sunzhenyang</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     不能忽略的好吧，要是忽略了那你age等于5的时候你看看会输出什么，代码执行自顶向下                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="3212" data-name="逐步求精">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="3212" data-uid="8469912" data-src="/read/46/article/816" data-type="16">举报</div>                                                                                                          <div class="time r">2天前</div>                                                 </div>                                             </div>                                         </li>                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/8469912/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img1.mukewang.com/5b8cd3c10001e7b802000200-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/8469912/articles" target="_blank">                                                         <div class="name l">逐步求精</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8469912/articles" target="_blank">                                                                 <div class="name l">逐步求精</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     不对，我看错了，打扰了                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="3213" data-name="逐步求精">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="3213" data-uid="8469912" data-src="/read/46/article/816" data-type="16">举报</div>                                                                                                          <div class="time r">2天前</div>                                                 </div>                                             </div>                                         </li>                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7065736/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img1.mukewang.com/5b8cd9df0001e03302000145-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <a href="//www.imooc.com/u/7065736/articles" target="_blank">                                                         <div class="name l">qq_幸會_jouKMP</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/1235814/articles" target="_blank">                                                                 <div class="name l">sunzhenyang</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     确实没问题，老师可能只是想写的更加具体完整一点吧hhhh                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="3229" data-name="qq_幸會_jouKMP">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="3229" data-uid="7065736" data-src="/read/46/article/816" data-type="16">举报</div>                                                                                                          <div class="time r">21小时前</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                           <div class="btn-moreReply js-more-reply" data-id="3208">                                     点击展开后面 <span>1</span> 条                                 </div>                                                      </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>

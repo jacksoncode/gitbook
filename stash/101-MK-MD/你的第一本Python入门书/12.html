@@ -1,0 +1,270 @@
+<div class="center_con js-center_con l">
+                <div class="article-con">
+                                            <!-- 买过的阅读 -->
+                        
+
+                    
+                    <div class="art-title">
+                        12 练习—密码生成器
+                    </div>
+                    <div class="art-info clearfix">
+                        
+                        <span class="l">
+                            更新时间：2019-09-09 10:32:53
+                        </span>
+                    </div>
+                    <div class="art-top">
+                                                <img src="//img3.mukewang.com/5d75b9ce00012f5706400359.jpg" alt="">
+                                                                        <div class="famous-word-box">
+                            <img src="/static/img/column/bg-l.png" alt="" class="bg1 bg">
+                            <img src="/static/img/column/bg-r.png" alt="" class="bg2 bg">
+                            <div class="famous-word">天才就是长期劳动的结果。<p class="author">——牛顿</p></div>
+                        </div>
+                                            </div>
+                    <div class="art-content js-lookimg">
+                        <div><div class="cl-preview-section"><p>学习编程一定要多加练习，只靠单纯地阅读是无法真正掌握编程方法的，只有反复练习才能真正领悟编程思想。我们已经学习了一些 Python 知识了，说多不多说少也不少，是时候来运用一下了。</p>
+</div><div class="cl-preview-section"><p>开始之前我们先来聊聊账号的话题。当今互联网十分普及，大家一定注册了很多 APP 和网站吧，大大小小的账号少则十几个多则可能数十个。大家的密码是都怎么设置的呢，所有账号用的是同一个密码吗？</p>
+</div><div class="cl-preview-section"><p>所有账号用同一个密码是件很危险的事，一个平台上的账号泄漏了，有可能殃及其它平台。安全的做法是每个平台使用单独的密码，并且密码间的关联性尽可能的小，这样就算一个密码泄漏了也不会将影响扩大。</p>
+</div><div class="cl-preview-section"><p>每个平台都使用一个单独的密码，并且密码间的关联性尽要可能的小，那十几个甚至几十个平台的密码要怎么来取呢？我们可以用密码自动生成器呀，现在就来动手做一个！</p>
+</div><div class="cl-preview-section"><a id="anchor_0_virtual" class="virtual_anchor"></a><h3 id="密码生成器要求">密码生成器要求</h3>
+</div><div class="cl-preview-section"><p>我们对密码生成器的要求是：</p>
+</div><div class="cl-preview-section"><ol>
+<li>密码需要随机生成</li>
+<li>至少包含一个大写字母（A～Z）</li>
+<li>至少包含一个小写字母（a～z）</li>
+<li>至少包含一个数字（0～9）</li>
+<li>至少包含一个特殊字符（~!@#$%^&amp;*）</li>
+<li>长度可以自由设置，范围是 8～20</li>
+<li>通过命令行进行交互，如设置密码长度</li>
+</ol>
+</div><div class="cl-preview-section"><a id="anchor_1_virtual" class="virtual_anchor"></a><h3 id="实现思路">实现思路</h3>
+</div><div class="cl-preview-section"><p>要求有了，怎么来实现呢？</p>
+</div><div class="cl-preview-section"><p>实现方法非常多，不同的人有不同的思路。在这里我们一起来分析吧。</p>
+</div><div class="cl-preview-section"><ul>
+<li>首先，随机生成 N 位密码——换一种角度这其实相当于，准备好大写字母集合、小写字母集合、数字集合和特殊字符集合，从中随机挑出 N 个字符，然后将它们排成一排。你看，这样我们不就将一个笼统的需求转化成了可以用编程来解决的实际问题了吗？</li>
+<li>其次，密码至少要包含一个大写字母、一个小写字母、一个数字、一个特殊字符，且可指定密码长度——要满足这个要求，有个简单的办法，我们从头开始，密码第一位放<br>
+大写字母，第二位放小写字母，第三位放数字，第四位放特殊字符，剩余的 <code>N - 4</code> 个字符就依次放任意的字符。</li>
+<li>再次，要解决从字符集合中随机取字符的问题——我们之前学习过 <code>random.randint()</code> 函数，它可以随机生成一个数字，我们就将这个随机数字当作索引去字符集合中取值（字符集合可以是 <code>str</code> 或 <code>list</code> 形式），这样就达到了随机从字符集合中取字符的目的。</li>
+<li>最后，通过命令行交互接收密码长度，这个比较简单，使用 <code>input()</code> 即可。</li>
+</ul>
+</div><div class="cl-preview-section"><a id="anchor_2_virtual" class="virtual_anchor"></a><h3 id="实现">实现</h3>
+</div><div class="cl-preview-section"><p>经过刚才的分析，我们可以将这个程序划分为三个主要部分：</p>
+</div><div class="cl-preview-section"><ol>
+<li>命令行交互部分：进行命令行交互、接收输入参数</li>
+<li>随机字符生成部分：可随机生成一个大写字母，或一个小写字母，或一个数字，或一个特殊字符，或一个任意字符</li>
+<li>密码逻辑部分：按照密码长度，操作「随机字符生成部分」来生成全部密码</li>
+</ol>
+</div><div class="cl-preview-section"><p>这三个部分各司其职，共同构成我们的密码生成器。</p>
+</div><div class="cl-preview-section"><p><strong>我们完全可以只用我们之前学习过的那些知识，来实现这三个部分，并完整地构建整个程序。</strong></p>
+</div><div class="cl-preview-section"><h4 id="命令行交互部分的实现">命令行交互部分的实现</h4>
+</div><div class="cl-preview-section"><p>程序被执行后，首先给出提示信息要求用户指定密码长度，然后接收用户所输入的值，并判断值是否符合要求。</p>
+</div><div class="cl-preview-section"><p>实现如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">password_length <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入密码长度（8～20）：'</span><span class="token punctuation">)</span>
+password_length <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>password_length<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> password_length <span class="token operator">&lt;</span> <span class="token number">8</span> <span class="token operator">or</span> password_length <span class="token operator">&gt;</span> <span class="token number">20</span><span class="token punctuation">:</span>
+    <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'密码长度不符'</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>获取到密码长度以后，就该使用「密码逻辑部分」来进一步完成工作，在这里我们把「密码逻辑部分」封装成一个函数，只需调用它就可以获取到想要的密码。也就是下面代码中的 <code>generate_password()</code> 函数。</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python">password <span class="token operator">=</span> generate_password<span class="token punctuation">(</span>password_length<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>对于「命令行交互部分」而言，它不需要知道「密码逻辑部分」中的实现细节，只要调用「密码逻辑部分」能获取到密码就足够了。</p>
+</div><div class="cl-preview-section"><h4 id="密码逻辑部分的实现">密码逻辑部分的实现</h4>
+</div><div class="cl-preview-section"><p>「密码逻辑部分」是一个函数，它以密码长度作为参数，返回我们所要的随机密码。</p>
+</div><div class="cl-preview-section"><p>它生成密码的策略是，先随机生成一个大写字母，以此作为起始密码；再生成一小写字母，追加到密码末尾；再生成一个数字，追加到密码末尾；再生成一个特殊字符，追加到密码末尾。这样就拥有 4 位密码了，且满足包含大写字母、小写字母、数字、特殊字符的要求。密码剩余的几位，依次随机取任意字符并追加到密码末尾。</p>
+</div><div class="cl-preview-section"><p>上述生成随机字符的功能将由「随机字符生成部分」提供，我们将「随机字符生成部分」封装成 <code>RandomChar</code> 类，并单独放置在 <code>randomchar</code> 模块中。使用 <code>RandomChar</code> 类对象的方法即可获取随机字符：</p>
+</div><div class="cl-preview-section"><ul>
+<li>获取大写字母： <code>random_char.uppercase()</code></li>
+<li>获取小写字母： <code>random_char.lowercase()</code></li>
+<li>获取数字： <code>random_char.digit()</code></li>
+<li>获取特殊字符： <code>random_char.special()</code></li>
+<li>获取上述任意一种字符：<code>random_char.anyone()</code></li>
+</ul>
+</div><div class="cl-preview-section"><p>无需在这个层面上关心 <code>RandomChar</code> 类对象是怎么做到获取随机字符的，对当前这个部分来讲这并不重要，重要的是如何运用其它部分的能力来达到当前部分的目的。</p>
+</div><div class="cl-preview-section"><p>我们来实现整个「密码逻辑部分」：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">generate_password</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> length <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'密码至少为 4 位'</span><span class="token punctuation">)</span>
+
+    random_char <span class="token operator">=</span> randomchar<span class="token punctuation">.</span>RandomChar<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    password  <span class="token operator">=</span> random_char<span class="token punctuation">.</span>uppercase<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 用一个随机的大写字符作为起始密码</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>lowercase<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 将一个随机的小写字符拼接在密码末尾</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>digit<span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment"># 将一个随机的数字拼接在密码末尾</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>special<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># 将一个随机的特殊字符拼接在密码末尾</span>
+ 
+    count <span class="token operator">=</span> <span class="token number">5</span>  <span class="token comment"># 此时的密码长度为 4，再向后拼接要从第 5 位开始，所以 count 为 5。</span>
+    <span class="token keyword">while</span> count <span class="token operator">&lt;=</span> length<span class="token punctuation">:</span>  <span class="token comment"># 如果 count 大于密码长度则退出循环</span>
+        password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>anyone<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 随机取出一个字符拼接在密码末尾</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> password
+</code></pre>
+</div><div class="cl-preview-section"><p>上面代码中以 <code>#</code> 号开头的代码，称为<strong>注释</strong>，如 <code># 用一个随机的大写字符作为起始密码</code>。注释用于对代码作注解，只是写给代码阅读者看的，并不会被解释器执行。注释的范围是 <code>#</code> 及其之后的该行的所有字符。</p>
+</div><div class="cl-preview-section"><h4 id="随机字符生成部分的实现">随机字符生成部分的实现</h4>
+</div><div class="cl-preview-section"><p>「随机字符生成部分」被封装成 <code>RandomChar</code> 类，并单独放置在 <code>randomchar</code> 模块中，使用它的对象方法即可获取随机字符。</p>
+</div><div class="cl-preview-section"><p>我们需要先准备好各类字符的完整集合，这里采用字符串的形式存放：</p>
+</div><div class="cl-preview-section"><ul>
+<li>大写字母：<code>'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</code></li>
+<li>小写字母：<code>'abcdefghijklmnopqrstuvwxyz'</code></li>
+<li>数字：<code>'0123456789'</code></li>
+<li>特殊字符：<code>'~!@#$%^&amp;*'</code></li>
+</ul>
+</div><div class="cl-preview-section"><p>可以把这些字符串分别保存在对象属性中：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">RandomChar</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>all_uppercase <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+        self<span class="token punctuation">.</span>all_lowercase <span class="token operator">=</span> <span class="token string">'abcdefghijklmnopqrstuvwxyz'</span>
+        self<span class="token punctuation">.</span>all_digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+        self<span class="token punctuation">.</span>all_specials <span class="token operator">=</span> <span class="token string">'~!@#$%^&amp;*'</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>再来准备一个方法 <code>pick_random_item()</code>，这个方法接受一个字符串作为参数，随机返回这个字符串中的一个字符。其内部可以使用 <code>random.randint()</code> 随机生成一个数字，然后把这个随机数字当作索引去字符串中取值，以此生成随机字符。</p>
+</div><div class="cl-preview-section"><p><code>pick_random_item()</code> 方法实现如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">pick_random_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sequence<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random_int <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sequence<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 调用 random.randint() 生成一个随机数字作为索引去字符串中取值，因为随机生成的数字不可超过字符串长度，所以取值范围为 0, len(sequence) - 1。</span>
+    <span class="token keyword">return</span> sequence<span class="token punctuation">[</span>random_int<span class="token punctuation">]</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>有了上面这个从任意字符串中随机取值的功能，我们就可以把它应用到大写字母、小写字母、数字、特殊字符的集合（字符串形式）中去，这样就可以随机获取这四种字符了。</p>
+</div><div class="cl-preview-section"><p>分别对应四个方法：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">uppercase</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_uppercase<span class="token punctuation">)</span>  <span class="token comment"># 调用 pick_random_item 随机从 all_uppercase 字符串中取出一个大写字母</span>
+
+<span class="token keyword">def</span> <span class="token function">lowercase</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_lowercase<span class="token punctuation">)</span>  <span class="token comment"># 调用 pick_random_item 随机从 all_lowercase 字符串中取出一个小写字母</span>
+
+<span class="token keyword">def</span> <span class="token function">digit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_digits<span class="token punctuation">)</span>     <span class="token comment"># 调用 pick_random_item 随机从 all_digits 字符串中取出一个数字</span>
+
+<span class="token keyword">def</span> <span class="token function">special</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_specials<span class="token punctuation">)</span>   <span class="token comment"># 调用 pick_random_item 随机从 all_specials 字符串中取出一个特殊字符</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>最后还有需要一个不区分上述字符种类，随机取任意字符的对象方法。</p>
+</div><div class="cl-preview-section"><p>我们可以把大写字母、小写字母、数字、特殊字符的集合拼接在一起，形成一个更大的集合，然后随机从中取值。</p>
+</div><div class="cl-preview-section"><p>可随机取任意字符的 <code>anyone()</code> 方法如下：</p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">anyone</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 将四种字符拼接在一起，形成一个大字符串 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&amp;*'，然后调用 pick_random_item 方法从中随机取出一个字符。</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_uppercase <span class="token operator">+</span> self<span class="token punctuation">.</span>all_lowercase <span class="token operator">+</span> self<span class="token punctuation">.</span>all_digits <span class="token operator">+</span> self<span class="token punctuation">.</span>all_specials<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>至此就全部实现完了，大功告成！</p>
+</div><div class="cl-preview-section"><p>整个程序的调用链是：「命令行交互部分」-&gt;「密码逻辑部分」-&gt;「随机字符生成部分」。每一个部分各司其职，共同完成这个程序。</p>
+</div><div class="cl-preview-section"><a id="anchor_3_virtual" class="virtual_anchor"></a><h3 id="完整代码">完整代码</h3>
+</div><div class="cl-preview-section"><p>我们的代码位于两个模块中。</p>
+</div><div class="cl-preview-section"><p>「命令行交互部分」和「密码逻辑部分」位于 <code>password_generator.py</code> 模块，完整代码如下：</p>
+</div><div class="cl-preview-section"><p><code>password_generator.py</code></p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> randomchar
+
+
+<span class="token keyword">def</span> <span class="token function">generate_password</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> length <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'密码至少为 4 位'</span><span class="token punctuation">)</span>
+
+    random_char <span class="token operator">=</span> randomchar<span class="token punctuation">.</span>RandomChar<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    password  <span class="token operator">=</span> random_char<span class="token punctuation">.</span>uppercase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>lowercase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>digit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>special<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    count <span class="token operator">=</span> <span class="token number">5</span>
+    <span class="token keyword">while</span> count <span class="token operator">&lt;=</span> length<span class="token punctuation">:</span>
+        password <span class="token operator">+=</span> random_char<span class="token punctuation">.</span>anyone<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> password
+
+
+password_length <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入密码长度（8～20）：'</span><span class="token punctuation">)</span>
+password_length <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>password_length<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> password_length <span class="token operator">&lt;</span> <span class="token number">8</span> <span class="token operator">or</span> password_length <span class="token operator">&gt;</span> <span class="token number">20</span><span class="token punctuation">:</span>
+    <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'密码长度不符'</span><span class="token punctuation">)</span>
+
+password <span class="token operator">=</span> generate_password<span class="token punctuation">(</span>password_length<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><p>「随机字符生成部分」位于 <code>randomchar.py</code> 模块，完整代码如下：</p>
+</div><div class="cl-preview-section"><p><code>randomchar.py</code></p>
+</div><div class="cl-preview-section"><pre class="  language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+
+
+<span class="token keyword">class</span> <span class="token class-name">RandomChar</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>all_uppercase <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>
+        self<span class="token punctuation">.</span>all_lowercase <span class="token operator">=</span> <span class="token string">'abcdefghijklmnopqrstuvwxyz'</span>
+        self<span class="token punctuation">.</span>all_digits <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+        self<span class="token punctuation">.</span>all_specials <span class="token operator">=</span> <span class="token string">'~!@#$%^&amp;*'</span>
+
+    <span class="token keyword">def</span> <span class="token function">pick_random_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sequence<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        random_int <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sequence<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> sequence<span class="token punctuation">[</span>random_int<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">uppercase</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_uppercase<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">lowercase</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_lowercase<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">digit</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_digits<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">special</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_specials<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">anyone</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>pick_random_item<span class="token punctuation">(</span>self<span class="token punctuation">.</span>all_uppercase <span class="token operator">+</span> self<span class="token punctuation">.</span>all_lowercase <span class="token operator">+</span> self<span class="token punctuation">.</span>all_digits <span class="token operator">+</span> self<span class="token punctuation">.</span>all_specials<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="cl-preview-section"><a id="anchor_4_virtual" class="virtual_anchor"></a><h3 id="运行示例">运行示例</h3>
+</div><div class="cl-preview-section"><p>来执行一下程序看看：</p>
+</div><div class="cl-preview-section"><blockquote>
+<p>➜  ~ python3 password_generator.py<br>
+请输入密码长度（8～20）：16<br>
+Aw6~8a3$AeAo4kSN</p>
+</blockquote>
+</div><div class="cl-preview-section"><a id="anchor_5_virtual" class="virtual_anchor"></a><h3 id="补充说明">补充说明</h3>
+</div><div class="cl-preview-section"><p>为了可以仅利用之前学过的知识来实现这个程序，这里放弃了一些更简洁或更恰当的 Python 用法。比如</p>
+</div><div class="cl-preview-section"><ul>
+<li>循环若干次这里用了 <code>while</code> 循环，可以使用 <code>for _ in range(x)</code> 的方式替代</li>
+<li>把随机数字当作索引然后从字符串中取值，可以直接使用 <code>random.choice()</code> 函数替代</li>
+<li><code>RandomChar</code> 中的对象属性和对象方法，可直接定义成类属性和类方法</li>
+<li>‘ABCDEFGHIJKLMNOPQRSTUVWXYZ’ 这类字符集合不需要手工书写，使用 <code>string</code> 模块即可获取，如 <code>string.ascii_uppercase</code></li>
+</ul>
+</div><div class="cl-preview-section"><p>大家若有兴趣可以自己改进这个程序。</p>
+</div><div class="cl-preview-section"><p>高级的用法和概念将会在之后章节中介绍，不过值得一提的是，朴素的方法也是有价值的！</p>
+</div></div>
+                    </div>
+                                            <!-- 买过的阅读 -->
+                        <div class="art-next-prev clearfix">
+                                                                                                <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/820">
+                                                                    <div class="prev l clearfix">
+                                        <div class="icon l">
+                                            <i class="imv2-arrow3_l"></i>
+                                        </div>
+                                        <p>
+                                            11 更大的代码盒子—模块和包
+                                        </p>
+                                    </div>
+                                </a>
+                                                                                                                            <!-- 已买且开放 或者可以试读 -->
+                                    <a href="/read/46/article/822">
+                                                                    <div class="next r clearfix">
+                                        <p>
+                                            13 这么多的数据结构（一）：列表、元祖、字符串
+                                        </p>
+                                        <div class="icon r">
+                                            <i class="imv2-arrow3_r"></i>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                                    </div>
+                                    </div>
+                <div class="comments-con js-comments-con" id="coments_con">     <div class="number">精选留言 <span class="js-number">2</span></div>     <div class="comments">         <div class="input-fake js-showcommentModal">             欢迎在这里发表留言，作者筛选后可公开显示         </div>                      <ul class="comments-list js-comments-list">                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/3543028/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img4.mukewang.com/5458633f0001c2a902200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/3543028/articles" target="_blank">                                         <div class="name l">慕粉3543028</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     麻雀虽小，五章俱全1                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="3825">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="3825">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="3825" data-uid="3543028" data-src="/read/46/article/821" data-type="15">举报</div>                                                                          <div class="time r">1天前</div>                                 </div>                             </div>                                                                                   </div>                     </li>                                                        <li class="comment clearfix">                                          <a href="//www.imooc.com/u/8107476/articles" target="_blank">                             <div class="head-img l" style="background-image:url(//img2.mukewang.com/545850200001359c02200220-100-100.jpg)"></div>                         </a>                         <div class="comment-detail l">                             <div class="hoverDisplay">                                 <div class="com-author clearfix">                                                                                                               <a href="//www.imooc.com/u/8107476/articles" target="_blank">                                         <div class="name l">慕用0015072</div>                                     </a>                                                                                                                                                                                              </div>                                 <div class="com-content">                                     请问一下，“ 密码逻辑部分 ”，是因为函数中有while这样的逻辑判断而命名的吗？                                 </div>                                 <div class="com-other clearfix">                                                                              <!-- 没点过赞 -->                                         <div class="btn-agree js-agree l" data-commentid="1836">                                                                                  <i class="imv2-thumb_up"></i>                                             <span>0</span>                                         </div>                                                                                                               <div class="btn-reply l js-reply" data-replyid="1836">回复</div>                                     <!-- 没登录不显示举报 -->                                                                              <div class="btn-report l js-tip-off comment-report" data-id="1836" data-uid="8107476" data-src="/read/46/article/821" data-type="15">举报</div>                                                                          <div class="time r">2019-09-10</div>                                 </div>                             </div>                                                              <ul class="replys-list js-replys-list">                                                                              <li class="reply clearfix">                                             <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                 <div class="head-img l" style="background-image:url(//img3.mukewang.com/5d5496f200014b7e11001100-100-100.jpg)"></div>                                             </a>                                             <div class="reply-detail l">                                                 <div class="rep-author clearfix">                                                                                                          <div class="author-mark l"></div>                                                                                                          <a href="//www.imooc.com/u/7904211/articles" target="_blank">                                                         <div class="name l">黄浮云</div>                                                     </a>                                                                                                                                                                   <div class="to l clearfix">                                                             <span class="l">回复</span>                                                                                                                          <a href="//www.imooc.com/u/8107476/articles" target="_blank">                                                                 <div class="name l">慕用0015072</div>                                                             </a>                                                         </div>                                                                                                      </div>                                                 <div class="rep-content">                                                     我猜你可能对这里的“逻辑”一词有混淆，在程序员的世界里，如果我们说“某某功能的逻辑”、“某某代码的逻辑”，是指这个功能或代码的具体实现细节或思路。                                                 </div>                                                 <div class="rep-other clearfix">                                                     <div class="btn-reply l js-reply" data-replyid="1723" data-name="黄浮云">回复</div>                                                                                                              <div class="btn-report l js-tip-off reply-report" data-id="1723" data-uid="7904211" data-src="/read/46/article/821" data-type="16">举报</div>                                                                                                          <div class="time r">2019-09-16 21:15:17</div>                                                 </div>                                             </div>                                         </li>                                                                      </ul>                                                                                   </div>                     </li>                              </ul>                           </div>  </div>
+
+                <div class="bottom-line">
+                    <div class="line"></div>
+                    <div class="bottom-tip">千学不如一看，千看不如一练</div>
+                    <div class="line"></div>
+                </div>
+            </div>
